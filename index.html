@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkyLayer — Seleção de Região</title>
+  <meta name="description" content="Escolha a versão do site SkyLayer: Moçambique ou Global. Você pode trocar a qualquer momento." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<header class="hero">
+  <div class="container hero-content">
+    <h1>SkyLayer <span>Escolha sua região</span></h1>
+    <p>
+      Detectamos sua localização automaticamente, mas você pode escolher manualmente.
+      Sua escolha ficará guardada neste dispositivo.
+    </p>
+
+    <div class="hero-buttons">
+      <a id="go-mz" href="/mz/" class="btn primary">Continuar em Moçambique</a>
+      <a id="go-global" href="/global/" class="btn secondary">Continuar Global</a>
+    </div>
+
+    <div class="note-box">
+      <p><strong>Dica:</strong> Se você estiver na versão errada, use o seletor de região no topo de qualquer página.</p>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Preferência manual sempre vence (localStorage)
+  const pref = localStorage.getItem('skylayer_region');
+  if (pref === 'mz') window.location.replace('/mz/');
+  if (pref === 'global') window.location.replace('/global/');
+
+  // Botões: salvar preferência e seguir
+  document.getElementById('go-mz').addEventListener('click', () => {
+    localStorage.setItem('skylayer_region', 'mz');
+  });
+
+  document.getElementById('go-global').addEventListener('click', () => {
+    localStorage.setItem('skylayer_region', 'global');
+  });
+</script>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
