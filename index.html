@@ -8,14 +8,15 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+
 <div class="scrollbar" id="scrollbar"></div>
+
 <header class="topbar">
   <div class="container topbar-content">
     <div class="brand">SkyLayer <span class="muted">Web & Cloud</span></div>
-
     <div class="region">
-      <a class="link-underline" href="/mz/">MZ</a>
-      <a class="link-underline" href="/global/">GLOBAL</a>
+      <a class="link-underline" href="mz/index.html">MZ</a>
+      <a class="link-underline" href="global/index.html">GLOBAL</a>
     </div>
   </div>
 </header>
@@ -24,17 +25,17 @@
   <div class="container hero-content">
     <h1>SkyLayer <span>Escolha sua região</span></h1>
     <p>
-      Detectamos sua localização automaticamente, mas você pode escolher manualmente.
-      Sua escolha ficará guardada neste dispositivo.
+      Você pode trocar de região a qualquer momento.
+      Sua escolha fica guardada neste dispositivo.
     </p>
 
     <div class="hero-buttons">
-      <a id="go-mz" href="/mz/" class="btn primary">Continuar em Moçambique</a>
-      <a id="go-global" href="/global/" class="btn secondary">Continuar Global</a>
+      <a id="go-mz" href="mz/index.html" class="btn primary">Continuar em Moçambique</a>
+      <a id="go-global" href="global/index.html" class="btn secondary">Continuar Global</a>
     </div>
 
     <div class="note-box">
-      <p><strong>Dica:</strong> Se você estiver na versão errada, use o seletor de região no topo de qualquer página.</p>
+      <p><strong>Dica:</strong> Se estiver na versão errada, use o seletor de região no topo de qualquer página.</p>
     </div>
   </div>
 </header>
@@ -42,8 +43,8 @@
 <script>
   // Preferência manual sempre vence (localStorage)
   const pref = localStorage.getItem('skylayer_region');
-  if (pref === 'mz') window.location.replace('/mz/');
-  if (pref === 'global') window.location.replace('/global/');
+  if (pref === 'mz') window.location.replace('mz/index.html');
+  if (pref === 'global') window.location.replace('global/index.html');
 
   // Botões: salvar preferência e seguir
   document.getElementById('go-mz').addEventListener('click', () => {

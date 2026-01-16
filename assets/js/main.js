@@ -1,6 +1,7 @@
 (function () {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // ===== Reveal =====
   function autoAddReveal() {
     const selectors = [
       '.hero-content',
@@ -35,6 +36,7 @@
     targets.forEach(t => obs.observe(t));
   }
 
+  // ===== Modals =====
   let lastFocus = null;
 
   function openModal(id) {
@@ -98,28 +100,10 @@
     });
   }
 
-  function initScrollBar(){
-    const bar = document.getElementById('scrollbar');
-    if (!bar || prefersReduced) return;
-
-    function update(){
-      const doc = document.documentElement;
-      const scrollTop = doc.scrollTop || document.body.scrollTop;
-      const height = doc.scrollHeight - doc.clientHeight;
-      const pct = height > 0 ? (scrollTop / height) * 100 : 0;
-      bar.style.width = pct.toFixed(2) + '%';
-    }
-
-    update();
-    window.addEventListener('scroll', update, { passive:true });
-    window.addEventListener('resize', update);
-  }
-
-
+  // ===== Init =====
   window.addEventListener('DOMContentLoaded', () => {
     autoAddReveal();
     initReveal();
     initModals();
-    initScrollBar();
   });
 })();
