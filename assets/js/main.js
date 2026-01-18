@@ -4,8 +4,8 @@
   // ===== Reveal =====
   function autoAddReveal() {
     const selectors = [
-      '.hero-content',
-      '.section h2',
+      '.hero .container',
+      '.section .container',
       '.card',
       '.note-box',
       '.steps li',
@@ -19,7 +19,10 @@
   }
 
   function initReveal() {
-    if (prefersReduced) return;
+    if (prefersReduced) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+      return;
+    }
 
     const targets = document.querySelectorAll('.reveal');
     if (!targets.length) return;
@@ -36,7 +39,16 @@
     targets.forEach(t => obs.observe(t));
   }
 
-  // ===== Modals =====
+  // ===== Active nav =====
+  function initActiveNav() {
+    const page = document.body.getAttribute('data-page');
+    if (!page) return;
+    document.querySelectorAll('.nav a').forEach(a => {
+      if (a.getAttribute('data-nav') === page) a.classList.add('active');
+    });
+  }
+
+  // ===== Modal =====
   let lastFocus = null;
 
   function openModal(id) {
@@ -47,43 +59,37 @@
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden', 'false');
 
-    const focusable = overlay.querySelector(
-      'button, a, input, textarea, select, [tabindex]:not([tabindex="-1"])'
-    );
+    const focusable = overlay.querySelector('button, a, input, textarea, select, [tabindex]:not([tabindex="-1"])');
     if (focusable) focusable.focus();
-
-    if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
   }
 
   function closeModal(overlay) {
     overlay.classList.remove('open');
     overlay.setAttribute('aria-hidden', 'true');
-
-    if (location.hash === '#' + overlay.id) {
-      history.replaceState(null, '', location.pathname);
-    }
-
-    if (lastFocus) lastFocus.focus();
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
   function initModals() {
     document.addEventListener('click', (e) => {
-      const btn = e.target.closest('[data-modal-open]');
-      if (btn) {
+      const openBtn = e.target.closest('[data-modal-open]');
+      if (openBtn) {
         e.preventDefault();
-        openModal(btn.getAttribute('data-modal-open'));
+        openModal(openBtn.getAttribute('data-modal-open'));
         return;
       }
 
       const closeBtn = e.target.closest('[data-modal-close]');
       if (closeBtn) {
+        e.preventDefault();
         const overlay = closeBtn.closest('.modal-overlay');
         if (overlay) closeModal(overlay);
         return;
       }
 
-      const overlay = e.target.classList.contains('modal-overlay') ? e.target : null;
-      if (overlay && overlay.classList.contains('open')) closeModal(overlay);
+      const overlay = e.target.classList && e.target.classList.contains('modal-overlay') ? e.target : null;
+      if (overlay && overlay.classList.contains('open')) {
+        closeModal(overlay);
+      }
     });
 
     document.addEventListener('keydown', (e) => {
@@ -92,6 +98,7 @@
       if (openOverlay) closeModal(openOverlay);
     });
 
+    // allow deep link: #modal-id
     window.addEventListener('load', () => {
       const hash = location.hash.replace('#', '');
       if (!hash) return;
@@ -100,10 +107,29 @@
     });
   }
 
-  // ===== Init =====
+  // ===== Scrollbar =====
+  function initScrollBar() {
+    const bar = document.getElementById('scrollbar');
+    if (!bar || prefersReduced) return;
+
+    function update() {
+      const doc = document.documentElement;
+      const scrollTop = doc.scrollTop || document.body.scrollTop;
+      const height = doc.scrollHeight - doc.clientHeight;
+      const pct = height > 0 ? (scrollTop / height) * 100 : 0;
+      bar.style.width = pct.toFixed(2) + '%';
+    }
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  }
+
   window.addEventListener('DOMContentLoaded', () => {
     autoAddReveal();
     initReveal();
+    initActiveNav();
     initModals();
+    initScrollBar();
   });
 })();
