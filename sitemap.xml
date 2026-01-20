@@ -1,51 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home Page (EN/PT) -->
   <url>
-    <loc>https://skylayer2026.github.io/skylayer-web/about.html</loc>
-    <lastmod>2026-01-18</lastmod>
+    <loc>https://skylayer2026.github.io/skylayer-web/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylayer2026.github.io/skylayer-web/index.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://skylayer2026.github.io/skylayer-web/pt/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://skylayer2026.github.io/skylayer-web/index.html" />
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://skylayer2026.github.io/skylayer-web/contact.html</loc>
-    <lastmod>2026-01-18</lastmod>
-  </url>
-  <url>
-    <loc>https://skylayer2026.github.io/skylayer-web/</loc>
-    <lastmod>2026-01-18</lastmod>
-  </url>
-  <url>
-    <loc>https://skylayer2026.github.io/skylayer-web/plans.html</loc>
-    <lastmod>2026-01-18</lastmod>
-  </url>
-  <url>
-    <loc>https://skylayer2026.github.io/skylayer-web/privacy.html</loc>
-    <lastmod>2026-01-18</lastmod>
-  </url>
-  <url>
-    <loc>https://skylayer2026.github.io/skylayer-web/pt/about.html</loc>
-    <lastmod>2026-01-18</lastmod>
-  </url>
-  <url>
-    <loc>https://skylayer2026.github.io/skylayer-web/pt/contact.html</loc>
-    <lastmod>2026-01-18</lastmod>
-  </url>
+
   <url>
     <loc>https://skylayer2026.github.io/skylayer-web/pt/index.html</loc>
-    <lastmod>2026-01-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylayer2026.github.io/skylayer-web/index.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://skylayer2026.github.io/skylayer-web/pt/index.html" />
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://skylayer2026.github.io/skylayer-web/pt/plans.html</loc>
-    <lastmod>2026-01-18</lastmod>
-  </url>
-  <url>
-    <loc>https://skylayer2026.github.io/skylayer-web/pt/privacy.html</loc>
-    <lastmod>2026-01-18</lastmod>
-  </url>
-  <url>
-    <loc>https://skylayer2026.github.io/skylayer-web/pt/services.html</loc>
-    <lastmod>2026-01-18</lastmod>
-  </url>
+
+  <!-- Services / Serviços -->
   <url>
     <loc>https://skylayer2026.github.io/skylayer-web/services.html</loc>
-    <lastmod>2026-01-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylayer2026.github.io/skylayer-web/services.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://skylayer2026.github.io/skylayer-web/pt/services.html" />
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://skylayer2026.github.io/skylayer-web/pt/services.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylayer2026.github.io/skylayer-web/services.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://skylayer2026.github.io/skylayer-web/pt/services.html" />
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Plans / Planos -->
+  <url>
+    <loc>https://skylayer2026.github.io/skylayer-web/plans.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylayer2026.github.io/skylayer-web/plans.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://skylayer2026.github.io/skylayer-web/pt/plans.html" />
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://skylayer2026.github.io/skylayer-web/pt/plans.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylayer2026.github.io/skylayer-web/plans.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://skylayer2026.github.io/skylayer-web/pt/plans.html" />
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About / Sobre -->
+  <url>
+    <loc>https://skylayer2026.github.io/skylayer-web/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylayer2026.github.io/skylayer-web/about.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://skylayer2026.github.io/skylayer-web/pt/about.html" />
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://skylayer2026.github.io/skylayer-web/pt/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylayer2026.github.io/skylayer-web/about.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://skylayer2026.github.io/skylayer-web/pt/about.html" />
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact / Contacto -->
+  <url>
+    <loc>https://skylayer2026.github.io/skylayer-web/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylayer2026.github.io/skylayer-web/contact.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://skylayer2026.github.io/skylayer-web/pt/contact.html" />
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://skylayer2026.github.io/skylayer-web/pt/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylayer2026.github.io/skylayer-web/contact.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://skylayer2026.github.io/skylayer-web/pt/contact.html" />
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Privacy / Privacidade -->
+  <url>
+    <loc>https://skylayer2026.github.io/skylayer-web/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylayer2026.github.io/skylayer-web/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://skylayer2026.github.io/skylayer-web/pt/privacy.html" />
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://skylayer2026.github.io/skylayer-web/pt/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://skylayer2026.github.io/skylayer-web/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://skylayer2026.github.io/skylayer-web/pt/privacy.html" />
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>

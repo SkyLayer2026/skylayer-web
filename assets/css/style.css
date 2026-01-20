@@ -320,3 +320,62 @@ a{color:inherit;text-decoration:none}
 .hero-points li{padding-left:18px;position:relative;color:var(--muted);margin:6px 0}
 .hero-points li:before{content:"";width:8px;height:8px;border-radius:999px;background:rgba(25,179,122,.9);position:absolute;left:0;top:.55em}
 .hero-content .note{margin-top:10px;color:var(--muted);font-weight:700}
+
+
+/* === SkyLayer: header emphasis overrides === */
+.topbar{
+  padding-top:14px;
+  padding-bottom:14px;
+}
+.topbar::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg, rgba(25,179,122,.16), rgba(25,179,122,0) 55%),
+    radial-gradient(600px 120px at 20% 0%, rgba(25,179,122,.18), rgba(25,179,122,0) 70%);
+  opacity:.9;
+}
+.topbar-content{
+  position:relative;
+}
+.brand-link{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+}
+.brand .logo{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  box-shadow:0 10px 24px rgba(0,0,0,.10);
+}
+.brand-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.1;
+}
+.brand-name{
+  font-weight:900;
+  letter-spacing:.2px;
+  color:var(--blueDark);
+}
+.brand .muted{
+  font-weight:700;
+  color:var(--greenDark);
+  opacity:.95;
+}
+
+/* Home hero: smaller banner, cleaner fold */
+.hero{
+  padding:38px 0;
+}
+.hero .wrap{
+  max-width:980px;
+}
+.hero p{
+  margin-top:10px;
+  max-width:62ch;
+}
