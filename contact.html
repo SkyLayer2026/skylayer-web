@@ -28,7 +28,7 @@
 <body data-page="contact">
 
   <div class="scrollbar" id="scrollbar"></div>
-  <header class="topbar header-banner">
+  <header class="topbar">
     <div class="container topbar-content">
       <div class="brand"><img class="logo" src="assets/img/logo-blue.png" alt="SkyLayer logo" /><span class="brand-text">SkyLayer</span> <span class="muted">Web & Cloud</span></div>
     <div class="topbar-right">
@@ -61,9 +61,10 @@
         <h2 style="margin-bottom:10px">Fast contact</h2>
         <p class="muted">The quickest path is WhatsApp. For formal requests, use email.</p>
         <div class="btn-row">
-          <a class="btn primary" href="https://wa.me/258857577744?text=Hello,%20I%20need%20help%20with%20SkyLayer%20services." target="_blank" rel="noreferrer">WhatsApp</a>
-          <a class="btn secondary" href="mailto:skylayer.tech@outlook.com">Email</a>
+          <a class="btn primary" id="contact-wa" href="https://wa.me/258857577744?text=Hello%2C%20I%20need%20help%20with%20SkyLayer%20services." target="_blank" rel="noreferrer">WhatsApp</a>
+          <a class="btn secondary" id="contact-email" href="mailto:skylayer.tech@outlook.com?subject=SkyLayer%20Request&body=Hello%20SkyLayer%2C%0A%0AService%3A%20%0ATimeline%3A%20%0ABudget%3A%20%0A%0ADetails%3A%20">Email</a>
         </div>
+        <p class="small muted" id="contact-service-note" style="margin-top:10px"></p>
       </div>
 
       <div class="note-box">

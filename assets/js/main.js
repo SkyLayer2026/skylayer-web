@@ -125,11 +125,75 @@
     window.addEventListener('resize', update);
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
+  
+  // ===== Contact prefill (services -> contact) =====
+  function initContactPrefill() {
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get('service');
+    if (!key) return;
+
+    const waBtn = document.getElementById('contact-wa');
+    const emailBtn = document.getElementById('contact-email');
+    const note = document.getElementById('contact-service-note');
+    if (!waBtn && !emailBtn && !note) return;
+
+    const lang = (document.documentElement.getAttribute('lang') || 'en').toLowerCase();
+    const isPT = lang.startsWith('pt');
+
+    const mapPT = {
+      'criacao-site': 'Criação de site',
+      'dominios': 'Domínios',
+      'hospedagem': 'Hospedagem',
+      'manutencao': 'Manutenção e suporte',
+      'migracao': 'Migração',
+      'seo': 'SEO'
+    };
+
+    const mapEN = {
+      'website-build': 'Website build',
+      'domains': 'Domains',
+      'hosting': 'Hosting',
+      'maintenance': 'Maintenance & support',
+      'migration': 'Migration',
+      'seo': 'SEO'
+    };
+
+    const label = (isPT ? mapPT[key] : mapEN[key]) || key.replace(/-/g, ' ');
+
+    if (note) {
+      note.textContent = isPT ? ('Serviço selecionado: ' + label) : ('Selected service: ' + label);
+    }
+
+    const message = isPT
+      ? ('Olá, quero contratar o serviço: ' + label + '.\n\n' +
+         'Detalhes:\n' +
+         '- Nome/Empresa:\n' +
+         '- Domínio (se existir):\n' +
+         '- Prazo:\n' +
+         '- Observações:')
+      : ('Hello, I would like to hire: ' + label + '.\n\n' +
+         'Details:\n' +
+         '- Name/Company:\n' +
+         '- Domain (if any):\n' +
+         '- Timeline:\n' +
+         '- Notes:');
+
+    const waUrl = 'https://wa.me/258857577744?text=' + encodeURIComponent(message);
+    const subject = isPT
+      ? ('SkyLayer — Pedido: ' + label)
+      : ('SkyLayer — Request: ' + label);
+    const mailUrl = 'mailto:skylayer.tech@outlook.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(message);
+
+    if (waBtn) waBtn.href = waUrl;
+    if (emailBtn) emailBtn.href = mailUrl;
+  }
+
+window.addEventListener('DOMContentLoaded', () => {
     autoAddReveal();
     initReveal();
     initActiveNav();
     initModals();
     initScrollBar();
+    initContactPrefill();
   });
 })();
