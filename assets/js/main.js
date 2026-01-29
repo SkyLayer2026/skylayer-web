@@ -132,7 +132,6 @@
     const key = params.get('service');
     if (!key) return;
 
-    const waBtn = document.getElementById('contact-wa');
     const emailBtn = document.getElementById('contact-email');
     const note = document.getElementById('contact-service-note');
     if (!waBtn && !emailBtn && !note) return;
@@ -178,13 +177,11 @@
          '- Timeline:\n' +
          '- Notes:');
 
-    const waUrl = 'https://wa.me/258857577744?text=' + encodeURIComponent(message);
     const subject = isPT
       ? ('SkyLayer — Pedido: ' + label)
       : ('SkyLayer — Request: ' + label);
     const mailUrl = 'mailto:skylayer.tech@outlook.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(message);
 
-    if (waBtn) waBtn.href = waUrl;
     if (emailBtn) emailBtn.href = mailUrl;
   }
 
