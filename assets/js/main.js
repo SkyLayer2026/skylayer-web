@@ -1,3 +1,12 @@
+
+// ===== REMOVE LOADING OVERLAYS =====
+document.addEventListener("DOMContentLoaded",()=>{
+  document.querySelectorAll('#loading,#loader,#loading-screen,.loader,.loading,.preloader,[data-loading-screen]').forEach(el=>el.remove());
+  document.body.classList.remove('loading');
+  document.body.style.opacity='1';
+  document.body.style.visibility='visible';
+});
+
 // ===== REVEAL =====
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
