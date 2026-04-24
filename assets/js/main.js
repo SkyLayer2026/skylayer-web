@@ -1,8 +1,3 @@
-// ===== LOADER =====
-window.addEventListener("load",()=>{
-  document.body.classList.add("loaded");
-});
-
 // ===== REVEAL =====
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
