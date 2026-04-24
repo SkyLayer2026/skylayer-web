@@ -209,3 +209,22 @@ body{
 @media(max-width:900px){
   .cards{grid-template-columns:1fr}
 }
+
+/* FORCE DISABLE LOADING SCREENS */
+#loading,
+#loader,
+#loading-screen,
+.loader,
+.loading,
+.preloader,
+[data-loading-screen]{
+  display:none !important;
+  visibility:hidden !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+
+body{
+  opacity:1 !important;
+  visibility:visible !important;
+}
