@@ -69,3 +69,46 @@ if(hero && !reduceMotion){
     hero.style.transform=`translateY(${window.scrollY*0.08}px)`;
   },{passive:true});
 }
+
+
+// ===== MODALS =====
+const lockScroll=(locked)=>{ document.body.style.overflow=locked?"hidden":""; };
+document.querySelectorAll("[data-modal-open]").forEach(btn=>{
+  btn.addEventListener("click",e=>{
+    e.preventDefault();
+    const id=btn.getAttribute("data-modal-open");
+    const modal=document.getElementById(id);
+    if(!modal) return;
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden","false");
+    lockScroll(true);
+  });
+});
+
+document.querySelectorAll("[data-modal-close]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const modal=btn.closest(".modal-overlay");
+    if(!modal) return;
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden","true");
+    lockScroll(false);
+  });
+});
+
+document.querySelectorAll(".modal-overlay").forEach(overlay=>{
+  overlay.addEventListener("click",e=>{
+    if(e.target!==overlay) return;
+    overlay.classList.remove("is-open");
+    overlay.setAttribute("aria-hidden","true");
+    lockScroll(false);
+  });
+});
+
+document.addEventListener("keydown",e=>{
+  if(e.key!=="Escape") return;
+  document.querySelectorAll(".modal-overlay.is-open").forEach(modal=>{
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden","true");
+  });
+  lockScroll(false);
+});
