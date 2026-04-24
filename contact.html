@@ -1,105 +1,282 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="pt">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Request a quote or ask a question. Email skylayer.tech@outlook.com and we will respond quickly." name="description"/>
-<title>Contact SkyLayer | Get a Quote</title>
-<link href="assets/css/style.css" rel="stylesheet"/>
-<!-- SEO: auto -->
-<link href="https://skylayer2026.github.io/skylayer-web/contact.html" rel="canonical"/>
-<link href="https://skylayer2026.github.io/skylayer-web/contact.html" hreflang="en" rel="alternate"/>
-<link href="https://skylayer2026.github.io/skylayer-web/contact.html" hreflang="x-default" rel="alternate"/>
-<link href="https://skylayer2026.github.io/skylayer-web/pt/contact.html" hreflang="pt" rel="alternate"/>
-<meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
-<meta content="#19b37a" name="theme-color"/>
-<meta content="Contact SkyLayer | Get a Quote" property="og:title"/>
-<meta content="Request a quote or ask a question. Email skylayer.tech@outlook.com and we will respond quickly." property="og:description"/>
-<meta content="https://skylayer2026.github.io/skylayer-web/contact.html" property="og:url"/>
-<meta content="website" property="og:type"/>
-<meta content="en_US" property="og:locale"/>
-<meta content="https://skylayer2026.github.io/skylayer-web/assets/img/og.jpg" property="og:image"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Contact SkyLayer | Get a Quote" name="twitter:title"/>
-<meta content="Request a quote or ask a question. Email skylayer.tech@outlook.com and we will respond quickly." name="twitter:description"/>
-<meta content="https://skylayer2026.github.io/skylayer-web/assets/img/og.jpg" name="twitter:image"/>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "SkyLayer", "url": "https://skylayer2026.github.io/skylayer-web/", "logo": "https://skylayer2026.github.io/skylayer-web/assets/img/logo-blue.png", "email": "skylayer.tech@outlook.com", "contactPoint": [{"@type": "ContactPoint", "contactType": "sales", "email": "skylayer.tech@outlook.com", "availableLanguage": ["English", "Portuguese"]}]}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Contacto | SkyLayer</title>
+
+<meta name="description" content="Entre em contacto para solicitar serviços ou tirar dúvidas." />
+
+<link rel="stylesheet" href="assets/css/style.css"/>
+
 </head>
+
 <body data-page="contact">
+
 <div class="scrollbar" id="scrollbar"></div>
+
+<!-- NAVBAR -->
 <header class="topbar">
-<div class="container topbar-content">
-<div class="brand"><img alt="SkyLayer" class="logo" src="assets/img/og.jpeg"/><span class="brand-text">SkyLayer</span> <span class="muted">Web &amp; Cloud</span></div>
-<div class="topbar-right">
-<nav aria-label="Primary" class="nav">
-<a data-nav="home" href="index.html">Home</a>
-<a data-nav="services" href="services.html">Services</a>
-<a data-nav="plans" href="plans.html">Plans</a>
-<a data-nav="about" href="about.html">About</a>
-<a data-nav="contact" href="contact.html">Contact</a>
-<a data-nav="privacy" href="privacy.html">Privacy</a>
-</nav>
-<div class="lang">
-<a class="active" href="contact.html">EN</a>
-<a href="pt/contact.html">PT</a>
-</div>
-</div>
-</div>
+  <div class="container topbar-content">
+
+    <div class="brand">
+      <img src="assets/img/og.jpeg" class="logo"/>
+      <span class="brand-text">SkyLayer</span>
+      <span class="muted">Soluções Digitais</span>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html">Início</a>
+      <a href="services.html">Serviços</a>
+      <a href="portfolio.html">Projetos</a>
+      <a href="about.html">Sobre</a>
+      <a href="contact.html">Contacto</a>
+    </nav>
+
+  </div>
 </header>
-<header class="hero" style="padding:62px 0 44px">
-<div class="container">
-<h1>Contact</h1>
-<p class="lead">Tell us what you need and your timeline. We’ll respond with the simplest option that meets the goal.</p>
-</div>
+
+<!-- HERO -->
+<header class="hero" style="padding:60px 0 40px">
+  <div class="container">
+
+    <h1>Contacto</h1>
+
+    <p class="lead">
+      Descreva o seu problema ou necessidade. Vamos responder com a melhor solução.
+    </p>
+
+  </div>
 </header>
+
+<!-- FORMULÁRIO -->
 <section class="section">
-<div class="container grid-2">
-<div class="note-box">
-<h2 style="margin-bottom:10px">Fast contact</h2>
-<p class="muted">The quickest path is Email. For formal requests, use email.</p>
-<div class="btn-row">
-<a class="btn secondary" href="mailto:skylayer.tech@outlook.com?subject=SkyLayer%20Request&amp;body=Hello%20SkyLayer%2C%0A%0AService%3A%20%0ATimeline%3A%20%0ABudget%3A%20%0A%0ADetails%3A%20" id="contact-email">Email</a>
-</div>
-<p class="small muted" id="contact-service-note" style="margin-top:10px"></p>
-</div>
-<div class="note-box">
-<h2 style="margin-bottom:10px">What to include</h2>
-<ul class="list">
-<li>Type of project (site, hosting, maintenance)</li>
-<li>Deadline / urgency</li>
-<li>Number of pages or features</li>
-<li>Existing domain/hosting (if any)</li>
-</ul>
-</div>
-</div>
+  <div class="container">
+
+    <form class="card" style="max-width:600px;margin:auto;display:flex;flex-direction:column;gap:15px">
+
+      <input type="text" placeholder="Seu nome" required />
+
+      <input type="email" placeholder="Seu email" required />
+
+      <input type="text" placeholder="Telefone (opcional)" />
+
+      <select required>
+        <option value="">Tipo de serviço</option>
+        <option>Desenvolvimento Web</option>
+        <option>Automação de Sistemas</option>
+        <option>Manutenção Técnica</option>
+        <option>Consultoria Tecnológica</option>
+      </select>
+
+      <textarea placeholder="Descreva o que precisa..." rows="5" required></textarea>
+
+      <button class="btn primary" type="submit">Enviar pedido</button>
+
+    </form>
+
+  </div>
 </section>
-<section class="section bg-light">
-<div class="container">
-<h2>Support notes</h2>
-<div class="note-box">
-<p class="muted">If you’re already on maintenance, send: the page URL, what changed, and a screenshot if possible. We’ll respond with next steps.</p>
-</div>
-</div>
+
+<!-- CONTACTO DIRETO -->
+<section class="section">
+  <div class="container">
+
+    <h2>Ou contacte diretamente</h2>
+
+    <p class="lead">
+      Se preferir, pode entrar em contacto direto por email.
+    </p>
+
+    <p>
+      Email: 
+      <a href="mailto:cleitonsimiaondonac2@gmail.com">
+        cleitonsimiaondonac2@gmail.com
+      </a>
+    </p>
+
+  </div>
 </section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+
+    <h2>Resposta rápida</h2>
+
+    <p>
+      Normalmente respondemos em poucas horas.
+    </p>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="footer">
-<div class="container footer-grid">
-<div>
-<strong>SkyLayer</strong>
-<p class="small muted">Websites, hosting, domains, and maintenance — delivered with clarity and predictable timelines.</p>
-<p class="small">Email: <a href="mailto:skylayer.tech@outlook.com">skylayer.tech@outlook.com</a></p>
-<p class="small">Email: </p>
-</div>
-<div>
-<p class="small"><strong>Quick links</strong></p>
-<p class="small"><a href="services.html">Services</a> · <a href="plans.html">Plans</a> · <a href="privacy.html">Privacy</a></p>
-<p class="small muted">© <span id="year"></span> SkyLayer. All rights reserved.</p>
-</div>
-</div>
+  <div class="container footer-grid">
+
+    <div>
+      <strong>SkyLayer</strong>
+      <p class="small muted">
+        Soluções tecnológicas focadas em resultados.
+      </p>
+    </div>
+
+    <div>
+      <p class="small">
+        © <span id="year"></span> SkyLayer
+      </p>
+    </div>
+
+  </div>
 </footer>
+
 <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 <script src="assets/js/main.js"></script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Contacto | SkyLayer</title>
+
+<meta name="description" content="Entre em contacto para solicitar serviços ou tirar dúvidas." />
+
+<link rel="stylesheet" href="assets/css/style.css"/>
+
+</head>
+
+<body data-page="contact">
+
+<div class="scrollbar" id="scrollbar"></div>
+
+<!-- NAVBAR -->
+<header class="topbar">
+  <div class="container topbar-content">
+
+    <div class="brand">
+      <img src="assets/img/og.jpeg" class="logo"/>
+      <span class="brand-text">SkyLayer</span>
+      <span class="muted">Soluções Digitais</span>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html">Início</a>
+      <a href="services.html">Serviços</a>
+      <a href="about.html">Sobre</a>
+      <a href="contact.html">Contacto</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- HERO -->
+<header class="hero" style="padding:60px 0 40px">
+  <div class="container">
+
+    <h1>Contacto</h1>
+
+    <p class="lead">
+      Descreva o seu problema ou necessidade. Vamos responder com a melhor solução.
+    </p>
+
+  </div>
+</header>
+
+<!-- FORMULÁRIO -->
+<section class="section">
+  <div class="container">
+
+    <form class="card" style="max-width:600px;margin:auto;display:flex;flex-direction:column;gap:15px">
+
+      <input type="text" placeholder="Seu nome" required />
+
+      <input type="email" placeholder="Seu email" required />
+
+      <input type="text" placeholder="Telefone (opcional)" />
+
+      <select required>
+        <option value="">Tipo de serviço</option>
+        <option>Desenvolvimento Web</option>
+        <option>Automação de Sistemas</option>
+        <option>Manutenção Técnica</option>
+        <option>Consultoria Tecnológica</option>
+      </select>
+
+      <textarea placeholder="Descreva o que precisa..." rows="5" required></textarea>
+
+      <button class="btn primary" type="submit">Enviar pedido</button>
+
+    </form>
+
+  </div>
+</section>
+
+<!-- CONTACTO DIRETO -->
+<section class="section">
+  <div class="container">
+
+    <h2>Ou contacte diretamente</h2>
+
+    <p class="lead">
+      Se preferir, pode entrar em contacto direto por email.
+    </p>
+
+    <p>
+      Email: 
+      <a href="mailto:cleitonsimiaondonac2@gmail.com">
+        cleitonsimiaondonac2@gmail.com
+      </a>
+    </p>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+
+    <h2>Resposta rápida</h2>
+
+    <p>
+      Normalmente respondemos em poucas horas.
+    </p>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-grid">
+
+    <div>
+      <strong>SkyLayer</strong>
+      <p class="small muted">
+        Soluções tecnológicas focadas em resultados.
+      </p>
+    </div>
+
+    <div>
+      <p class="small">
+        © <span id="year"></span> SkyLayer
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<script src="assets/js/main.js"></script>
+
 </body>
 </html>
