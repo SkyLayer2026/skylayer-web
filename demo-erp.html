@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERP — SkyLayer Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="demo-shared.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#080809;--bg2:#0e0e10;--card:#141418;--purple:#7c3aed;--purple-l:#be8bf5;--border:#1e1e24;--text:#f0f0f2;--text2:#9494a0;--green:#25d366;--blue:#60a5fa;--red:#ff5f57;--yellow:#f5a623;--radius:12px;--font:'Inter',sans-serif}
+body{font-family:var(--font);background:var(--bg);color:var(--text)}
+.demo-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.demo-header h2{font-size:1rem;font-weight:700}
+.demo-header h2 span{color:var(--purple-l)}
+.demo-header a{color:var(--text2);font-size:.85rem;text-decoration:none}
+.demo-header a:hover{color:var(--purple-l)}
+.container{max-width:1100px;margin:0 auto;padding:32px 24px}
+.header-info{margin-bottom:24px}
+.header-info h1{font-size:1.5rem;font-weight:800;margin-bottom:6px}
+.header-info p{color:var(--text2);font-size:.95rem}
+.modules{display:flex;gap:4px;margin-bottom:24px;background:var(--card);border-radius:10px;padding:4px;border:1px solid var(--border);flex-wrap:wrap}
+.module{padding:9px 20px;border-radius:7px;cursor:pointer;font-size:.82rem;font-weight:600;color:var(--text2);transition:all .3s;border:none;background:none;font-family:var(--font)}
+.module.active{background:var(--purple);color:#fff}
+.module:hover:not(.active){color:var(--text)}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;transition:all .2s}.kpi-card:hover{border-color:rgba(124,58,237,.15);transform:translateY(-2px)}
+.kpi-card .k-label{font-size:.72rem;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.kpi-card .k-value{font-size:1.4rem;font-weight:800}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.card h3{font-size:1rem;font-weight:700;margin-bottom:14px}
+.card h4{font-size:.88rem;font-weight:600;margin-bottom:10px;color:var(--text2)}
+.chart-area{height:160px;display:flex;align-items:flex-end;gap:4px}
+.chart-bar{flex:1;border-radius:3px 3px 0 0;min-width:4px}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:.68rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1.5px;padding:10px 12px;border-bottom:1px solid var(--border)}
+td{padding:9px 12px;font-size:.82rem;border-bottom:1px solid var(--border);color:var(--text)}tr{transition:all .2s}tr:hover{background:rgba(124,58,237,.04)}
+.tag{padding:2px 8px;border-radius:4px;font-size:.66rem;font-weight:600}
+.tag-ok{background:rgba(37,211,102,.1);color:var(--green)}
+.tag-warn{background:rgba(245,166,35,.1);color:var(--yellow)}
+.tag-danger{background:rgba(255,95,87,.1);color:var(--red)}
+.tag-blue{background:rgba(96,165,250,.1);color:var(--blue)}
+.empty-state{text-align:center;padding:30px;color:var(--text2);font-size:.85rem}
+#moduleContent{animation:fadeIn .3s ease}@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.modules{flex-direction:column}.modules .module{width:100%;text-align:center}.kpi-grid,.grid-2{grid-template-columns:1fr}.card table{display:block;overflow-x:auto;white-space:nowrap}}@media(max-width:480px){.kpi-grid{grid-template-columns:1fr}.modules .module{font-size:.78rem;padding:8px 12px}}
+</style>
+</head>
+<body>
+
+<div class="demo-header">
+  <h2>Sky<span>Layer</span> — ERP</h2>
+  <a href="index.html">&larr; Voltar</a>
+</div>
+
+<div class="container">
+  <div class="header-info">
+    <span style="font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--purple-l)">Sistema Integrado</span>
+    <h1>ERP — Gestão Empresarial</h1>
+    <p>Dashboard integrado com módulos de vendas, compras, finanças e RH.</p>
+  </div>
+
+  <div class="modules" id="modules">
+    <button class="module active" onclick="switchModule('overview',this)">Visão Geral</button>
+    <button class="module" onclick="switchModule('sales',this)">Vendas</button>
+    <button class="module" onclick="switchModule('purchases',this)">Compras</button>
+    <button class="module" onclick="switchModule('finance',this)">Finanças</button>
+    <button class="module" onclick="switchModule('hr',this)">RH</button>
+  </div>
+
+  <div id="moduleContent"></div>
+</div>
+
+<script src="demo-shared.js"></script>
+<script>
+let currentModule = 'overview';
+
+const MONTHS = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+function rand(min,max) { return Math.floor(Math.random()*(max-min+1))+min; }
+
+const ERP_DATA = (() => {
+  const r = () => rand;
+  return {
+    overview: {
+      receita: rand(320,450) + 'k MT',
+      despesas: rand(150,220) + 'k MT',
+      lucro: rand(100,160) + 'k MT',
+      funcionarios: rand(16,22),
+      recPct: rand(8,14),
+      despPct: rand(3,7),
+      lucPct: rand(5,12),
+      contratacoes: rand(0,2),
+      chart1: Array.from({length:6}, () => rand(180, 420)),
+      chart2: Array.from({length:6}, () => rand(110, 260)),
+      transacoes: [
+        {data:'15/05',desc:'Venda #1024 - Mesa de Escritório',tipo:'Receita',valor:'42.500 MT'},
+        {data:'14/05',desc:'Compra #58 - Material Escritório',tipo:'Despesa',valor:'18.200 MT'},
+        {data:'14/05',desc:'Venda #1025 - Cadeiras',tipo:'Receita',valor:'28.000 MT'},
+        {data:'13/05',desc:'Pagamento Fornecedor',tipo:'Despesa',valor:'35.000 MT'},
+        {data:'13/05',desc:'Venda #1026 - Computador',tipo:'Receita',valor:'65.000 MT'},
+      ]
+    },
+    sales: { vendas: rand(100,160), ticket: rand(1200,2800), meta: rand(78,92), pendentes: rand(4,10) },
+    purchases: { compras: rand(18,32), total: rand(100,180)+'k MT', fornecedores: rand(10,16), pendentes: rand(3,7) },
+    finance: { saldo: rand(600,900)+'k MT', receber: rand(100,160)+'k MT', pagar: rand(50,100)+'k MT', fluxo: (rand(0,1)?'':'−')+rand(20,80)+'k MT', fluxoPos: rand(0,1) }
+  };
+})();
+
+function renderOverview() {
+  const d = ERP_DATA.overview;
+  const max = Math.max(...d.chart1, ...d.chart2);
+  const modLabels = ['Visão Geral','Vendas','Compras','Finanças','RH'];
+  document.getElementById('moduleContent').innerHTML = `
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="k-label">Receita Mensal</div><div class="k-value" style="color:var(--green)">${d.receita}</div><div style="font-size:.75rem;color:var(--text2)">&#8593; ${d.recPct}% vs mês anterior</div></div>
+      <div class="kpi-card"><div class="k-label">Despesas</div><div class="k-value" style="color:var(--red)">${d.despesas}</div><div style="font-size:.75rem;color:var(--text2)">&#8595; ${d.despPct}% vs mês anterior</div></div>
+      <div class="kpi-card"><div class="k-label">Lucro Líquido</div><div class="k-value" style="color:var(--purple-l)">${d.lucro}</div><div style="font-size:.75rem;color:var(--green)">&#8593; ${d.lucPct}%</div></div>
+      <div class="kpi-card"><div class="k-label">Funcionários</div><div class="k-value">${d.funcionarios}</div><div style="font-size:.75rem;color:var(--text2)">${d.contratacoes} contratações este mês</div></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Receita vs Despesas (Últimos 6 meses)</h3>
+        <div class="chart-area" id="chart1"></div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:.62rem;color:var(--text2)">${MONTHS.slice(0,6).map(m=>`<span>${m}</span>`).join('')}</div>
+      </div>
+      <div class="card">
+        <h3>Distribuição de Despesas</h3>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          ${[
+            {label:'Folha Salarial',pct:45,color:'var(--purple)'},
+            {label:'Fornecedores',pct:25,color:'var(--blue)'},
+            {label:'Operacional',pct:18,color:'var(--yellow)'},
+            {label:'Marketing',pct:7,color:'var(--green)'},
+            {label:'Outros',pct:5,color:'var(--text2)'}
+          ].map(d => `
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:3px">
+                <span>${d.label}</span><span style="color:var(--text2)">${d.pct}%</span>
+              </div>
+              <div style="height:6px;background:var(--bg2);border-radius:3px;overflow:hidden">
+                <div style="height:100%;width:${d.pct}%;background:${d.color};border-radius:3px"></div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Últimas Transacções</h3>
+      <table>
+        <thead><tr><th>Data</th><th>Descrição</th><th>Tipo</th><th>Valor</th><th>Status</th></tr></thead>
+        <tbody>
+          ${d.transacoes.map(t => `
+            <tr>
+              <td style="font-size:.78rem;color:var(--text2)">${t.data}</td>
+              <td>${t.desc}</td>
+              <td><span class="tag ${t.tipo==='Receita'?'tag-ok':'tag-danger'}">${t.tipo}</span></td>
+              <td style="font-weight:600">${t.valor}</td>
+              <td><span class="tag tag-ok">Concluído</span></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  document.getElementById('chart1').innerHTML = d.chart1.map(v =>
+    `<div class="chart-bar" style="height:${(v/max)*100}%;background:linear-gradient(to top,var(--purple)88,var(--purple)33)" title="Receita: ${v}k"></div>`
+  ).join('') + d.chart2.map(v =>
+    `<div class="chart-bar" style="height:${(v/max)*100}%;background:linear-gradient(to top,var(--red)88,var(--red)33)" title="Despesa: ${v}k"></div>`
+  ).join('');
+}
+
+function renderSales() {
+  const d = ERP_DATA.sales;
+  document.getElementById('moduleContent').innerHTML = `
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="k-label">Vendas do Mês</div><div class="k-value" style="color:var(--green)">${d.vendas}</div></div>
+      <div class="kpi-card"><div class="k-label">Ticket Médio</div><div class="k-value" style="color:var(--purple-l)">${d.ticket} MT</div></div>
+      <div class="kpi-card"><div class="k-label">Meta Atingida</div><div class="k-value" style="color:var(--blue)">${d.meta}%</div></div>
+      <div class="kpi-card"><div class="k-label">Vendas Pendentes</div><div class="k-value" style="color:var(--yellow)">${d.pendentes}</div></div>
+    </div>
+    <div class="card">
+      <h3>Últimas Vendas</h3>
+      <table>
+        <thead><tr><th>#</th><th>Cliente</th><th>Produto</th><th>Valor</th><th>Data</th><th>Status</th></tr></thead>
+        <tbody>
+          ${[
+            ['1024','João Nhaca','Mesa Escritório','12.500 MT','15/05','Entregue'],
+            ['1025','Maria Silva','Cadeira Giratória','8.200 MT','15/05','Entregue'],
+            ['1026','Carlos Tembe','Computador Portátil','45.000 MT','14/05','Pendente'],
+            ['1027','Ana Paula','Estante Metálica','6.800 MT','14/05','Entregue'],
+            ['1028','Pedro Mabila','Monitor 24"','15.500 MT','13/05','Pendente'],
+          ].map(r => `<tr>
+            <td style="color:var(--text2)">#${r[0]}</td>
+            <td>${r[1]}</td>
+            <td>${r[2]}</td>
+            <td style="font-weight:600">${r[3]}</td>
+            <td style="font-size:.78rem;color:var(--text2)">${r[4]}</td>
+            <td><span class="tag ${r[5]==='Entregue'?'tag-ok':'tag-warn'}">${r[5]}</span></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function renderPurchases() {
+  const d = ERP_DATA.purchases;
+  document.getElementById('moduleContent').innerHTML = `
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="k-label">Compras do Mês</div><div class="k-value" style="color:var(--blue)">${d.compras}</div></div>
+      <div class="kpi-card"><div class="k-label">Total Gasto</div><div class="k-value" style="color:var(--red)">${d.total}</div></div>
+      <div class="kpi-card"><div class="k-label">Fornecedores</div><div class="k-value">${d.fornecedores}</div></div>
+      <div class="kpi-card"><div class="k-label">Pendentes</div><div class="k-value" style="color:var(--yellow)">${d.pendentes}</div></div>
+    </div>
+    <div class="card">
+      <h3>Ordens de Compra</h3>
+      <table>
+        <thead><tr><th>#</th><th>Fornecedor</th><th>Produto</th><th>Qtd</th><th>Valor</th><th>Status</th></tr></thead>
+        <tbody>
+          ${[
+            ['PO-058','Distribuidora ABC','Papel A4','50 cx','18.000 MT','Recebido'],
+            ['PO-059','TechSupply','Toner Impressora','10 uni','12.500 MT','Pendente'],
+            ['PO-060','MegaStock','Cadeiras','20 uni','45.000 MT','Recebido'],
+            ['PO-061','Papelaria Central','Material Escritório','—','8.200 MT','Pendente'],
+            ['PO-062','InfoParts','Peças Computador','15 uni','22.000 MT','Recebido'],
+          ].map(r => `<tr>
+            <td style="color:var(--text2)">${r[0]}</td>
+            <td>${r[1]}</td>
+            <td>${r[2]}</td>
+            <td>${r[3]}</td>
+            <td style="font-weight:600">${r[4]}</td>
+            <td><span class="tag ${r[5]==='Recebido'?'tag-ok':'tag-warn'}">${r[5]}</span></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function renderFinance() {
+  const d = ERP_DATA.finance;
+  document.getElementById('moduleContent').innerHTML = `
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="k-label">Saldo Actual</div><div class="k-value" style="color:var(--green)">${d.saldo}</div></div>
+      <div class="kpi-card"><div class="k-label">Contas a Receber</div><div class="k-value" style="color:var(--blue)">${d.receber}</div></div>
+      <div class="kpi-card"><div class="k-label">Contas a Pagar</div><div class="k-value" style="color:var(--red)">${d.pagar}</div></div>
+      <div class="kpi-card"><div class="k-label">Fluxo de Caixa</div><div class="k-value" style="color:${d.fluxoPos?'var(--green)':'var(--red)'}">${d.fluxo}</div></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Contas a Receber</h3>
+        <table>
+          <thead><tr><th>Cliente</th><th>Valor</th><th>Vencimento</th><th>Status</th></tr></thead>
+          <tbody>
+            ${[['Mecânica Central','32.000 MT','15/06','Pago'],['Farmácia Saúde','28.000 MT','20/06','Pendente'],['Loja Nova','45.000 MT','10/06','Pago'],['Escola Primária','18.000 MT','25/06','Pendente']].map(r => `
+              <tr><td>${r[0]}</td><td style="font-weight:600">${r[1]}</td><td style="font-size:.78rem;color:var(--text2)">${r[2]}</td><td><span class="tag ${r[3]==='Pago'?'tag-ok':'tag-warn'}">${r[3]}</span></td></tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3>Contas a Pagar</h3>
+        <table>
+          <thead><tr><th>Fornecedor</th><th>Valor</th><th>Vencimento</th><th>Status</th></tr></thead>
+          <tbody>
+            ${[['TechSupply','12.500 MT','18/06','Pago'],['Papelaria Central','8.200 MT','22/06','Vencido'],['MegaStock','22.000 MT','30/06','Pago'],['Distribuidora ABC','15.000 MT','12/06','Pago']].map(r => `
+              <tr><td>${r[0]}</td><td style="font-weight:600">${r[1]}</td><td style="font-size:.78rem;color:var(--text2)">${r[2]}</td><td><span class="tag ${r[3]==='Pago'?'tag-ok':'tag-danger'}">${r[3]}</span></td></tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+function renderHR() {
+  document.getElementById('moduleContent').innerHTML = `
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="k-label">Total Funcionários</div><div class="k-value">${ERP_DATA.overview.funcionarios}</div></div>
+      <div class="kpi-card"><div class="k-label">Folha Salarial</div><div class="k-value" style="color:var(--red)">${rand(380,520)}k MT</div></div>
+      <div class="kpi-card"><div class="k-label">Presença (mês)</div><div class="k-value" style="color:var(--green)">${rand(93,97)}%</div></div>
+      <div class="kpi-card"><div class="k-label">Férias Pendentes</div><div class="k-value" style="color:var(--blue)">${rand(2,5)}</div></div>
+    </div>
+    <div class="card">
+      <h3>Equipa</h3>
+      <table>
+        <thead><tr><th>Nome</th><th>Departamento</th><th>Cargo</th><th>Admissão</th><th>Status</th></tr></thead>
+        <tbody>
+          ${[
+            ['Ana Paula Santos','Administrativo','CEO','Jan 2020','Activo'],
+            ['Carlos Fernando','Vendas','Gerente de Vendas','Mar 2021','Activo'],
+            ['Marta Joaquim','Vendas','Vendedora','Jun 2022','Activo'],
+            ['João Nhaca','Operações','Logística','Ago 2021','Activo'],
+            ['Lúcia Tembe','Financeiro','Contabilista','Fev 2023','Activo'],
+            ['Pedro Mabila','TI','Suporte Técnico','Set 2022','Activo'],
+          ].map(r => `<tr>
+            <td><strong>${r[0]}</strong></td>
+            <td>${r[1]}</td>
+            <td>${r[2]}</td>
+            <td style="font-size:.78rem;color:var(--text2)">${r[3]}</td>
+            <td><span class="tag tag-ok">${r[4]}</span></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function switchModule(mod, btn) {
+  currentModule = mod;
+  document.querySelectorAll('.modules .module').forEach(m => m.classList.remove('active'));
+  btn.classList.add('active');
+  showLoading('moduleContent');
+  if (mod === 'overview') renderOverview();
+  else if (mod === 'sales') renderSales();
+  else if (mod === 'purchases') renderPurchases();
+  else if (mod === 'finance') renderFinance();
+  else if (mod === 'hr') renderHR();
+  hideLoading('moduleContent');
+  showToast('M\u00f3dulo carregado: ' + btn.textContent, 'info');
+}
+
+renderOverview();
+</script>
+</body>
+</html>

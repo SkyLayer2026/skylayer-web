@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serviços — SkyLayer | Sites, Sistemas e Soluções Digitais</title>
+  <meta name="description" content="Conheça os serviços da SkyLayer: criação de sites profissionais, sistemas de gestão personalizados e soluções digitais que automatizam o seu negócio.">
+  <meta name="keywords" content="criação de sites, sistemas de gestão, soluções digitais, desenvolvimento web, automação, software sob medida, SkyLayer serviços, Moçambique">
+  <meta name="author" content="SkyLayer">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://skylayer.co.mz/servicos.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://skylayer.co.mz/servicos.html">
+  <meta property="og:title" content="Serviços — SkyLayer | Sites, Sistemas e Soluções Digitais">
+  <meta property="og:description" content="Criação de sites, sistemas de gestão e soluções digitais personalizadas para o seu negócio.">
+  <meta property="og:image" content="https://skylayer.co.mz/og-image.jpg">
+  <meta property="og:locale" content="pt_MZ">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://skylayer.co.mz/servicos.html">
+  <meta name="twitter:title" content="Serviços — SkyLayer">
+  <meta name="twitter:description" content="Criação de sites, sistemas de gestão e soluções digitais personalizadas.">
+  <meta name="twitter:image" content="https://skylayer.co.mz/og-image.jpg">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .services-hero {
+      padding: 160px 24px 80px;
+      text-align: center;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services-hero::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.12), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .services-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      margin-bottom: 18px;
+      position: relative;
+      letter-spacing: -1px;
+      line-height: 1.15;
+    }
+
+    .services-hero p {
+      color: var(--text-secondary);
+      font-size: 1.18rem;
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .hero-cta-row {
+      margin-top: 36px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .urgency-bar {
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple-mid));
+      text-align: center;
+      padding: 14px 24px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.3px;
+    }
+
+    .urgency-bar span {
+      opacity: 0.85;
+    }
+
+    .service-block {
+      padding: 90px 24px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .service-block:nth-child(even) {
+      background: var(--bg-secondary);
+    }
+
+    .service-block-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-hook {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+
+    .service-hook .hook-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: var(--purple-light);
+      margin-bottom: 14px;
+    }
+
+    .service-hook h2 {
+      font-size: clamp(1.7rem, 3.8vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+
+    .service-hook .hook-desc {
+      color: var(--text-secondary);
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .benefits-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-bottom: 48px;
+    }
+
+    .benefit-vcard {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .benefit-vcard::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--purple-dark), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .benefit-vcard:hover {
+      border-color: rgba(124, 58, 237, 0.25);
+      transform: translateY(-3px);
+    }
+
+    .benefit-vcard:hover::before {
+      opacity: 1;
+    }
+
+    .benefit-vcard .bv-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(124,58,237,0.06));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--purple-light);
+      margin-bottom: 16px;
+    }
+
+    .benefit-vcard h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .benefit-vcard p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .pain-gain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 48px;
+    }
+
+    .pain-box {
+      background: rgba(255, 95, 87, 0.04);
+      border: 1px solid rgba(255, 95, 87, 0.12);
+      border-radius: 12px;
+      padding: 26px 24px;
+    }
+
+    .pain-box .pg-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ff5f57;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .pain-box ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pain-box ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .pain-box ul li .x-icon {
+      color: #ff5f57;
+      min-width: 16px;
+      margin-top: 2px;
+    }
+
+    .gain-box {
+      background: rgba(37, 211, 102, 0.04);
+      border: 1px solid rgba(37, 211, 102, 0.12);
+      border-radius: 12px;
+      padding: 26px 24px;
+    }
+
+    .gain-box .pg-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--green-wp);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .gain-box ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .gain-box ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .gain-box ul li .ok-icon {
+      color: var(--green-wp);
+      min-width: 16px;
+      margin-top: 2px;
+    }
+
+    .examples-section {
+      margin-top: 16px;
+    }
+
+    .examples-section h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .examples-section .examples-sub {
+      color: var(--text-secondary);
+      font-size: 0.94rem;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+      margin-bottom: 40px;
+    }
+
+    .service-cta {
+      margin-top: 36px;
+      padding: 36px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-cta::before {
+      content: "";
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 200px;
+      background: radial-gradient(ellipse, rgba(124,58,237,0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .service-cta h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .service-cta p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+      position: relative;
+    }
+
+    .service-cta .cta-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .final-cta {
+      padding: 100px 24px;
+      text-align: center;
+      background: var(--bg-primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(124, 58, 237, 0.1), transparent 70%);
+      pointer-events: none;
+    }
+
+    .faq-section {
+      padding: 80px 24px;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .faq-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .faq-section .faq-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .faq-section .faq-subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(124, 58, 237, 0.25);
+    }
+
+    .faq-item h4 {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .faq-item h4 .faq-arrow {
+      color: var(--purple-light);
+      transition: transform 0.3s ease;
+      min-width: 16px;
+    }
+
+    .faq-item.open h4 .faq-arrow {
+      transform: rotate(180deg);
+    }
+
+    .faq-item .faq-answer {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      opacity: 1;
+    }
+
+    .guarantee-banner {
+      padding: 50px 24px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .guarantee-box {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 36px;
+      border: 1px solid rgba(37, 211, 102, 0.15);
+      border-radius: 16px;
+      background: rgba(37, 211, 102, 0.04);
+    }
+
+    .guarantee-box .gb-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .guarantee-box h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .guarantee-box p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .pain-gain-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-cta {
+        padding: 28px 20px;
+      }
+
+      .service-block {
+        padding: 56px 20px;
+      }
+
+      .services-hero {
+        padding: 140px 20px 56px;
+      }
+
+      .benefits-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-cta-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Sky<span>Layer</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="index.html#services">Serviços</a></li>
+        <li><a href="index.html#portfolio">Portfólio</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="https://wa.me/258875157669" target="_blank" class="nav-cta">Pedir Orçamento</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="services-hero">
+    <h1>O seu negócio merece<br><span style="background: linear-gradient(135deg, var(--purple-light), var(--purple-dark)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">estar no próximo nível</span></h1>
+    <p>Você já sabe que precisa de mais do que um caderno e uma boa vontade para crescer. Nós ajudamos a transformar essa necessidade em resultados reais com tecnologia simples e acessível.</p>
+    <div class="hero-cta-row">
+      <a href="https://wa.me/258875157669" target="_blank" class="btn btn-primary">Quero uma proposta gratuita</a>
+      <a href="#servicos" class="btn btn-outline">Ver serviços</a>
+    </div>
+  </header>
+
+  <div class="urgency-bar">
+    <span>&#9889;</span> Consulta gratuita por tempo limitado — fale connosco antes que as vagas preencham
+  </div>
+
+  <div id="servicos"></div>
+
+  <section class="service-block">
+    <div class="service-block-inner">
+      <div class="service-hook animate-on-scroll">
+        <span class="hook-label">&#9733; Criação de Sites</span>
+        <h2>Imagine clientes a encontrá-lo no Google<br>enquanto você dorme</h2>
+        <p class="hook-desc">O seu negócio não precisa de ser o maior para parecer o melhor. Um site profissional transmite confiança instantaneamente — e é a diferença entre quem consegue clientes e quem fica para trás.</p>
+      </div>
+
+      <div class="benefits-cards">
+        <div class="benefit-vcard animate-on-scroll">
+          <div class="bv-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>Venda 24 horas, 7 dias</h4>
+          <p>Um site nunca dorme, nunca entra em férias. Enquanto você descansa, os seus clientes encontram a sua empresa e contactam-no automaticamente.</p>
+        </div>
+
+        <div class="benefit-vcard animate-on-scroll">
+          <div class="bv-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h4>Confiança ao primeiro olhar</h4>
+          <p>84% das pessoas dizem que um site bem feito dá mais credibilidade do que apenas uma página de redes sociais. Transmita profissionalismo desde o primeiro segundo.</p>
+        </div>
+
+        <div class="benefit-vcard animate-on-scroll">
+          <div class="bv-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h4>Apareça quando procuram por si</h4>
+          <p>Todos os dias, pessoas procuram exactamente o que você vende. Se não tem um site optimizado para o Google, estão a encontrar os seus concorrentes em vez de si.</p>
+        </div>
+      </div>
+
+      <div class="pain-gain-grid animate-on-scroll">
+        <div class="pain-box">
+          <span class="pg-label">Sem um site profissional</span>
+          <ul>
+            <li><span class="x-icon">&#10007;</span> Perde clientes que não o encontram online</li>
+            <li><span class="x-icon">&#10007;</span> Depende 100% do Instagram ou do boca-a-boca</li>
+            <li><span class="x-icon">&#10007;</span> Passa imagem de amadorismo</li>
+            <li><span class="x-icon">&#10007;</span> Concorrentes ficam sempre à frente</li>
+          </ul>
+        </div>
+        <div class="gain-box">
+          <span class="pg-label">Com um site da SkyLayer</span>
+          <ul>
+            <li><span class="ok-icon">&#10003;</span> Clientes encontram-no e contactam-no sozinhos</li>
+            <li><span class="ok-icon">&#10003;</span> Presença profissional que gera confiança imediata</li>
+            <li><span class="ok-icon">&#10003;</span> Site rápido, bonito e que funciona em todo o lado</li>
+            <li><span class="ok-icon">&#10003;</span> O seu negócio disponível 24/7 ao mundo inteiro</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-cta animate-on-scroll">
+        <h4>Pronto para ter um site profissional?</h4>
+        <p>Fale connosco agora e receba uma proposta personalizada. Sem compromisso.</p>
+        <div class="cta-btns">
+          <a href="https://wa.me/258875157669" target="_blank" class="btn btn-primary">Quero um site agora</a>
+          <a href="contacto.html" class="btn btn-outline">Enviar mensagem</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-block">
+    <div class="service-block-inner">
+      <div class="service-hook animate-on-scroll">
+        <span class="hook-label">&#9998; Sistemas de Gestão</span>
+        <h2>Pare de perder tempo com cadernos.<br>Comece a ter controlo real.</h2>
+        <p class="hook-desc">Enquanto a sua equipa continua a usar papel para gerir clientes, stock e vendas, o seu negócio está literalmente a perder dinheiro todos os dias. Um sistema de gestão elimina esse problema de uma vez por todas.</p>
+      </div>
+
+      <div class="benefits-cards">
+        <div class="benefit-vcard animate-on-scroll">
+          <div class="bv-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Controlo total do seu negócio</h4>
+          <p>Saiba exactamente quanto vendeu, quanto tem em stock e quem são os seus melhores clientes — tudo num único ecrã, actualizado em tempo real.</p>
+        </div>
+
+        <div class="benefit-vcard animate-on-scroll">
+          <div class="bv-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h4>O negócio cresce, o caos não</h4>
+          <p>Um sistema não se confunde, não esquece e não se cansa. À medida que o seu negócio cresce, o sistema continua organizado — sem papeladas perdidas nem erros de contagem.</p>
+        </div>
+
+        <div class="benefit-vcard animate-on-scroll">
+          <div class="bv-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>Horas de trabalho recuperadas</h4>
+          <p>Elimine o trabalho de contar stock manualmente, gerar facturas à mão e procurar informações em cadernos. O sistema faz tudo em segundos.</p>
+        </div>
+      </div>
+
+      <div class="pain-gain-grid animate-on-scroll">
+        <div class="pain-box">
+          <span class="pg-label">Sem sistema de gestão</span>
+          <ul>
+            <li><span class="x-icon">&#10007;</span> Produtos a desaparecer sem ninguém saber</li>
+            <li><span class="x-icon">&#10007;</span> Facturas escritas à mão, demoradas e propensas a erro</li>
+            <li><span class="x-icon">&#10007;</span> Sem ideia real do desempenho do negócio</li>
+            <li><span class="x-icon">&#10007;</span> Informações espalhadas por cadernos e memórias</li>
+          </ul>
+        </div>
+        <div class="gain-box">
+          <span class="pg-label">Com um sistema da SkyLayer</span>
+          <ul>
+            <li><span class="ok-icon">&#10003;</span> Tudo registado, organizado e acessível em segundos</li>
+            <li><span class="ok-icon">&#10003;</span> Facturas e recibos gerados com 3 cliques</li>
+            <li><span class="ok-icon">&#10003;</span> Relatórios automáticos para decisões inteligentes</li>
+            <li><span class="ok-icon">&#10003;</span> Interface tão simples que qualquer pessoa consegue usar</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-cta animate-on-scroll">
+        <h4>Chega de gerir o seu negócio no escuro</h4>
+        <p>Descubra o que é ter controlo total com um sistema fácil e feito à medida do seu negócio.</p>
+        <div class="cta-btns">
+          <a href="https://wa.me/258875157669" target="_blank" class="btn btn-primary">Quero organizar o meu negócio</a>
+          <a href="contacto.html" class="btn btn-outline">Enviar mensagem</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-block">
+    <div class="service-block-inner">
+      <div class="service-hook animate-on-scroll">
+        <span class="hook-label">&#9881; Soluções Personalizadas</span>
+        <h2>Tem um problema que nenhuma<br>ferramenta pronta resolve?</h2>
+        <p class="hook-desc">Se a sua equipa perde tempo com processos manuais, se precisa de ligar duas plataformas que não comunicam, ou se tem uma ideia que ainda não existe — nós construímos. Personalizado para a sua realidade, do zero.</p>
+      </div>
+
+      <div class="benefits-cards">
+        <div class="benefit-vcard animate-on-scroll">
+          <div class="bv-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h4>Exactamente o que precisa, nada mais</h4>
+          <p>Ferramentas genéricas vêm com 90% de coisas que não usa e faltam os 10% que fazem a diferença. Connosco, cada funcionalidade foi pensada para resolver o seu desafio.</p>
+        </div>
+
+        <div class="benefit-vcard animate-on-scroll">
+          <div class="bv-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h4>Automatize o que hoje é manual</h4>
+          <p>Elimine horas de trabalho repetitivo que poderiam ser dedicadas ao que realmente importa — fazer o seu negócio crescer.</p>
+        </div>
+
+        <div class="benefit-vcard animate-on-scroll">
+          <div class="bv-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h4>Cresce ao seu ritmo</h4>
+          <p>A solução começa simples e evolui conforme o seu negócio cresce. Sem começar do zero, sem refazer tudo. Só adaptar e expandir.</p>
+        </div>
+      </div>
+
+      <div class="pain-gain-grid animate-on-scroll">
+        <div class="pain-box">
+          <span class="pg-label">Sem uma solução personalizada</span>
+          <ul>
+            <li><span class="x-icon">&#10007;</span> Ferramentas com funcionalidades supérfluas que pagou</li>
+            <li><span class="x-icon">&#10007;</span> Processos manuais que consomem horas todos os dias</li>
+            <li><span class="x-icon">&#10007;</span> Plataformas isoladas que não "falam" entre si</li>
+            <li><span class="x-icon">&#10007;</span> Ideias boas que nunca saem do papel</li>
+          </ul>
+        </div>
+        <div class="gain-box">
+          <span class="pg-label">Com uma solução da SkyLayer</span>
+          <ul>
+            <li><span class="ok-icon">&#10003;</span> Ferramenta feita à medida, sem desperdício</li>
+            <li><span class="ok-icon">&#10003;</span> Tarefas repetitivas automatizadas</li>
+            <li><span class="ok-icon">&#10003;</span> Tudo conectado num só ecossistema</li>
+            <li><span class="ok-icon">&#10003;</span> As suas ideias transformadas em ferramentas reais</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-cta animate-on-scroll">
+        <h4>Tem uma ideia que ainda não existe?</h4>
+        <p>Descreva-nos o seu desafio e nós transformamos numa solução digital. A conversa é gratuita.</p>
+        <div class="cta-btns">
+          <a href="https://wa.me/258875157669" target="_blank" class="btn btn-primary">Descreva o seu projecto</a>
+          <a href="contacto.html" class="btn btn-outline">Enviar mensagem</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="guarantee-banner">
+    <div class="guarantee-box animate-on-scroll">
+      <div class="gb-icon">&#10003;</div>
+      <h4>Sem risco para si</h4>
+      <p>A consulta inicial é gratuita e sem compromisso. Fale connosco, exponha o seu problema, e só depois decidimos juntos se faz sentido avançar. Se não fizermos sentido, dizemos com honestidade.</p>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="faq-inner">
+      <h3 class="faq-title">Perguntas frequentes</h3>
+      <p class="faq-subtitle">Respostas para as dúvidas mais comuns dos nossos clientes.</p>
+
+      <div class="faq-list">
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <h4><span class="faq-arrow">&#9660;</span> Quanto custa um site?</h4>
+          <div class="faq-answer">Cada projecto é diferente, pois depende da complexidade e do que pretende. A boa notícia: a consulta inicial é gratuita. Envie-nos uma mensagem e receba uma proposta personalizada sem compromisso.</div>
+        </div>
+
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <h4><span class="faq-arrow">&#9660;</span> Quanto tempo demora a criar um site?</h4>
+          <div class="faq-answer">Um site institucional típico fica pronto entre 5 a 15 dias úteis, dependendo do conteúdo e do tipo de funcionalidades. Sempre comunicamos o prazo antes de começar.</div>
+        </div>
+
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <h4><span class="faq-arrow">&#9660;</span> Preciso de conhecimento técnico para usar o sistema?</h4>
+          <div class="faq-answer">Não. Construímos os sistemas para serem usados por qualquer pessoa da sua equipa. Se consegue usar um telemóvel, consegue usar o sistema.</div>
+        </div>
+
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <h4><span class="faq-arrow">&#9660;</span> Oferecem suporte depois de entregar o projecto?</h4>
+          <div class="faq-answer">Sim. Todos os projectos incluem suporte pós-entrega. Se algo precisar de ajuste ou tiver uma dúvida, estamos disponíveis para ajudar.</div>
+        </div>
+
+        <div class="faq-item" onclick="this.classList.toggle('open')">
+          <h4><span class="faq-arrow">&#9660;</span> O que preciso para começar?</h4>
+          <div class="faq-answer">Apenas uma ideia do que precisa e a vontade de melhorar o seu negócio. Tudo o resto tratamos nós — desde o design ao lançamento. Fale connosco pelo WhatsApp e começamos hoje.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container animate-on-scroll">
+      <div class="section-header" style="margin-bottom: 36px;">
+        <span class="label">Próximo passo</span>
+        <h2>Não sabe qual serviço precisa?</h2>
+        <p>Não tem problema. Fale connosco e vamos encontrar a melhor solução para o seu negócio. A conversa é gratuita e sem compromisso.</p>
+      </div>
+      <div class="cta-buttons">
+        <a href="https://wa.me/258875157669" target="_blank" class="btn btn-primary">Fale Connosco</a>
+        <a href="contacto.html" class="btn btn-outline">Contacte-nos</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Sky<span>Layer</span></div>
+        <p>Soluções digitais que elevam negócios. Sites modernos, sistemas e automação para empresas em crescimento.</p>
+      </div>
+      <div>
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="index.html#services">Serviços</a></li>
+          <li><a href="index.html#portfolio">Portfólio</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+258875157669">+258 875 157 669</a></li>
+          <li><a href="mailto:hello@skylayer.co.mz">hello@skylayer.co.mz</a></li>
+          <li><a href="https://wa.me/258875157669" target="_blank">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 SkyLayer. Todos os direitos reservados.</span>
+      <span>Soluções Digitais para Negócios Modernos</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

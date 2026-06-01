@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Admin — SkyLayer Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="demo-shared.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#080809;--bg2:#0e0e10;--card:#141418;--purple:#7c3aed;--purple-l:#be8bf5;--border:#1e1e24;--text:#f0f0f2;--text2:#9494a0;--green:#25d366;--blue:#60a5fa;--red:#ff5f57;--radius:12px;--font:'Inter',sans-serif}
+body{font-family:var(--font);background:var(--bg);color:var(--text)}
+.demo-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.demo-header h2{font-size:1rem;font-weight:700}
+.demo-header h2 span{color:var(--purple-l)}
+.demo-header a{color:var(--text2);font-size:.85rem;text-decoration:none}
+.demo-header a:hover{color:var(--purple-l)}
+.container{max-width:1100px;margin:0 auto;padding:32px 24px}
+.header-info{margin-bottom:24px}
+.header-info h1{font-size:1.5rem;font-weight:800;margin-bottom:6px}
+.header-info p{color:var(--text2);font-size:.95rem}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;transition:all .2s}.kpi-card:hover{border-color:rgba(124,58,237,.15);transform:translateY(-2px)}
+.kpi-card .kpi-label{font-size:.75rem;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.kpi-card .kpi-value{font-size:1.6rem;font-weight:800}
+.kpi-card .kpi-change{font-size:.78rem;margin-top:4px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.card h3{font-size:1rem;font-weight:700;margin-bottom:16px}
+.chart-area{height:180px;display:flex;align-items:flex-end;gap:6px;padding:0 4px}
+.chart-bar{flex:1;border-radius:4px 4px 0 0;min-width:6px;position:relative;transition:height .6s ease}
+.chart-bar:hover{opacity:.8}
+.chart-labels{display:flex;justify-content:space-between;margin-top:8px;font-size:.65rem;color:var(--text2)}
+.activity-list{display:flex;flex-direction:column;gap:8px}
+.activity-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:.85rem;transition:all .2s}.activity-item:hover{background:rgba(124,58,237,.03);border-radius:6px}
+.activity-item:last-child{border-bottom:none}
+.activity-item .dot{width:8px;height:8px;border-radius:50%;min-width:8px}
+.activity-item .act-text{flex:1}
+.activity-item .act-text .act-user{font-weight:600}
+.activity-item .act-text .act-action{color:var(--text2)}
+.activity-item .act-time{font-size:.72rem;color:var(--text2)}
+.user-table{width:100%;border-collapse:collapse}
+.user-table th{text-align:left;font-size:.7rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1.5px;padding:10px 12px;border-bottom:1px solid var(--border)}
+.user-table td{padding:10px 12px;font-size:.85rem;border-bottom:1px solid var(--border);color:var(--text)}.user-table tr{transition:all .2s}.user-table tr:hover{background:rgba(124,58,237,.04)}
+.status-badge{padding:3px 10px;border-radius:5px;font-size:.7rem;font-weight:600}
+.status-active{background:rgba(37,211,102,.12);color:var(--green)}
+.status-inactive{background:rgba(255,95,87,.12);color:var(--red)}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.grid-2{grid-template-columns:1fr}.chart-area{height:140px}}@media(max-width:480px){.kpi-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="demo-header">
+  <h2>Sky<span>Layer</span> — Painel Admin</h2>
+  <a href="index.html">&larr; Voltar</a>
+</div>
+
+<div class="container">
+  <div class="header-info">
+    <span style="font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--purple-l)">Interface de Dados</span>
+    <h1>Painel Administrativo</h1>
+    <p>Dashboard em tempo real com métricas e indicadores do negócio.</p>
+  </div>
+
+  <div class="kpi-grid" id="kpiGrid"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Vendas (Últimos 7 dias)</h3>
+      <div class="chart-area" id="salesChart"></div>
+      <div class="chart-labels" id="chartLabels"></div>
+    </div>
+    <div class="card">
+      <h3>Actividade Recente</h3>
+      <div class="activity-list" id="activityList"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Utilizadores do Sistema</h3>
+    <table class="user-table">
+      <thead><tr><th>Nome</th><th>Email</th><th>Função</th><th>Status</th><th>Último acesso</th></tr></thead>
+      <tbody id="userTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script src="demo-shared.js"></script>
+<script>
+const COLORS = ['#be8bf5','#7c3aed','#60a5fa','#25d366','#f5a623'];
+
+function rand(min,max) { return Math.floor(Math.random()*(max-min+1))+min; }
+
+const USERS = [
+  { name:'Ana Paula Santos', email:'ana@exemplo.com', role:'Admin', status:'active', last:'Hoje 09:23' },
+  { name:'Carlos Fernando', email:'carlos@exemplo.com', role:'Vendedor', status:'active', last:'Hoje 08:15' },
+  { name:'Marta Joaquim', email:'marta@exemplo.com', role:'Vendedor', status:'active', last:'Ontem 17:45' },
+  { name:'João Nhaca', email:'joao@exemplo.com', role:'Stock', status:'active', last:'Ontem 16:30' },
+  { name:'Lúcia Tembe', email:'lucia@exemplo.com', role:'Financeiro', status:'inactive', last:'Segunda-feira' },
+  { name:'Pedro Mabila', email:'pedro@exemplo.com', role:'Vendedor', status:'active', last:'Hoje 07:50' },
+];
+
+const ACTIVITIES = [
+  'criou uma nova venda (#1024)',
+  'actualizou o stock do produto Paracetamol',
+  'registou um novo cliente: Maria Silva',
+  'emitiu factura nº 5893',
+  'adicionou 50 unidades ao stock',
+  'gerou relatório mensal de vendas',
+  'cancelou a venda #1021',
+  'aprovou a compra de 100 unidades',
+];
+
+const NAMES = ['Ana P.','Carlos F.','Marta J.','João N.','Lúcia T.','Pedro M.'];
+
+function generateSalesData() {
+  return Array.from({length:7}, (_,i) => ({
+    day: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'][i],
+    value: rand(15000, 85000)
+  }));
+}
+
+function renderKPIs() {
+  showLoading('kpiGrid');
+  const totalSales = salesData.reduce((s,d) => s + d.value, 0);
+  const avgTicket = Math.round(totalSales / 22);
+  const usersActive = USERS.filter(u => u.status === 'active').length;
+  const stockAlerts = 5;
+  document.getElementById('kpiGrid').innerHTML = `
+    <div class="kpi-card">
+      <div class="kpi-label">Vendas (7 dias)</div>
+      <div class="kpi-value" style="color:var(--purple-l)">${totalSales.toLocaleString()} MT</div>
+      <div class="kpi-change" style="color:var(--green)">&#8593; 12% vs semana anterior</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Ticket Médio</div>
+      <div class="kpi-value" style="color:var(--blue)">${avgTicket} MT</div>
+      <div class="kpi-change" style="color:var(--text2)">&#9679; Estável</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Utilizadores Activos</div>
+      <div class="kpi-value" style="color:var(--green)">${usersActive}/${USERS.length}</div>
+      <div class="kpi-change" style="color:var(--text2)">&#9679; Online agora: ${rand(1,4)}</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Alertas de Stock</div>
+      <div class="kpi-value" style="color:${stockAlerts>5?'var(--red)':'var(--text)'}">${stockAlerts}</div>
+      <div class="kpi-change" style="color:${stockAlerts>5?'var(--red)':'var(--text2)'}">${stockAlerts>5?'&#8593; Necessária revisão':'&#9679; Controlado'}</div>
+    </div>
+  `;
+  hideLoading('kpiGrid');
+}
+
+function renderChart() {
+  showLoading('salesChart');
+  const max = Math.max(...salesData.map(d => d.value));
+  const shades = ['#be8bf5','#7c3aed','#60a5fa','#25d366','#f5a623','#be8bf5','#7c3aed'];
+  document.getElementById('salesChart').innerHTML = salesData.map((d, i) => {
+    const h = Math.max(8, (d.value / max) * 100);
+    const shade = shades[i % shades.length];
+    return `<div class="chart-bar" style="height:${h}%;background:linear-gradient(to top,${shade}88,${shade}44)" title="${d.value.toLocaleString()} MT"></div>`;
+  }).join('');
+  document.getElementById('chartLabels').innerHTML = salesData.map(d => `<span>${d.day}</span>`).join('');
+  hideLoading('salesChart');
+}
+
+function renderUsers() {
+  showLoading('userTableBody');
+  document.getElementById('userTableBody').innerHTML = USERS.map(u => `
+    <tr>
+      <td><strong>${u.name}</strong></td>
+      <td style="color:var(--text2)">${u.email}</td>
+      <td>${u.role}</td>
+      <td><span class="status-badge ${u.status === 'active' ? 'status-active' : 'status-inactive'}">${u.status === 'active' ? 'Activo' : 'Inactivo'}</span></td>
+      <td style="color:var(--text2);font-size:.8rem">${u.last}</td>
+    </tr>
+  `).join('');
+  hideLoading('userTableBody');
+}
+
+let salesData = generateSalesData();
+let actIndex = 0;
+
+function renderActivity() {
+  showLoading('activityList');
+  const now = new Date();
+  const mins = now.getHours() * 60 + now.getMinutes();
+  const weighted = (ACTIVITIES.length - 1) - (actIndex % ACTIVITIES.length);
+  const shuffled = [ACTIVITIES[(actIndex) % ACTIVITIES.length], ACTIVITIES[(actIndex + 1) % ACTIVITIES.length], ACTIVITIES[(actIndex + 2) % ACTIVITIES.length], ACTIVITIES[(actIndex + 3) % ACTIVITIES.length], ACTIVITIES[(actIndex + 4) % ACTIVITIES.length]];
+  actIndex = (actIndex + 1) % ACTIVITIES.length;
+  document.getElementById('activityList').innerHTML = shuffled.map((act, i) => `
+    <div class="activity-item">
+      <div class="dot" style="background:${COLORS[i]}"></div>
+      <div class="act-text">
+        <span class="act-user">${NAMES[(actIndex + i) % NAMES.length]}</span>
+        <span class="act-action">${act}</span>
+      </div>
+      <div class="act-time">h\u00e1 ${Math.max(1, mins % 47 + i * 7)} min</div>
+    </div>
+  `).join('');
+  hideLoading('activityList');
+}
+
+renderKPIs();
+renderChart();
+renderActivity();
+renderUsers();
+
+setInterval(() => {
+  salesData = salesData.map(d => ({ ...d, value: Math.max(8000, d.value + Math.floor((Math.random() - 0.5) * 12000)) }));
+  renderKPIs();
+  renderChart();
+  renderActivity();
+}, 8000);
+</script>
+</body>
+</html>
