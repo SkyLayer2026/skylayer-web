@@ -5,9 +5,13 @@ import Footer from "./components/Footer.jsx"
 import Home from "./pages/Home.jsx"
 import Services from "./pages/Services.jsx"
 import ServiceLanding from "./pages/ServiceLanding.jsx"
-import Portfolio from "./pages/Portfolio.jsx"
-import Diagnostico from "./pages/Diagnostico.jsx"
+import Projects from "./pages/Projects.jsx"
+import About from "./pages/About.jsx"
+import Blog from "./pages/Blog.jsx"
+import BlogPost from "./pages/BlogPost.jsx"
+import FaqPage from "./pages/Faq.jsx"
 import Contact from "./pages/Contact.jsx"
+import Diagnostico from "./pages/Diagnostico.jsx"
 import NotFound from "./pages/NotFound.jsx"
 
 export default function App() {
@@ -20,9 +24,13 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/servicos" element={<Services />} />
           <Route path="/servicos/:slug" element={<ServiceLanding />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/diagnostico" element={<Diagnostico />} />
+          <Route path="/projetos" element={<Projects />} />
+          <Route path="/sobre" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/faq" element={<FaqPage />} />
           <Route path="/contacto" element={<Contact />} />
+          <Route path="/diagnostico" element={<Diagnostico />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -2,16 +2,28 @@
 
 > Definição: trabalho entregue ao cliente — cada serviço usa produtos/templates da biblioteca.
 
-## Catálogo inicial
+## Catálogo (v1.1)
 
-| Serviço | Preço base | Prazo | Inclui |
-|---|---|---|---|
-| Criação de site profissional | 7.000 MZN | 1–3 sem | Ver produto "Website Empresarial" |
-| Sistema de gestão interna | Sob proposta | 3–8 sem | Login, dashboard, gestão de clientes |
-| Identidade visual (logo, cores, tipografia) | Sob proposta | 1–2 sem | Manual de marca simples |
-| Diagnóstico da presença digital | Gratuito (lead magnet) | 3–5 dias | Relatório com pontos de melhoria |
-| Manutenção e suporte | Mensal, sob proposta | Contínuo | Atualizações, backups, correções |
-| Consultoria em transformação digital | Por hora/sessão | — | Recomendações e plano de ação |
+### Produtos principais
+
+| Produto | O que é | Preço base |
+|---|---|---|
+| **SL Presence** — Presença digital profissional | Sites, páginas e presença online | a partir de 7.000 MZN |
+| **SL Business Systems** — Sistemas digitais para empresas | Gestão de clientes, vendas, stock e processos | Sob proposta |
+| **SL Automation** — Automação de processos | Ligação entre ferramentas, tarefas repetitivas automatizadas | Sob proposta |
+| **SL Digital Infrastructure** — Infraestrutura e suporte | Domínio, hospedagem, e-mail, segurança, backups | Mensal, sob proposta |
+| **SL Custom Solutions** — Soluções personalizadas | Aplicações e integrações sob medida | Orçamento após diagnóstico |
+
+### Serviços complementares
+
+| Serviço | O que é |
+|---|---|
+| Consultoria digital | Plano prático de digitalização |
+| Manutenção e suporte | Manutenção contínua de site e sistemas |
+| Gestão de conteúdo | Textos, notícias e atualizações geridas pela Skylayer |
+| Identidade digital | Logo, cores e tipografia |
+| Formação tecnológica | Formação da equipa do cliente |
+| Integração de IA | Funcionalidades inteligentes vendidas ao cliente (única exceção à regra de comunicação, cap. 8) |
 
 ## Checklist de criação de serviço
 

@@ -1,102 +1,81 @@
 import { useState } from "react"
 import { Link, NavLink } from "react-router-dom"
-import { Menu, X, MessageCircle } from "lucide-react"
-import { whatsappLink, site } from "../config.js"
+import { Menu, X } from "lucide-react"
+import { Logo } from "./ui.jsx"
+
+const links = [
+  { to: "/servicos", label: "Serviços" },
+  { to: "/projetos", label: "Projetos" },
+  { to: "/sobre", label: "Sobre" },
+  { to: "/blog", label: "Blog" },
+  { to: "/contacto", label: "Contacto" },
+]
 
 const navLink = ({ isActive }) =>
-  `text-sm font-medium transition-colors hover:text-sky-500 ${
-    isActive ? "text-sky-600" : "text-slate-600"
+  `text-sm font-medium transition-colors hover:text-brand-700 ${
+    isActive ? "text-brand-600" : "text-muted"
   }`
 
 export default function Header() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-line-soft bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden="true">
-            <defs>
-              <linearGradient id="logo" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stopColor="#38bdf8" />
-                <stop offset="1" stopColor="#1e3a8a" />
-              </linearGradient>
-            </defs>
-            <path fill="url(#logo)" d="M16 2 30 30H2z" />
-            <path fill="white" d="M16 10l8 16h-4.2L16 17l-3.8 9H8z" />
-          </svg>
-          <span className="text-lg font-extrabold tracking-tight text-slate-900">
-            Sky<span className="text-sky-600">layer</span>
-          </span>
+        <Link to="/" aria-label="Skylayer — início" onClick={() => setOpen(false)}>
+          <Logo />
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
-          <NavLink to="/" className={navLink} end>
-            Início
-          </NavLink>
-          <NavLink to="/servicos" className={navLink}>
-            Serviços
-          </NavLink>
-          <NavLink to="/portfolio" className={navLink}>
-            Portfólio
-          </NavLink>
-          <NavLink to="/diagnostico" className={navLink}>
-            Diagnóstico gratuito
-          </NavLink>
-          <NavLink to="/contacto" className={navLink}>
-            Contacto
-          </NavLink>
-          <a
-            href={whatsappLink()}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-600"
-          >
-            <MessageCircle className="h-4 w-4" />
-            WhatsApp
-          </a>
+        <nav className="hidden items-center gap-7 md:flex">
+          {links.map((l) => (
+            <NavLink key={l.to} to={l.to} className={navLink}>
+              {l.label}
+            </NavLink>
+          ))}
         </nav>
 
+        <div className="hidden md:block">
+          <Link to="/contacto" className="btn-primary !px-5 !py-2.5">
+            Solicitar orçamento
+          </Link>
+        </div>
+
         <button
-          className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 md:hidden"
+          className="rounded-lg p-2 text-muted hover:bg-surface md:hidden"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Abrir menu"
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
       {open && (
-        <nav className="border-t border-slate-100 bg-white px-4 py-4 md:hidden">
-          <div className="flex flex-col gap-3">
-            <NavLink to="/" className={navLink} end onClick={() => setOpen(false)}>
-              Início
-            </NavLink>
-            <NavLink to="/servicos" className={navLink} onClick={() => setOpen(false)}>
-              Serviços
-            </NavLink>
-            <NavLink to="/portfolio" className={navLink} onClick={() => setOpen(false)}>
-              Portfólio
-            </NavLink>
-            <NavLink to="/diagnostico" className={navLink} onClick={() => setOpen(false)}>
-              Diagnóstico gratuito
-            </NavLink>
-            <NavLink to="/contacto" className={navLink} onClick={() => setOpen(false)}>
-              Contacto
-            </NavLink>
-            <a
-              href={whatsappLink()}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white"
+        <nav className="border-t border-line-soft bg-white px-4 py-4 md:hidden">
+          <div className="flex flex-col gap-1">
+            {links.map((l) => (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                className={({ isActive }) =>
+                  `rounded-lg px-3 py-2.5 text-sm font-medium ${
+                    isActive ? "bg-surface text-brand-700" : "text-muted"
+                  }`
+                }
+                onClick={() => setOpen(false)}
+              >
+                {l.label}
+              </NavLink>
+            ))}
+            <Link
+              to="/contacto"
+              className="btn-primary mt-3"
+              onClick={() => setOpen(false)}
             >
-              <MessageCircle className="h-4 w-4" />
-              Falar no WhatsApp
-            </a>
+              Solicitar orçamento
+            </Link>
           </div>
         </nav>
       )}
-      <span className="sr-only">{site.name}</span>
     </header>
   )
 }

@@ -1,72 +1,80 @@
 import { MessageCircle, Mail, MapPin, Clock } from "lucide-react"
+import { usePageTitle } from "../hooks.js"
 import { site, whatsappLink } from "../config.js"
 import ContactForm from "../components/ContactForm.jsx"
 
 export default function Contact() {
+  usePageTitle("Contacto")
+
   return (
     <>
-      <section className="bg-slate-50">
+      <section className="border-b border-line-soft bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">Contacto</h1>
-          <p className="mt-4 max-w-2xl text-lg text-slate-600">
-            Respondemos em menos de 2 horas em horário útil. Fale connosco pelo canal que preferir.
+          <p className="eyebrow">Contacto</p>
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+            Vamos conversar sobre o seu projeto?
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg text-muted">
+            Respondemos em menos de 2 horas em horário útil. Começamos sempre por entender a sua
+            necessidade.
           </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="grid gap-12 lg:grid-cols-5">
-          <div className="space-y-6 lg:col-span-2">
+      <section className="bg-white">
+        <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-5">
+          <div className="space-y-4 lg:col-span-2">
             <a
               href={whatsappLink()}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-emerald-300 hover:shadow-md"
+              className="card flex items-center gap-4 p-5 transition-colors hover:border-emerald-300"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500 text-white">
-                <MessageCircle className="h-6 w-6" />
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600">
+                <MessageCircle className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-bold text-slate-900">WhatsApp</p>
-                <p className="text-sm text-slate-600">{site.whatsappDisplay}</p>
+                <p className="font-bold text-ink">WhatsApp</p>
+                <p className="text-sm text-muted">{site.whatsappDisplay}</p>
               </div>
             </a>
             <a
               href={`mailto:${site.email}`}
-              className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-sky-300 hover:shadow-md"
+              className="card flex items-center gap-4 p-5 transition-colors hover:border-brand-300"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-600 text-white">
-                <Mail className="h-6 w-6" />
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
+                <Mail className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-bold text-slate-900">E-mail</p>
-                <p className="text-sm text-slate-600">{site.email}</p>
+                <p className="font-bold text-ink">E-mail</p>
+                <p className="text-sm text-muted">{site.email}</p>
               </div>
             </a>
-            <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-600">
-                <MapPin className="h-6 w-6" />
+            <div className="card flex items-center gap-4 p-5">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-surface text-muted">
+                <MapPin className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-bold text-slate-900">Localização</p>
-                <p className="text-sm text-slate-600">{site.location}</p>
+                <p className="font-bold text-ink">Localização</p>
+                <p className="text-sm text-muted">{site.location}</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-600">
-                <Clock className="h-6 w-6" />
+            <div className="card flex items-center gap-4 p-5">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-surface text-muted">
+                <Clock className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-bold text-slate-900">Horário de resposta</p>
-                <p className="text-sm text-slate-600">Segunda a sábado, em horário útil</p>
+                <p className="font-bold text-ink">Horário de resposta</p>
+                <p className="text-sm text-muted">Segunda a sábado, em horário útil</p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm lg:col-span-3">
-            <h2 className="text-xl font-bold text-slate-900">Envie a sua mensagem</h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Conte-nos o que precisa e responderemos com os próximos passos.
+          <div className="card p-7 lg:col-span-3">
+            <h2 className="text-xl font-bold text-ink">Solicitar orçamento</h2>
+            <p className="mt-2 text-sm text-muted">
+              Conte-nos o que precisa e responderemos com os próximos passos — começando pelo
+              diagnóstico.
             </p>
             <div className="mt-6">
               <ContactForm />
