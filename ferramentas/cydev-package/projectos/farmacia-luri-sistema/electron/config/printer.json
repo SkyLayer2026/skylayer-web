@@ -1,0 +1,8 @@
+{
+  "type": "EPSON",
+  "interface": "auto",
+  "characterSet": "CP858",
+  "paperWidth": 58,
+  "timeout": 5000,
+  "cashDrawer": true
+}

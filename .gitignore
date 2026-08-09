@@ -6,6 +6,8 @@ agentes/segredos/
 # Node
 node_modules/
 dist/
+build/
+dist-electron/
 
 # Sistema
 .DS_Store
@@ -27,3 +29,6 @@ agentes/sky/skyforge/
 agentes/sky/agent/
 agentes/sky/assets/
 _duplicados/skylayer-agent-antigo/
+
+# Cópias soltas dentro do pacote CYdev (repos já existem em clientes/)
+ferramentas/cydev-package/Pasta sem nome/
