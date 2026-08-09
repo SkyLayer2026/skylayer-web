@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — SLGrid Tech</title>
+  <meta name="description" content="Entre em contacto com a SLGrid Tech. Solicite orçamentos, tire dúvidas ou agende uma visita.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="header-logo">
+        <img src="logo.png" alt="SLGrid Tech">
+        <span>SLGrid Tech</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul class="nav-list" id="navList">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="about.html">Sobre Nós</a></li>
+          <li><a href="products.html">Produtos</a></li>
+          <li><a href="solutions.html">Soluções</a></li>
+          <li><a href="services.html">Serviços</a></li>
+          <li><a href="contact.html" class="active">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="cart.html" class="cart-btn">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Contacto</h1>
+      <p>Estamos prontos para ajudar. Fale connosco.</p>
+    </div>
+  </section>
+
+  <div class="breadcrumb">
+    <div class="container">
+      <a href="index.html">Início</a>
+      <span class="sep">/</span>
+      <span>Contacto</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info fade-in">
+          <h2>Fale Connosco</h2>
+          <p>Tem dúvidas, quer fazer um orçamento ou saber mais sobre os nossos produtos? Estamos à sua disposição.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="icon"><i class="fas fa-phone-alt"></i></div>
+              <div>
+                <h4>Telefone</h4>
+                <p>+258 84 000 0000</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:info@slgridtech.co.mz">info@slgridtech.co.mz</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <h4>Localização</h4>
+                <p>Maputo, Moçambique</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon"><i class="fab fa-whatsapp"></i></div>
+              <div>
+                <h4>WhatsApp</h4>
+                <a href="https://wa.me/258840000000" target="_blank">+258 84 000 0000</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in">
+          <form class="contact-form" id="contactForm" novalidate>
+            <div id="formSuccess" class="form-success">
+              <div class="icon"><i class="fas fa-check-circle"></i></div>
+              <h3>Mensagem enviada!</h3>
+              <p>Recebemos a sua mensagem e entraremos em contacto em breve.</p>
+            </div>
+            <div class="form-group">
+              <label for="name">Nome completo</label>
+              <input type="text" id="name" placeholder="O seu nome" required>
+              <div class="form-error">Por favor, informe o seu nome.</div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="seu@email.com" required>
+              <div class="form-error">Por favor, informe um email válido.</div>
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefone</label>
+              <input type="tel" id="phone" placeholder="+258 84 000 0000" required>
+              <div class="form-error">Por favor, informe o seu telefone.</div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Assunto</label>
+              <select id="subject">
+                <option value="">Selecionar...</option>
+                <option value="orcamento">Pedido de Orçamento</option>
+                <option value="produto">Informação sobre Produto</option>
+                <option value="suporte">Suporte Técnico</option>
+                <option value="parceria">Parceria Comercial</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Mensagem</label>
+              <textarea id="message" placeholder="Descreva o seu pedido ou dúvida..." required></textarea>
+              <div class="form-error">Por favor, escreva a sua mensagem.</div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+              <i class="fas fa-paper-plane"></i> Enviar Mensagem
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/258840000000" target="_blank" class="whatsapp-float" title="Fale connosco no WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="logo.png" alt="SLGrid Tech">
+          <p>A sua referência em tecnologia, material elétrico e equipamentos eletrónicos em Moçambique.</p>
+        </div>
+        <div>
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="about.html">Sobre Nós</a></li>
+            <li><a href="products.html">Produtos</a></li>
+            <li><a href="solutions.html">Soluções</a></li>
+            <li><a href="services.html">Serviços</a></li>
+            <li><a href="cart.html">Carrinho</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="tel:+258840000000">+258 84 000 0000</a></li>
+            <li><a href="mailto:info@slgridtech.co.mz">info@slgridtech.co.mz</a></li>
+            <li>Maputo, Moçambique</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Pagamentos</h4>
+          <div class="footer-payment">
+            <span>M-Pesa</span>
+            <span>E-Mola</span>
+            <span>Transferência Bancária</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 SLGrid Tech. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

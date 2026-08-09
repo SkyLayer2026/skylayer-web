@@ -1,0 +1,51 @@
+id,nome,contacto,email,area_actividade,quantidade_pcs,cidade,bairro,tipo_cliente
+BEI-001,Agrícola Nova SA,+258 843851852,agrícolasa@empresa.co.mz,Comércio/Retalho,48,Beira,Nhangau,Médio
+BEI-002,Farmácia Norte Lda,+258 849349470,farmácialda@empresa.co.mz,Comércio/Retalho,44,Beira,Chiveve,Médio
+BEI-003,Comercial Moçambicana Lda,+258 858710313,comerciallda@empresa.co.mz,Indústria,123,Beira,Chiveve,Grande
+BEI-004,Serviços e Comércio Progresso Lda,+258 863650391,serviçoslda@empresa.co.mz,Serviços/Consultoria,23,Beira,Chiveve,Médio
+BEI-005,Escola Nova Lda,+258 855195951,escolalda@empresa.co.mz,Comércio/Retalho,24,Beira,Chiveve,Médio
+BEI-006,Hotel Moçambicana SA,+258 852789344,hotelsa@empresa.co.mz,Saúde,54,Beira,Nhangau,Médio
+BEI-007,Oficina Sul Lda,+258 865953150,oficinalda@empresa.co.mz,Comércio/Retalho,41,Beira,Manga,Médio
+BEI-008,Transportes Unida Lda,+258 861822825,transporteslda@empresa.co.mz,Comércio/Retalho,5,Beira,Matacuane,Pequeno
+BEI-009,Indústrias Unida SA,+258 854674286,indústriassa@empresa.co.mz,Indústria,63,Beira,Matacuane,Grande
+BEI-010,Farmácia Unida Lda,+258 841661401,farmácialda@empresa.co.mz,Educação,45,Beira,Chiveve,Médio
+BEI-011,Logística Central Lda,+258 842512187,logísticalda@empresa.co.mz,Serviços/Consultoria,28,Beira,Chiveve,Médio
+BEI-012,Clínica Norte Lda,+258 847138070,clínicalda@empresa.co.mz,Indústria,49,Beira,Ponta-Gêa,Médio
+BEI-013,Construções Nacional Lda,+258 855951651,construçõeslda@empresa.co.mz,Saúde,37,Beira,Nhangau,Médio
+BEI-014,Clínica Moderna Lda,+258 844785186,clínicalda@empresa.co.mz,Hotelaria/Restauração,34,Beira,Centro,Médio
+BEI-015,Transportes Futuro Lda,+258 851233516,transporteslda@empresa.co.mz,Indústria,98,Beira,Centro,Grande
+BEI-016,Empresa Progresso Unipessoal Lda,+258 865398338,empresalda@empresa.co.mz,Serviços/Consultoria,28,Beira,Chiveve,Médio
+BEI-017,Escola Moderna Lda,+258 846503032,escolalda@empresa.co.mz,Educação,69,Beira,Mafalala,Grande
+BEI-018,Tecnologias Moderna SA,+258 856069909,tecnologiassa@empresa.co.mz,Indústria,167,Beira,Nhangau,Grande
+BEI-019,Empresa Nacional Unipessoal Lda,+258 859264869,empresalda@empresa.co.mz,Educação,21,Beira,Centro,Médio
+BEI-020,Tecnologias Futuro SA,+258 857224540,tecnologiassa@empresa.co.mz,Comércio/Retalho,13,Beira,Mafalala,Pequeno
+BEI-021,Supermercado Norte Lda,+258 863592464,supermercadolda@empresa.co.mz,Hotelaria/Restauração,42,Beira,Chiveve,Médio
+BEI-022,Empresa Progresso Unipessoal Lda,+258 851548888,empresalda@empresa.co.mz,Indústria,162,Beira,Mafalala,Grande
+BEI-023,Consultoria Progresso Lda,+258 852666893,consultorialda@empresa.co.mz,Hotelaria/Restauração,33,Beira,Ponta-Gêa,Médio
+BEI-024,Escola Futuro Lda,+258 847679674,escolalda@empresa.co.mz,ONGs/Associações,46,Beira,Manga,Médio
+BEI-025,Empresa Progresso Unipessoal Lda,+258 841358318,empresalda@empresa.co.mz,Serviços/Consultoria,10,Beira,Chiveve,Pequeno
+BEI-026,Clínica Moçambicana Lda,+258 864442778,clínicalda@empresa.co.mz,Comércio/Retalho,13,Beira,Nhangau,Pequeno
+BEI-027,Supermercado Moçambicana Lda,+258 846512314,supermercadolda@empresa.co.mz,Comércio/Retalho,42,Beira,Ponta-Gêa,Médio
+BEI-028,Farmácia Central Lda,+258 843180906,farmácialda@empresa.co.mz,Construção/Imobiliária,13,Beira,Nhangau,Pequeno
+BEI-029,Instituto Moderna SA,+258 843211291,institutosa@empresa.co.mz,Saúde,89,Beira,Nhangau,Grande
+BEI-030,Tecnologias Nova SA,+258 845452128,tecnologiassa@empresa.co.mz,Comércio/Retalho,25,Beira,Centro,Médio
+BEI-031,Agrícola Futuro SA,+258 848990081,agrícolasa@empresa.co.mz,Comércio/Retalho,12,Beira,Chiveve,Pequeno
+BEI-032,Escola Futuro Lda,+258 864716988,escolalda@empresa.co.mz,Serviços/Consultoria,11,Beira,Mafalala,Pequeno
+BEI-033,Distribuidora Futuro SA,+258 861522621,distribuidorasa@empresa.co.mz,Indústria,82,Beira,Mafalala,Grande
+BEI-034,Indústrias Norte SA,+258 849225346,indústriassa@empresa.co.mz,Comércio/Retalho,32,Beira,Chiveve,Médio
+BEI-035,Logística Moderna Lda,+258 863488628,logísticalda@empresa.co.mz,Hotelaria/Restauração,10,Beira,Manga,Pequeno
+BEI-036,Construções Nova Lda,+258 866455706,construçõeslda@empresa.co.mz,Comércio/Retalho,45,Beira,Matacuane,Médio
+BEI-037,Farmácia Futuro Lda,+258 868217547,farmácialda@empresa.co.mz,Serviços/Consultoria,23,Beira,Mafalala,Médio
+BEI-038,Empresa Futuro Unipessoal Lda,+258 854833486,empresalda@empresa.co.mz,Comércio/Retalho,18,Beira,Mafalala,Médio
+BEI-039,Logística Norte Lda,+258 846243691,logísticalda@empresa.co.mz,Serviços/Consultoria,31,Beira,Chiveve,Médio
+BEI-040,Construções Sul Lda,+258 852126310,construçõeslda@empresa.co.mz,Serviços/Consultoria,14,Beira,Chiveve,Pequeno
+BEI-041,Grupo Moderna Lda,+258 867251976,grupolda@empresa.co.mz,Comércio/Retalho,32,Beira,Centro,Médio
+BEI-042,Supermercado Central Lda,+258 866530541,supermercadolda@empresa.co.mz,Construção/Imobiliária,23,Beira,Matacuane,Médio
+BEI-043,Agrícola Sul SA,+258 851863121,agrícolasa@empresa.co.mz,Hotelaria/Restauração,47,Beira,Nhangau,Médio
+BEI-044,Farmácia Unida Lda,+258 869512969,farmácialda@empresa.co.mz,ONGs/Associações,27,Beira,Centro,Médio
+BEI-045,Indústrias Moçambicana SA,+258 867166651,indústriassa@empresa.co.mz,Comércio/Retalho,11,Beira,Manga,Pequeno
+BEI-046,Construções Nova Lda,+258 851440466,construçõeslda@empresa.co.mz,Comércio/Retalho,19,Beira,Nhangau,Médio
+BEI-047,Construções Central Lda,+258 866183902,construçõeslda@empresa.co.mz,Educação,56,Beira,Manga,Médio
+BEI-048,Escola Central Lda,+258 847724045,escolalda@empresa.co.mz,Indústria,51,Beira,Nhangau,Médio
+BEI-049,Serviços e Comércio Moderna Lda,+258 858043620,serviçoslda@empresa.co.mz,Comércio/Retalho,38,Beira,Ponta-Gêa,Médio
+BEI-050,Instituto Sul SA,+258 852425342,institutosa@empresa.co.mz,Saúde,44,Beira,Chiveve,Médio

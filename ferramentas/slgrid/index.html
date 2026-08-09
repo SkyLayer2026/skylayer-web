@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLGrid Tech — Tecnologia, Energia e Conectividade em Moçambique</title>
+  <meta name="description" content="SLGrid Tech — Loja de equipamentos tecnológicos, material elétrico e eletrónicos em Moçambique. Dell, HP, APC, TP-Link e mais.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="header-logo">
+        <img src="logo.png" alt="SLGrid Tech">
+        <span>SLGrid Tech</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul class="nav-list" id="navList">
+          <li><a href="index.html" class="active">Início</a></li>
+          <li><a href="about.html">Sobre Nós</a></li>
+          <li><a href="products.html">Produtos</a></li>
+          <li><a href="solutions.html">Soluções</a></li>
+          <li><a href="services.html">Serviços</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <div class="header-search">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="headerSearch" placeholder="Pesquisar produtos..." aria-label="Pesquisar">
+        </div>
+        <a href="cart.html" class="cart-btn">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Tecnologia, Energia e Conectividade</h1>
+      <p>Soluções completas em TI, material elétrico e equipamentos eletrónicos para residências, empresas e indústrias em Moçambique.</p>
+      <div class="hero-actions">
+        <a href="products.html" class="btn btn-primary">
+          <i class="fas fa-search"></i> Ver Produtos
+        </a>
+        <a href="solutions.html" class="btn btn-outline">
+          <i class="fas fa-box"></i> Soluções Completas
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label"><i class="fas fa-th-large"></i> Categorias</span>
+        <h2 class="section-title">Explore as Nossas Áreas</h2>
+        <p class="section-subtitle">Produtos e soluções técnicas organizados por categoria para encontrar o que precisa.</p>
+      </div>
+      <div class="categories-grid">
+        <a href="products.html?category=redes" class="category-card fade-in">
+          <div class="icon"><i class="fas fa-network-wired"></i></div>
+          <h3>Redes e Infraestrutura</h3>
+          <p>Equipamentos para redes de computadores, conectividade e infraestrutura de TI.</p>
+          <span class="count">Ver Produtos <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="products.html?category=eletrico" class="category-card fade-in">
+          <div class="icon"><i class="fas fa-bolt"></i></div>
+          <h3>Material Elétrico</h3>
+          <p>Cabos, disjuntores, UPS e tudo para instalações elétricas seguras e eficientes.</p>
+          <span class="count">Ver Produtos <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="products.html?category=eletronicos" class="category-card fade-in">
+          <div class="icon"><i class="fas fa-microchip"></i></div>
+          <h3>Equipamentos Eletrónicos</h3>
+          <p>Computadores, impressoras, routers e componentes profissionais das melhores marcas.</p>
+          <span class="count">Ver Produtos <i class="fas fa-arrow-right"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section fade-in">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-count="700">0</div>
+          <div class="stat-label">Produtos Disponíveis</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="22">0</div>
+          <div class="stat-label">Marcas Parceiras</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="4">0</div>
+          <div class="stat-label">Cidades Atendidas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="250">0</div>
+          <div class="stat-label">Clientes Empresariais</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container">
+      <div class="products-header fade-in">
+        <h2>Produtos em Destaque</h2>
+        <a href="products.html" class="btn btn-primary btn-sm">
+          Ver Todos <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="products-grid" id="featuredGrid">
+        <div class="empty-state">
+          <p>A carregar produtos...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label"><i class="fas fa-box"></i> Soluções</span>
+        <h2 class="section-title">Soluções para o seu Negócio</h2>
+        <p class="section-subtitle">Pacotes completos com equipamento, instalação e suporte técnico.</p>
+      </div>
+      <div class="solutions-grid">
+        <div class="solution-card fade-in">
+          <img src="https://placehold.co/800x400/1a3a5c/ffffff?text=Escrit%C3%B3rio" alt="Pacote Escritório" class="solution-image">
+          <div class="solution-body">
+            <span class="solution-tag">Mais Popular</span>
+            <h3>Pacote Escritório Pequeno</h3>
+            <p class="solution-desc">5 computadores, impressora, UPS, rede completa e instalação.</p>
+            <a href="solutions.html" class="btn btn-buy btn-sm">Saber Mais</a>
+          </div>
+        </div>
+        <div class="solution-card fade-in">
+          <img src="https://placehold.co/800x400/2d6a4f/ffffff?text=Escola" alt="Pacote Escola" class="solution-image">
+          <div class="solution-body">
+            <span class="solution-tag">Recomendado</span>
+            <h3>Pacote Escola / Laboratório</h3>
+            <p class="solution-desc">15 computadores, servidor, Wi-Fi, UPS e cablagem completa.</p>
+            <a href="solutions.html" class="btn btn-buy btn-sm">Saber Mais</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials-section fade-in">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label"><i class="fas fa-star"></i> Depoimentos</span>
+        <h2 class="section-title">O Que os Nossos Clientes Dizem</h2>
+        <p class="section-subtitle">A confiança dos nossos parceiros é o nosso maior reconhecimento.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"A SLGrid Tech forneceu equipamento de rede para todo o nosso escritório. Profissionalismo e rapidez na entrega."</blockquote>
+          <div class="author">
+            <div class="author-avatar">AM</div>
+            <div class="author-info">
+              <h4>Ana Mondlane</h4>
+              <span>Directora, TechCorp Lda</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"Montaram o laboratório de informática da nossa escola com 15 máquinas. Tudo funcionou perfeitamente desde o primeiro dia."</blockquote>
+          <div class="author">
+            <div class="author-avatar">CF</div>
+            <div class="author-info">
+              <h4>Carlos Fumo</h4>
+              <span>Director Pedagógico</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"Óptimo suporte pós-venda. Sempre que precisei de assistência técnica, responderam rapidamente."</blockquote>
+          <div class="author">
+            <div class="author-avatar">MS</div>
+            <div class="author-info">
+              <h4>Marta Simango</h4>
+              <span>CEO, Hotel Moçambique</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label"><i class="fas fa-handshake"></i> Vantagens</span>
+        <h2 class="section-title">Porquê a SLGrid Tech?</h2>
+        <p class="section-subtitle">Qualidade, variedade e suporte em cada projeto.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="icon"><i class="fas fa-boxes"></i></div>
+          <h4>+22 Marcas</h4>
+          <p>As melhores marcas do mercado num único lugar.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="icon"><i class="fas fa-tags"></i></div>
+          <h4>Preços Competitivos</h4>
+          <p>Soluções ajustadas ao mercado moçambicano.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="icon"><i class="fas fa-headset"></i></div>
+          <h4>Suporte Técnico</h4>
+          <p>Apoio na escolha e suporte pós-venda.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="icon"><i class="fas fa-truck"></i></div>
+          <h4>Entrega Local</h4>
+          <p>Disponível para empresas e particulares.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section fade-in">
+    <div class="container">
+      <h2>Solicite o seu Orçamento</h2>
+      <p>Entre em contacto connosco e receba um orçamento personalizado para o seu projeto sem compromisso.</p>
+      <a href="contact.html" class="btn btn-primary">
+        <i class="fas fa-paper-plane"></i> Pedir Orçamento
+      </a>
+    </div>
+  </section>
+
+  <a href="https://wa.me/258840000000" target="_blank" class="whatsapp-float" title="Fale connosco no WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="logo.png" alt="SLGrid Tech">
+          <p>A sua referência em tecnologia, material elétrico e equipamentos eletrónicos em Moçambique.</p>
+        </div>
+        <div>
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="about.html">Sobre Nós</a></li>
+            <li><a href="products.html">Produtos</a></li>
+            <li><a href="solutions.html">Soluções</a></li>
+            <li><a href="services.html">Serviços</a></li>
+            <li><a href="cart.html">Carrinho</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="tel:+258840000000">+258 84 000 0000</a></li>
+            <li><a href="mailto:info@slgridtech.co.mz">info@slgridtech.co.mz</a></li>
+            <li>Maputo, Moçambique</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Pagamentos</h4>
+          <div class="footer-payment">
+            <span>M-Pesa</span>
+            <span>E-Mola</span>
+            <span>Transferência Bancária</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 SLGrid Tech. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

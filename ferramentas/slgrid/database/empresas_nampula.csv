@@ -1,0 +1,51 @@
+id,nome,contacto,email,area_actividade,quantidade_pcs,cidade,bairro,tipo_cliente
+NAM-001,Comercial Nacional Lda,+258 842368710,comerciallda@empresa.co.mz,Indústria,198,Nampula,Muatala,Grande
+NAM-002,Agrícola Progresso SA,+258 854616647,agrícolasa@empresa.co.mz,Serviços/Consultoria,33,Nampula,Carrupeia,Médio
+NAM-003,Empresa Sul Unipessoal Lda,+258 859164342,empresalda@empresa.co.mz,Construção/Imobiliária,18,Nampula,Cidade Alta,Médio
+NAM-004,Hotel Central SA,+258 861919088,hotelsa@empresa.co.mz,Saúde,33,Nampula,Carrupeia,Médio
+NAM-005,Hotel Moçambicana SA,+258 856504979,hotelsa@empresa.co.mz,Comércio/Retalho,13,Nampula,Natala,Pequeno
+NAM-006,Indústrias Norte SA,+258 859935249,indústriassa@empresa.co.mz,Comércio/Retalho,16,Nampula,Namicope,Médio
+NAM-007,Laboratório Futuro Lda,+258 847661748,laboratóriolda@empresa.co.mz,Hotelaria/Restauração,47,Nampula,Natala,Médio
+NAM-008,Distribuidora Norte SA,+258 846252285,distribuidorasa@empresa.co.mz,Indústria,9,Nampula,Carrupeia,Pequeno
+NAM-009,Oficina Norte Lda,+258 847795314,oficinalda@empresa.co.mz,Educação,116,Nampula,Natala,Grande
+NAM-010,Clínica Nacional Lda,+258 867070880,clínicalda@empresa.co.mz,Comércio/Retalho,44,Nampula,Carrupeia,Médio
+NAM-011,Empresa Moçambicana Unipessoal Lda,+258 859790632,empresalda@empresa.co.mz,Comércio/Retalho,32,Nampula,Muatala,Médio
+NAM-012,Hotel Sul SA,+258 842281433,hotelsa@empresa.co.mz,Comércio/Retalho,19,Nampula,Natala,Médio
+NAM-013,Empresa Futuro Unipessoal Lda,+258 856890476,empresalda@empresa.co.mz,Saúde,70,Nampula,Namicope,Grande
+NAM-014,Comercial Moçambicana Lda,+258 854309671,comerciallda@empresa.co.mz,Hotelaria/Restauração,11,Nampula,Namicope,Pequeno
+NAM-015,Comercial Moderna Lda,+258 858783840,comerciallda@empresa.co.mz,Comércio/Retalho,16,Nampula,Namutequeliua,Médio
+NAM-016,Oficina Progresso Lda,+258 866422534,oficinalda@empresa.co.mz,Construção/Imobiliária,26,Nampula,Muatala,Médio
+NAM-017,Clínica Nacional Lda,+258 858419020,clínicalda@empresa.co.mz,Indústria,117,Nampula,Cidade Alta,Grande
+NAM-018,Construções Nova Lda,+258 862244712,construçõeslda@empresa.co.mz,Educação,24,Nampula,Natala,Médio
+NAM-019,Logística Central Lda,+258 852287332,logísticalda@empresa.co.mz,Serviços/Consultoria,8,Nampula,Natala,Pequeno
+NAM-020,Grupo Nova Lda,+258 851688246,grupolda@empresa.co.mz,Educação,139,Nampula,Carrupeia,Grande
+NAM-021,Oficina Moçambicana Lda,+258 859411547,oficinalda@empresa.co.mz,Serviços/Consultoria,25,Nampula,Muatala,Médio
+NAM-022,Distribuidora Progresso SA,+258 862414808,distribuidorasa@empresa.co.mz,Comércio/Retalho,11,Nampula,Natala,Pequeno
+NAM-023,Instituto Central SA,+258 858372274,institutosa@empresa.co.mz,Saúde,36,Nampula,Namutequeliua,Médio
+NAM-024,Farmácia Nacional Lda,+258 857499771,farmácialda@empresa.co.mz,Saúde,51,Nampula,Natala,Médio
+NAM-025,Clínica Nova Lda,+258 866614484,clínicalda@empresa.co.mz,Serviços/Consultoria,8,Nampula,Namutequeliua,Pequeno
+NAM-026,Empresa Futuro Unipessoal Lda,+258 855227787,empresalda@empresa.co.mz,Comércio/Retalho,48,Nampula,Carrupeia,Médio
+NAM-027,Farmácia Nacional Lda,+258 863372774,farmácialda@empresa.co.mz,Hotelaria/Restauração,26,Nampula,Cidade Alta,Médio
+NAM-028,Hotel Norte SA,+258 862421349,hotelsa@empresa.co.mz,Indústria,38,Nampula,Muatala,Médio
+NAM-029,Transportes Sul Lda,+258 869831414,transporteslda@empresa.co.mz,Serviços/Consultoria,13,Nampula,Namutequeliua,Pequeno
+NAM-030,Agrícola Futuro SA,+258 856181912,agrícolasa@empresa.co.mz,Comércio/Retalho,28,Nampula,Cidade Alta,Médio
+NAM-031,Consultoria Sul Lda,+258 843307963,consultorialda@empresa.co.mz,Comércio/Retalho,36,Nampula,Namicope,Médio
+NAM-032,Hotel Moderna SA,+258 869833734,hotelsa@empresa.co.mz,Comércio/Retalho,37,Nampula,Muatala,Médio
+NAM-033,Clínica Nova Lda,+258 853587931,clínicalda@empresa.co.mz,Comércio/Retalho,13,Nampula,Muatala,Pequeno
+NAM-034,Farmácia Nacional Lda,+258 857111929,farmácialda@empresa.co.mz,Comércio/Retalho,33,Nampula,Cidade Alta,Médio
+NAM-035,Tecnologias Progresso SA,+258 868531761,tecnologiassa@empresa.co.mz,Hotelaria/Restauração,44,Nampula,Natala,Médio
+NAM-036,Tecnologias Unida SA,+258 858391997,tecnologiassa@empresa.co.mz,Comércio/Retalho,35,Nampula,Namicope,Médio
+NAM-037,Hotel Norte SA,+258 853718884,hotelsa@empresa.co.mz,Saúde,69,Nampula,Muatala,Grande
+NAM-038,Farmácia Nacional Lda,+258 869062973,farmácialda@empresa.co.mz,Construção/Imobiliária,13,Nampula,Cidade Alta,Pequeno
+NAM-039,Supermercado Moderna Lda,+258 845782563,supermercadolda@empresa.co.mz,Indústria,187,Nampula,Muatala,Grande
+NAM-040,Instituto Unida SA,+258 848339571,institutosa@empresa.co.mz,Comércio/Retalho,33,Nampula,Muatala,Médio
+NAM-041,Tecnologias Progresso SA,+258 851893502,tecnologiassa@empresa.co.mz,Comércio/Retalho,27,Nampula,Cidade Alta,Médio
+NAM-042,Escola Moçambicana Lda,+258 854767135,escolalda@empresa.co.mz,Serviços/Consultoria,29,Nampula,Cidade Alta,Médio
+NAM-043,Empresa Sul Unipessoal Lda,+258 845813037,empresalda@empresa.co.mz,Comércio/Retalho,14,Nampula,Namicope,Pequeno
+NAM-044,Indústrias Nacional SA,+258 858526283,indústriassa@empresa.co.mz,Indústria,199,Nampula,Namutequeliua,Grande
+NAM-045,Grupo Central Lda,+258 849854536,grupolda@empresa.co.mz,Educação,75,Nampula,Namicope,Grande
+NAM-046,Hotel Moçambicana SA,+258 845000351,hotelsa@empresa.co.mz,Serviços/Consultoria,24,Nampula,Cidade Alta,Médio
+NAM-047,Farmácia Progresso Lda,+258 859993490,farmácialda@empresa.co.mz,Serviços/Consultoria,9,Nampula,Cidade Alta,Pequeno
+NAM-048,Laboratório Nova Lda,+258 845886733,laboratóriolda@empresa.co.mz,Comércio/Retalho,20,Nampula,Namutequeliua,Médio
+NAM-049,Farmácia Sul Lda,+258 854142605,farmácialda@empresa.co.mz,Serviços/Consultoria,20,Nampula,Muatala,Médio
+NAM-050,Grupo Futuro Lda,+258 869511546,grupolda@empresa.co.mz,Hotelaria/Restauração,28,Nampula,Cidade Alta,Médio

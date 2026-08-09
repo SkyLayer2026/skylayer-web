@@ -1,0 +1,101 @@
+id,nome,contacto,email,area_actividade,quantidade_pcs,cidade,bairro,tipo_cliente
+MAP-001,Serviços e Comércio Unida Lda,+258 842719583,serviçoslda@empresa.co.mz,Educação,72,Maputo,Coop,Grande
+MAP-002,Supermercado Moderna Lda,+258 841499914,supermercadolda@empresa.co.mz,Hotelaria/Restauração,42,Maputo,Baixa,Médio
+MAP-003,Tecnologias Futuro SA,+258 864335942,tecnologiassa@empresa.co.mz,Comércio/Retalho,43,Maputo,Central,Médio
+MAP-004,Supermercado Norte Lda,+258 865667265,supermercadolda@empresa.co.mz,Hotelaria/Restauração,19,Maputo,Maxaquene,Médio
+MAP-005,Serviços e Comércio Nacional Lda,+258 855661907,serviçoslda@empresa.co.mz,Construção/Imobiliária,27,Maputo,Baixa,Médio
+MAP-006,Clínica Moderna Lda,+258 847022674,clínicalda@empresa.co.mz,Comércio/Retalho,10,Maputo,Baixa,Pequeno
+MAP-007,Farmácia Unida Lda,+258 868707870,farmácialda@empresa.co.mz,Construção/Imobiliária,30,Maputo,Central,Médio
+MAP-008,Transportes Moderna Lda,+258 867067228,transporteslda@empresa.co.mz,Saúde,75,Maputo,Malhangalene,Grande
+MAP-009,Grupo Central Lda,+258 844905582,grupolda@empresa.co.mz,Educação,68,Maputo,Malhangalene,Grande
+MAP-010,Transportes Unida Lda,+258 847210606,transporteslda@empresa.co.mz,Indústria,121,Maputo,Alto Maé,Grande
+MAP-011,Construções Moderna Lda,+258 865107245,construçõeslda@empresa.co.mz,Serviços/Consultoria,15,Maputo,Aeroporto,Pequeno
+MAP-012,Transportes Unida Lda,+258 846440561,transporteslda@empresa.co.mz,Comércio/Retalho,45,Maputo,Aeroporto,Médio
+MAP-013,Distribuidora Moçambicana SA,+258 855491946,distribuidorasa@empresa.co.mz,Construção/Imobiliária,6,Maputo,Alto Maé,Pequeno
+MAP-014,Oficina Sul Lda,+258 858698256,oficinalda@empresa.co.mz,Comércio/Retalho,18,Maputo,Maxaquene,Médio
+MAP-015,Comercial Moçambicana Lda,+258 858187926,comerciallda@empresa.co.mz,Comércio/Retalho,40,Maputo,Aeroporto,Médio
+MAP-016,Transportes Sul Lda,+258 869279821,transporteslda@empresa.co.mz,Indústria,61,Maputo,Polana,Grande
+MAP-017,Distribuidora Moderna SA,+258 868082668,distribuidorasa@empresa.co.mz,Comércio/Retalho,14,Maputo,Polana,Pequeno
+MAP-018,Transportes Norte Lda,+258 851192619,transporteslda@empresa.co.mz,Educação,129,Maputo,Aeroporto,Grande
+MAP-019,Empresa Futuro Unipessoal Lda,+258 845924115,empresalda@empresa.co.mz,Hotelaria/Restauração,22,Maputo,Alto Maé,Médio
+MAP-020,Logística Central Lda,+258 849517485,logísticalda@empresa.co.mz,Serviços/Consultoria,21,Maputo,Aeroporto,Médio
+MAP-021,Hotel Futuro SA,+258 847273233,hotelsa@empresa.co.mz,Indústria,160,Maputo,Coop,Grande
+MAP-022,Supermercado Futuro Lda,+258 859197443,supermercadolda@empresa.co.mz,Construção/Imobiliária,5,Maputo,Triunfo,Pequeno
+MAP-023,Escola Unida Lda,+258 842321324,escolalda@empresa.co.mz,Comércio/Retalho,20,Maputo,Central,Médio
+MAP-024,Indústrias Moderna SA,+258 848973915,indústriassa@empresa.co.mz,Comércio/Retalho,39,Maputo,Polana,Médio
+MAP-025,Instituto Unida SA,+258 854553384,institutosa@empresa.co.mz,Indústria,140,Maputo,Triunfo,Grande
+MAP-026,Consultoria Unida Lda,+258 859683481,consultorialda@empresa.co.mz,Indústria,107,Maputo,Alto Maé,Grande
+MAP-027,Tecnologias Moçambicana SA,+258 844860684,tecnologiassa@empresa.co.mz,Saúde,13,Maputo,Alto Maé,Pequeno
+MAP-028,Serviços e Comércio Moderna Lda,+258 841527021,serviçoslda@empresa.co.mz,Educação,25,Maputo,Coop,Médio
+MAP-029,Grupo Futuro Lda,+258 869143903,grupolda@empresa.co.mz,Indústria,65,Maputo,Malhangalene,Grande
+MAP-030,Comercial Nova Lda,+258 848935169,comerciallda@empresa.co.mz,Comércio/Retalho,41,Maputo,Maxaquene,Médio
+MAP-031,Consultoria Moderna Lda,+258 858106470,consultorialda@empresa.co.mz,Construção/Imobiliária,8,Maputo,Baixa,Pequeno
+MAP-032,Distribuidora Moderna SA,+258 866692553,distribuidorasa@empresa.co.mz,Serviços/Consultoria,8,Maputo,Baixa,Pequeno
+MAP-033,Empresa Moçambicana Unipessoal Lda,+258 868526486,empresalda@empresa.co.mz,Construção/Imobiliária,11,Maputo,Coop,Pequeno
+MAP-034,Instituto Unida SA,+258 848434500,institutosa@empresa.co.mz,Comércio/Retalho,34,Maputo,Coop,Médio
+MAP-035,Supermercado Moderna Lda,+258 842564689,supermercadolda@empresa.co.mz,Construção/Imobiliária,6,Maputo,Aeroporto,Pequeno
+MAP-036,Tecnologias Nacional SA,+258 854586084,tecnologiassa@empresa.co.mz,Indústria,109,Maputo,Maxaquene,Grande
+MAP-037,Distribuidora Nacional SA,+258 855449368,distribuidorasa@empresa.co.mz,Indústria,102,Maputo,Central,Grande
+MAP-038,Logística Unida Lda,+258 869164991,logísticalda@empresa.co.mz,Indústria,113,Maputo,Aeroporto,Grande
+MAP-039,Hotel Moçambicana SA,+258 862022698,hotelsa@empresa.co.mz,Comércio/Retalho,8,Maputo,Triunfo,Pequeno
+MAP-040,Distribuidora Central SA,+258 869910817,distribuidorasa@empresa.co.mz,Hotelaria/Restauração,42,Maputo,Maxaquene,Médio
+MAP-041,Laboratório Moderna Lda,+258 862140194,laboratóriolda@empresa.co.mz,Comércio/Retalho,16,Maputo,Sommerschield,Médio
+MAP-042,Tecnologias Norte SA,+258 841666754,tecnologiassa@empresa.co.mz,Hotelaria/Restauração,12,Maputo,Triunfo,Pequeno
+MAP-043,Agrícola Nova SA,+258 854426900,agrícolasa@empresa.co.mz,Educação,143,Maputo,Alto Maé,Grande
+MAP-044,Clínica Moçambicana Lda,+258 846033115,clínicalda@empresa.co.mz,Hotelaria/Restauração,21,Maputo,Baixa,Médio
+MAP-045,Grupo Central Lda,+258 862677407,grupolda@empresa.co.mz,Saúde,63,Maputo,Triunfo,Grande
+MAP-046,Consultoria Futuro Lda,+258 852154126,consultorialda@empresa.co.mz,Comércio/Retalho,21,Maputo,Polana,Médio
+MAP-047,Escola Unida Lda,+258 866075395,escolalda@empresa.co.mz,Indústria,45,Maputo,Maxaquene,Médio
+MAP-048,Laboratório Central Lda,+258 845437001,laboratóriolda@empresa.co.mz,Educação,86,Maputo,Sommerschield,Grande
+MAP-049,Empresa Futuro Unipessoal Lda,+258 854533779,empresalda@empresa.co.mz,Comércio/Retalho,14,Maputo,Malhangalene,Pequeno
+MAP-050,Consultoria Unida Lda,+258 851852264,consultorialda@empresa.co.mz,Hotelaria/Restauração,37,Maputo,Maxaquene,Médio
+MAP-051,Agrícola Unida SA,+258 853194789,agrícolasa@empresa.co.mz,Comércio/Retalho,7,Maputo,Central,Pequeno
+MAP-052,Construções Nacional Lda,+258 868175395,construçõeslda@empresa.co.mz,Educação,123,Maputo,Aeroporto,Grande
+MAP-053,Empresa Moderna Unipessoal Lda,+258 847194416,empresalda@empresa.co.mz,Educação,48,Maputo,Aeroporto,Médio
+MAP-054,Comercial Norte Lda,+258 857117837,comerciallda@empresa.co.mz,Educação,42,Maputo,Central,Médio
+MAP-055,Distribuidora Sul SA,+258 862724590,distribuidorasa@empresa.co.mz,Indústria,58,Maputo,Coop,Médio
+MAP-056,Supermercado Norte Lda,+258 843970445,supermercadolda@empresa.co.mz,Serviços/Consultoria,14,Maputo,Coop,Pequeno
+MAP-057,Serviços e Comércio Nacional Lda,+258 855163555,serviçoslda@empresa.co.mz,Indústria,193,Maputo,Alto Maé,Grande
+MAP-058,Empresa Norte Unipessoal Lda,+258 844348276,empresalda@empresa.co.mz,Serviços/Consultoria,7,Maputo,Maxaquene,Pequeno
+MAP-059,Logística Sul Lda,+258 841397023,logísticalda@empresa.co.mz,Construção/Imobiliária,14,Maputo,Coop,Pequeno
+MAP-060,Transportes Sul Lda,+258 856891254,transporteslda@empresa.co.mz,Hotelaria/Restauração,22,Maputo,Sommerschield,Médio
+MAP-061,Transportes Futuro Lda,+258 845382463,transporteslda@empresa.co.mz,Educação,94,Maputo,Central,Grande
+MAP-062,Construções Central Lda,+258 856799667,construçõeslda@empresa.co.mz,Comércio/Retalho,11,Maputo,Triunfo,Pequeno
+MAP-063,Clínica Norte Lda,+258 847462506,clínicalda@empresa.co.mz,Hotelaria/Restauração,43,Maputo,Aeroporto,Médio
+MAP-064,Consultoria Unida Lda,+258 849722815,consultorialda@empresa.co.mz,Indústria,16,Maputo,Baixa,Médio
+MAP-065,Supermercado Moçambicana Lda,+258 846539837,supermercadolda@empresa.co.mz,Indústria,98,Maputo,Baixa,Grande
+MAP-066,Empresa Unida Unipessoal Lda,+258 867851696,empresalda@empresa.co.mz,Educação,139,Maputo,Malhangalene,Grande
+MAP-067,Hotel Futuro SA,+258 857361002,hotelsa@empresa.co.mz,Serviços/Consultoria,13,Maputo,Coop,Pequeno
+MAP-068,Instituto Nova SA,+258 851006810,institutosa@empresa.co.mz,Hotelaria/Restauração,41,Maputo,Malhangalene,Médio
+MAP-069,Consultoria Norte Lda,+258 858418210,consultorialda@empresa.co.mz,Serviços/Consultoria,25,Maputo,Maxaquene,Médio
+MAP-070,Laboratório Progresso Lda,+258 859647849,laboratóriolda@empresa.co.mz,Hotelaria/Restauração,15,Maputo,Sommerschield,Pequeno
+MAP-071,Farmácia Sul Lda,+258 866207974,farmácialda@empresa.co.mz,Hotelaria/Restauração,10,Maputo,Coop,Pequeno
+MAP-072,Consultoria Nacional Lda,+258 848971465,consultorialda@empresa.co.mz,Comércio/Retalho,6,Maputo,Central,Pequeno
+MAP-073,Grupo Progresso Lda,+258 847442089,grupolda@empresa.co.mz,Educação,116,Maputo,Triunfo,Grande
+MAP-074,Tecnologias Nacional SA,+258 848132769,tecnologiassa@empresa.co.mz,Saúde,88,Maputo,Central,Grande
+MAP-075,Laboratório Progresso Lda,+258 843036059,laboratóriolda@empresa.co.mz,Comércio/Retalho,8,Maputo,Aeroporto,Pequeno
+MAP-076,Logística Futuro Lda,+258 858425149,logísticalda@empresa.co.mz,Saúde,76,Maputo,Triunfo,Grande
+MAP-077,Laboratório Norte Lda,+258 848963715,laboratóriolda@empresa.co.mz,Educação,150,Maputo,Maxaquene,Grande
+MAP-078,Tecnologias Unida SA,+258 865013879,tecnologiassa@empresa.co.mz,Saúde,71,Maputo,Maxaquene,Grande
+MAP-079,Grupo Unida Lda,+258 856363836,grupolda@empresa.co.mz,Serviços/Consultoria,20,Maputo,Malhangalene,Médio
+MAP-080,Grupo Nacional Lda,+258 853563646,grupolda@empresa.co.mz,Indústria,43,Maputo,Coop,Médio
+MAP-081,Grupo Norte Lda,+258 868816912,grupolda@empresa.co.mz,Hotelaria/Restauração,31,Maputo,Alto Maé,Médio
+MAP-082,Consultoria Norte Lda,+258 861327691,consultorialda@empresa.co.mz,Serviços/Consultoria,29,Maputo,Triunfo,Médio
+MAP-083,Oficina Norte Lda,+258 856009888,oficinalda@empresa.co.mz,Indústria,127,Maputo,Central,Grande
+MAP-084,Agrícola Futuro SA,+258 864700025,agrícolasa@empresa.co.mz,Construção/Imobiliária,28,Maputo,Aeroporto,Médio
+MAP-085,Construções Norte Lda,+258 856639317,construçõeslda@empresa.co.mz,Saúde,67,Maputo,Central,Grande
+MAP-086,Transportes Nacional Lda,+258 869961107,transporteslda@empresa.co.mz,Hotelaria/Restauração,34,Maputo,Polana,Médio
+MAP-087,Transportes Nova Lda,+258 848190929,transporteslda@empresa.co.mz,Comércio/Retalho,41,Maputo,Central,Médio
+MAP-088,Logística Nacional Lda,+258 856492066,logísticalda@empresa.co.mz,Comércio/Retalho,8,Maputo,Malhangalene,Pequeno
+MAP-089,Clínica Sul Lda,+258 855232413,clínicalda@empresa.co.mz,Comércio/Retalho,29,Maputo,Malhangalene,Médio
+MAP-090,Indústrias Central SA,+258 846871360,indústriassa@empresa.co.mz,Construção/Imobiliária,28,Maputo,Aeroporto,Médio
+MAP-091,Grupo Central Lda,+258 841341919,grupolda@empresa.co.mz,Comércio/Retalho,6,Maputo,Coop,Pequeno
+MAP-092,Tecnologias Nacional SA,+258 864656838,tecnologiassa@empresa.co.mz,Educação,131,Maputo,Sommerschield,Grande
+MAP-093,Construções Sul Lda,+258 862921542,construçõeslda@empresa.co.mz,Saúde,26,Maputo,Triunfo,Médio
+MAP-094,Instituto Unida SA,+258 846233774,institutosa@empresa.co.mz,Construção/Imobiliária,8,Maputo,Triunfo,Pequeno
+MAP-095,Transportes Norte Lda,+258 865074336,transporteslda@empresa.co.mz,Educação,60,Maputo,Sommerschield,Médio
+MAP-096,Hotel Nova SA,+258 846825112,hotelsa@empresa.co.mz,Comércio/Retalho,12,Maputo,Triunfo,Pequeno
+MAP-097,Escola Moderna Lda,+258 848047416,escolalda@empresa.co.mz,Saúde,69,Maputo,Alto Maé,Grande
+MAP-098,Empresa Norte Unipessoal Lda,+258 863566765,empresalda@empresa.co.mz,Construção/Imobiliária,16,Maputo,Maxaquene,Médio
+MAP-099,Laboratório Unida Lda,+258 858307727,laboratóriolda@empresa.co.mz,Serviços/Consultoria,39,Maputo,Maxaquene,Médio
+MAP-100,Oficina Unida Lda,+258 845679639,oficinalda@empresa.co.mz,Construção/Imobiliária,15,Maputo,Coop,Pequeno

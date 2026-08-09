@@ -1,0 +1,51 @@
+id,nome,contacto,email,area_actividade,quantidade_pcs,cidade,bairro,tipo_cliente
+MAT-001,Tecnologias Progresso SA,+258 851481506,tecnologiassa@empresa.co.mz,Indústria,150,Matola,Malandela,Grande
+MAT-002,Clínica Nacional Lda,+258 855334434,clínicalda@empresa.co.mz,Saúde,67,Matola,Tsalala,Grande
+MAT-003,Farmácia Unida Lda,+258 864205394,farmácialda@empresa.co.mz,Serviços/Consultoria,40,Matola,Fomento,Médio
+MAT-004,Agrícola Progresso SA,+258 868987516,agrícolasa@empresa.co.mz,Comércio/Retalho,40,Matola,Tsalala,Médio
+MAT-005,Indústrias Progresso SA,+258 854717770,indústriassa@empresa.co.mz,Educação,14,Matola,Machava,Pequeno
+MAT-006,Tecnologias Unida SA,+258 869907391,tecnologiassa@empresa.co.mz,Serviços/Consultoria,28,Matola,Nhanteto,Médio
+MAT-007,Supermercado Sul Lda,+258 856144280,supermercadolda@empresa.co.mz,Serviços/Consultoria,27,Matola,Nhanteto,Médio
+MAT-008,Empresa Moçambicana Unipessoal Lda,+258 869990305,empresalda@empresa.co.mz,Serviços/Consultoria,25,Matola,Machava,Médio
+MAT-009,Instituto Moçambicana SA,+258 859801946,institutosa@empresa.co.mz,ONGs/Associações,18,Matola,Nhanteto,Médio
+MAT-010,Empresa Moçambicana Unipessoal Lda,+258 854010529,empresalda@empresa.co.mz,Educação,85,Matola,Tsalala,Grande
+MAT-011,Supermercado Nacional Lda,+258 845901239,supermercadolda@empresa.co.mz,Serviços/Consultoria,22,Matola,Fomento,Médio
+MAT-012,Comercial Progresso Lda,+258 865770422,comerciallda@empresa.co.mz,Hotelaria/Restauração,11,Matola,Fomento,Pequeno
+MAT-013,Logística Sul Lda,+258 859014965,logísticalda@empresa.co.mz,Saúde,28,Matola,Fomento,Médio
+MAT-014,Grupo Norte Lda,+258 861899411,grupolda@empresa.co.mz,Comércio/Retalho,36,Matola,Machava,Médio
+MAT-015,Oficina Unida Lda,+258 847982241,oficinalda@empresa.co.mz,Comércio/Retalho,10,Matola,Tsalala,Pequeno
+MAT-016,Farmácia Moçambicana Lda,+258 858427625,farmácialda@empresa.co.mz,Educação,143,Matola,Malandela,Grande
+MAT-017,Oficina Norte Lda,+258 862664863,oficinalda@empresa.co.mz,Serviços/Consultoria,24,Matola,Fomento,Médio
+MAT-018,Consultoria Moçambicana Lda,+258 845024269,consultorialda@empresa.co.mz,Indústria,72,Matola,Machava,Grande
+MAT-019,Grupo Nacional Lda,+258 858883823,grupolda@empresa.co.mz,Comércio/Retalho,5,Matola,Malandela,Pequeno
+MAT-020,Tecnologias Unida SA,+258 844916201,tecnologiassa@empresa.co.mz,Serviços/Consultoria,23,Matola,Nhanteto,Médio
+MAT-021,Oficina Moçambicana Lda,+258 864771676,oficinalda@empresa.co.mz,Indústria,113,Matola,Machava,Grande
+MAT-022,Construções Nacional Lda,+258 846160869,construçõeslda@empresa.co.mz,Educação,28,Matola,Fomento,Médio
+MAT-023,Oficina Unida Lda,+258 856101803,oficinalda@empresa.co.mz,Educação,122,Matola,Machava,Grande
+MAT-024,Construções Futuro Lda,+258 852349590,construçõeslda@empresa.co.mz,Hotelaria/Restauração,39,Matola,Nhanteto,Médio
+MAT-025,Agrícola Sul SA,+258 844840714,agrícolasa@empresa.co.mz,Educação,74,Matola,Fomento,Grande
+MAT-026,Oficina Nova Lda,+258 861674975,oficinalda@empresa.co.mz,ONGs/Associações,6,Matola,Infulene,Pequeno
+MAT-027,Instituto Progresso SA,+258 854044882,institutosa@empresa.co.mz,Construção/Imobiliária,21,Matola,Nhanteto,Médio
+MAT-028,Agrícola Progresso SA,+258 857850944,agrícolasa@empresa.co.mz,ONGs/Associações,10,Matola,Nhanteto,Pequeno
+MAT-029,Empresa Nacional Unipessoal Lda,+258 869312590,empresalda@empresa.co.mz,Serviços/Consultoria,26,Matola,Malandela,Médio
+MAT-030,Transportes Futuro Lda,+258 846276722,transporteslda@empresa.co.mz,Serviços/Consultoria,7,Matola,Nhanteto,Pequeno
+MAT-031,Empresa Norte Unipessoal Lda,+258 868750676,empresalda@empresa.co.mz,Serviços/Consultoria,37,Matola,Fomento,Médio
+MAT-032,Consultoria Futuro Lda,+258 868416216,consultorialda@empresa.co.mz,Serviços/Consultoria,28,Matola,Nhanteto,Médio
+MAT-033,Consultoria Unida Lda,+258 858350368,consultorialda@empresa.co.mz,Construção/Imobiliária,22,Matola,T-3,Médio
+MAT-034,Indústrias Moderna SA,+258 863657144,indústriassa@empresa.co.mz,Indústria,12,Matola,Tsalala,Pequeno
+MAT-035,Serviços e Comércio Futuro Lda,+258 842903561,serviçoslda@empresa.co.mz,Serviços/Consultoria,31,Matola,Machava,Médio
+MAT-036,Empresa Nacional Unipessoal Lda,+258 865587308,empresalda@empresa.co.mz,Saúde,68,Matola,Infulene,Grande
+MAT-037,Indústrias Progresso SA,+258 863426689,indústriassa@empresa.co.mz,Serviços/Consultoria,20,Matola,Nhanteto,Médio
+MAT-038,Farmácia Futuro Lda,+258 857961578,farmácialda@empresa.co.mz,Serviços/Consultoria,13,Matola,Machava,Pequeno
+MAT-039,Laboratório Unida Lda,+258 866008935,laboratóriolda@empresa.co.mz,Serviços/Consultoria,5,Matola,Infulene,Pequeno
+MAT-040,Oficina Progresso Lda,+258 869125900,oficinalda@empresa.co.mz,Construção/Imobiliária,9,Matola,Nhanteto,Pequeno
+MAT-041,Supermercado Futuro Lda,+258 854165061,supermercadolda@empresa.co.mz,Serviços/Consultoria,29,Matola,Nhanteto,Médio
+MAT-042,Tecnologias Nova SA,+258 851732280,tecnologiassa@empresa.co.mz,ONGs/Associações,29,Matola,Tsalala,Médio
+MAT-043,Indústrias Norte SA,+258 851621086,indústriassa@empresa.co.mz,Serviços/Consultoria,29,Matola,T-3,Médio
+MAT-044,Oficina Sul Lda,+258 849823994,oficinalda@empresa.co.mz,Comércio/Retalho,11,Matola,Nhanteto,Pequeno
+MAT-045,Serviços e Comércio Nacional Lda,+258 848876745,serviçoslda@empresa.co.mz,Indústria,109,Matola,T-3,Grande
+MAT-046,Construções Sul Lda,+258 862347467,construçõeslda@empresa.co.mz,Construção/Imobiliária,24,Matola,Malandela,Médio
+MAT-047,Supermercado Norte Lda,+258 861602286,supermercadolda@empresa.co.mz,Indústria,86,Matola,Nhanteto,Grande
+MAT-048,Tecnologias Unida SA,+258 852651601,tecnologiassa@empresa.co.mz,Educação,68,Matola,Machava,Grande
+MAT-049,Empresa Progresso Unipessoal Lda,+258 841771600,empresalda@empresa.co.mz,Construção/Imobiliária,10,Matola,Infulene,Pequeno
+MAT-050,Distribuidora Unida SA,+258 853442255,distribuidorasa@empresa.co.mz,Serviços/Consultoria,27,Matola,Matola Gare,Médio

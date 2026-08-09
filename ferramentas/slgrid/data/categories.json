@@ -1,0 +1,23 @@
+[
+  {
+    "id": "redes",
+    "name": "Redes e Infraestrutura",
+    "slug": "redes",
+    "icon": "fa-network-wired",
+    "description": "Equipamentos e componentes para redes de computadores, conectividade e infraestrutura de TI."
+  },
+  {
+    "id": "eletrico",
+    "name": "Material Elétrico",
+    "slug": "eletrico",
+    "icon": "fa-bolt",
+    "description": "Materiais elétricos para instalações residenciais, comerciais e industriais."
+  },
+  {
+    "id": "eletronicos",
+    "name": "Equipamentos Eletrónicos",
+    "slug": "eletronicos",
+    "icon": "fa-microchip",
+    "description": "Dispositivos e componentes eletrónicos para uso técnico e profissional."
+  }
+]
