@@ -1,0 +1,30 @@
+CREATE TABLE IF NOT EXISTS products (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  barcode TEXT UNIQUE NOT NULL,
+  cost REAL NOT NULL,
+  price REAL NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS batches (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  product_id INTEGER NOT NULL,
+  lot TEXT NOT NULL,
+  quantity INTEGER NOT NULL DEFAULT 0,
+  expiry_date DATE NOT NULL,
+  FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+CREATE TABLE IF NOT EXISTS sales (
+  id INTEGER PRIMARY KEY,
+  branch TEXT NOT NULL,
+  total REAL NOT NULL,
+  items TEXT NOT NULL,
+  paid REAL NOT NULL,
+  date DATETIME DEFAULT CURRENT_TIMESTAMP,
+  synced INTEGER DEFAULT 0
+);
+
+CREATE INDEX IF NOT EXISTS idx_barcode ON products(barcode);
+CREATE INDEX IF NOT EXISTS idx_synced ON sales(synced);
+CREATE INDEX IF NOT EXISTS idx_expiry ON batches(expiry_date);

@@ -1,0 +1,29 @@
+# Segredos
+agentes/segredos/
+*.env
+.env*
+
+# Node
+node_modules/
+dist/
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.swp
+
+# Ficheiros pesados ou temporários
+*.zip
+*.deb
+*.iso
+*.run
+
+# Software de terceiros em agentes (downloads, re-downloadáveis)
+agentes/sky/openclaw-main/
+agentes/sky/openclaude-main/
+agentes/sky/hermes-agent-main/
+agentes/sky/opencode-dev/
+agentes/sky/skyforge/
+agentes/sky/agent/
+agentes/sky/assets/
+_duplicados/skylayer-agent-antigo/

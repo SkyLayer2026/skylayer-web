@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — SkyLayer</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body data-page="">
+  <div class="scrollbar" id="scrollbar"></div>
+  <header class="topbar">
+    <div class="container topbar-content">
+      <div class="brand">SkyLayer <small>Web & Cloud</small></div>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="plans.html">Plans</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h2>Page not found</h2>
+      <p class="lead">The page you requested does not exist. Use the menu to continue.</p>
+      <div class="btn-row">
+        <a class="btn primary" href="index.html">Go Home</a>
+        <a class="btn secondary" href="services.html">Services</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>SkyLayer</strong>
+        <p class="small muted">Websites, hosting, domains, and maintenance — delivered with clarity and predictable timelines.</p>
+      </div>
+      <div>
+        <p class="small muted">© <span id="year"></span> SkyLayer.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

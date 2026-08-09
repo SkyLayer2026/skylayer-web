@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmácia Lurio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>💊 Farmácia Lurio</h1>
+    <div class="header-info">
+      <span id="branchBadge">Unidade: Sede</span>
+      <span id="syncStatus"> Online</span>
+    </div>
+  </header>
+
+  <nav>
+    <button class="active" onclick="showTab('pos')">🛒 Caixa</button>
+    <button onclick="showTab('products')">📦 Produtos</button>
+    <button onclick="showTab('stock')">📊 Stock & Validade</button>
+    <button onclick="showTab('reports')">📈 Relatórios</button>
+  </nav>
+
+  <main>
+    <!-- CAIXA -->
+    <section id="pos" class="tab active">
+      <div class="pos-header">
+        <input type="text" id="barcodeInput" placeholder="Escanear código de barras ou digitar..." autofocus>
+        <button onclick="addToCart()">Adicionar</button>
+      </div>
+      <table id="cartTable">
+        <thead><tr><th>Produto</th><th>Qtd</th><th>Preço</th><th>Total</th><th></th></tr></thead>
+        <tbody id="cartBody"></tbody>
+      </table>
+      <div class="pos-footer">
+        <h2>Total: <span id="cartTotal">0,00 MT</span></h2>
+        <button id="btnCheckout" disabled onclick="checkout()">Finalizar Venda</button>
+      </div>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section id="products" class="tab">
+      <h2>📦 Cadastro de Produtos</h2>
+      <div class="form-row">
+        <input type="text" id="prodName" placeholder="Nome do Produto">
+        <input type="text" id="prodBarcode" placeholder="Código de Barras">
+        <input type="number" id="prodCost" placeholder="Preço Custo" step="0.01">
+        <input type="number" id="prodPrice" placeholder="Preço Venda" step="0.01">
+        <button onclick="addProduct()">Salvar Produto</button>
+      </div>
+      <h3>Lotes / Reposição</h3>
+      <div class="form-row">
+        <select id="batchProductSelect"></select>
+        <input type="text" id="batchLot" placeholder="Nº Lote">
+        <input type="number" id="batchQty" placeholder="Quantidade">
+        <input type="date" id="batchExp">
+        <button onclick="addBatch()">Adicionar Lote</button>
+      </div>
+    </section>
+
+    <!-- STOCK & VALIDADE -->
+    <section id="stock" class="tab">
+      <h2>📊 Controlo de Stock & Validade</h2>
+      <div id="alertsContainer"></div>
+      <table>
+        <thead><tr><th>Produto</th><th>Lote</th><th>Qtd</th><th>Validade</th><th>Status</th></tr></thead>
+        <tbody id="stockBody"></tbody>
+      </table>
+    </section>
+
+    <!-- RELATÓRIOS -->
+    <section id="reports" class="tab">
+      <h2>📈 Relatórios do Dia</h2>
+      <div class="stats-grid">
+        <div class="card"><h3>Vendas Hoje</h3><p id="repTotal">0,00 MT</p></div>
+        <div class="card"><h3>Transações</h3><p id="repCount">0</p></div>
+        <div class="card"><h3>Lucro Est.</h3><p id="repProfit">0,00 MT</p></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

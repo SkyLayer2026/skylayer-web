@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FreelaCRM — Gestão de Prospeção</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --panel: #171a23;
+    --panel2: #1e2230;
+    --border: #2a2f3d;
+    --text: #e6e8ee;
+    --muted: #8b93a7;
+    --accent: #5b8cff;
+    --accent2: #7aa2ff;
+    --green: #3ecf8e;
+    --yellow: #f5b544;
+    --orange: #ff8b3d;
+    --red: #ff5d5d;
+    --blue: #5b8cff;
+    --gray: #6b7280;
+    --radius: 12px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+  }
+  .app { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
+
+  /* Sidebar */
+  .sidebar {
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    padding: 20px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .logo { font-size: 18px; font-weight: 700; padding: 6px 10px 20px; }
+  .logo span { color: var(--accent); }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 11px 12px; border-radius: 8px; cursor: pointer;
+    color: var(--muted); font-size: 14px; font-weight: 500;
+    transition: all .15s; border: none; background: transparent; width: 100%; text-align: left;
+  }
+  .nav-item:hover { background: var(--panel2); color: var(--text); }
+  .nav-item.active { background: var(--accent); color: #fff; }
+  .nav-item .icon { font-size: 16px; width: 20px; text-align: center; }
+  .sidebar-footer { margin-top: auto; font-size: 12px; color: var(--muted); padding: 10px; display: flex; gap: 8px; }
+
+  /* Main */
+  .main { padding: 24px 28px; overflow-y: auto; max-height: 100vh; }
+  .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .header h1 { font-size: 22px; font-weight: 700; }
+  .header .sub { color: var(--muted); font-size: 13px; margin-top: 3px; }
+
+  /* Buttons */
+  .btn {
+    padding: 9px 16px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--panel2); color: var(--text); font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: all .15s;
+  }
+  .btn:hover { border-color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { background: var(--accent2); }
+  .btn.danger { background: transparent; border-color: var(--red); color: var(--red); }
+  .btn.small { padding: 5px 10px; font-size: 12px; }
+
+  /* Cards / stats */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .stat {
+    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px;
+  }
+  .stat .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+  .stat .value { font-size: 28px; font-weight: 700; margin-top: 6px; }
+  .stat .value.green { color: var(--green); }
+  .stat .value.yellow { color: var(--yellow); }
+  .stat .value.orange { color: var(--orange); }
+  .stat .hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* Layout grids */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .panel {
+    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px;
+  }
+  .panel h3 { font-size: 15px; margin-bottom: 14px; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .4px; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  td { padding: 10px; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: var(--panel2); }
+  .empty { text-align: center; color: var(--muted); padding: 40px 0 !important; font-size: 14px; }
+
+  /* Badges */
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .badge.enviado { background: rgba(91,140,255,.15); color: var(--blue); }
+  .badge.respondeu { background: rgba(245,181,68,.15); color: var(--yellow); }
+  .badge.negociacao { background: rgba(255,139,61,.15); color: var(--orange); }
+  .badge.fechado { background: rgba(62,207,142,.15); color: var(--green); }
+  .badge.perdido { background: rgba(255,93,93,.12); color: var(--red); }
+  .badge.none { background: rgba(107,114,128,.15); color: var(--gray); }
+
+  /* Kanban */
+  .kanban { display: flex; gap: 14px; align-items: flex-start; overflow-x: auto; padding-bottom: 10px; }
+  .kanban-col { min-width: 250px; flex: 1; }
+  .kanban-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 12px; border-radius: 8px 8px 0 0; font-size: 13px; font-weight: 600;
+  }
+  .kanban-col.enviado .kanban-head { background: rgba(91,140,255,.15); color: var(--blue); }
+  .kanban-col.respondeu .kanban-head { background: rgba(245,181,68,.15); color: var(--yellow); }
+  .kanban-col.negociacao .kanban-head { background: rgba(255,139,61,.15); color: var(--orange); }
+  .kanban-col.fechado .kanban-head { background: rgba(62,207,142,.15); color: var(--green); }
+  .kanban-col.perdido .kanban-head { background: rgba(255,93,93,.12); color: var(--red); }
+  .kanban-body {
+    background: var(--panel); border: 1px solid var(--border); border-top: none;
+    border-radius: 0 0 8px 8px; padding: 10px; display: flex; flex-direction: column; gap: 8px;
+    min-height: 120px;
+  }
+  .card {
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 12px; cursor: pointer; transition: border-color .15s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card .c-name { font-weight: 600; font-size: 13px; }
+  .card .c-service { font-size: 12px; color: var(--muted); margin: 4px 0; }
+  .card .c-value { font-size: 13px; font-weight: 700; }
+  .card .c-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; font-size: 11px; color: var(--muted); }
+  .card .c-contact { font-size: 11px; color: var(--muted); }
+  .card .c-day { font-size: 10px; color: var(--orange); font-weight: 600; }
+  .card.pending { border-left: 3px solid var(--orange); }
+
+  /* Modal */
+  .modal-bg {
+    position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none;
+    align-items: center; justify-content: center; z-index: 100;
+  }
+  .modal-bg.open { display: flex; }
+  .modal {
+    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+    width: 520px; max-width: 95vw; max-height: 90vh; overflow-y: auto; padding: 22px;
+    animation: pop .2s ease;
+  }
+  @keyframes pop { from { transform: scale(.96); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .modal h2 { font-size: 18px; margin-bottom: 18px; }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; font-weight: 600; }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 9px 11px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--panel2); color: var(--text); font-size: 13px; font-family: inherit;
+  }
+  .field textarea { resize: vertical; min-height: 70px; }
+  .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 18px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 20px; right: 20px; background: var(--green); color: #06130c;
+    padding: 12px 18px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    opacity: 0; transform: translateY(10px); transition: all .25s; z-index: 200;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  .search { padding: 9px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); font-size: 13px; width: 240px; }
+  .section-title { font-size: 16px; font-weight: 700; margin: 26px 0 12px; }
+  .hidden { display: none; }
+  .funnel { display: flex; gap: 6px; margin-top: 10px; }
+  .funnel .seg { height: 8px; border-radius: 4px; }
+  .app-actions { display: flex; gap: 10px; align-items: center; }
+  .actions-cell { display: flex; gap: 6px; }
+  .icon-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 15px; padding: 2px 4px; }
+  .icon-btn:hover { color: var(--text); }
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { flex-direction: row; overflow-x: auto; padding: 10px; }
+    .logo { display: none; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .main { max-height: none; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo">Freela<span>CRM</span></div>
+    <button class="nav-item active" data-view="dashboard"><span class="icon">📊</span> Dashboard</button>
+    <button class="nav-item" data-view="pipeline"><span class="icon">📋</span> Pipeline</button>
+    <button class="nav-item" data-view="clientes"><span class="icon">👥</span> Clientes</button>
+    <button class="nav-item" data-view="propostas"><span class="icon">📨</span> Propostas</button>
+    <div class="sidebar-footer">
+      <span id="storageInfo"></span>
+    </div>
+  </aside>
+
+  <main class="main" id="viewContainer"></main>
+</div>
+
+<!-- Modal criação/edição -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal" id="modal"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============ ESTADO ============
+const STATES = ['enviado', 'respondeu', 'negociacao', 'fechado', 'perdido'];
+const STATE_LABELS = {
+  enviado: 'Enviado', respondeu: 'Respondeu', negociacao: 'Negociação',
+  fechado: 'Fechado', perdido: 'Perdido'
+};
+
+let clients = JSON.parse(localStorage.getItem('fc_clients') || '[]');
+let deals = JSON.parse(localStorage.getItem('fc_deals') || '[]');
+let currentView = 'dashboard';
+
+function saveAll() {
+  localStorage.setItem('fc_clients', JSON.stringify(clients));
+  localStorage.setItem('fc_deals', JSON.stringify(deals));
+}
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+function today() { return new Date().toISOString().split('T')[0]; }
+function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function money(v) { return v ? '€' + Number(v).toLocaleString('pt-PT') : '—'; }
+function clientById(id) { return clients.find(c => c.id === id); }
+function dealsByClient(id) { return deals.filter(d => d.clientId === id); }
+function dealDays(d) {
+  if (!d.createdAt) return null;
+  const diff = Math.floor((new Date(today()) - new Date(d.createdAt.split('T')[0])) / 86400000);
+  return diff;
+}
+function isPending(d) {
+  return (d.status === 'enviado' || d.status === 'respondeu') && dealDays(d) >= 3;
+}
+
+// ============ NAVEGAÇÃO ============
+document.querySelectorAll('.nav-item').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentView = btn.dataset.view;
+    render();
+  });
+});
+
+// ============ TOAST ============
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ============ MODAL ============
+function openModal(inner) {
+  document.getElementById('modal').innerHTML = inner;
+  document.getElementById('modalBg').classList.add('open');
+}
+function closeModal() { document.getElementById('modalBg').classList.remove('open'); }
+document.getElementById('modalBg').addEventListener('click', e => {
+  if (e.target.id === 'modalBg') closeModal();
+});
+
+// ============ CRUD CLIENTES ============
+function clientForm(client) {
+  const c = client || {};
+  return `
+    <h2>${client ? 'Editar Cliente' : 'Novo Cliente'}</h2>
+    <div class="field"><label>Nome do Contacto *</label><input id="fNome" value="${esc(c.name)}" placeholder="Ex: João Silva"></div>
+    <div class="field"><label>Empresa / Negócio</label><input id="fEmpresa" value="${esc(c.company)}" placeholder="Ex: Barbearia Central"></div>
+    <div class="row-2">
+      <div class="field"><label>Telefone</label><input id="fTel" value="${esc(c.phone)}" placeholder="+351 900 000 000"></div>
+      <div class="field"><label>Email</label><input id="fEmail" value="${esc(c.email)}" placeholder="email@exemplo.pt"></div>
+    </div>
+    <div class="field"><label>Canal de Origem</label>
+      <select id="fSource">
+        ${['', 'Google Maps', 'Facebook', 'Instagram', 'WhatsApp', 'Upwork', 'Fiverr', 'Indicação', 'LinkedIn', 'Visita', 'Outro'].map(s =>
+          `<option value="${s}" ${c.source === s ? 'selected' : ''}>${s || '— Selecionar —'}</option>`).join('')}
+      </select>
+    </div>
+    <div class="field"><label>Notas</label><textarea id="fNotes">${esc(c.notes || '')}</textarea></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Cancelar</button>
+      <button class="btn primary" onclick="saveClient('${client ? client.id : ''}')">${client ? 'Guardar' : 'Adicionar Cliente'}</button>
+    </div>`;
+}
+
+function saveClient(id) {
+  const data = {
+    name: document.getElementById('fNome').value.trim(),
+    company: document.getElementById('fEmpresa').value.trim(),
+    phone: document.getElementById('fTel').value.trim(),
+    email: document.getElementById('fEmail').value.trim(),
+    source: document.getElementById('fSource').value,
+    notes: document.getElementById('fNotes').value.trim()
+  };
+  if (!data.name) { toast('Nome é obrigatório'); return; }
+  if (id) {
+    const c = clientById(id);
+    Object.assign(c, data);
+  } else {
+    clients.push({ id: uid(), ...data, createdAt: new Date().toISOString() });
+  }
+  saveAll();
+  closeModal();
+  toast('Cliente guardado');
+  render();
+}
+
+function deleteClient(id) {
+  if (!confirm('Eliminar cliente e todas as propostas associadas?')) return;
+  clients = clients.filter(c => c.id !== id);
+  deals = deals.filter(d => d.clientId !== id);
+  saveAll();
+  toast('Cliente eliminado');
+  render();
+}
+
+// ============ CRUD PROPOSTAS ============
+function dealForm(deal, presetClientId) {
+  const d = deal || {};
+  const opcoes = clients.map(c => `<option value="${c.id}" ${(d.clientId || presetClientId) === c.id ? 'selected' : ''}>${esc(c.name)}${c.company ? ' — ' + esc(c.company) : ''}</option>`).join('');
+  const select = `<select id="fDealClient">${clients.length ? opcoes : '<option value="">— Primeiro adiciona um cliente —</option>'}</select>`;
+  return `
+    <h2>${deal ? 'Editar Proposta' : 'Nova Proposta'}</h2>
+    <div class="field"><label>Cliente *</label>${select}</div>
+    <div class="field"><label>Serviço *</label>
+      <select id="fDealService">
+        ${['', 'Website', 'Landing Page', 'Sistema Web', 'Correção de Bugs', 'Automação', 'Conversão Design', 'Integração de APIs', 'Outro'].map(s =>
+          `<option value="${s}" ${d.service === s ? 'selected' : ''}>${s || '— Selecionar —'}</option>`).join('')}
+      </select>
+    </div>
+    <div class="row-2">
+      <div class="field"><label>Valor (€)</label><input id="fDealValue" type="number" value="${esc(d.value ?? '')}" placeholder="500"></div>
+      <div class="field"><label>Estado</label>
+        <select id="fDealStatus">
+          ${STATES.map(s => `<option value="${s}" ${d.status === s ? 'selected' : ''}>${STATE_LABELS[s]}</option>`).join('')}
+        </select>
+      </div>
+    </div>
+    <div class="field"><label>Data de Follow-up (próximo contacto)</label><input id="fDealFollow" type="date" value="${esc(d.followUp || '')}"></div>
+    <div class="field"><label>Descrição / Notas</label><textarea id="fDealNotes">${esc(d.notes || '')}</textarea></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Cancelar</button>
+      <button class="btn primary" onclick="saveDeal('${deal ? deal.id : ''}')">${deal ? 'Guardar' : 'Criar Proposta'}</button>
+    </div>`;
+}
+
+function saveDeal(id) {
+  const clientId = document.getElementById('fDealClient').value;
+  const service = document.getElementById('fDealService').value;
+  if (!clientId || !service) { toast('Cliente e serviço são obrigatórios'); return; }
+  const data = {
+    clientId,
+    service,
+    value: document.getElementById('fDealValue').value ? Number(document.getElementById('fDealValue').value) : null,
+    status: document.getElementById('fDealStatus').value,
+    followUp: document.getElementById('fDealFollow').value,
+    notes: document.getElementById('fDealNotes').value.trim()
+  };
+  if (id) {
+    const d = deals.find(x => x.id === id);
+    Object.assign(d, data, { updatedAt: new Date().toISOString() });
+  } else {
+    deals.push({ id: uid(), ...data, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() });
+  }
+  saveAll();
+  closeModal();
+  toast('Proposta guardada');
+  render();
+}
+
+function deleteDeal(id) {
+  if (!confirm('Eliminar esta proposta?')) return;
+  deals = deals.filter(d => d.id !== id);
+  saveAll();
+  toast('Proposta eliminada');
+  render();
+}
+
+function moveDeal(id, status) {
+  const d = deals.find(x => x.id === id);
+  if (!d) return;
+  d.status = status;
+  d.updatedAt = new Date().toISOString();
+  saveAll();
+  render();
+  toast('Movida para ' + STATE_LABELS[status]);
+}
+
+// ============ DASHBOARD ============
+function dashboardView() {
+  const enviadas = deals.filter(d => d.status !== 'perdido').length;
+  const fechadas = deals.filter(d => d.status === 'fechado').length;
+  const negociacao = deals.filter(d => d.status === 'negociacao').length;
+  const respondidas = deals.filter(d => d.status === 'respondeu' || d.status === 'negociacao' || d.status === 'fechado').length;
+  const valorTotal = deals.filter(d => d.status === 'fechado').reduce((s, d) => s + (d.value || 0), 0);
+  const conversao = enviadas ? Math.round((fechadas / enviadas) * 100) : 0;
+  const pending = deals.filter(isPending);
+
+  const byStatus = {};
+  STATES.forEach(s => byStatus[s] = deals.filter(d => d.status === s).length);
+  const totalDeals = deals.length || 1;
+
+  const recent = [...deals].sort((a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || '')).slice(0, 6);
+  const clientsRecent = [...clients].sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || '')).slice(0, 6);
+
+  return `
+    <div class="header">
+      <div>
+        <h1>Dashboard</h1>
+        <div class="sub">${today()} · Resumo da tua prospeção</div>
+      </div>
+      <div class="app-actions">
+        <button class="btn primary" onclick="openModal(clientForm())">+ Novo Cliente</button>
+        <button class="btn" onclick="quickDeal()">+ Nova Proposta</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="label">Propostas enviadas</div><div class="value">${enviadas}</div><div class="hint">exclui perdidas</div></div>
+      <div class="stat"><div class="label">Em negociação</div><div class="value orange">${negociacao}</div></div>
+      <div class="stat"><div class="label">Fechadas</div><div class="value green">${fechadas}</div><div class="hint">${money(valorTotal)} faturado</div></div>
+      <div class="stat"><div class="label">Taxa de conversão</div><div class="value yellow">${conversao}%</div></div>
+      <div class="stat"><div class="label">Clientes</div><div class="value">${clients.length}</div></div>
+      <div class="stat"><div class="label">Follow-ups pendentes</div><div class="value" style="color:${pending.length ? 'var(--orange)' : 'var(--green)'}">${pending.length}</div><div class="hint">agendados há 3+ dias</div></div>
+    </div>
+
+    <div class="panel" style="margin-bottom:16px">
+      <h3>Funil de vendas</h3>
+      <div class="funnel" title="Enviado → Respondeu → Negociação → Fechado">
+        <div class="seg" style="width:${byStatus.enviado / totalDeals * 100}%;background:var(--blue)"></div>
+        <div class="seg" style="width:${byStatus.respondeu / totalDeals * 100}%;background:var(--yellow)"></div>
+        <div class="seg" style="width:${byStatus.negociacao / totalDeals * 100}%;background:var(--orange)"></div>
+        <div class="seg" style="width:${byStatus.fechado / totalDeals * 100}%;background:var(--green)"></div>
+      </div>
+      <div style="display:flex;gap:16px;margin-top:8px;font-size:12px;color:var(--muted)">
+        ${STATES.filter(s => s !== 'perdido').map(s => `<span><span style="color:var(--${s === 'enviado' ? 'blue' : s === 'respondeu' ? 'yellow' : s === 'negociacao' ? 'orange' : 'green'});font-weight:700">${byStatus[s]}</span> ${STATE_LABELS[s]}</span>`).join('')}
+        <span><span style="color:var(--red);font-weight:700">${byStatus.perdido}</span> Perdidas</span>
+      </div>
+    </div>
+
+    ${pending.length ? `<div class="panel" style="margin-bottom:16px;border-color:var(--orange)">
+      <h3 style="color:var(--orange)">⚠️ Follow-ups pendentes</h3>
+      <table><thead><tr><th>Cliente</th><th>Serviço</th><th>Estado</th><th>Dias</th><th></th></tr></thead><tbody>
+      ${pending.map(d => {
+        const c = clientById(d.clientId) || {};
+        const dias = dealDays(d);
+        return `<tr>
+          <td>${esc(c.name || 'Sem cliente')}</td><td>${esc(d.service || '')}</td>
+          <td><span class="badge ${d.status}">${STATE_LABELS[d.status]}</span></td>
+          <td style="color:var(--orange);font-weight:600">${dias} dias</td>
+          <td><button class="btn small" onclick="openModal(dealForm(deals.find(x => x.id === '${d.id}')));document.getElementById('fDealFollow').min=('${today()}')">Marcar follow-up</button></td>
+        </tr>`;}).join('')}
+      </tbody></table>
+    </div>` : ''}
+
+    <div class="grid-2">
+      <div class="panel">
+        <h3>Últimas atividades</h3>
+        ${recent.length ? `<table><thead><tr><th>Cliente</th><th>Serviço</th><th>Estado</th><th>Valor</th></tr></thead><tbody>
+          ${recent.map(d => { const c = clientById(d.clientId) || {}; return `<tr>
+            <td>${esc(c.name || '—')}</td><td>${esc(d.service || '')}</td>
+            <td><span class="badge ${d.status}">${STATE_LABELS[d.status]}</span></td><td>${money(d.value)}</td></tr>`; }).join('')}
+        </tbody></table>` : `<div class="empty">Ainda sem propostas. Cria a primeira!</div>`}
+      </div>
+      <div class="panel">
+        <h3>Últimos clientes</h3>
+        ${clientsRecent.length ? `<table><thead><tr><th>Nome</th><th>Empresa</th><th>Origem</th><th>#</th></tr></thead><tbody>
+          ${clientsRecent.map(c => { const n = dealsByClient(c.id).length; return `<tr>
+            <td>${esc(c.name)}</td><td>${esc(c.company || '—')}</td><td><span class="badge none">${esc(c.source || '—')}</span></td><td>${n} prop.</td></tr>`; }).join('')}
+        </tbody></table>` : `<div class="empty">Sem clientes registados</div>`}
+      </div>
+    </div>`;
+}
+
+function quickDeal() { openModal(dealForm(null)); }
+
+// ============ PIPELINE ============
+function pipelineView() {
+  return `
+    <div class="header">
+      <div><h1>Pipeline</h1><div class="sub">Arrasta mentalmente: cada proposta numa fase. Clica para editar e mudar o estado.</div></div>
+      <div class="app-actions">
+        <button class="btn primary" onclick="openModal(clientForm())">+ Novo Cliente</button>
+        <button class="btn" onclick="openModal(dealForm(null))">+ Nova Proposta</button>
+      </div>
+    </div>
+    <div class="kanban">
+      ${STATES.map(s => {
+        const col = deals.filter(d => d.status === s);
+        return `<div class="kanban-col ${s}">
+          <div class="kanban-head">${STATE_LABELS[s]} <span>${col.length}</span></div>
+          <div class="kanban-body">
+            ${col.map(d => {
+              const c = clientById(d.clientId) || {};
+              const dias = dealDays(d);
+              return `<div class="card ${isPending(d) ? 'pending' : ''}" onclick="openModal(dealForm(deals.find(x => x.id === '${d.id}')))">
+                <div class="c-name">${esc(c.name || 'Sem nome')}</div>
+                <div class="c-service">${esc(c.company || '')} · ${esc(d.service || '')}</div>
+                <div class="c-value">${money(d.value)}</div>
+                <div class="c-meta">
+                  <span class="c-contact">${esc(c.phone || c.email || '')}</span>
+                  ${dias !== null ? `<span class="c-day">${dias} dias</span>` : ''}
+                </div>
+                ${d.followUp ? `<div class="c-contact">Próx. contacto: <b>${esc(d.followUp)}</b></div>` : ''}
+              </div>`;
+            }).join('') || `<div class="empty" style="padding:20px 0!important;font-size:12px">Vazio</div>`}
+          </div>
+        </div>`;
+      }).join('')}
+    </div>`;
+}
+
+// ============ CLIENTES ============
+function clientesView() {
+  const q = document.getElementById('searchClients')?.value?.toLowerCase() || '';
+  let list = clients;
+  if (q) list = list.filter(c => (c.name + ' ' + (c.company || '') + ' ' + (c.source || '')).toLowerCase().includes(q));
+  return `
+    <div class="header">
+      <div><h1>Clientes</h1><div class="sub">${clients.length} contactos registados</div></div>
+      <div class="app-actions">
+        <input class="search" id="searchClients" placeholder="Pesquisar..." value="${esc(q)}" oninput="render()">
+        <button class="btn primary" onclick="openModal(clientForm())">+ Novo Cliente</button>
+      </div>
+    </div>
+    ${clients.length ? `<table>
+      <thead><tr><th>Nome</th><th>Empresa</th><th>Contacto</th><th>Origem</th><th>Propostas</th><th>Ações</th></tr></thead>
+      <tbody>
+      ${list.map(c => {
+        const n = dealsByClient(c.id).length;
+        return `<tr>
+          <td><b>${esc(c.name)}</b></td>
+          <td>${esc(c.company || '—')}</td>
+          <td>${esc(c.phone || '')} ${c.email ? `<div style="font-size:11px;color:var(--muted)">${esc(c.email)}</div>` : ''}</td>
+          <td><span class="badge none">${esc(c.source || '—')}</span></td>
+          <td><span class="badge ${n ? 'enviado' : 'none'}">${n} prop.</span></td>
+          <td>
+            <div class="actions-cell">
+              <button class="icon-btn" title="Editar" onclick="openModal(clientForm(clientById('${c.id}')))">✏️</button>
+              <button class="icon-btn" title="+ Proposta" onclick="openModal(dealForm(null, '${c.id}'))">➕</button>
+              <button class="icon-btn" title="Eliminar" onclick="deleteClient('${c.id}')">🗑️</button>
+            </div>
+          </td>
+        </tr>`;
+      }).join('')}
+      ${!list.length ? `<tr><td colspan="6" class="empty">${q ? 'Sem resultados' : 'Sem clientes ainda'}</td></tr>` : ''}
+      </tbody>
+    </table>` : `<div class="panel"><div class="empty">Sem clientes registados. Clica em "+ Novo Cliente" para começar.</div></div>`}`;
+}
+
+// ============ PROPOSTAS ============
+function propostasView() {
+  const q = document.getElementById('searchDeals')?.value?.toLowerCase() || '';
+  const fs = document.getElementById('filterStatus')?.value || '';
+  let list = [...deals].sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
+  if (q) list = list.filter(d => {
+    const c = clientById(d.clientId) || {};
+    return (c.name + ' ' + c.company + ' ' + (d.service || '')).toLowerCase().includes(q);
+  });
+  if (fs) list = list.filter(d => d.status === fs);
+  const total = list.filter(d => d.status !== 'perdido').reduce((s, d) => s + (d.value || 0), 0);
+
+  return `
+    <div class="header">
+      <div><h1>Propostas</h1><div class="sub">${list.length} propostas · valor potencial ${money(total)}</div></div>
+      <div class="app-actions">
+        <input class="search" id="searchDeals" placeholder="Pesquisar..." value="${esc(q)}" oninput="render()">
+        <select class="search" id="filterStatus" style="width:150px" onchange="render()">
+          <option value="">Todos os estados</option>
+          ${STATES.map(s => `<option value="${s}" ${fs === s ? 'selected' : ''}>${STATE_LABELS[s]}</option>`).join('')}
+        </select>
+        <button class="btn" onclick="exportCsv()">⬇ Exportar CSV</button>
+        <button class="btn primary" onclick="openModal(dealForm(null))">+ Nova Proposta</button>
+      </div>
+    </div>
+    ${deals.length ? `<table>
+      <thead><tr><th>Cliente</th><th>Serviço</th><th>Valor</th><th>Estado</th><th>Follow-up</th><th>Ações</th></tr></thead>
+      <tbody>
+      ${list.map(d => {
+        const c = clientById(d.clientId) || {};
+        return `<tr>
+          <td><b>${esc(c.name || '—')}</b>${c.company ? `<div style="font-size:11px;color:var(--muted)">${esc(c.company)}</div>` : ''}</td>
+          <td>${esc(d.service || '—')}</td>
+          <td><b>${money(d.value)}</b></td>
+          <td><span class="badge ${d.status}">${STATE_LABELS[d.status]}</span></td>
+          <td>${d.followUp ? esc(d.followUp) : '<span style="color:var(--muted)">—</span>'}${isPending(d) ? `<div style="color:var(--orange);font-size:11px;font-weight:600">Pendente de follow-up</div>` : ''}</td>
+          <td>
+            <div class="actions-cell">
+              <button class="icon-btn" title="Editar" onclick="openModal(dealForm(deals.find(x => x.id === '${d.id}')))">✏️</button>
+              ${STATES.filter(s => s !== d.status).slice(0, 3).map(s => `<button class="icon-btn" title="Mover para ${STATE_LABELS[s]}" onclick="moveDeal('${d.id}', '${s}')">➡️${STATE_LABELS[s].charAt(0)}</button>`).join('')}
+              <button class="icon-btn" title="Eliminar" onclick="deleteDeal('${d.id}')">🗑️</button>
+            </div>
+          </td>
+        </tr>`;
+      }).join('')}
+      </tbody>
+    </table>` : `<div class="panel"><div class="empty">Sem propostas. Registar o primeiro envio!</div></div>`}`;
+}
+
+function exportCsv() {
+  const rows = [['Cliente', 'Empresa', 'Contacto', 'Email', 'Origem', 'Serviço', 'Valor', 'Estado', 'Follow-up', 'Criada em']];
+  deals.forEach(d => {
+    const c = clientById(d.clientId) || {};
+    rows.push([c.name || '', c.company || '', c.phone || '', c.email || '', c.source || '', d.service || '', d.value ?? '', STATE_LABELS[d.status], d.followUp || '', (d.createdAt || '').split('T')[0]]);
+  });
+  const csv = rows.map(r => r.map(v => '"' + String(v).replace(/"/g, '""') + '"').join(',')).join('\n');
+  const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'prospecao_' + today() + '.csv';
+  a.click();
+  toast('CSV exportado');
+}
+
+// ============ RENDER ============
+function render() {
+  const container = document.getElementById('viewContainer');
+  const views = { dashboard: dashboardView, pipeline: pipelineView, clientes: clientesView, propostas: propostasView };
+  container.innerHTML = views[currentView]();
+  document.getElementById('storageInfo').textContent =
+    `${clients.length} clientes · ${deals.length} propostas · dados locais`;
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+render();
+</script>
+</body>
+</html>

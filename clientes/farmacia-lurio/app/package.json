@@ -1,0 +1,75 @@
+{
+  "name": "farmacia-lurio-pos",
+  "version": "1.0.0",
+  "description": "Sistema de Gestão para Farmácia Lurio - POS offline com sincronização cloud",
+  "author": {
+    "name": "Cleiton Simião Ndona",
+    "email": "cleitonsimiaondonac2@gmail.com"
+  },
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "start:sede": "electron .",
+    "start:filial": "electron . filial",
+    "build": "electron-builder --win --x64",
+    "build:portable": "electron-builder --win --x64 --dir",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.farmacia.lurio.pos",
+    "productName": "Farmácia Lurio",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "style.css",
+      "app.js",
+      "database/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "database/init.sql",
+        "to": "database/init.sql"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.ico",
+      "requestedExecutionLevel": "asInvoker",
+      "publisherName": "SkyLayer Solutions"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Farmácia Lurio",
+      "uninstallDisplayName": "Farmácia Lurio - Gestão",
+      "perMachine": false,
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.3.3",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.6.0",
+    "node-thermal-printer": "^4.4.3"
+  },
+  "keywords": ["farmacia", "pos", "gestao", "offline", "electron", "sqlite"],
+  "license": "proprietary",
+  "private": true
+}

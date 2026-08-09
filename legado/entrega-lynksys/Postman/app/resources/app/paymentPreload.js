@@ -1,0 +1,1 @@
+let{contextBridge:e,ipcRenderer:l}=require("electron");e.exposeInMainWorld("electronPayment",{close:()=>{l.invoke("payments:view:close")}});

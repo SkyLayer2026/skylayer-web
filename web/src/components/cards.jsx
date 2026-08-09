@@ -65,12 +65,19 @@ export function BlogCard({ post }) {
 }
 
 export function ProjectCard({ project }) {
+  const done = project.status !== "Em construção"
   return (
     <div className="card flex flex-col p-7">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-3">
         <h3 className="text-lg font-bold text-ink">{project.title}</h3>
-        <span className="rounded-full border border-dashed border-line px-3 py-1 text-xs font-semibold text-muted">
-          Em breve
+        <span
+          className={
+            done
+              ? "rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700"
+              : "rounded-full border border-dashed border-line px-3 py-1 text-xs font-semibold text-muted"
+          }
+        >
+          {project.status}
         </span>
       </div>
       <dl className="mt-5 flex-1 space-y-4 text-sm">
@@ -92,7 +99,11 @@ export function ProjectCard({ project }) {
           Tecnologias
         </dt>
         <dd className="mt-2 flex flex-wrap gap-2">
-          <span className="rounded-md bg-surface px-2 py-1 text-xs text-muted">—</span>
+          {project.tecnologias.map((t) => (
+            <span key={t} className="rounded-md bg-surface px-2 py-1 text-xs text-muted">
+              {t}
+            </span>
+          ))}
         </dd>
       </div>
     </div>

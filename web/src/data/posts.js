@@ -1,6 +1,8 @@
+import { postsAntigos } from "./posts_antigos.js"
+
 export const categories = ["Tecnologia", "Negócios", "Engenharia", "Segurança", "Skylayer"]
 
-export const posts = [
+const postsNovos = [
   {
     slug: "comecar-a-digitalizar",
     category: "Negócios",
@@ -157,5 +159,7 @@ export const posts = [
     ],
   },
 ]
+
+export const posts = [...postsAntigos, ...postsNovos]
 
 export const getPost = (slug) => posts.find((p) => p.slug === slug)

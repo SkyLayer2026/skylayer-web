@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NAVARA — Painel Admin</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><div class="logo">NAVARA — Admin</div></div>
+  <div><a href="/" class="btn outline">Ver site</a></div>
+</header>
+
+<main style="padding:12px;max-width:1100px;margin:0 auto">
+  <div class="card">
+    <h3>Criar Cliente (foto opcional)</h3>
+    <form id="clientCreateForm" enctype="multipart/form-data">
+      <input name="code" placeholder="Código do cliente (ex: 777)" required>
+      <input name="name" placeholder="Nome" required>
+      <input name="email" placeholder="Email">
+      <input name="phone" placeholder="Telefone">
+      <input name="password" placeholder="Senha" required>
+      <label class="small" style="margin-top:6px">Foto do cliente (opcional)</label>
+      <input type="file" name="photo" accept="image/*">
+      <div style="margin-top:8px"><button class="btn primary" type="submit">Criar Cliente</button> <span id="clientCreateMsg" class="muted small"></span></div>
+    </form>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>Criar Projeto</h3>
+    <form id="projectCreateForm">
+      <input name="title" placeholder="Título" required>
+      <input name="clientCode" placeholder="Código do cliente (ex: 565)" required>
+      <input name="type" placeholder="Tipo (opcional)">
+      <input name="location" placeholder="Localização (opcional)">
+      <input name="timeline" placeholder="Etapas separadas por | (opcional)">
+      <div style="margin-top:8px"><button class="btn primary" type="submit">Criar Projeto</button> <span id="projectCreateMsg" class="muted small"></span></div>
+    </form>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>Enviar Imagem para Carrossel</h3>
+    <form id="carouselUploadForm" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" required>
+      <div style="margin-top:8px"><button class="btn primary" type="submit">Enviar</button> <span id="carouselMsg" class="muted small"></span></div>
+    </form>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>Criar Referência (card visual)</h3>
+    <form id="refCreateForm" enctype="multipart/form-data">
+      <input name="title" placeholder="Título" required>
+      <input name="location" placeholder="Localização">
+      <textarea name="description" placeholder="Descrição (opcional)"></textarea>
+      <label class="small" style="margin-top:6px"><input type="checkbox" name="show_in_carousel"> Exibir no carrossel</label>
+      <input type="file" name="image" accept="image/*" required>
+      <div style="margin-top:8px"><button class="btn primary" type="submit">Criar Referência</button> <span id="refCreateMsg" class="muted small"></span></div>
+    </form>
+    <h4 style="margin-top:12px">Referências existentes</h4>
+    <div id="refsGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:8px"></div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3>Gestão Rápida — Listagens</h3>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <button id="btnListClients" class="btn outline">Listar Clientes</button>
+      <button id="btnListProjects" class="btn outline">Listar Projetos</button>
+    </div>
+    <pre id="adminDump" style="margin-top:8px" class="muted small"></pre>
+  </div>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>
+

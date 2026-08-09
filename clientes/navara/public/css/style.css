@@ -1,0 +1,43 @@
+:root{
+  --navy:#0b3b66;
+  --accent:#0b61a4;
+  --gold:#f3c623;
+  --bg:#f5f7fb;
+  --muted:#6b7280;
+  --card:#ffffff;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:#111;-webkit-font-smoothing:antialiased}
+.top{background:var(--navy);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:12px 16px}
+.brand .logo{font-weight:800}
+.brand .tag{font-size:12px;opacity:0.9}
+.btn{border:0;border-radius:8px;padding:8px 12px;cursor:pointer}
+.btn.primary{background:var(--gold);color:#111}
+.btn.outline{background:#fff;border:1px solid #e6e9ef;color:var(--accent)}
+.btn.muted{background:#fff;border:1px solid #e6e9ef;color:var(--muted)}
+.layout{display:flex;flex-direction:column;padding:12px;gap:12px}
+.main-col{flex:1}
+.side-col{width:100%}
+.card{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(15,23,42,0.06);margin-bottom:12px}
+.input, input, textarea, select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef6;margin-top:8px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.row{display:flex;gap:8px}
+.flex-between{display:flex;justify-content:space-between;align-items:center}
+.steps{list-style:none;padding:0;margin:0}
+.steps li{padding:10px;border-radius:8px;border:1px dashed #eef3fb;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.chat{height:160px;overflow:auto;border-radius:8px;border:1px solid #eef3fb;padding:8px;background:#fbfdff}
+.carousel-track{overflow:hidden;border-radius:8px;height:160px}
+.carousel-inner{display:flex;transition:transform 0.6s ease}
+.carousel-inner img{min-width:100%;height:160px;object-fit:cover}
+.modal{position:fixed;left:0;top:0;width:100%;height:100%;display:flex;align-items:flex-start;justify-content:center;padding-top:40px;background:rgba(0,0,0,0.35);z-index:60}
+.modal-inner{width:95%;max-width:900px}
+.footer{background:#fff;padding:12px;border-top:1px solid #e9eef6;text-align:center}
+.hidden{display:none}
+@media(min-width:920px){
+  .layout{flex-direction:row;align-items:flex-start}
+  .main-col{flex:1}
+  .side-col{width:320px}
+  .carousel-inner img{height:180px}
+}
+

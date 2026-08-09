@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Produtos - Farmácia Dia & Noite | Maputo</title>
+  <meta name="description" content="Consulte o nosso catálogo completo de medicamentos, vitaminas, cuidados pessoais e equipamento médico. Confirme a disponibilidade via WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>➕</text></svg>">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <span class="logo-icon">➕</span>
+        Farmácia <span>Dia & Noite</span>
+      </a>
+      <div class="header-right">
+        <span class="badge-24h"><span class="dot"></span> 24H</span>
+        <nav class="nav" id="mainNav">
+          <a href="../index.html">Início</a>
+          <a href="produtos.html" class="active">Produtos <span class="nav-badge">Catálogo</span></a>
+          <a href="contactos.html">Contactos</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="../index.html">Início</a> / <span>Produtos</span>
+      </div>
+      <h1>Catálogo de Produtos</h1>
+      <p>Encontre medicamentos, vitaminas, cuidados pessoais e equipamento médico</p>
+    </div>
+  </section>
+
+  <!-- ===== SEARCH ===== -->
+  <div class="container">
+    <div class="search-wrapper">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Pesquisar medicamentos, categorias..." autocomplete="off">
+        <span class="search-clear" id="searchClear">✕</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CATEGORY TABS ===== -->
+  <div class="container">
+    <div class="category-tabs">
+      <button class="tab-btn active" data-category="todos">Todos</button>
+      <button class="tab-btn" data-category="medicamentos">💊 Medicamentos</button>
+      <button class="tab-btn" data-category="cuidados">🧴 Cuidados</button>
+      <button class="tab-btn" data-category="bebe">👶 Bebé</button>
+      <button class="tab-btn" data-category="vitaminas">💪 Vitaminas</button>
+      <button class="tab-btn" data-category="primeiros">🩹 Primeiros Socorros</button>
+      <button class="tab-btn" data-category="equipamento">🩺 Equipamento</button>
+    </div>
+  </div>
+
+  <!-- ===== PRODUCTS GRID ===== -->
+  <section class="section section-light" style="padding-top: 0;">
+    <div class="container">
+      <p style="margin-bottom: 24px; color: var(--gray-500); font-size: 0.9rem;" id="productsCount">43 produtos encontrados</p>
+      <div class="products-grid" id="productsGrid">
+        <!-- Products rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-final">
+    <div class="container">
+      <h2>Não Encontrou o que Precisa?</h2>
+      <p>Fale connosco pelo WhatsApp. Temos uma vasta gama de produtos disponíveis.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/258843983260?text=Ol%C3%A1%20Farm%C3%A1cia%20Dia%20%26%20Noite%2C%20gostaria%20de%20saber%20se%20tem%20dispon%C3%ADvel..." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg">💬 Perguntar no WhatsApp</a>
+        <a href="tel:+258843983260" class="btn btn-phone-white btn-lg">📞 Ligar: +258 84 398 3260</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHATSAPP FLOATING ===== -->
+  <a href="https://wa.me/258843983260?text=Ol%C3%A1%20Farm%C3%A1cia%20Dia%20%26%20Noite%2C%20gostaria%20de%20saber%20se%20tem%20dispon%C3%ADvel..." target="_blank" rel="noopener noreferrer" class="whatsapp-float" id="whatsappFloat" aria-label="Falar no WhatsApp">
+    <span class="tooltip">Fale connosco!</span>
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">
+            <span class="logo-icon">➕</span>
+            Farmácia <span>Dia & Noite</span>
+          </a>
+          <p>A sua farmácia de confiança na Av. 24 de Julho, Maputo. Aberta 24 horas todos os dias para servir a comunidade com dedicação e profissionalismo.</p>
+        </div>
+        <div>
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="contactos.html">Contactos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Horário</h4>
+          <ul>
+            <li>🔴 Seg - Dom: 24 Horas</li>
+            <li>🚚 Entrega: 08h - 22h</li>
+            <li>📍 Av. 24 de Julho, Maputo</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul class="footer-contact">
+            <li><span class="fc-icon">📞</span> <a href="tel:+258843983260">+258 84 398 3260</a></li>
+            <li><span class="fc-icon">📞</span> <a href="tel:+258820888187">+258 82 088 8187</a></li>
+            <li><span class="fc-icon">💬</span> <a href="https://wa.me/258843983260" target="_blank">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Farmácia Dia & Noite. Todos os direitos reservados.</span>
+        <span>Desenvolvido por <a href="https://skylayer.com" target="_blank" rel="noopener">SkyLayer</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

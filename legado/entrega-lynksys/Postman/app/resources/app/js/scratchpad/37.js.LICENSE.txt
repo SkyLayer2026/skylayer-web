@@ -1,0 +1,4 @@
+/**
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @copyright Michael Hart 2024
+ */

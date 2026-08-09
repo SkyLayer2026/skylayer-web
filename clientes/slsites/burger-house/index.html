@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Burger House Moçambique - O melhor burger de Maputo. Preço justo, sabor incomparável. Encomende já!">
+  <title>Burger House Moçambique | O Melhor Burger de Maputo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="container">
+    <a href="index.html" class="logo">Burger <span>House</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Início</a>
+      <a href="pages/menu.html">Menu</a>
+      <a href="pages/delivery.html">Delivery</a>
+      <a href="pages/sobre.html">Sobre</a>
+      <a href="pages/menu.html" class="nav-cta" id="cartToggleBtn">
+        🍔 Pedir <span class="cart-count-badge" id="cartCount">0</span>
+      </a>
+    </nav>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-pattern"></div>
+    <div class="hero-content">
+      <span class="hero-badge">🔥 Hambúrgueres Artesanais</span>
+      <h1 class="hero-headline">
+        O MELHOR BURGER
+        <span class="highlight">DE MAPUTO</span>
+      </h1>
+      <p class="hero-sub">Carne 100% nacional, ingredientes frescos, grelhado na hora. Preço justo. Sabor incomparável.</p>
+      <div class="hero-actions">
+        <a href="pages/menu.html" class="btn btn-primary btn-lg">🍔 FAZER PEDIDO AGORA</a>
+        <a href="pages/menu.html" class="btn btn-secondary btn-lg">📋 VER MENU</a>
+      </div>
+      <div class="hero-rating">
+        <span class="stars">⭐⭐⭐⭐</span>
+        <span>4.0/5 no Tripadvisor · Mais de 500 clientes satisfeitos</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section best-sellers">
+    <div class="container">
+      <h2 class="section-title">🔥 Mais Vendidos</h2>
+      <p class="section-subtitle">Os favoritos dos nossos clientes</p>
+      <div class="grid-3">
+        <div class="food-card">
+          <div class="food-card-image">
+            <span class="emoji-bg">🍔</span>
+            <span class="emoji-main">🍔</span>
+            <span class="food-card-badge">⭐ Mais popular</span>
+          </div>
+          <div class="food-card-body">
+            <h3 class="food-card-title">Classic Burger</h3>
+            <p class="food-card-desc">Pão artesanal, carne grelhada 150g, alface, tomate, molho especial</p>
+            <div class="food-card-footer">
+              <span class="food-card-price">235 <small>MT</small></span>
+              <button class="btn btn-primary btn-sm add-to-cart" data-name="Classic Burger" data-price="235" data-emoji="🍔">+ Pedir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <div class="food-card-image">
+            <span class="emoji-bg">🔥</span>
+            <span class="emoji-main">🍔</span>
+            <span class="food-card-badge">🔥 Especial da casa</span>
+          </div>
+          <div class="food-card-body">
+            <h3 class="food-card-title">Burger House Special</h3>
+            <p class="food-card-desc">Double carne, queijo cheddar, bacon crocante, onion rings, barbecue</p>
+            <div class="food-card-footer">
+              <span class="food-card-price">400 <small>MT</small></span>
+              <button class="btn btn-primary btn-sm add-to-cart" data-name="Burger House Special" data-price="400" data-emoji="🔥">+ Pedir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <div class="food-card-image">
+            <span class="emoji-bg">🎉</span>
+            <span class="emoji-main">🍟</span>
+            <span class="food-card-badge">🎉 Melhor relação QP</span>
+          </div>
+          <div class="food-card-body">
+            <h3 class="food-card-title">Combo Individual</h3>
+            <p class="food-card-desc">Burger + batata frita + bebida à escolha</p>
+            <div class="food-card-footer">
+              <span class="food-card-price">350 <small>MT</small></span>
+              <button class="btn btn-primary btn-sm add-to-cart" data-name="Combo Individual" data-price="350" data-emoji="🍟">+ Pedir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section how-to-order">
+    <div class="container">
+      <h2 class="section-title">📱 Como Pedir</h2>
+      <p class="section-subtitle">3 passos para receber o teu burger</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-emoji">🍔</div>
+          <h3>Escolhe o teu burger</h3>
+          <p>Navega pelo nosso menu e escolhe os teus burgers favoritos</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-emoji">📱</div>
+          <h3>Clica em "Fazer Pedido"</h3>
+          <p>Adiciona ao carrinho e envia o pedido pelo WhatsApp</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-emoji">🚚</div>
+          <h3>Recebe em 30-45 min</h3>
+          <p>Preparação rápida e entrega directa na tua porta</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="promo-banner">
+    <div class="container promo-content">
+      <span class="promo-icon">🔥</span>
+      <h2 class="promo-title">HAPPY HOUR</h2>
+      <p class="promo-text">Das 15h às 17h — <strong>20% OFF</strong> em todos os combos! 🎉</p>
+      <a href="pages/menu.html" class="btn btn-primary btn-lg">🛵 APROVEITAR AGORA</a>
+    </div>
+  </section>
+
+  <section class="section testimonials">
+    <div class="container">
+      <h2 class="section-title">💬 O Que Dizem</h2>
+      <p class="section-subtitle">A opinião dos nossos clientes</p>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"Melhor burger que comi em Maputo! A carne é suculenta e o pão é fresquinho. Recomendo o Special com batatas!"</p>
+          <p class="testimonial-author">— Carlos M.</p>
+          <p class="testimonial-source">📍 Cliente fiel</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"Preço justo e entrega rápida. O Combo Casal é perfeito para o jantar a dois. Vou pedir mais vezes!"</p>
+          <p class="testimonial-author">— Ana S.</p>
+          <p class="testimonial-source">📍 Maputo</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"Finalmente um hambúrguer artesanal de qualidade em Moçambique. Ingredientes frescos e sabor incrível!"</p>
+          <p class="testimonial-author">— João P.</p>
+          <p class="testimonial-source">📍 Tripadvisor</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="logo" style="font-size:2rem;display:inline-block;margin-bottom:12px">Burger <span>House</span></a>
+        <p>O melhor hambúrguer artesanal de Maputo. Feito com ingredientes frescos, carne 100% nacional e muito amor.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contactos</h4>
+        <div class="footer-contact-item">
+          <span class="icon">📞</span>
+          <span>+258 84 785 7255</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">📍</span>
+          <span>Maputo, Moçambique</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">🕐</span>
+          <span>Seg–Dom: 11h–22h</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="index.html">→ Início</a></li>
+          <li><a href="pages/menu.html">→ Menu</a></li>
+          <li><a href="pages/delivery.html">→ Delivery</a></li>
+          <li><a href="pages/sobre.html">→ Sobre Nós</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Delivery</h4>
+        <p>🚚 Entregamos no centro de Maputo, Alto Maé e Polana</p>
+        <p>⏱️ 30–45 min</p>
+        <p>💰 Grátis acima de 800 MT</p>
+        <div class="footer-social">
+          <a href="https://wa.me/258847857255" target="_blank" aria-label="WhatsApp">💬</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="Facebook">👍</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Burger House Moçambique. Todos os direitos reservados. 🍔🔥</p>
+    </div>
+  </div>
+</footer>
+
+<button class="whatsapp-float" id="whatsappFloat" aria-label="Fale connosco pelo WhatsApp">
+  <span class="pulse"></span>
+  💬
+</button>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>🛒 Meu Pedido</h3>
+    <button class="cart-close" id="cartClose">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <span class="emoji">🛒</span>
+      <p>O teu carrinho está vazio</p>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total:</span>
+      <strong><span id="cartTotal">0 MT</span></strong>
+    </div>
+    <button class="btn btn-whatsapp" id="sendWhatsApp">📱 Enviar Pedido no WhatsApp</button>
+  </div>
+</aside>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

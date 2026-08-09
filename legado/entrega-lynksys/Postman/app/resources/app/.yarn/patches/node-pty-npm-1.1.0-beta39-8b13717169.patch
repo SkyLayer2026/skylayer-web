@@ -1,0 +1,200 @@
+diff --git a/binding.gyp b/binding.gyp
+index f21c7df48b17e5c173446fb722e1229095282bde..9523aa2861e2b74b9ff7f0e498947dff4a38302b 100644
+--- a/binding.gyp
++++ b/binding.gyp
+@@ -5,9 +5,6 @@
+     ],
+     'conditions': [
+       ['OS=="win"', {
+-        'msvs_configuration_attributes': {
+-          'SpectreMitigation': 'Spectre'
+-        },
+         'msvs_settings': {
+             'VCCLCompilerTool': {
+               'AdditionalOptions': [
+diff --git a/deps/winpty/src/winpty.gyp b/deps/winpty/src/winpty.gyp
+index 1ac5758bedd8cf54f32280dea4e4aeb5afdee30d..6fde3d1e42ed9647f5e4547b969ad7f553113ed1 100644
+--- a/deps/winpty/src/winpty.gyp
++++ b/deps/winpty/src/winpty.gyp
+@@ -40,9 +40,6 @@
+                 '-lshell32',
+                 '-luser32',
+             ],
+-            'msvs_configuration_attributes': {
+-                'SpectreMitigation': 'Spectre'
+-            },
+             'msvs_settings': {
+                 # Specify this setting here to override a setting from somewhere
+                 # else, such as node's common.gypi.
+@@ -142,9 +139,6 @@
+                 '-ladvapi32',
+                 '-luser32',
+             ],
+-            'msvs_configuration_attributes': {
+-                'SpectreMitigation': 'Spectre'
+-            },
+             'msvs_settings': {
+                 # Specify this setting here to override a setting from somewhere
+                 # else, such as node's common.gypi.
+diff --git a/lib/utils.js b/lib/utils.js
+index af7918b6902a105a7c49813bc0bb4d687d87a7d4..bbd39e25b7508ed91ee9bb676b586e16c4ed3983 100644
+--- a/lib/utils.js
++++ b/lib/utils.js
+@@ -1,11 +1,14 @@
+-"use strict";
++'use strict';
++
+ /**
+  * Copyright (c) 2017, Daniel Imms (MIT License).
+  * Copyright (c) 2018, Microsoft Corporation (MIT License).
+  */
+-Object.defineProperty(exports, "__esModule", { value: true });
+-exports.loadNativeModule = exports.assign = void 0;
+-function assign(target) {
++Object.defineProperty(exports, '__esModule', { value: true });
++exports.loadNativeModule = exports.assign = undefined;
++
++/** */
++function assign (target) {
+     var sources = [];
+     for (var _i = 1; _i < arguments.length; _i++) {
+         sources[_i - 1] = arguments[_i];
+@@ -14,26 +17,38 @@ function assign(target) {
+     return target;
+ }
+ exports.assign = assign;
+-function loadNativeModule(name) {
+-    // Check build, debug, and then prebuilds.
+-    var dirs = ['build/Release', 'build/Debug', "prebuilds/" + process.platform + "-" + process.arch];
+-    // Check relative to the parent dir for unbundled and then the current dir for bundled
+-    var relative = ['..', '.'];
+-    var lastError;
+-    for (var _i = 0, dirs_1 = dirs; _i < dirs_1.length; _i++) {
+-        var d = dirs_1[_i];
+-        for (var _a = 0, relative_1 = relative; _a < relative_1.length; _a++) {
+-            var r = relative_1[_a];
+-            var dir = r + "/" + d + "/";
+-            try {
+-                return { dir: dir, module: require(dir + "/" + name + ".node") };
+-            }
+-            catch (e) {
+-                lastError = e;
+-            }
+-        }
+-    }
+-    throw new Error("Failed to load native module: " + name + ".node, checked: " + dirs.join(', ') + ": " + lastError);
++
++/** */
++function loadNativeModule (name) {
++  const resourceDir = `${process.resourcesPath}/data/`;
++
++  // POSTMAN SPECIFIC PATCH!
++  // NOTE1: `dir` is only used to locate invoke the spawn-helper
++  //  https://github.com/microsoft/node-pty/blob/main/src/unixTerminal.ts#L16
++  // NOTE2: `spawn-helper` MUST be outside app.asar, but pty.node can be inside app.asar
++  if (name === 'conpty_console_list') {
++    return {
++      dir: resourceDir,
++
++      // This path is relative to src/main/node_modules/node-pty/lib/utils.js
++      module: require('../build/Release/conpty_console_list.node'),
++    };
++  } else if (name === 'pty') {
++    return {
++      dir: resourceDir,
++
++      // This path is relative to src/main/node_modules/node-pty/lib/utils.js
++      module: require('../build/Release/pty.node'),
++    };
++  } else if (name === 'conpty') {
++    return {
++      dir: resourceDir,
++
++      // This path is relative to src/main/node_modules/node-pty/lib/utils.js
++      module: require('../build/Release/conpty.node'), 
++    };
++  } else {
++    throw new Error(`Unsupported native module: ${name}`);
++  }
+ }
+ exports.loadNativeModule = loadNativeModule;
+-//# sourceMappingURL=utils.js.map
+\ No newline at end of file
+diff --git a/lib/windowsConoutConnection.js b/lib/windowsConoutConnection.js
+index 1be15ca061370127d2e24e943067538ab395a566..431cda33290a4fa8729356c651003a90d76e723b 100644
+--- a/lib/windowsConoutConnection.js
++++ b/lib/windowsConoutConnection.js
+@@ -72,8 +72,9 @@ var ConoutConnection = /** @class */ (function () {
+         var workerData = {
+             conoutPipeName: _conoutPipeName
+         };
+-        var scriptPath = __dirname.replace('node_modules.asar', 'node_modules.asar.unpacked');
+-        this._worker = new worker_threads_1.Worker(path_1.join(scriptPath, 'worker/conoutSocketWorker.js'), { workerData: workerData });
++        const prodResourceDir = `${process.resourcesPath}/data/`;
++        const workerPath = path_1.join(prodResourceDir, 'worker/conoutSocketWorker.js');
++        this._worker = new worker_threads_1.Worker(workerPath, { workerData: workerData });
+         this._worker.on('message', function (message) {
+             switch (message) {
+                 case 1 /* READY */:
+@@ -83,6 +84,22 @@ var ConoutConnection = /** @class */ (function () {
+                     console.warn('Unexpected ConoutWorkerMessage', message);
+             }
+         });
++        this._worker.on('error', function (error) {
++            console.error('[node-pty~windowsConoutConnection] Error creating worker', error);
++            pm?.logger?.error('[node-pty~windowsConoutConnection] Error creating worker', error);
++        });
++        this._worker.on('exit', function (code) {
++            console.log('[node-pty~windowsConoutConnection] Worker exited with code', code);
++            pm?.logger?.info('[node-pty~windowsConoutConnection] Worker exited with code', code);
++        });
++        this._worker.on('messageerror', function (error) {
++            console.error('[node-pty~windowsConoutConnection] Worker message error', error);
++            pm?.logger?.error('[node-pty~windowsConoutConnection] Worker message error', error);
++        });
++        this._worker.on('online', function () {
++            console.log('[node-pty~windowsConoutConnection] Worker online');
++            pm?.logger?.info('[node-pty~windowsConoutConnection] Worker online');
++        });
+     }
+     Object.defineProperty(ConoutConnection.prototype, "onReady", {
+         get: function () { return this._onReady.event; },
+@@ -122,4 +139,3 @@ var ConoutConnection = /** @class */ (function () {
+     return ConoutConnection;
+ }());
+ exports.ConoutConnection = ConoutConnection;
+\ No newline at end of file
+-//# sourceMappingURL=windowsConoutConnection.js.map
+\ No newline at end of file
+diff --git a/lib/worker/conoutSocketWorker.js b/lib/worker/conoutSocketWorker.js
+index 0451e2c6b36df6c94a474efdce7d42c2ef2c9388..e8636000aadff89ad0d53d39a0c739d4570fe99f 100644
+--- a/lib/worker/conoutSocketWorker.js
++++ b/lib/worker/conoutSocketWorker.js
+@@ -5,18 +5,22 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ var worker_threads_1 = require("worker_threads");
+ var net_1 = require("net");
+-var conout_1 = require("../shared/conout");
++
++function getWorkerPipeName(conoutPipeName) {
++    return conoutPipeName + "-worker";
++}
++
+ var conoutPipeName = worker_threads_1.workerData.conoutPipeName;
++
+ var conoutSocket = new net_1.Socket();
+ conoutSocket.setEncoding('utf8');
+ conoutSocket.connect(conoutPipeName, function () {
+     var server = net_1.createServer(function (workerSocket) {
+         conoutSocket.pipe(workerSocket);
+     });
+-    server.listen(conout_1.getWorkerPipeName(conoutPipeName));
++    server.listen(getWorkerPipeName(conoutPipeName));
+     if (!worker_threads_1.parentPort) {
+         throw new Error('worker_threads parentPort is null');
+     }
+     worker_threads_1.parentPort.postMessage(1 /* READY */);
+ });
+\ No newline at end of file
+-//# sourceMappingURL=conoutSocketWorker.js.map
+\ No newline at end of file

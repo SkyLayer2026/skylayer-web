@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmácia Luri - Sistema de Gestão</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tela de Seleção de Filial -->
+    <div id="loginScreen" class="screen">
+        <div class="login-container">
+            <h1>💊 Farmácia Luri</h1>
+            <h2>Sistema de Gestão</h2>
+            <div class="branch-selection">
+                <button onclick="selectBranch('branch-1', 'Sede')" class="branch-btn">
+                    🏢 Farmácia Luri - Sede
+                </button>
+                <button onclick="selectBranch('branch-2', 'Filial')" class="branch-btn">
+                    🏪 Farmácia Luri - Filial
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tela Principal do Sistema -->
+    <div id="mainScreen" class="screen hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>💊 Farmácia Luri - <span id="currentBranch">Sede</span></h1>
+            </div>
+            <div class="header-right">
+                <span id="currentDate"></span>
+                <button onclick="logout()" class="btn-logout">Sair</button>
+            </div>
+        </header>
+
+        <!-- Navegação -->
+        <nav class="nav">
+            <button onclick="showSection('pos')" class="nav-btn active" id="nav-pos">
+                🛒 PDV (Caixa)
+            </button>
+            <button onclick="showSection('products')" class="nav-btn" id="nav-products">
+                📦 Produtos
+            </button>
+            <button onclick="showSection('stock')" class="nav-btn" id="nav-stock">
+                📊 Stock & Validade
+            </button>
+            <button onclick="showSection('reports')" class="nav-btn" id="nav-reports">
+                📈 Relatórios
+            </button>
+        </nav>
+
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            
+            <!-- SEÇÃO: PDV (Ponto de Venda) -->
+            <section id="posSection" class="section active">
+                <div class="pos-container">
+                    <!-- Leitor de Código -->
+                    <div class="pos-header">
+                        <input type="text" id="barcodeInput" placeholder="📷 Escaneie o código de barras ou digite..." 
+                               class="barcode-input" autofocus onkeypress="handleBarcode(event)">
+                        <button onclick="searchProduct()" class="btn-primary">Buscar</button>
+                    </div>
+
+                    <!-- Lista de Produtos no Carrinho -->
+                    <div class="cart-container">
+                        <table class="cart-table">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Qtd</th>
+                                    <th>Preço Unit.</th>
+                                    <th>Subtotal</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cartItems">
+                                <!-- Items serão adicionados aqui -->
+                            </tbody>
+                        </table>
+                        <div id="emptyCart" class="empty-cart">
+                            <p>Carrinho vazio. Escaneie um produto para começar.</p>
+                        </div>
+                    </div>
+
+                    <!-- Total e Finalização -->
+                    <div class="pos-footer">
+                        <div class="total-display">
+                            <span class="total-label">TOTAL:</span>
+                            <span class="total-value" id="cartTotal">0,00 MT</span>
+                        </div>
+                        <button onclick="openPaymentModal()" class="btn-success btn-large" 
+                                id="btnCheckout" disabled>
+                            💳 Finalizar Venda
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO: Produtos -->
+            <section id="productsSection" class="section">
+                <div class="section-header">
+                    <h2>📦 Gestão de Produtos</h2>
+                    <button onclick="openProductModal()" class="btn-primary">+ Novo Produto</button>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" id="productSearch" placeholder="Buscar produto..." 
+                           oninput="filterProducts()">
+                </div>
+
+                <div class="products-grid" id="productsList">
+                    <!-- Produtos serão listados aqui -->
+                </div>
+            </section>
+
+            <!-- SEÇÃO: Stock e Validade -->
+            <section id="stockSection" class="section">
+                <div class="section-header">
+                    <h2>📊 Controle de Stock e Validade</h2>
+                </div>
+
+                <div class="alerts-container">
+                    <div class="alert-card warning">
+                        <h3>⚠️ Stock Baixo</h3>
+                        <ul id="lowStockList"></ul>
+                    </div>
+                    <div class="alert-card danger">
+                        <h3>🔴 Próximos a Expirar (7 dias)</h3>
+                        <ul id="expiringList"></ul>
+                    </div>
+                </div>
+
+                <h3>📋 Todos os Lotes</h3>
+                <table class="stock-table">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Lote</th>
+                            <th>Quantidade</th>
+                            <th>Validade</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stockList"></tbody>
+                </table>
+            </section>
+
+            <!-- SEÇÃO: Relatórios -->
+            <section id="reportsSection" class="section">
+                <div class="section-header">
+                    <h2>📈 Relatórios</h2>
+                    <div class="date-filter">
+                        <input type="date" id="reportStartDate">
+                        <span>até</span>
+                        <input type="date" id="reportEndDate">
+                        <button onclick="generateReport()" class="btn-primary">Gerar</button>
+                    </div>
+                </div>
+
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <h3>💰 Vendas do Dia</h3>
+                        <div class="report-value" id="salesToday">0,00 MT</div>
+                    </div>
+                    <div class="report-card">
+                        <h3>📦 Total de Vendas</h3>
+                        <div class="report-value" id="totalSales">0</div>
+                    </div>
+                    <div class="report-card">
+                        <h3>📊 Produtos Vendidos</h3>
+                        <div class="report-value" id="totalItems">0</div>
+                    </div>
+                    <div class="report-card success">
+                        <h3>💵 Lucro Estimado</h3>
+                        <div class="report-value" id="estimatedProfit">0,00 MT</div>
+                    </div>
+                </div>
+
+                <h3>🏆 Produtos Mais Vendidos</h3>
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Qtd Vendida</th>
+                            <th>Receita</th>
+                        </tr>
+                    </thead>
+                    <tbody id="topProducts"></tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal de Pagamento -->
+    <div id="paymentModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>💳 Pagamento</h2>
+            <div class="payment-info">
+                <p><strong>Total:</strong> <span id="paymentTotal">0,00 MT</span></p>
+                <label>Valor Recebido:</label>
+                <input type="number" id="amountReceived" step="0.01" 
+                       placeholder="0,00" oninput="calculateChange()">
+                <div class="change-display">
+                    <strong>Troco: <span id="changeAmount">0,00 MT</span></strong>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button onclick="closePaymentModal()" class="btn-secondary">Cancelar</button>
+                <button onclick="completeSale()" class="btn-success">Confirmar Pagamento</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Produto -->
+    <div id="productModal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="productModalTitle">📦 Novo Produto</h2>
+            <form id="productForm" onsubmit="saveProduct(event)">
+                <input type="hidden" id="productId">
+                <div class="form-group">
+                    <label>Nome do Produto:</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label>Código de Barras:</label>
+                    <input type="text" id="productBarcode" required>
+                </div>
+                <div class="form-group">
+                    <label>Categoria:</label>
+                    <input type="text" id="productCategory" placeholder="Ex: Analgésicos">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Preço de Custo:</label>
+                        <input type="number" id="productCost" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Preço de Venda:</label>
+                        <input type="number" id="productPrice" step="0.01" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Stock Mínimo:</label>
+                    <input type="number" id="productMinStock" value="5" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" onclick="closeProductModal()" class="btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

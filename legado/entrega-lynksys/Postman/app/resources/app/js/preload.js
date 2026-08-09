@@ -1,0 +1,1 @@
+window.SDK_PLATFORM=__SDK_PLATFORM__||"desktop",window.disableScratchpadForSignedIn=!1;try{const{setupDeprecatedApiTracking:e}=require("./preload/deprecated-api-tracker");e()}catch(e){console.warn("Failed to initialize deprecated API tracking:",e)}document.addEventListener("dragover",(e=>{e.preventDefault()}),!1),document.addEventListener("drop",(e=>{e.preventDefault()}),!1);

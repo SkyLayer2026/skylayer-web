@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NAVARA — Gestão de Projetos</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="logo">NAVARA</div>
+    <div class="tag">Construção • Reforma</div>
+  </div>
+  <div><button id="btnOpenLogin" class="btn primary">Entrar</button></div>
+</header>
+
+<main class="layout">
+  <section class="main-col">
+    <div id="loginCard" class="card hidden">
+      <h3>Login do Cliente</h3>
+      <form id="loginForm">
+        <input name="code" placeholder="Código do cliente (ex: 565)" required>
+        <input name="password" type="password" placeholder="Senha" required>
+        <div class="row">
+          <button class="btn primary" type="submit">Entrar</button>
+          <button id="btnCancelLogin" class="btn outline" type="button">Cancelar</button>
+        </div>
+        <div id="loginMsg" class="muted small"></div>
+      </form>
+    </div>
+
+    <div id="dashboard" class="hidden">
+      <div class="card">
+        <div class="flex-between">
+          <div>
+            <h3 id="welcomeName">Olá</h3>
+            <div id="roleText" class="muted small">Cliente</div>
+          </div>
+          <div><button id="btnLogout" class="btn muted">Sair</button></div>
+        </div>
+      </div>
+
+      <div id="projectsList" class="card">
+        <h4>Meus Projetos</h4>
+        <div id="projectsContainer" class="muted small">Carregando...</div>
+      </div>
+
+      <div id="detailCard" class="card hidden">
+        <h4 id="detailTitle">Detalhes do Projeto</h4>
+        <div id="detailMeta" class="muted small"></div>
+        <div id="detailDesc" style="margin-top:8px"></div>
+
+        <h5 style="margin-top:12px">Etapas</h5>
+        <ul id="stepsList" class="steps"></ul>
+
+        <h5 style="margin-top:12px">Documentos</h5>
+        <div id="docsList" class="muted small">Nenhum documento</div>
+
+        <div id="uploadWrap" class="hidden" style="margin-top:10px">
+          <form id="uploadForm">
+            <input type="file" name="file" required>
+            <div style="margin-top:8px"><button class="btn primary">Enviar Documento</button></div>
+          </form>
+        </div>
+
+        <h5 style="margin-top:12px">Chat</h5>
+        <div id="chatBox" class="chat muted small">Sem mensagens</div>
+        <div class="row" style="margin-top:8px">
+          <input id="chatText" placeholder="Escreva...">
+          <button id="sendChat" class="btn primary">Enviar</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>Contato Rápido</h4>
+        <form id="contactForm">
+          <input name="name" placeholder="Nome" required>
+          <input name="email" placeholder="Email">
+          <input name="phone" placeholder="Telefone">
+          <textarea name="message" placeholder="Mensagem" required></textarea>
+          <div style="margin-top:8px"><button class="btn primary" type="submit">Enviar</button> <span id="contactStatus" class="muted small"></span></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <aside class="side-col">
+    <div class="card">
+      <strong>Trabalhos Recentes</strong>
+      <div class="carousel-track" style="margin-top:8px"><div class="carousel-inner" id="carouselInner"></div></div>
+      <div class="muted small" style="margin-top:8px">Slide automático — apenas referências marcadas</div>
+    </div>
+
+    <div class="card">
+      <strong>Referências</strong>
+      <div id="refsContainer" class="muted small" style="margin-top:8px">Clique em Referências</div>
+      <div style="margin-top:8px"><button id="btnShowRefs" class="btn outline">Abrir Referências</button></div>
+    </div>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>NAVARA — Maputo • Matola</div>
+    <div class="muted small">Email: cleitonsimiaondonac2@gmail.com · WhatsApp: 875157669</div>
+    <details style="margin-top:8px">
+      <summary class="small muted" style="cursor:pointer">Login Admin (oculto)</summary>
+      <form id="adminLoginForm" style="margin-top:8px">
+        <input name="code" placeholder="Código admin (ex: dev0)" required>
+        <input name="password" type="password" placeholder="Senha" required>
+        <div style="margin-top:8px"><button class="btn primary" type="submit">Entrar Admin</button> <span id="adminMsg" class="muted small"></span></div>
+      </form>
+    </details>
+  </div>
+</footer>
+
+<div id="refsModal" class="modal hidden">
+  <div class="modal-inner card">
+    <div class="flex-between">
+      <h4>Referências</h4>
+      <button id="closeRefs" class="btn muted">Fechar</button>
+    </div>
+    <div id="refsList" style="margin-top:12px"></div>
+  </div>
+</div>
+
+<script src="/js/api.js"></script>
+<script src="/js/carousel.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
+

@@ -17,14 +17,17 @@
 
 ## Biblioteca Skylayer
 
-| Área | Conteúdos |
-|---|---|
-| Comercial | Propostas, contratos, apresentações |
-| Design | Componentes, ícones, cores |
-| Desenvolvimento | Autenticação, dashboards, login, formulários |
-| Marketing | Posts, artigos, e-mails |
+| Área | Conteúdos | Local |
+|---|---|---|
+| Comercial | Propostas, contratos, apresentações | `empresa/contratos/`, `empresa/marketing/` |
+| Design | Componentes, ícones, cores | `clientes/slsites/`, `ferramentas/slgrid/` |
+| Desenvolvimento | Autenticação, dashboards, login, formulários | `ferramentas/`, `legado/` |
+| Marketing | Posts, artigos, e-mails | `web/src/data/posts.js` (blog 23 artigos) |
+| Histórico | Site v5, zips de entregas, backup, marca antiga | `legado/` |
 
 > O objetivo é nunca começar um projeto do zero.
+
+> A biblioteca vive em `~/skylayer/` (junto do MOS); o histórico completo anterior à fundação está em `legado/`.
 
 ## Processo
 

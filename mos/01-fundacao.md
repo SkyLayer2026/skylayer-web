@@ -24,6 +24,27 @@ A IA não é vista como substituto do trabalho humano, mas como uma ferramenta q
 
 A Skylayer nasce com uma estrutura diferente da maioria das empresas: pequena em número de pessoas, mas ampliada pela colaboração entre inteligência humana e inteligência artificial.
 
+## Origens e linha do tempo
+
+A Skylayer não começou do zero em 2026 — começou por trás de anos de trabalho técnico e comercial. Esta é a linha do tempo das origens, reconstituída a partir do histórico de ficheiros.
+
+### Antes da fundação (2025)
+- Construção do **site v5** (HTML/CSS/JS puro) com blog de 20 artigos, SEO completo e verificação Google Search Console (`googlec4060db8e654f700.html`) — mais tarde publicado no GitHub Pages.
+- **Site publicitário** para venda de serviços de criação de sites, com zips de entregas (`skylayer_all_codes`, `skylayer_seo_package`, etc.).
+- **Primeiros projetos reais de sites** (HTML/CSS/JS): Burger House, Clínica Fleming, Clínica Shifaa, Farmácia Dia & Noite, Bevanne Aesthetics (design system) — guardados na pasta SLsites.
+- **Projetos de clientes**: Lynksys (entrega), Navara, Mavila, Kyander, Nasma, Edmilson, microcredit-system, Calculadora de Construção, farmácia Lurio, sistema de stock.
+- **Ferramentas internas**: SLGrid (template de loja + base de empresas), pacote CYdev (`skylayer_mz_package`).
+- **Agentes de IA**: SKY (openclaw, hermes, openclaude, opencode-dev, skyforge, odysseus, picoclaw).
+- Documentos operacionais: contratos, cotações, finanças (cobranças), marketing (leads, mapeamento de nichos), correspondência institucional (cartas, MISAU, Katembe).
+
+### 2026 — Fundação oficial
+- **05/08** — Dia 1: decisão de fundar a Skylayer; MOS v1.0; website v1.
+- **08/08** — MOS v1.1; website v2 (estrutura atual, preços públicos, primeiros 3 artigos).
+- **09/08** — Reorganização das origens: tudo centralizado em `~/skylayer/` (mos, web, empresa, legado, clientes, agentes, ferramentas); 20 artigos do blog v5 migrados para o site v2 (23 no total); portfólio preenchido com os 5 projetos reais; site antigo preservado em `legado/`.
+
+### Onde está o histórico
+Todo o material anterior à fundação está preservado em `~/skylayer/legado/` (site v5, backup de 2026-01-18, zips de entregas, marca antiga) — nada foi apagado; duplicados consolidados em `~/skylayer/_duplicados/`.
+
 ## Missão
 
 Democratizar a transformação digital — tornar tecnologia de qualidade acessível a empresas que ainda operam sem ela.
