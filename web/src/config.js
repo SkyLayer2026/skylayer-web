@@ -1,8 +1,8 @@
 export const site = {
   name: "Skylayer",
-  tagline: "Democratizar a transformação digital",
+  tagline: "Tecnologia não deve ser um privilégio",
   description:
-    "Criamos sites profissionais, sistemas de gestão interna e identidade visual para pequenas e médias empresas em Moçambique.",
+    "Soluções digitais estáveis, seguras, acessíveis e inclusivas para empresas e profissionais em Moçambique. Sites profissionais, sistemas de gestão, automação e infraestrutura.",
   email: "ola@skylayer.co.mz",
   whatsappNumber: "258840000000",
   whatsappDisplay: "+258 84 000 0000",

@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react"
 import { Logo } from "./ui.jsx"
 
 const links = [
-  { to: "/servicos", label: "Serviços" },
+  { to: "/servicos", label: "Soluções" },
   { to: "/projetos", label: "Projetos" },
   { to: "/sobre", label: "Sobre" },
   { to: "/blog", label: "Blog" },

@@ -1,7 +1,7 @@
 export const projects = [
   {
     title: "Burger House — Site com pedidos via WhatsApp",
-    status: "Concluído",
+    tipo: "Projeto realizado",
     problema:
       "Restaurante de hambúrgueres artesanais em Maputo sem presença digital: pedidos dependiam de chamadas e o cardápio não chegava ao cliente.",
     solucao:
@@ -12,7 +12,7 @@ export const projects = [
   },
   {
     title: "Clínica Fleming — Presença local com agendamento",
-    status: "Concluído",
+    tipo: "Projeto realizado",
     problema:
       "Clínica na Matola com atendimento sólido mas invisível online: novos pacientes só chegavam por indicação.",
     solucao:
@@ -23,7 +23,7 @@ export const projects = [
   },
   {
     title: "Clínica Shifaa — Site institucional multipágina",
-    status: "Concluído",
+    tipo: "Projeto realizado",
     problema:
       "Clínica com 11 anos de atividade no Alto Maé precisava de transmitir confiança e reduzir filas de marcação.",
     solucao:
@@ -34,7 +34,7 @@ export const projects = [
   },
   {
     title: "Farmácia Dia & Noite — Catálogo com stock no WhatsApp",
-    status: "Concluído",
+    tipo: "Projeto realizado",
     problema:
       "Farmácia 24 horas com catálogo grande, mas clientes perdiam tempo a deslocar-se para confirmar stock.",
     solucao:
@@ -45,7 +45,7 @@ export const projects = [
   },
   {
     title: "Bevanne Aesthetics — Identidade premium",
-    status: "Em construção",
+    tipo: "Projeto em curso",
     problema:
       "Centro de estética premium precisava de uma imagem digital à altura do serviço antes de abrir o site.",
     solucao:

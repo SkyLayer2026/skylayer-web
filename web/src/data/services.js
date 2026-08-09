@@ -275,20 +275,20 @@ export const process = [
 
 export const pillars = [
   {
-    title: "Tecnologia acessível",
-    text: "Soluções pensadas para diferentes dimensões e orçamentos — acessibilidade faz parte do desenho, não é um extra.",
+    title: "Estável",
+    text: "Soluções feitas para funcionar. Construímos para continuar a operar com consistência, sem depender de intervenção constante.",
   },
   {
-    title: "Engenharia responsável",
-    text: "Não usamos tecnologia apenas porque está na moda. Cada escolha tem uma razão técnica e económica.",
+    title: "Segura",
+    text: "Proteção desde o início. A segurança está no desenho de cada solução, não é um complemento posterior.",
   },
   {
-    title: "Segurança desde o início",
-    text: "A segurança não é um complemento posterior — está no desenho de cada solução.",
+    title: "Acessível",
+    text: "Tecnologia proporcional à necessidade e ao orçamento. Acessibilidade faz parte do desenho, não é um extra.",
   },
   {
-    title: "Soluções sustentáveis",
-    text: "Projetamos pensando na manutenção e na evolução futura, para que o investimento continue a valer.",
+    title: "Inclusiva",
+    text: "Soluções pensadas para pessoas e empresas de diferentes dimensões — de pequenos negócios a organizações maiores.",
   },
 ]
 

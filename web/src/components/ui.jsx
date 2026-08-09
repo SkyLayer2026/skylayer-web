@@ -4,13 +4,7 @@ export function Logo({ dark = false, className = "h-8 w-8" }) {
   return (
     <span className="flex items-center gap-2">
       <svg viewBox="0 0 32 32" className={className} aria-hidden="true">
-        <defs>
-          <linearGradient id="logo" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#38bdf8" />
-            <stop offset="1" stopColor="#1e3a8a" />
-          </linearGradient>
-        </defs>
-        <path fill="url(#logo)" d="M16 2 30 30H2z" />
+        <path fill="#2563eb" d="M16 2 30 30H2z" />
         <path fill="white" d="M16 10l8 16h-4.2L16 17l-3.8 9H8z" />
       </svg>
       <span

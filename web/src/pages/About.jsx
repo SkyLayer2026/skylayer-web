@@ -12,12 +12,12 @@ export default function About() {
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <p className="eyebrow">Sobre a Skylayer</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
-            A tecnologia deve ser compreensível, acessível e útil.
+            Tecnologia não deve ser um privilégio.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-            A Skylayer nasceu em 2026 com uma convicção: empresas pequenas e médias também merecem
-            tecnologia de qualidade — sem jargão, sem custos escondidos e sem dependências
-            desnecessárias.
+            A Skylayer nasceu em 2026 com uma convicção: qualquer empresa — pequena ou média — deve
+            poder beneficiar da evolução tecnológica de forma estável, segura, acessível e
+            inclusiva.
           </p>
         </div>
       </section>
@@ -38,7 +38,7 @@ export default function About() {
             </p>
           </div>
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-ink">O que defendemos</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-ink">Como pensamos</h2>
             <ul className="mt-5 space-y-4">
               {pillars.map((p) => (
                 <li key={p.title} className="flex gap-3">

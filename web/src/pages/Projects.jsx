@@ -14,11 +14,18 @@ export default function Projects() {
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <p className="eyebrow">Projetos</p>
           <h1 className="mt-4 max-w-2xl text-4xl font-bold tracking-tight text-ink sm:text-5xl">
-            Trabalho recente
+            O que construímos
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-muted">
             Cada projeto é apresentado com o problema, a solução, as tecnologias e o resultado —
             porque confiança se constrói com detalhe.
+          </p>
+          <p className="mt-4 max-w-2xl text-sm text-muted">
+            <span className="font-semibold text-emerald-700">Projeto realizado</span> — entregue a
+            clientes ·{" "}
+            <span className="font-semibold text-amber-700">Demonstração</span> — conceito
+            demonstrativo ·{" "}
+            <span className="font-semibold">Projeto em curso</span> — em desenvolvimento.
           </p>
         </div>
       </section>

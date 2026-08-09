@@ -6,7 +6,7 @@ export function ProductCard({ product }) {
   return (
     <Link
       to={`/servicos/${product.slug}`}
-      className="card group flex flex-col p-7 transition-colors hover:border-brand-300 hover:shadow-sm"
+      className="card group flex flex-col p-7 transition-colors hover:border-brand-300"
     >
       <div className="flex items-center justify-between">
         <span className="text-sm font-bold text-line transition-colors group-hover:text-brand-300">
@@ -46,7 +46,7 @@ export function BlogCard({ post }) {
   return (
     <Link
       to={`/blog/${post.slug}`}
-      className="card group flex flex-col p-7 transition-colors hover:border-brand-300 hover:shadow-sm"
+      className="card group flex flex-col p-7 transition-colors hover:border-brand-300"
     >
       <p className="text-xs font-semibold uppercase tracking-widest text-brand-600">
         {post.category}
@@ -64,20 +64,20 @@ export function BlogCard({ post }) {
   )
 }
 
+const tipoBadge = {
+  "Projeto realizado": "bg-emerald-50 text-emerald-700",
+  "Demonstração": "bg-amber-50 text-amber-700",
+  "Projeto em curso": "border border-dashed border-line px-3 py-1 text-xs font-semibold text-muted",
+}
+
 export function ProjectCard({ project }) {
-  const done = project.status !== "Em construção"
+  const badge = tipoBadge[project.tipo] ?? tipoBadge["Projeto em curso"]
   return (
     <div className="card flex flex-col p-7">
       <div className="flex items-center justify-between gap-3">
         <h3 className="text-lg font-bold text-ink">{project.title}</h3>
-        <span
-          className={
-            done
-              ? "rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700"
-              : "rounded-full border border-dashed border-line px-3 py-1 text-xs font-semibold text-muted"
-          }
-        >
-          {project.status}
+        <span className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${badge}`}>
+          {project.tipo}
         </span>
       </div>
       <dl className="mt-5 flex-1 space-y-4 text-sm">
