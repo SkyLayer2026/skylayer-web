@@ -17,6 +17,10 @@ export const products = [
     slug: "presence",
     code: "01",
     name: "SL Presence",
+    stage: "Começar",
+    short: "Presença digital profissional.",
+    chips: ["Website", "Landing page", "Portfólio"],
+
     title: "Presença digital profissional",
     icon: Globe,
     tagline:
@@ -63,6 +67,10 @@ export const products = [
     slug: "business-systems",
     code: "02",
     name: "SL Business Systems",
+    stage: "Organizar",
+    short: "Digitalizar a operação da empresa.",
+    chips: ["Clientes", "Vendas", "Stock", "Dashboards"],
+
     title: "Sistemas digitais para empresas",
     icon: LayoutDashboard,
     tagline:
@@ -109,6 +117,10 @@ export const products = [
     slug: "automation",
     code: "03",
     name: "SL Automation",
+    stage: "Automatizar",
+    short: "Reduzir o trabalho manual repetitivo.",
+    chips: ["Integrações", "Notificações", "Relatórios"],
+
     title: "Automação de processos",
     icon: Workflow,
     tagline:
@@ -150,6 +162,10 @@ export const products = [
     slug: "infrastructure",
     code: "04",
     name: "SL Digital Infrastructure",
+    stage: "Estruturar",
+    short: "Uma base tecnológica estável e segura.",
+    chips: ["Domínio", "Hospedagem", "E-mail", "Backups"],
+
     title: "Infraestrutura e suporte tecnológico",
     icon: ServerCog,
     tagline:
@@ -192,6 +208,10 @@ export const products = [
     slug: "custom-solutions",
     code: "05",
     name: "SL Custom Solutions",
+    stage: "Construir",
+    short: "Quando nenhuma solução pronta chega.",
+    chips: ["Aplicações à medida", "Integrações", "APIs"],
+
     title: "Soluções tecnológicas personalizadas",
     icon: Puzzle,
     tagline:

@@ -45,7 +45,7 @@ export const projects = [
   },
   {
     title: "Bevanne Aesthetics — Identidade premium",
-    tipo: "Projeto em curso",
+    tipo: "Conceito",
     problema:
       "Centro de estética premium precisava de uma imagem digital à altura do serviço antes de abrir o site.",
     solucao:

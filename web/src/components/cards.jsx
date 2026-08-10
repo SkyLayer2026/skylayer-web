@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { ArrowRight } from "lucide-react"
 import { complementary } from "../data/services.js"
+import { ProjectMockup } from "./visuals.jsx"
 
 export function ProductCard({ product }) {
   return (
@@ -9,18 +10,26 @@ export function ProductCard({ product }) {
       className="card group flex flex-col p-7 transition-colors hover:border-brand-300"
     >
       <div className="flex items-center justify-between">
-        <span className="text-sm font-bold text-line transition-colors group-hover:text-brand-300">
-          {product.code}
+        <span className="text-xs font-bold uppercase tracking-widest text-brand-600">
+          {product.stage}
         </span>
         <product.icon className="h-6 w-6 text-brand-600" />
       </div>
-      <h3 className="mt-6 text-lg font-bold text-ink">{product.name}</h3>
-      <p className="mt-1 text-sm font-medium text-brand-600">{product.title}</p>
-      <p className="mt-3 flex-1 text-[15px] leading-relaxed text-muted">{product.tagline}</p>
-      <div className="mt-6 flex items-center justify-between border-t border-line-soft pt-4">
-        <span className="text-sm font-semibold text-ink">{product.price}</span>
-        <span className="inline-flex items-center gap-1 text-sm font-medium text-brand-600">
-          Conhecer solução <ArrowRight className="h-4 w-4" />
+      <h3 className="mt-5 text-lg font-bold text-ink">{product.name}</h3>
+      <p className="mt-1 text-sm font-medium text-muted">{product.short}</p>
+      <div className="mt-5 flex flex-wrap gap-2">
+        {product.chips.map((c) => (
+          <span key={c} className="rounded-md bg-surface px-2 py-1 text-xs text-muted">
+            {c}
+          </span>
+        ))}
+      </div>
+      <div className="mt-6 flex items-end justify-between gap-3 border-t border-line-soft pt-4">
+        <p className="text-sm text-muted">
+          <span className="block font-bold text-ink">{product.price}</span>
+        </p>
+        <span className="inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
+          Explorar <ArrowRight className="h-4 w-4" />
         </span>
       </div>
       <span className="sr-only">Ir para a página de {product.name}</span>
@@ -66,45 +75,33 @@ export function BlogCard({ post }) {
 
 const tipoBadge = {
   "Projeto realizado": "bg-emerald-50 text-emerald-700",
-  "Demonstração": "bg-amber-50 text-amber-700",
-  "Projeto em curso": "border border-dashed border-line px-3 py-1 text-xs font-semibold text-muted",
+  "Projeto demonstrativo": "bg-amber-50 text-amber-700",
+  "Conceito": "border border-dashed border-line px-3 py-1 text-xs font-semibold text-muted",
 }
 
+const accentos = ["#2563eb", "#059669", "#0d9488", "#dc2626", "#ec4899"]
+
 export function ProjectCard({ project }) {
-  const badge = tipoBadge[project.tipo] ?? tipoBadge["Projeto em curso"]
+  const badge = tipoBadge[project.tipo] ?? tipoBadge["Conceito"]
+  const accent = accentos[project.title.charCodeAt(0) % accentos.length]
   return (
-    <div className="card flex flex-col p-7">
-      <div className="flex items-center justify-between gap-3">
-        <h3 className="text-lg font-bold text-ink">{project.title}</h3>
-        <span className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${badge}`}>
-          {project.tipo}
-        </span>
-      </div>
-      <dl className="mt-5 flex-1 space-y-4 text-sm">
-        <div>
-          <dt className="text-xs font-semibold uppercase tracking-wider text-muted">Problema</dt>
-          <dd className="mt-1 text-muted">{project.problema}</dd>
+    <div className="card overflow-hidden">
+      <ProjectMockup product={{ code: project.tipo === "Conceito" ? "SKL" : "SL" }} accent={accent} />
+      <div className="p-7">
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="text-lg font-bold text-ink">{project.title}</h3>
+          <span className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${badge}`}>
+            {project.tipo}
+          </span>
         </div>
-        <div>
-          <dt className="text-xs font-semibold uppercase tracking-wider text-muted">Solução</dt>
-          <dd className="mt-1 text-muted">{project.solucao}</dd>
-        </div>
-        <div>
-          <dt className="text-xs font-semibold uppercase tracking-wider text-muted">Resultado</dt>
-          <dd className="mt-1 text-muted">{project.resultado}</dd>
-        </div>
-      </dl>
-      <div className="mt-5 border-t border-line-soft pt-4">
-        <dt className="text-xs font-semibold uppercase tracking-wider text-muted">
-          Tecnologias
-        </dt>
-        <dd className="mt-2 flex flex-wrap gap-2">
+        <p className="mt-3 text-sm leading-relaxed text-muted">{project.resultado}</p>
+        <div className="mt-5 flex flex-wrap gap-2 border-t border-line-soft pt-4">
           {project.tecnologias.map((t) => (
             <span key={t} className="rounded-md bg-surface px-2 py-1 text-xs text-muted">
               {t}
             </span>
           ))}
-        </dd>
+        </div>
       </div>
     </div>
   )
