@@ -20,6 +20,14 @@ export const products = [
     stage: "Começar",
     short: "Presença digital profissional.",
     chips: ["Website", "Landing page", "Portfólio"],
+    home: {
+      phrase:
+        "Transforme a presença da sua empresa numa plataforma que apresenta os serviços, gera confiança e facilita o contacto com clientes.",
+      audience: "empresas sem presença digital profissional.",
+      chipsLabel: "Inclui:",
+      chips: ["Website", "Landing Pages", "Portfólio", "Contacto"],
+      price: "A partir de 7.000 MZN",
+    },
 
     title: "Presença digital profissional",
     icon: Globe,
@@ -70,6 +78,13 @@ export const products = [
     stage: "Organizar",
     short: "Digitalizar a operação da empresa.",
     chips: ["Clientes", "Vendas", "Stock", "Dashboards"],
+    home: {
+      phrase:
+        "Sistemas para centralizar clientes, projetos, vendas, inventário e outras operações.",
+      audience: "empresas que ainda dependem de processos manuais.",
+      chipsLabel: "Exemplos:",
+      chips: ["CRM", "ERP", "Stock", "Projetos"],
+    },
 
     title: "Sistemas digitais para empresas",
     icon: LayoutDashboard,
@@ -120,6 +135,13 @@ export const products = [
     stage: "Automatizar",
     short: "Reduzir o trabalho manual repetitivo.",
     chips: ["Integrações", "Notificações", "Relatórios"],
+    home: {
+      phrase:
+        "Automatize tarefas e conecte ferramentas para reduzir trabalho manual e erros.",
+      audience: "empresas com processos digitais que ainda executam tarefas manualmente.",
+      chipsLabel: "Exemplos:",
+      chips: ["Fluxos", "Relatórios", "Integrações", "Notificações"],
+    },
 
     title: "Automação de processos",
     icon: Workflow,
@@ -165,6 +187,13 @@ export const products = [
     stage: "Estruturar",
     short: "Uma base tecnológica estável e segura.",
     chips: ["Domínio", "Hospedagem", "E-mail", "Backups"],
+    home: {
+      phrase:
+        "Configuração e manutenção da infraestrutura que mantém os seus serviços digitais a funcionar.",
+      audience: "empresas que querem tecnologia estável sem se preocupar com a manutenção.",
+      chipsLabel: "Inclui:",
+      chips: ["Hospedagem", "Domínios", "Backups", "Segurança", "Monitorização"],
+    },
 
     title: "Infraestrutura e suporte tecnológico",
     icon: ServerCog,
@@ -211,6 +240,13 @@ export const products = [
     stage: "Construir",
     short: "Quando nenhuma solução pronta chega.",
     chips: ["Aplicações à medida", "Integrações", "APIs"],
+    home: {
+      phrase:
+        "Desenvolvemos soluções específicas para problemas que não cabem num produto padrão.",
+      audience: "empresas com necessidades específicas que as soluções de mercado não resolvem.",
+      chipsLabel: "Exemplos:",
+      chips: ["Sistemas personalizados", "IoT", "Integrações", "Aplicações específicas"],
+    },
 
     title: "Soluções tecnológicas personalizadas",
     icon: Puzzle,
@@ -296,19 +332,19 @@ export const process = [
 export const pillars = [
   {
     title: "Estável",
-    text: "Soluções feitas para funcionar. Construímos para continuar a operar com consistência, sem depender de intervenção constante.",
+    text: "Arquitetura pensada para manutenção e evolução.",
   },
   {
     title: "Segura",
-    text: "Proteção desde o início. A segurança está no desenho de cada solução, não é um complemento posterior.",
+    text: "Boas práticas aplicadas desde o desenvolvimento.",
   },
   {
     title: "Acessível",
-    text: "Tecnologia proporcional à necessidade e ao orçamento. Acessibilidade faz parte do desenho, não é um extra.",
+    text: "Soluções dimensionadas à necessidade.",
   },
   {
     title: "Inclusiva",
-    text: "Soluções pensadas para pessoas e empresas de diferentes dimensões — de pequenos negócios a organizações maiores.",
+    text: "Tecnologia pensada para diferentes realidades.",
   },
 ]
 

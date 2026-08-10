@@ -84,4 +84,7 @@ body {
   .eyebrow {
     @apply text-xs font-semibold uppercase tracking-widest text-brand-600;
   }
+  .link-inline {
+    @apply inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition-colors hover:text-brand-700;
+  }
 }

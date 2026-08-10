@@ -1,68 +1,224 @@
-const layerStyles = [
-  { x: 20, y: 34, w: 330, h: 148, accent: "#2563eb", bars: [52, 150, 220] },
-  { x: 100, y: 128, w: 330, h: 148, accent: "#0d9488", bars: [58, 130, 200] },
-  { x: 180, y: 222, w: 330, h: 148, accent: "#7c3aed", bars: [46, 140, 210] },
-]
-
-const layerLabels = [
-  { x: 402, y: 100, title: "Website", accent: "#2563eb" },
-  { x: 402, y: 200, title: "Sistema", accent: "#0d9488" },
-  { x: 402, y: 300, title: "Dados", accent: "#7c3aed" },
-]
-
-export function LayersVisual({ className = "" }) {
+function WindowChrome({ title }) {
   return (
-    <div className={`pointer-events-none select-none ${className}`} aria-hidden="true">
-      <svg viewBox="0 0 480 400" className="w-full">
-        <defs>
-          <linearGradient id="layer-sheet" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#ffffff" />
-            <stop offset="1" stopColor="#f4f4f5" />
-          </linearGradient>
-        </defs>
+    <div className="flex items-center gap-2 border-b border-line-soft bg-surface px-3 py-2">
+      <span className="h-2 w-2 rounded-full bg-[#fca5a5]" />
+      <span className="h-2 w-2 rounded-full bg-[#fde68a]" />
+      <span className="h-2 w-2 rounded-full bg-[#86efac]" />
+      <span className="ml-2 flex-1 truncate rounded-md bg-white px-2 py-0.5 text-[9px] font-medium text-muted">
+        {title}
+      </span>
+    </div>
+  )
+}
 
-        {layerLabels.map((l) => (
-          <g key={l.title} opacity="0.9">
-            <circle cx={l.x} cy={l.y - 14} r="4" fill={l.accent} />
-            <text x={l.x + 12} y={l.y - 10} fontSize="14" fontWeight="700" fill="#18181b">
-              {l.title}
-            </text>
-          </g>
+export function HeroVisual({ className = "" }) {
+  return (
+    <div className={`pointer-events-none relative mx-auto h-[380px] w-full max-w-[520px] select-none sm:h-[440px] ${className}`} aria-hidden="true">
+      <div className="absolute left-0 top-0 z-10 w-[58%] -rotate-3 rounded-xl border border-line bg-white shadow-xl">
+        <WindowChrome title="skylayer.co.mz" />
+        <div className="px-4 py-3">
+          <div className="flex items-center justify-between">
+            <span className="h-1.5 w-8 rounded bg-brand-600" />
+            <div className="flex gap-1.5">
+              <span className="h-1 w-5 rounded bg-[#e4e4e7]" />
+              <span className="h-1 w-5 rounded bg-[#e4e4e7]" />
+              <span className="h-1 w-5 rounded bg-[#e4e4e7]" />
+              <span className="h-1.5 w-6 rounded bg-brand-600" />
+            </div>
+          </div>
+          <div className="mt-4 h-2.5 w-3/4 rounded bg-ink/80" />
+          <div className="mt-1.5 h-2.5 w-1/2 rounded bg-ink/60" />
+          <div className="mt-1.5 h-1.5 w-4/5 rounded bg-[#e4e4e7]" />
+          <div className="mt-3 flex gap-1.5">
+            <span className="h-4 w-10 rounded-md bg-brand-600" />
+            <span className="h-4 w-10 rounded-md border border-line" />
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute left-[16%] top-[26%] z-20 w-[58%] rotate-1 rounded-xl border border-line bg-white shadow-xl">
+        <WindowChrome title="Painel · Sistema" />
+        <div className="flex gap-2 px-3 py-3">
+          <div className="hidden w-10 flex-col gap-1.5 sm:flex">
+            <span className="h-1.5 rounded bg-brand-600" />
+            <span className="h-1.5 rounded bg-[#e4e4e7]" />
+            <span className="h-1.5 rounded bg-[#e4e4e7]" />
+          </div>
+          <div className="flex-1">
+            <div className="flex gap-1.5">
+              <div className="flex-1 rounded-lg border border-line-soft bg-surface px-2 py-1.5">
+                <p className="text-[8px] font-semibold uppercase tracking-wide text-muted">Clientes</p>
+                <p className="text-sm font-bold text-brand-600">124</p>
+              </div>
+              <div className="flex-1 rounded-lg border border-line-soft bg-surface px-2 py-1.5">
+                <p className="text-[8px] font-semibold uppercase tracking-wide text-muted">Vendas</p>
+                <p className="text-sm font-bold text-ink">38</p>
+              </div>
+            </div>
+            <div className="mt-1.5 flex h-10 items-end gap-1 rounded-lg border border-line-soft bg-surface px-2 pt-1.5">
+              {[35, 55, 40, 70, 60, 90, 75].map((h, i) => (
+                <span key={i} className="flex-1 rounded-t-sm bg-brand-600/20" style={{ height: `${h}%` }} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-[30%] z-30 w-[60%] rotate-2 rounded-xl border border-line bg-white shadow-xl">
+        <WindowChrome title="Dados · Pedidos" />
+        <div className="space-y-1.5 px-3 py-3">
+          {[
+            { label: "Pedido #1024", status: "Entregue", ok: true },
+            { label: "Pedido #1025", status: "Em preparação", ok: false },
+            { label: "Pedido #1026", status: "Entregue", ok: true },
+          ].map((r) => (
+            <div key={r.label} className="flex items-center justify-between rounded-lg border border-line-soft bg-surface px-2.5 py-1.5">
+              <span className="text-[10px] font-semibold text-ink">{r.label}</span>
+              <span className={`flex items-center gap-1 text-[9px] font-medium ${r.ok ? "text-emerald-700" : "text-amber-700"}`}>
+                <span className={`h-1.5 w-1.5 rounded-full ${r.ok ? "bg-emerald-500" : "bg-amber-500"}`} />
+                {r.status}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export function ProductVisual({ slug, className = "" }) {
+  if (slug === "presence") {
+    return (
+      <div className={`rounded-xl border border-line bg-surface p-3 ${className}`} aria-hidden="true">
+        <div className="flex items-center gap-2 border-b border-line-soft pb-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#fca5a5]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[#fde68a]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[#86efac]" />
+          <span className="ml-1 h-2.5 flex-1 rounded bg-white" />
+        </div>
+        <div className="mt-3 flex items-center justify-between">
+          <span className="h-2 w-9 rounded bg-brand-600" />
+          <span className="flex gap-1">
+            <span className="h-1 w-4 rounded bg-[#e4e4e7]" />
+            <span className="h-1 w-4 rounded bg-[#e4e4e7]" />
+          </span>
+        </div>
+        <div className="mt-3 h-2 w-3/4 rounded bg-ink/70" />
+        <div className="mt-1.5 h-1.5 w-1/2 rounded bg-[#e4e4e7]" />
+        <div className="mt-3 flex gap-1.5">
+          <span className="h-3.5 w-9 rounded bg-brand-600" />
+          <span className="h-3.5 flex-1 rounded bg-white" />
+        </div>
+      </div>
+    )
+  }
+
+  if (slug === "business-systems") {
+    return (
+      <div className={`flex gap-2 rounded-xl border border-line bg-surface p-3 ${className}`} aria-hidden="true">
+        <div className="hidden w-8 flex-col gap-1.5 sm:flex">
+          <span className="h-1.5 rounded bg-brand-600" />
+          <span className="h-1.5 rounded bg-white" />
+          <span className="h-1.5 rounded bg-white" />
+          <span className="h-1.5 rounded bg-white" />
+        </div>
+        <div className="flex-1">
+          <div className="flex gap-1.5">
+            <div className="flex-1 rounded-lg bg-white p-1.5">
+              <p className="text-[7px] font-semibold uppercase text-muted">Clientes</p>
+              <p className="text-[10px] font-bold text-brand-600">124</p>
+            </div>
+            <div className="flex-1 rounded-lg bg-white p-1.5">
+              <p className="text-[7px] font-semibold uppercase text-muted">Vendas</p>
+              <p className="text-[10px] font-bold text-ink">38</p>
+            </div>
+            <div className="flex-1 rounded-lg bg-white p-1.5">
+              <p className="text-[7px] font-semibold uppercase text-muted">Stock</p>
+              <p className="text-[10px] font-bold text-ink">92</p>
+            </div>
+          </div>
+          <div className="mt-1.5 flex h-8 items-end gap-1 rounded-lg bg-white p-1.5">
+            {[40, 65, 50, 80, 60, 95, 70].map((h, i) => (
+              <span key={i} className="flex-1 rounded-t-sm bg-brand-600/20" style={{ height: `${h}%` }} />
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (slug === "automation") {
+    return (
+      <div className={`rounded-xl border border-line bg-surface p-4 ${className}`} aria-hidden="true">
+        <div className="flex items-center">
+          <div className="flex-1 rounded-lg bg-white px-2 py-2 text-center">
+            <p className="text-[8px] font-bold text-ink">Pedido novo</p>
+            <p className="text-[7px] text-muted">WhatsApp → sistema</p>
+          </div>
+          <span className="w-4 text-center text-brand-600">→</span>
+          <div className="flex-1 rounded-lg bg-white px-2 py-2 text-center">
+            <p className="text-[8px] font-bold text-ink">Notificação</p>
+            <p className="text-[7px] text-muted">cliente avisado</p>
+          </div>
+          <span className="w-4 text-center text-brand-600">→</span>
+          <div className="flex-1 rounded-lg bg-brand-600 px-2 py-2 text-center">
+            <p className="text-[8px] font-bold text-white">Relatório</p>
+            <p className="text-[7px] text-brand-100">semanal automático</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (slug === "infrastructure") {
+    return (
+      <div className={`rounded-xl border border-line bg-surface p-4 ${className}`} aria-hidden="true">
+        <div className="space-y-1.5">
+          <div className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5">
+            <span className="h-2 w-2 rounded-sm bg-brand-600" />
+            <p className="text-[8px] font-semibold text-ink">Domínio e e-mail</p>
+            <span className="ml-auto text-[7px] text-emerald-700">ativo</span>
+          </div>
+          <div className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5">
+            <span className="h-2 w-2 rounded-sm bg-brand-600" />
+            <p className="text-[8px] font-semibold text-ink">Servidor e HTTPS</p>
+            <span className="ml-auto text-[7px] text-emerald-700">seguro</span>
+          </div>
+          <div className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5">
+            <span className="h-2 w-2 rounded-sm bg-brand-600" />
+            <p className="text-[8px] font-semibold text-ink">Backups diários</p>
+            <span className="ml-auto text-[7px] text-emerald-700">verificados</span>
+          </div>
+        </div>
+        <div className="mt-2 flex items-center gap-1.5 rounded-lg bg-brand-50 px-2.5 py-1.5">
+          <span className="h-2.5 w-2.5 rounded-full border border-brand-600 text-center text-[7px] leading-[9px] font-bold text-brand-600">
+            ✓
+          </span>
+          <p className="text-[8px] font-semibold text-brand-700">Monitorização 24/7</p>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className={`rounded-xl border border-line bg-surface p-4 ${className}`} aria-hidden="true">
+      <div className="flex items-center gap-2 border-b border-line-soft pb-2">
+        <span className="h-1.5 w-1.5 rounded-full bg-[#fca5a5]" />
+        <span className="h-1.5 w-1.5 rounded-full bg-[#fde68a]" />
+        <span className="h-1.5 w-1.5 rounded-full bg-[#86efac]" />
+        <span className="ml-1 h-2.5 flex-1 rounded bg-white" />
+      </div>
+      <div className="mt-3 grid grid-cols-3 gap-1.5">
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <div key={i} className="rounded-lg bg-white p-1.5">
+            <span className={`block h-1.5 w-3/4 rounded ${i % 3 === 0 ? "bg-brand-600" : "bg-[#e4e4e7]"}`} />
+            <span className="mt-1 block h-1 w-1/2 rounded bg-[#e4e4e7]" />
+          </div>
         ))}
-
-        <path
-          d="M402 40v310"
-          stroke="#e4e4e7"
-          strokeWidth="1.5"
-          strokeDasharray="3 5"
-          fill="none"
-        />
-
-        {layerStyles.map((l, i) => (
-          <g key={i} opacity={0.82 + i * 0.09}>
-            <rect
-              x={l.x}
-              y={l.y}
-              width={l.w}
-              height={l.h}
-              rx="12"
-              fill="url(#layer-sheet)"
-              stroke="#e4e4e7"
-            />
-            <g>
-              <circle cx={l.x + 22} cy={l.y + 22} r="3.5" fill="#fca5a5" />
-              <circle cx={l.x + 34} cy={l.y + 22} r="3.5" fill="#fde68a" />
-              <circle cx={l.x + 46} cy={l.y + 22} r="3.5" fill="#86efac" />
-              <rect x={l.x + 64} y={l.y + 16} width={l.w - 82} height="12" rx="6" fill="#f4f4f5" />
-            </g>
-            <rect x={l.x + 24} y={l.y + 48} width={l.bars[0]} height="12" rx="6" fill={l.accent} />
-            <rect x={l.x + 24} y={l.y + 70} width={l.bars[1]} height="10" rx="5" fill="#e4e4e7" />
-            <rect x={l.x + 24} y={l.y + 88} width={l.bars[2]} height="10" rx="5" fill="#e4e4e7" />
-            <rect x={l.x + 24} y={l.y + 110} width={92} height="16" rx="8" fill={`${l.accent}14`} />
-            <rect x={l.x + 124} y={l.y + 110} width={70} height="16" rx="8" fill="#f4f4f5" />
-          </g>
-        ))}
-      </svg>
+      </div>
+      <div className="mt-2 flex h-2 w-1/2 items-center rounded-full bg-brand-600/20 px-0.5">
+        <span className="h-1.5 w-2/3 rounded-full bg-brand-600" />
+      </div>
     </div>
   )
 }
@@ -159,12 +315,4 @@ export const pillarIcons = {
       <circle cx="24" cy="34" r="4" stroke="#d4d4d8" strokeWidth="2" />
     </svg>
   ),
-}
-
-export const stageLabels = {
-  "Começar": "Para entrar ou melhorar a presença digital.",
-  "Organizar": "Para digitalizar a operação da empresa.",
-  "Automatizar": "Para reduzir trabalho manual repetitivo.",
-  "Estruturar": "Para uma base tecnológica confiável.",
-  "Construir": "Para necessidades fora do padrão.",
 }

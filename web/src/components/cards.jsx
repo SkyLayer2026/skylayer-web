@@ -1,26 +1,68 @@
 import { Link } from "react-router-dom"
 import { ArrowRight } from "lucide-react"
 import { complementary } from "../data/services.js"
-import { ProjectMockup } from "./visuals.jsx"
+import { ProductVisual, ProjectMockup } from "./visuals.jsx"
+
+export function FeaturedProductCard({ product }) {
+  return (
+    <Link
+      to={`/servicos/${product.slug}`}
+      className="card group grid gap-8 overflow-hidden p-7 transition-all hover:border-brand-300 hover:shadow-sm sm:p-9 lg:grid-cols-2 lg:items-center"
+    >
+      <div>
+        <p className="text-xs font-bold uppercase tracking-widest text-brand-600">
+          Produto de entrada
+        </p>
+        <h3 className="mt-4 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
+          {product.name}
+        </h3>
+        <p className="mt-1 font-semibold text-ink">{product.title}</p>
+        <p className="mt-4 text-[15px] leading-relaxed text-muted">{product.home.phrase}</p>
+        <p className="mt-4 text-sm text-muted">
+          <strong className="font-semibold text-ink">Ideal para:</strong> {product.home.audience}
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {product.home.chips.map((c) => (
+            <span key={c} className="rounded-md bg-surface px-2.5 py-1 text-xs text-muted">
+              {c}
+            </span>
+          ))}
+        </div>
+        <p className="mt-6 font-bold text-ink">{product.home.price}</p>
+        <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
+          Explorar solução
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </span>
+      </div>
+      <ProductVisual slug={product.slug} className="lg:scale-[1.15]" />
+      <span className="sr-only">Ir para a página de {product.name}</span>
+    </Link>
+  )
+}
 
 export function ProductCard({ product }) {
   return (
     <Link
       to={`/servicos/${product.slug}`}
-      className="card group flex flex-col justify-between p-7 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm"
+      className="card group flex h-full flex-col p-6 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm"
     >
-      <div>
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-bold uppercase tracking-widest text-brand-600">
-            {product.stage}
+      <ProductVisual slug={product.slug} />
+      <h3 className="mt-5 text-lg font-bold text-ink">{product.name}</h3>
+      <p className="mt-1 text-sm font-semibold text-brand-600">{product.title}</p>
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{product.home.phrase}</p>
+      <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-muted">
+        {product.home.chipsLabel}
+      </p>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {product.home.chips.map((c) => (
+          <span key={c} className="rounded-md bg-surface px-2.5 py-1 text-xs text-muted">
+            {c}
           </span>
-          <product.icon className="h-6 w-6 text-brand-600 transition-transform group-hover:scale-110" />
-        </div>
-        <h3 className="mt-6 text-lg font-bold text-ink">{product.name}</h3>
-        <p className="mt-1 text-sm text-muted">{product.short}</p>
+        ))}
       </div>
-      <span className="mt-7 inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
-        Explorar <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+      <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
+        Explorar solução
+        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
       </span>
       <span className="sr-only">Ir para a página de {product.name}</span>
     </Link>
@@ -45,19 +87,33 @@ export function BlogCard({ post }) {
   return (
     <Link
       to={`/blog/${post.slug}`}
-      className="card group flex flex-col p-7 transition-colors hover:border-brand-300"
+      className="card group flex h-full flex-col overflow-hidden transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm"
     >
-      <p className="text-xs font-semibold uppercase tracking-widest text-brand-600">
-        {post.category}
-      </p>
-      <h3 className="mt-3 text-lg font-bold leading-snug text-ink transition-colors group-hover:text-brand-700">
-        {post.title}
-      </h3>
-      <p className="mt-3 flex-1 text-[15px] leading-relaxed text-muted">{post.excerpt}</p>
-      <div className="mt-5 flex items-center gap-2 border-t border-line-soft pt-4 text-xs text-muted">
-        <time dateTime={post.date}>{post.date}</time>
-        <span aria-hidden="true">·</span>
-        <span>{post.readTime}</span>
+      <div
+        className="relative flex h-32 items-center justify-center overflow-hidden bg-brand-50"
+        aria-hidden="true"
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(37,99,235,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(37,99,235,0.07) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+        <span className="relative text-xs font-bold uppercase tracking-[0.2em] text-brand-600">
+          {post.category}
+        </span>
+      </div>
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="text-lg font-bold leading-snug text-ink transition-colors group-hover:text-brand-700">
+          {post.title}
+        </h3>
+        <div className="mt-4 flex items-center gap-2 border-t border-line-soft pt-4 text-xs text-muted">
+          <time dateTime={post.date}>{post.date}</time>
+          <span aria-hidden="true">·</span>
+          <span>{post.readTime}</span>
+        </div>
       </div>
     </Link>
   )
