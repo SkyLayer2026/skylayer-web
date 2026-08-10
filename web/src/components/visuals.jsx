@@ -1,54 +1,67 @@
+const layerStyles = [
+  { x: 20, y: 34, w: 330, h: 148, accent: "#2563eb", bars: [52, 150, 220] },
+  { x: 100, y: 128, w: 330, h: 148, accent: "#0d9488", bars: [58, 130, 200] },
+  { x: 180, y: 222, w: 330, h: 148, accent: "#7c3aed", bars: [46, 140, 210] },
+]
+
+const layerLabels = [
+  { x: 402, y: 100, title: "Website", accent: "#2563eb" },
+  { x: 402, y: 200, title: "Sistema", accent: "#0d9488" },
+  { x: 402, y: 300, title: "Dados", accent: "#7c3aed" },
+]
+
 export function LayersVisual({ className = "" }) {
   return (
     <div className={`pointer-events-none select-none ${className}`} aria-hidden="true">
       <svg viewBox="0 0 480 400" className="w-full">
         <defs>
-          <linearGradient id="layer-fill" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="layer-sheet" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stopColor="#ffffff" />
             <stop offset="1" stopColor="#f4f4f5" />
           </linearGradient>
         </defs>
 
-        <g stroke="#e4e4e7" strokeWidth="1">
-          <line x1="240" y1="70" x2="240" y2="120" />
-          <line x1="240" y1="190" x2="240" y2="240" />
-          <line x1="240" y1="310" x2="240" y2="360" />
-        </g>
+        {layerLabels.map((l) => (
+          <g key={l.title} opacity="0.9">
+            <circle cx={l.x} cy={l.y - 14} r="4" fill={l.accent} />
+            <text x={l.x + 12} y={l.y - 10} fontSize="14" fontWeight="700" fill="#18181b">
+              {l.title}
+            </text>
+          </g>
+        ))}
 
-        <g fill="url(#layer-fill)" stroke="#d4d4d8" strokeWidth="1">
-          <rect x="70" y="10" width="340" height="62" rx="10" />
-          <rect x="70" y="132" width="340" height="58" rx="10" />
-          <rect x="70" y="252" width="340" height="58" rx="10" />
-        </g>
+        <path
+          d="M402 40v310"
+          stroke="#e4e4e7"
+          strokeWidth="1.5"
+          strokeDasharray="3 5"
+          fill="none"
+        />
 
-        <g>
-          <rect x="90" y="30" width="80" height="10" rx="5" fill="#2563eb" />
-          <rect x="180" y="30" width="120" height="10" rx="5" fill="#e4e4e7" />
-          <rect x="90" y="50" width="200" height="8" rx="4" fill="#e4e4e7" />
-        </g>
-
-        <g>
-          <rect x="90" y="152" width="90" height="10" rx="5" fill="#2563eb" />
-          <rect x="190" y="152" width="110" height="10" rx="5" fill="#e4e4e7" />
-          <rect x="90" y="172" width="160" height="8" rx="4" fill="#e4e4e7" />
-        </g>
-
-        <g>
-          <rect x="90" y="272" width="70" height="10" rx="5" fill="#2563eb" />
-          <rect x="170" y="272" width="130" height="10" rx="5" fill="#e4e4e7" />
-          <rect x="90" y="292" width="180" height="8" rx="4" fill="#e4e4e7" />
-        </g>
-
-        <g fill="#2563eb">
-          <circle cx="235" cy="92" r="5" />
-          <circle cx="235" cy="212" r="5" />
-          <circle cx="235" cy="332" r="5" />
-        </g>
-
-        <g fill="#fafafa" stroke="#d4d4d8" strokeWidth="1">
-          <circle cx="410" cy="50" r="9" />
-          <circle cx="410" cy="50" r="4" fill="#2563eb" stroke="none" />
-        </g>
+        {layerStyles.map((l, i) => (
+          <g key={i} opacity={0.82 + i * 0.09}>
+            <rect
+              x={l.x}
+              y={l.y}
+              width={l.w}
+              height={l.h}
+              rx="12"
+              fill="url(#layer-sheet)"
+              stroke="#e4e4e7"
+            />
+            <g>
+              <circle cx={l.x + 22} cy={l.y + 22} r="3.5" fill="#fca5a5" />
+              <circle cx={l.x + 34} cy={l.y + 22} r="3.5" fill="#fde68a" />
+              <circle cx={l.x + 46} cy={l.y + 22} r="3.5" fill="#86efac" />
+              <rect x={l.x + 64} y={l.y + 16} width={l.w - 82} height="12" rx="6" fill="#f4f4f5" />
+            </g>
+            <rect x={l.x + 24} y={l.y + 48} width={l.bars[0]} height="12" rx="6" fill={l.accent} />
+            <rect x={l.x + 24} y={l.y + 70} width={l.bars[1]} height="10" rx="5" fill="#e4e4e7" />
+            <rect x={l.x + 24} y={l.y + 88} width={l.bars[2]} height="10" rx="5" fill="#e4e4e7" />
+            <rect x={l.x + 24} y={l.y + 110} width={92} height="16" rx="8" fill={`${l.accent}14`} />
+            <rect x={l.x + 124} y={l.y + 110} width={70} height="16" rx="8" fill="#f4f4f5" />
+          </g>
+        ))}
       </svg>
     </div>
   )

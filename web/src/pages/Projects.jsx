@@ -23,9 +23,9 @@ export default function Projects() {
           <p className="mt-4 max-w-2xl text-sm text-muted">
             <span className="font-semibold text-emerald-700">Projeto realizado</span> — entregue a
             clientes ·{" "}
-            <span className="font-semibold text-amber-700">Demonstração</span> — conceito
-            demonstrativo ·{" "}
-            <span className="font-semibold">Projeto em curso</span> — em desenvolvimento.
+            <span className="font-semibold text-amber-700">Projeto demonstrativo</span> — demonstra
+            capacidade técnica · <span className="font-semibold">Conceito</span> — em
+            desenvolvimento.
           </p>
         </div>
       </section>

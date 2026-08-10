@@ -7,31 +7,21 @@ export function ProductCard({ product }) {
   return (
     <Link
       to={`/servicos/${product.slug}`}
-      className="card group flex flex-col p-7 transition-colors hover:border-brand-300"
+      className="card group flex flex-col justify-between p-7 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm"
     >
-      <div className="flex items-center justify-between">
-        <span className="text-xs font-bold uppercase tracking-widest text-brand-600">
-          {product.stage}
-        </span>
-        <product.icon className="h-6 w-6 text-brand-600" />
-      </div>
-      <h3 className="mt-5 text-lg font-bold text-ink">{product.name}</h3>
-      <p className="mt-1 text-sm font-medium text-muted">{product.short}</p>
-      <div className="mt-5 flex flex-wrap gap-2">
-        {product.chips.map((c) => (
-          <span key={c} className="rounded-md bg-surface px-2 py-1 text-xs text-muted">
-            {c}
+      <div>
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-bold uppercase tracking-widest text-brand-600">
+            {product.stage}
           </span>
-        ))}
+          <product.icon className="h-6 w-6 text-brand-600 transition-transform group-hover:scale-110" />
+        </div>
+        <h3 className="mt-6 text-lg font-bold text-ink">{product.name}</h3>
+        <p className="mt-1 text-sm text-muted">{product.short}</p>
       </div>
-      <div className="mt-6 flex items-end justify-between gap-3 border-t border-line-soft pt-4">
-        <p className="text-sm text-muted">
-          <span className="block font-bold text-ink">{product.price}</span>
-        </p>
-        <span className="inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
-          Explorar <ArrowRight className="h-4 w-4" />
-        </span>
-      </div>
+      <span className="mt-7 inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
+        Explorar <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+      </span>
       <span className="sr-only">Ir para a página de {product.name}</span>
     </Link>
   )
@@ -85,7 +75,7 @@ export function ProjectCard({ project }) {
   const badge = tipoBadge[project.tipo] ?? tipoBadge["Conceito"]
   const accent = accentos[project.title.charCodeAt(0) % accentos.length]
   return (
-    <div className="card overflow-hidden">
+    <Link to="/projetos" className="card group block overflow-hidden transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm">
       <ProjectMockup product={{ code: project.tipo === "Conceito" ? "SKL" : "SL" }} accent={accent} />
       <div className="p-7">
         <div className="flex items-center justify-between gap-3">
@@ -94,16 +84,13 @@ export function ProjectCard({ project }) {
             {project.tipo}
           </span>
         </div>
-        <p className="mt-3 text-sm leading-relaxed text-muted">{project.resultado}</p>
-        <div className="mt-5 flex flex-wrap gap-2 border-t border-line-soft pt-4">
-          {project.tecnologias.map((t) => (
-            <span key={t} className="rounded-md bg-surface px-2 py-1 text-xs text-muted">
-              {t}
-            </span>
-          ))}
-        </div>
+        <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted">{project.resultado}</p>
+        <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
+          Ver projeto
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </span>
       </div>
-    </div>
+    </Link>
   )
 }
 

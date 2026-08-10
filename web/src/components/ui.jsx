@@ -1,4 +1,14 @@
 import { Link } from "react-router-dom"
+import { useReveal } from "../hooks.js"
+
+export function Reveal({ children, delay = 0, className = "" }) {
+  const ref = useReveal()
+  return (
+    <div ref={ref} className={`reveal ${className}`} style={delay ? { animationDelay: `${delay}ms` } : undefined}>
+      {children}
+    </div>
+  )
+}
 
 export function Logo({ dark = false, className = "h-8 w-8" }) {
   return (
