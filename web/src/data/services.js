@@ -336,11 +336,11 @@ export const pillars = [
   },
   {
     title: "Segura",
-    text: "Boas práticas aplicadas desde o desenvolvimento.",
+    text: "HTTPS, backups e boas práticas desde o desenvolvimento.",
   },
   {
     title: "Acessível",
-    text: "Soluções dimensionadas à necessidade.",
+    text: "Sites a partir de 7.000 MZN.",
   },
   {
     title: "Inclusiva",

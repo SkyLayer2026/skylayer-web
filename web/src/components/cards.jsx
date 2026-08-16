@@ -41,12 +41,18 @@ export function FeaturedProductCard({ product }) {
 }
 
 export function ProductCard({ product }) {
+  const bleed = product.slug === "automation"
+  const dominant = product.slug === "business-systems"
   return (
     <Link
       to={`/servicos/${product.slug}`}
-      className="card group flex h-full flex-col p-6 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm"
+      className="card group flex h-full flex-col overflow-hidden p-6 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm"
     >
-      <ProductVisual slug={product.slug} />
+      {bleed ? (
+        <ProductVisual slug={product.slug} className="-mx-6 -mt-6 mb-6 rounded-none border-x-0 border-t-0 p-4" />
+      ) : (
+        <ProductVisual slug={product.slug} className={dominant ? "sm:p-4" : "sm:p-3"} />
+      )}
       <h3 className="mt-5 text-lg font-bold text-ink">{product.name}</h3>
       <p className="mt-1 text-sm font-semibold text-brand-600">{product.title}</p>
       <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{product.home.phrase}</p>
@@ -132,16 +138,17 @@ export function ProjectCard({ project }) {
   const accent = accentos[project.title.charCodeAt(0) % accentos.length]
   return (
     <Link to="/projetos" className="card group block overflow-hidden transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm">
-      <ProjectMockup product={{ code: project.tipo === "Conceito" ? "SKL" : "SL" }} accent={accent} />
-      <div className="p-7">
-        <div className="flex items-center justify-between gap-3">
-          <h3 className="text-lg font-bold text-ink">{project.title}</h3>
-          <span className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${badge}`}>
-            {project.tipo}
-          </span>
-        </div>
-        <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted">{project.resultado}</p>
-        <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
+      <div className="relative">
+        <ProjectMockup product={{ code: project.tipo === "Conceito" ? "SKL" : "SL" }} accent={accent} />
+        <span className={`absolute left-4 top-4 z-10 rounded-full px-3 py-1 text-xs font-semibold shadow-sm ${badge}`}>
+          {project.tipo}
+        </span>
+      </div>
+      <div className="p-6 sm:p-7">
+        <h3 className="text-lg font-bold text-ink">{project.title}</h3>
+        <p className="mt-2 line-clamp-1 text-sm text-muted">{project.problema}</p>
+        <p className="mt-1 line-clamp-1 text-sm font-medium text-ink/70">{project.resultado}</p>
+        <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
           Ver projeto
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </span>

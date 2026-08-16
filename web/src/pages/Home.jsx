@@ -1,18 +1,44 @@
 import { Link } from "react-router-dom"
 import { ArrowRight, MessageCircle } from "lucide-react"
-import { usePageTitle } from "../hooks.js"
+import { usePageTitle, useReveal } from "../hooks.js"
 import { whatsappLink } from "../config.js"
 import { products, pillars, process } from "../data/services.js"
 import { posts } from "../data/posts.js"
 import { projects } from "../data/projects.js"
-import { Reveal, SectionHeading } from "../components/ui.jsx"
+import { Reveal, LayerEdge, SectionHeading } from "../components/ui.jsx"
 import { FeaturedProductCard, ProductCard, BlogCard, ProjectCard } from "../components/cards.jsx"
 import { HeroVisual, pillarIcons } from "../components/visuals.jsx"
 
 const homeSteps = process.filter(([title]) => title !== "Validamos")
+const homeProjects = [projects[0], projects[3], projects[4]]
 
 const antes = ["WhatsApp", "Excel", "Papéis", "Processos manuais", "Informação dispersa"]
 const depois = ["Website", "Sistema", "Dados centralizados", "Automação", "Processos organizados"]
+
+function ProcessSteps() {
+  const ref = useReveal()
+  return (
+    <ol ref={ref} className="reveal mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      {homeSteps.map(([title], i) => (
+        <li
+          key={title}
+          className="process-item group relative rounded-xl border border-line bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm"
+        >
+          <p className="text-xs font-bold tracking-widest text-line transition-colors group-hover:text-brand-300">
+            {String(i + 1).padStart(2, "0")}
+          </p>
+          <h3 className="mt-3 font-bold text-ink">{title}</h3>
+          {i < homeSteps.length - 1 && (
+            <ArrowRight
+              className="process-arrow absolute -right-3 top-1/2 hidden h-4 w-4 -translate-y-1/2 text-brand-300 lg:block"
+              aria-hidden="true"
+            />
+          )}
+        </li>
+      ))}
+    </ol>
+  )
+}
 
 export default function Home() {
   usePageTitle("")
@@ -90,6 +116,8 @@ export default function Home() {
         </div>
       </section>
 
+      <LayerEdge />
+
       <section className="bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <Reveal>
@@ -106,7 +134,7 @@ export default function Home() {
             </div>
           </Reveal>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.slice(0, 3).map((p, i) => (
+            {homeProjects.map((p, i) => (
               <Reveal key={p.title} delay={i * 70}>
                 <ProjectCard project={p} />
               </Reveal>
@@ -115,7 +143,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-b border-line-soft bg-white">
+      <section className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <Reveal>
             <SectionHeading eyebrow="Por que Skylayer" title="Tecnologia não deve ser um privilégio." />
@@ -138,6 +166,8 @@ export default function Home() {
         </div>
       </section>
 
+      <LayerEdge />
+
       <section className="bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <Reveal>
@@ -158,8 +188,8 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
-              <div className="text-center">
-                <ArrowRight className="mx-auto h-7 w-7 rotate-90 text-brand-600 lg:rotate-0" />
+              <div className="rotate-90 text-center lg:rotate-0">
+                <ArrowRight className="animate-arrow mx-auto h-7 w-7 text-brand-600" />
               </div>
               <div className="rounded-2xl border border-brand-200 bg-brand-50 p-8">
                 <p className="text-sm font-bold uppercase tracking-widest text-brand-700">Depois</p>
@@ -179,31 +209,15 @@ export default function Home() {
         </div>
       </section>
 
+      <LayerEdge />
+
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <Reveal>
             <SectionHeading eyebrow="Processo" title="Como funciona" />
           </Reveal>
-          <Reveal delay={100}>
-            <ol className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-              {homeSteps.map(([title], i) => (
-                <li
-                  key={title}
-                  className="group relative rounded-xl border border-line bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm"
-                >
-                  <p className="text-xs font-bold tracking-widest text-line transition-colors group-hover:text-brand-300">
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="mt-3 font-bold text-ink">{title}</h3>
-                  {i < homeSteps.length - 1 && (
-                    <ArrowRight
-                      className="absolute -right-3 top-1/2 hidden h-4 w-4 -translate-y-1/2 text-line lg:block"
-                      aria-hidden="true"
-                    />
-                  )}
-                </li>
-              ))}
-            </ol>
+          <ProcessSteps />
+          <Reveal delay={150}>
             <p className="mt-6">
               <Link to="/sobre" className="link-inline">
                 Ver processo completo

@@ -41,3 +41,16 @@ export function SectionHeading({ eyebrow, title, text, align = "left" }) {
 export function Divider() {
   return <div className="mx-auto h-px w-full max-w-6xl bg-line" aria-hidden="true" />
 }
+
+export function LayerEdge() {
+  return (
+    <div className="relative mx-auto h-14 w-full max-w-6xl px-4 sm:px-6" aria-hidden="true">
+      <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-line" />
+      <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 -space-x-1.5">
+        <span className="h-4 w-7 -rotate-6 rounded-sm border border-brand-300 bg-white shadow-sm" />
+        <span className="relative z-10 h-4 w-7 rounded-sm border border-brand-200 bg-brand-50 shadow-sm" />
+        <span className="h-4 w-7 rotate-6 rounded-sm border border-brand-300 bg-white shadow-sm" />
+      </div>
+    </div>
+  )
+}

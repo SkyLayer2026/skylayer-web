@@ -11,10 +11,24 @@ function WindowChrome({ title }) {
   )
 }
 
+export function LayerCorners() {
+  return (
+    <span className="absolute right-2 top-2 z-10 flex -space-x-1" aria-hidden="true">
+      <span className="h-3 w-4 -rotate-6 rounded-[3px] border border-brand-300 bg-white/90" />
+      <span className="h-3 w-4 rotate-6 rounded-[3px] border border-brand-200 bg-brand-50/90" />
+    </span>
+  )
+}
+
 export function HeroVisual({ className = "" }) {
   return (
     <div className={`pointer-events-none relative mx-auto h-[380px] w-full max-w-[520px] select-none sm:h-[440px] ${className}`} aria-hidden="true">
-      <div className="absolute left-0 top-0 z-10 w-[58%] -rotate-3 rounded-xl border border-line bg-white shadow-xl">
+      <div className="absolute right-[6%] top-6 bottom-6 hidden w-px border-l border-dashed border-line sm:block" />
+      <span className="absolute right-[5.4%] top-14 hidden h-2 w-2 rounded-full bg-brand-600 sm:block" />
+      <span className="absolute right-[5.4%] top-1/2 hidden h-2 w-2 rounded-full bg-brand-600 sm:block" />
+      <span className="absolute right-[5.4%] bottom-14 hidden h-2 w-2 rounded-full bg-brand-600 sm:block" />
+
+      <div className="hero-layer hero-layer-1 absolute left-0 top-0 z-10 w-[58%] rounded-xl border border-line bg-white shadow-xl">
         <WindowChrome title="skylayer.co.mz" />
         <div className="px-4 py-3">
           <div className="flex items-center justify-between">
@@ -36,7 +50,7 @@ export function HeroVisual({ className = "" }) {
         </div>
       </div>
 
-      <div className="absolute left-[16%] top-[26%] z-20 w-[58%] rotate-1 rounded-xl border border-line bg-white shadow-xl">
+      <div className="hero-layer hero-layer-2 absolute left-[16%] top-[26%] z-20 w-[58%] rounded-xl border border-line bg-white shadow-xl">
         <WindowChrome title="Painel · Sistema" />
         <div className="flex gap-2 px-3 py-3">
           <div className="hidden w-10 flex-col gap-1.5 sm:flex">
@@ -64,7 +78,7 @@ export function HeroVisual({ className = "" }) {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-[30%] z-30 w-[60%] rotate-2 rounded-xl border border-line bg-white shadow-xl">
+      <div className="hero-layer hero-layer-3 absolute bottom-0 left-[30%] z-30 w-[60%] rounded-xl border border-line bg-white shadow-xl">
         <WindowChrome title="Dados · Pedidos" />
         <div className="space-y-1.5 px-3 py-3">
           {[
@@ -89,7 +103,8 @@ export function HeroVisual({ className = "" }) {
 export function ProductVisual({ slug, className = "" }) {
   if (slug === "presence") {
     return (
-      <div className={`rounded-xl border border-line bg-surface p-3 ${className}`} aria-hidden="true">
+      <div className={`relative rounded-xl border border-line bg-surface p-3 ${className}`} aria-hidden="true">
+        <LayerCorners />
         <div className="flex items-center gap-2 border-b border-line-soft pb-2">
           <span className="h-1.5 w-1.5 rounded-full bg-[#fca5a5]" />
           <span className="h-1.5 w-1.5 rounded-full bg-[#fde68a]" />
@@ -115,31 +130,38 @@ export function ProductVisual({ slug, className = "" }) {
 
   if (slug === "business-systems") {
     return (
-      <div className={`flex gap-2 rounded-xl border border-line bg-surface p-3 ${className}`} aria-hidden="true">
-        <div className="hidden w-8 flex-col gap-1.5 sm:flex">
+      <div className={`relative flex items-stretch gap-2 rounded-xl border border-line bg-surface p-3 sm:gap-3 sm:p-4 ${className}`} aria-hidden="true">
+        <LayerCorners />
+        <div className="hidden w-9 flex-col gap-1.5 sm:flex">
           <span className="h-1.5 rounded bg-brand-600" />
           <span className="h-1.5 rounded bg-white" />
           <span className="h-1.5 rounded bg-white" />
           <span className="h-1.5 rounded bg-white" />
         </div>
-        <div className="flex-1">
-          <div className="flex gap-1.5">
-            <div className="flex-1 rounded-lg bg-white p-1.5">
-              <p className="text-[7px] font-semibold uppercase text-muted">Clientes</p>
-              <p className="text-[10px] font-bold text-brand-600">124</p>
-            </div>
-            <div className="flex-1 rounded-lg bg-white p-1.5">
-              <p className="text-[7px] font-semibold uppercase text-muted">Vendas</p>
-              <p className="text-[10px] font-bold text-ink">38</p>
-            </div>
-            <div className="flex-1 rounded-lg bg-white p-1.5">
-              <p className="text-[7px] font-semibold uppercase text-muted">Stock</p>
-              <p className="text-[10px] font-bold text-ink">92</p>
-            </div>
+        <div className="flex flex-1 flex-col justify-between gap-2">
+          <div className="grid grid-cols-3 gap-1.5">
+            {[
+              { label: "Clientes", value: "124", strong: true },
+              { label: "Vendas", value: "38", strong: false },
+              { label: "Stock", value: "92", strong: false },
+            ].map((k) => (
+              <div key={k.label} className="rounded-lg bg-white p-2">
+                <p className="text-[7px] font-semibold uppercase tracking-wide text-muted">{k.label}</p>
+                <p className={`text-xs font-bold ${k.strong ? "text-brand-600" : "text-ink"}`}>{k.value}</p>
+              </div>
+            ))}
           </div>
-          <div className="mt-1.5 flex h-8 items-end gap-1 rounded-lg bg-white p-1.5">
-            {[40, 65, 50, 80, 60, 95, 70].map((h, i) => (
+          <div className="flex h-12 items-end gap-1 rounded-lg bg-white p-2">
+            {[40, 65, 50, 80, 60, 95, 70, 85, 55].map((h, i) => (
               <span key={i} className="flex-1 rounded-t-sm bg-brand-600/20" style={{ height: `${h}%` }} />
+            ))}
+          </div>
+          <div className="hidden grid-cols-3 gap-1.5 sm:grid">
+            {["#1042", "#1043", "#1044"].map((n) => (
+              <div key={n} className="flex items-center justify-between rounded-md bg-white px-2 py-1">
+                <span className="text-[7px] font-semibold text-ink">{n}</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              </div>
             ))}
           </div>
         </div>
@@ -149,18 +171,18 @@ export function ProductVisual({ slug, className = "" }) {
 
   if (slug === "automation") {
     return (
-      <div className={`rounded-xl border border-line bg-surface p-4 ${className}`} aria-hidden="true">
+      <div className={`relative rounded-xl border border-line bg-surface p-4 ${className}`} aria-hidden="true">
         <div className="flex items-center">
           <div className="flex-1 rounded-lg bg-white px-2 py-2 text-center">
             <p className="text-[8px] font-bold text-ink">Pedido novo</p>
             <p className="text-[7px] text-muted">WhatsApp → sistema</p>
           </div>
-          <span className="w-4 text-center text-brand-600">→</span>
+          <span className="w-5 text-center text-brand-600">→</span>
           <div className="flex-1 rounded-lg bg-white px-2 py-2 text-center">
             <p className="text-[8px] font-bold text-ink">Notificação</p>
             <p className="text-[7px] text-muted">cliente avisado</p>
           </div>
-          <span className="w-4 text-center text-brand-600">→</span>
+          <span className="w-5 text-center text-brand-600">→</span>
           <div className="flex-1 rounded-lg bg-brand-600 px-2 py-2 text-center">
             <p className="text-[8px] font-bold text-white">Relatório</p>
             <p className="text-[7px] text-brand-100">semanal automático</p>
@@ -172,26 +194,25 @@ export function ProductVisual({ slug, className = "" }) {
 
   if (slug === "infrastructure") {
     return (
-      <div className={`rounded-xl border border-line bg-surface p-4 ${className}`} aria-hidden="true">
-        <div className="space-y-1.5">
-          <div className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5">
-            <span className="h-2 w-2 rounded-sm bg-brand-600" />
-            <p className="text-[8px] font-semibold text-ink">Domínio e e-mail</p>
-            <span className="ml-auto text-[7px] text-emerald-700">ativo</span>
-          </div>
-          <div className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5">
-            <span className="h-2 w-2 rounded-sm bg-brand-600" />
-            <p className="text-[8px] font-semibold text-ink">Servidor e HTTPS</p>
-            <span className="ml-auto text-[7px] text-emerald-700">seguro</span>
-          </div>
-          <div className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5">
-            <span className="h-2 w-2 rounded-sm bg-brand-600" />
-            <p className="text-[8px] font-semibold text-ink">Backups diários</p>
-            <span className="ml-auto text-[7px] text-emerald-700">verificados</span>
-          </div>
+      <div className={`relative rounded-xl border border-line bg-surface p-4 ${className}`} aria-hidden="true">
+        <LayerCorners />
+        <div className="relative space-y-1.5 pl-4">
+          <span className="absolute left-0 top-2 bottom-2 w-px border-l border-dashed border-brand-300" />
+          {[
+            { label: "Domínio e e-mail", status: "ativo" },
+            { label: "Servidor e HTTPS", status: "seguro" },
+            { label: "Backups diários", status: "verificados" },
+          ].map((row) => (
+            <div key={row.label} className="relative flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5">
+              <span className="absolute -left-4 h-2 w-2 rounded-full border-2 border-brand-300 bg-white" />
+              <span className="h-2 w-2 rounded-sm bg-brand-600" />
+              <p className="text-[8px] font-semibold text-ink">{row.label}</p>
+              <span className="ml-auto text-[7px] font-medium text-emerald-700">{row.status}</span>
+            </div>
+          ))}
         </div>
         <div className="mt-2 flex items-center gap-1.5 rounded-lg bg-brand-50 px-2.5 py-1.5">
-          <span className="h-2.5 w-2.5 rounded-full border border-brand-600 text-center text-[7px] leading-[9px] font-bold text-brand-600">
+          <span className="flex h-2.5 w-2.5 items-center justify-center rounded-full border border-brand-600 text-[7px] font-bold leading-none text-brand-600">
             ✓
           </span>
           <p className="text-[8px] font-semibold text-brand-700">Monitorização 24/7</p>
@@ -201,7 +222,8 @@ export function ProductVisual({ slug, className = "" }) {
   }
 
   return (
-    <div className={`rounded-xl border border-line bg-surface p-4 ${className}`} aria-hidden="true">
+    <div className={`relative rounded-xl border border-line bg-surface p-4 ${className}`} aria-hidden="true">
+      <LayerCorners />
       <div className="flex items-center gap-2 border-b border-line-soft pb-2">
         <span className="h-1.5 w-1.5 rounded-full bg-[#fca5a5]" />
         <span className="h-1.5 w-1.5 rounded-full bg-[#fde68a]" />
@@ -209,12 +231,30 @@ export function ProductVisual({ slug, className = "" }) {
         <span className="ml-1 h-2.5 flex-1 rounded bg-white" />
       </div>
       <div className="mt-3 grid grid-cols-3 gap-1.5">
-        {[0, 1, 2, 3, 4, 5].map((i) => (
-          <div key={i} className="rounded-lg bg-white p-1.5">
-            <span className={`block h-1.5 w-3/4 rounded ${i % 3 === 0 ? "bg-brand-600" : "bg-[#e4e4e7]"}`} />
-            <span className="mt-1 block h-1 w-1/2 rounded bg-[#e4e4e7]" />
-          </div>
-        ))}
+        <div className="rounded-lg bg-white p-1.5 -rotate-2">
+          <span className="block h-1.5 w-3/4 rounded bg-brand-600" />
+          <span className="mt-1 block h-1 w-1/2 rounded bg-[#e4e4e7]" />
+        </div>
+        <div className="rounded-lg bg-white p-1.5 rotate-1">
+          <span className="block h-1.5 w-3/4 rounded bg-[#e4e4e7]" />
+          <span className="mt-1 block h-1 w-1/2 rounded bg-[#e4e4e7]" />
+        </div>
+        <div className="rounded-lg bg-white p-1.5 -rotate-1">
+          <span className="block h-1.5 w-3/4 rounded bg-[#e4e4e7]" />
+          <span className="mt-1 block h-1 w-1/2 rounded bg-[#e4e4e7]" />
+        </div>
+        <div className="-mt-1 rounded-lg bg-white p-1.5 rotate-2">
+          <span className="block h-1.5 w-3/4 rounded bg-brand-600" />
+          <span className="mt-1 block h-1 w-1/2 rounded bg-[#e4e4e7]" />
+        </div>
+        <div className="-mt-1 rounded-lg bg-white p-1.5">
+          <span className="block h-1.5 w-3/4 rounded bg-[#e4e4e7]" />
+          <span className="mt-1 block h-1 w-1/2 rounded bg-[#e4e4e7]" />
+        </div>
+        <div className="-mt-1 rounded-lg bg-white p-1.5">
+          <span className="block h-1.5 w-3/4 rounded bg-[#e4e4e7]" />
+          <span className="mt-1 block h-1 w-1/2 rounded bg-[#e4e4e7]" />
+        </div>
       </div>
       <div className="mt-2 flex h-2 w-1/2 items-center rounded-full bg-brand-600/20 px-0.5">
         <span className="h-1.5 w-2/3 rounded-full bg-brand-600" />
@@ -234,7 +274,8 @@ export function ProjectMockup({ product, accent }) {
           backgroundSize: "28px 28px",
         }}
       />
-      <div className="relative p-5 sm:p-6">
+      <LayerCorners />
+      <div className="relative p-4 transition-transform duration-500 ease-out group-hover:-translate-y-1 sm:p-5">
         <div className="flex items-center gap-1.5">
           <span className="h-2 w-2 rounded-full bg-[#fca5a5]" />
           <span className="h-2 w-2 rounded-full bg-[#fde68a]" />

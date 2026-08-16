@@ -60,9 +60,88 @@ html {
   }
 }
 
+@keyframes layer-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px) rotate(var(--rot, 0deg));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--rot, 0deg));
+  }
+}
+
+.hero-layer {
+  opacity: 0;
+}
+
+.reveal.is-visible .hero-layer-1 {
+  --rot: -3deg;
+  animation: layer-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.reveal.is-visible .hero-layer-2 {
+  --rot: 1.5deg;
+  animation: layer-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
+}
+
+.reveal.is-visible .hero-layer-3 {
+  --rot: 2.5deg;
+  animation: layer-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.54s both;
+}
+
+.reveal .process-item {
+  opacity: 0;
+}
+
+.reveal.is-visible .process-item {
+  animation: rise 0.5s ease both;
+}
+
+.reveal.is-visible .process-item:nth-child(1) { animation-delay: 0.05s; }
+.reveal.is-visible .process-item:nth-child(2) { animation-delay: 0.18s; }
+.reveal.is-visible .process-item:nth-child(3) { animation-delay: 0.31s; }
+.reveal.is-visible .process-item:nth-child(4) { animation-delay: 0.44s; }
+.reveal.is-visible .process-item:nth-child(5) { animation-delay: 0.57s; }
+
+.process-arrow {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease 0.65s;
+}
+
+.reveal.is-visible .process-arrow {
+  transform: scaleX(1);
+}
+
+@keyframes arrow-slide {
+  0%, 100% {
+    transform: translateX(-2px);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+}
+
+.animate-arrow {
+  animation: arrow-slide 1.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
+    animation: none;
+  }
+  .hero-layer,
+  .reveal .process-item {
+    opacity: 1;
+    animation: none;
+  }
+  .process-arrow {
+    transform: none;
+    transition: none;
+  }
+  .animate-arrow {
     animation: none;
   }
 }
