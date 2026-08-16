@@ -37,9 +37,6 @@ export default function Footer() {
               <Link to="/sobre" className="text-muted transition-colors hover:text-brand-700">Sobre</Link>
             </li>
             <li>
-              <Link to="/projetos" className="text-muted transition-colors hover:text-brand-700">Projetos</Link>
-            </li>
-            <li>
               <Link to="/blog" className="text-muted transition-colors hover:text-brand-700">Blog</Link>
             </li>
             <li>

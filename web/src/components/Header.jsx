@@ -5,7 +5,6 @@ import { Logo } from "./ui.jsx"
 
 const links = [
   { to: "/servicos", label: "Soluções" },
-  { to: "/projetos", label: "Projetos" },
   { to: "/sobre", label: "Sobre" },
   { to: "/blog", label: "Blog" },
   { to: "/contacto", label: "Contacto" },

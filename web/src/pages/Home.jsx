@@ -4,13 +4,11 @@ import { usePageTitle, useReveal } from "../hooks.js"
 import { whatsappLink } from "../config.js"
 import { products, pillars, process } from "../data/services.js"
 import { posts } from "../data/posts.js"
-import { projects } from "../data/projects.js"
 import { Reveal, LayerEdge, SectionHeading } from "../components/ui.jsx"
-import { FeaturedProductCard, ProductCard, BlogCard, ProjectCard } from "../components/cards.jsx"
+import { FeaturedProductCard, ProductCard, BlogCard } from "../components/cards.jsx"
 import { HeroVisual, pillarIcons } from "../components/visuals.jsx"
 
 const homeSteps = process.filter(([title]) => title !== "Validamos")
-const homeProjects = [projects[0], projects[3], projects[4]]
 
 const antes = ["WhatsApp", "Excel", "Papéis", "Processos manuais", "Informação dispersa"]
 const depois = ["Website", "Sistema", "Dados centralizados", "Automação", "Processos organizados"]
@@ -112,33 +110,6 @@ export default function Home() {
                   <ProductCard product={p} />
                 </Reveal>
               ))}
-          </div>
-        </div>
-      </section>
-
-      <LayerEdge />
-
-      <section className="bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-          <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <SectionHeading
-                eyebrow="Projetos"
-                title="O que construímos"
-                text="Uma amostra do nosso trabalho — o portfólio completo está na página de projetos."
-              />
-              <Link to="/projetos" className="btn-secondary shrink-0">
-                Ver todos os projetos
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </Reveal>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {homeProjects.map((p, i) => (
-              <Reveal key={p.title} delay={i * 70}>
-                <ProjectCard project={p} />
-              </Reveal>
-            ))}
           </div>
         </div>
       </section>

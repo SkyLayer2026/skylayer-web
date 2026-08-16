@@ -263,67 +263,6 @@ export function ProductVisual({ slug, className = "" }) {
   )
 }
 
-export function ProjectMockup({ product, accent }) {
-  return (
-    <div className="relative overflow-hidden bg-surface" aria-hidden="true">
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      />
-      <LayerCorners />
-      <div className="relative p-4 transition-transform duration-500 ease-out group-hover:-translate-y-1 sm:p-5">
-        <div className="flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-[#fca5a5]" />
-          <span className="h-2 w-2 rounded-full bg-[#fde68a]" />
-          <span className="h-2 w-2 rounded-full bg-[#86efac]" />
-          <div className="ml-3 h-4 flex-1 rounded-md border border-line bg-white" />
-        </div>
-        <div className="mt-4 grid grid-cols-5 gap-3">
-          <div className="col-span-1 hidden flex-col gap-2 sm:flex">
-            <div className="h-12 rounded-lg border border-line bg-white" />
-            <div className="h-12 rounded-lg border border-line bg-white" />
-            <div className="h-12 rounded-lg border border-line bg-white" />
-          </div>
-          <div className="col-span-5 sm:col-span-4">
-            <div className="rounded-lg border border-line bg-white p-4">
-              <div className="flex items-start justify-between">
-                <div>
-                  <div className="h-3 w-28 rounded bg-[#e4e4e7]" />
-                  <div className="mt-2 h-2 w-20 rounded bg-[#f4f4f5]" />
-                </div>
-                <div className="flex gap-2">
-                  <div className={`h-6 w-16 rounded-md`} style={{ backgroundColor: accent }} />
-                  <div className="h-6 w-10 rounded-md border border-line bg-white" />
-                </div>
-              </div>
-              <div className="mt-5 grid grid-cols-3 gap-3">
-                {[0, 1, 2].map((i) => (
-                  <div key={i} className="rounded-lg border border-line bg-surface p-3">
-                    <div className="text-xs font-bold" style={{ color: accent }}>
-                      {product.code}
-                    </div>
-                    <div className="mt-2 h-2 w-full rounded bg-[#e4e4e7]" />
-                    <div className="mt-1.5 h-2 w-3/4 rounded bg-[#f4f4f5]" />
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 flex items-end gap-2">
-                {[40, 65, 50, 80, 60, 95, 70].map((h, i) => (
-                  <div key={i} className="flex-1 rounded-t-sm" style={{ height: h, backgroundColor: `${accent}22` }} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export const pillarIcons = {
   Estável: (
     <svg viewBox="0 0 48 48" fill="none" className="h-9 w-9" aria-hidden="true">

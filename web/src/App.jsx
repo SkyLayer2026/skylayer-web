@@ -1,11 +1,10 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
 import ScrollToTop from "./components/ScrollToTop.jsx"
 import Header from "./components/Header.jsx"
 import Footer from "./components/Footer.jsx"
 import Home from "./pages/Home.jsx"
 import Services from "./pages/Services.jsx"
 import ServiceLanding from "./pages/ServiceLanding.jsx"
-import Projects from "./pages/Projects.jsx"
 import About from "./pages/About.jsx"
 import Blog from "./pages/Blog.jsx"
 import BlogPost from "./pages/BlogPost.jsx"
@@ -24,7 +23,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/servicos" element={<Services />} />
           <Route path="/servicos/:slug" element={<ServiceLanding />} />
-          <Route path="/projetos" element={<Projects />} />
+          <Route path="/projetos" element={<Navigate to="/servicos" replace />} />
           <Route path="/sobre" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
