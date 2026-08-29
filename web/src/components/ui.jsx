@@ -10,21 +10,17 @@ export function Reveal({ children, delay = 0, className = "" }) {
   )
 }
 
-export function Logo({ dark = false, className = "h-8 w-8" }) {
+export function Logo({ dark = false, className = "h-8" }) {
+  const src = dark ? "/logo-white.png" : "/logo-blue.png"
   return (
-    <span className="flex items-center gap-2">
-      <svg viewBox="0 0 32 32" className={className} aria-hidden="true">
-        <path fill="#2563eb" d="M16 2 30 30H2z" />
-        <path fill="white" d="M16 10l8 16h-4.2L16 17l-3.8 9H8z" />
-      </svg>
-      <span
-        className={`text-lg font-extrabold tracking-tight ${
-          dark ? "text-white" : "text-ink"
-        }`}
-      >
-        Sky<span className="text-brand-600">layer</span>
-      </span>
-    </span>
+    <img
+      src={src}
+      alt="Skylayer"
+      className={`${className} w-auto`}
+      width="160"
+      height="32"
+      loading="eager"
+    />
   )
 }
 
