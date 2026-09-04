@@ -36,6 +36,10 @@ jobs:
         working-directory: web
         run: npm run build -- --base=/skylayer-web/
 
+      - name: 404.html = shell atual (fallback SPA)
+        working-directory: web
+        run: cp dist/index.html dist/404.html
+
       - name: Upload artefacto
         uses: actions/upload-pages-artifact@v3
         with:
