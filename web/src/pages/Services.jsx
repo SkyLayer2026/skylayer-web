@@ -14,7 +14,7 @@ function ServiceBlock({ product, index }) {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-dev-50 text-dev-600">
                 <product.icon className="h-5 w-5" />
               </span>
               <p className="eyebrow">
@@ -24,16 +24,13 @@ function ServiceBlock({ product, index }) {
             <h2 className="mt-5 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               {product.name}
             </h2>
-            <p className="mt-2 text-lg font-semibold text-brand-600">{product.title}</p>
+            <p className="mt-2 text-lg font-semibold text-dev-600">{product.title}</p>
             <p className="mt-5 text-lg leading-relaxed text-muted">{product.tagline}</p>
 
             <p className="mt-8 text-sm font-semibold uppercase tracking-widest text-muted">
               Para quem
             </p>
             <p className="mt-2 text-muted">{product.audience}</p>
-
-            <p className="mt-8 text-2xl font-extrabold tracking-tight text-ink">{product.price}</p>
-            <p className="mt-1.5 text-sm text-muted">{product.priceNote}</p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
@@ -60,7 +57,7 @@ function ServiceBlock({ product, index }) {
               <ul className="mt-4 space-y-3">
                 {product.pain.map((p) => (
                   <li key={p} className="flex items-start gap-3 rounded-xl border border-line bg-white p-4">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-dev-600" />
                     <span className="text-sm leading-relaxed text-muted">{p}</span>
                   </li>
                 ))}
@@ -74,7 +71,7 @@ function ServiceBlock({ product, index }) {
               <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                 {product.includes.map((item) => (
                   <li key={item} className="flex items-start gap-2.5 rounded-lg border border-line-soft bg-white p-3 text-sm text-muted">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-dev-600" />
                     {item}
                   </li>
                 ))}
@@ -96,10 +93,10 @@ export default function Services() {
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <p className="eyebrow">Soluções</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-bold tracking-tight text-ink sm:text-5xl">
-            Cinco soluções, um objetivo: o seu crescimento
+            O catálogo completo da Skylayer
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-muted">
-            Cada solução responde a um problema concreto — com processo transparente, preço claro e
+            Cada solução responde a um problema concreto — com processo transparente e
             suporte após a entrega.
           </p>
         </div>
@@ -124,22 +121,22 @@ export default function Services() {
         </div>
       </section>
 
-      <section className="bg-brand-600">
+      <section className="bg-dev-600">
         <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6 sm:py-24">
-          <p className="text-xs font-bold uppercase tracking-widest text-brand-200">
+          <p className="text-xs font-bold uppercase tracking-widest text-dev-200">
             Como começo?
           </p>
           <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Não sabe qual solução escolher?
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-brand-100">
+          <p className="mx-auto mt-4 max-w-xl text-lg text-dev-100">
             Começamos com um diagnóstico gratuito e dizemos-lhe exatamente o que precisa — mesmo que
             não seja com a Skylayer.
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <Link
               to="/contacto"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-7 py-4 text-sm font-semibold text-brand-700 shadow-sm transition-colors hover:bg-brand-50"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-7 py-4 text-sm font-semibold text-dev-700 shadow-sm transition-colors hover:bg-dev-50"
             >
               Solicitar orçamento
               <ArrowRight className="h-4 w-4" />
@@ -151,7 +148,7 @@ export default function Services() {
               Diagnóstico gratuito
             </Link>
           </div>
-          <p className="mt-6 text-sm text-brand-200">
+          <p className="mt-6 text-sm text-dev-200">
             Ou fale connosco diretamente no{" "}
             <a
               href={whatsappLink()}

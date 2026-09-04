@@ -43,7 +43,7 @@ export default function FaqPage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link to="/diagnostico" className="btn-secondary">
-                <SearchCheck className="h-4 w-4 text-brand-600" />
+                <SearchCheck className="h-4 w-4 text-dev-600" />
                 Diagnóstico gratuito
               </Link>
             </div>

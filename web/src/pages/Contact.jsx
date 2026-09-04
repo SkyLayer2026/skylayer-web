@@ -40,9 +40,9 @@ export default function Contact() {
             </a>
             <a
               href={`mailto:${site.email}`}
-              className="card flex items-center gap-4 p-5 transition-colors hover:border-brand-300"
+              className="card flex items-center gap-4 p-5 transition-colors hover:border-dev-300"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-dev-50 text-dev-600">
                 <Mail className="h-5 w-5" />
               </span>
               <div>

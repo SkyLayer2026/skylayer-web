@@ -42,7 +42,7 @@ export default function About() {
             <ul className="mt-5 space-y-4">
               {pillars.map((p) => (
                 <li key={p.title} className="flex gap-3">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" aria-hidden="true" />
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-dev-600" aria-hidden="true" />
                   <div>
                     <p className="font-semibold text-ink">{p.title}</p>
                     <p className="mt-1 text-[15px] leading-relaxed text-muted">{p.text}</p>
@@ -64,7 +64,7 @@ export default function About() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
             {process.map(([title, text], i) => (
               <div key={title} className="card p-5">
-                <p className="text-xs font-bold tracking-widest text-brand-600">
+                <p className="text-xs font-bold tracking-widest text-dev-600">
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <h3 className="mt-3 font-bold text-ink">{title}</h3>

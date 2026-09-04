@@ -78,7 +78,7 @@ export default function Diagnostico() {
             <ol className="mt-6 space-y-5">
               {steps.map((s) => (
                 <li key={s} className="flex gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white">
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-dev-600 text-xs font-bold text-white">
                     {s.charAt(0)}
                   </span>
                   <span className="text-[15px] leading-relaxed text-muted">{s}</span>
@@ -88,19 +88,19 @@ export default function Diagnostico() {
 
             <div className="mt-10 space-y-4 rounded-xl border border-line bg-surface p-6">
               <div className="flex items-center gap-3">
-                <FileText className="h-5 w-5 text-brand-600" />
+                <FileText className="h-5 w-5 text-dev-600" />
                 <p className="font-semibold text-ink">
                   Preço: <span className="text-emerald-600">Gratuito</span>
                 </p>
               </div>
               <div className="flex items-center gap-3">
-                <Lightbulb className="h-5 w-5 text-brand-600" />
+                <Lightbulb className="h-5 w-5 text-dev-600" />
                 <p className="text-sm text-muted">
                   O relatório é seu — pode usá-lo mesmo que não continue connosco.
                 </p>
               </div>
               <div className="flex items-center gap-3">
-                <ArrowRight className="h-5 w-5 text-brand-600" />
+                <ArrowRight className="h-5 w-5 text-dev-600" />
                 <p className="text-sm text-muted">
                   Se o diagnóstico for útil, a conversa sobre um projeto acontece naturalmente —
                   sem pressão.
@@ -124,7 +124,7 @@ export default function Diagnostico() {
                   value={form.nome}
                   onChange={update}
                   placeholder="O seu nome"
-                  className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-600/15"
+                  className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-dev-400 focus:outline-none focus:ring-2 focus:ring-dev-600/15"
                 />
               </label>
               <label className="block">
@@ -134,7 +134,7 @@ export default function Diagnostico() {
                   value={form.empresa}
                   onChange={update}
                   placeholder="Nome da empresa"
-                  className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-600/15"
+                  className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-dev-400 focus:outline-none focus:ring-2 focus:ring-dev-600/15"
                 />
               </label>
               <label className="block">
@@ -147,7 +147,7 @@ export default function Diagnostico() {
                   value={form.contacto}
                   onChange={update}
                   placeholder="+258 ..."
-                  className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-600/15"
+                  className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-dev-400 focus:outline-none focus:ring-2 focus:ring-dev-600/15"
                 />
               </label>
               <label className="block">
@@ -159,7 +159,7 @@ export default function Diagnostico() {
                   value={form.site}
                   onChange={update}
                   placeholder="https://... ou links das redes"
-                  className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-600/15"
+                  className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-dev-400 focus:outline-none focus:ring-2 focus:ring-dev-600/15"
                 />
               </label>
               <label className="block">
@@ -172,7 +172,7 @@ export default function Diagnostico() {
                   onChange={update}
                   rows={3}
                   placeholder="Ex: atrair mais clientes, vender online, organizar a gestão..."
-                  className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-600/15"
+                  className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-dev-400 focus:outline-none focus:ring-2 focus:ring-dev-600/15"
                 />
               </label>
               <button

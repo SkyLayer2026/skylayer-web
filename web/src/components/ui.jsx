@@ -10,43 +10,80 @@ export function Reveal({ children, delay = 0, className = "" }) {
   )
 }
 
-export function Logo({ dark = false, className = "h-8" }) {
-  const src = dark ? "/logo-white.png" : "/logo-blue.png"
+export function Logo({ dark = false, className = "h-9" }) {
+  const src = dark ? "/logo-white.svg" : "/logo.svg"
   return (
     <img
       src={src}
       alt="Skylayer"
       className={`${className} w-auto`}
-      width="160"
-      height="32"
+      width="375"
+      height="90"
       loading="eager"
     />
   )
 }
 
+/* Editorial section heading: label + large title + optional lead */
 export function SectionHeading({ eyebrow, title, text, align = "left" }) {
   return (
-    <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink sm:text-4xl">{title}</h2>
-      {text && <p className="mt-4 text-lg text-muted">{text}</p>}
+    <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
+      {eyebrow && (
+        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-silver">
+          {eyebrow}
+        </p>
+      )}
+      <h2 className="mt-4 text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-5xl">
+        {title}
+      </h2>
+      {text && <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">{text}</p>}
     </div>
   )
 }
 
-export function Divider() {
-  return <div className="mx-auto h-px w-full max-w-6xl bg-line" aria-hidden="true" />
+/* Technical coordinate label: SL / XXXX / NN */
+export function TechLabel({ children, color = "text-muted", className = "" }) {
+  return (
+    <p className={`font-mono text-[10px] font-medium uppercase tracking-[0.25em] ${color} ${className}`}>
+      {children}
+    </p>
+  )
 }
 
-export function LayerEdge() {
+/* Front number block: 01 / DEV */
+export function FrontNumber({ num, label, color = "text-muted", className = "" }) {
   return (
-    <div className="relative mx-auto h-14 w-full max-w-6xl px-4 sm:px-6" aria-hidden="true">
-      <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-line" />
-      <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 -space-x-1.5">
-        <span className="h-4 w-7 -rotate-6 rounded-sm border border-brand-300 bg-white shadow-sm" />
-        <span className="relative z-10 h-4 w-7 rounded-sm border border-brand-200 bg-brand-50 shadow-sm" />
-        <span className="h-4 w-7 rotate-6 rounded-sm border border-brand-300 bg-white shadow-sm" />
-      </div>
+    <div className={`flex items-baseline gap-3 ${className}`}>
+      <span className="font-mono text-3xl font-light text-silver sm:text-4xl">{num}</span>
+      <span className={`font-mono text-sm font-semibold uppercase tracking-[0.3em] ${color}`}>{label}</span>
     </div>
+  )
+}
+
+/* Divider with signal node */
+export function SignalDivider({ color = "bg-silver" }) {
+  return (
+    <div className="relative mx-auto h-16 w-full max-w-6xl px-4 sm:px-6" aria-hidden="true">
+      <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-line-soft" />
+      <span className={`absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full ${color} signal-dot`} />
+    </div>
+  )
+}
+
+/* Backward compat alias */
+export const LayerEdge = SignalDivider
+
+/* Link with arrow (editorial) */
+export function ArrowLink({ to, children, className = "" }) {
+  return (
+    <Link
+      to={to}
+      className={`group inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.25em] text-charcoal transition-colors hover:text-dev-600 ${className}`}
+    >
+      <span className="border-b border-charcoal/30 pb-1 transition-colors group-hover:border-dev-500">
+        {children}
+      </span>
+      <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+    </Link>
   )
 }

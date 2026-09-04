@@ -12,7 +12,7 @@ function Block({ block }) {
       <ul className="mt-5 space-y-2.5">
         {block.items.map((item) => (
           <li key={item} className="flex gap-3">
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" aria-hidden="true" />
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-dev-600" aria-hidden="true" />
             <span className="text-[17px] leading-relaxed text-muted">{item}</span>
           </li>
         ))}
@@ -37,12 +37,12 @@ export default function BlogPost() {
         <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
           <Link
             to="/blog"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-brand-700"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-dev-700"
           >
             <ArrowLeft className="h-4 w-4" />
             Blog
           </Link>
-          <p className="mt-8 text-xs font-semibold uppercase tracking-widest text-brand-600">
+          <p className="mt-8 text-xs font-semibold uppercase tracking-widest text-dev-600">
             {post.category}
           </p>
           <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-ink sm:text-4xl">

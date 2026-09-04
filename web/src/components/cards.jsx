@@ -7,10 +7,10 @@ export function FeaturedProductCard({ product }) {
   return (
     <Link
       to={`/servicos/${product.slug}`}
-      className="card group grid gap-8 overflow-hidden p-7 transition-all hover:border-brand-300 hover:shadow-sm sm:p-9 lg:grid-cols-2 lg:items-center"
+      className="card group grid gap-8 overflow-hidden p-7 transition-all hover:border-dev-300 hover:shadow-sm sm:p-9 lg:grid-cols-2 lg:items-center"
     >
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest text-brand-600">
+        <p className="text-xs font-bold uppercase tracking-widest text-dev-600">
           Produto de entrada
         </p>
         <h3 className="mt-4 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
@@ -28,8 +28,7 @@ export function FeaturedProductCard({ product }) {
             </span>
           ))}
         </div>
-        <p className="mt-6 font-bold text-ink">{product.home.price}</p>
-        <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
+        <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-dev-600">
           Explorar solução
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </span>
@@ -46,7 +45,7 @@ export function ProductCard({ product }) {
   return (
     <Link
       to={`/servicos/${product.slug}`}
-      className="card group flex h-full flex-col overflow-hidden p-6 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm"
+      className="card group flex h-full flex-col overflow-hidden p-6 transition-all hover:-translate-y-0.5 hover:border-dev-300 hover:shadow-sm"
     >
       {bleed ? (
         <ProductVisual slug={product.slug} className="-mx-6 -mt-6 mb-6 rounded-none border-x-0 border-t-0 p-4" />
@@ -54,7 +53,7 @@ export function ProductCard({ product }) {
         <ProductVisual slug={product.slug} className={dominant ? "sm:p-4" : "sm:p-3"} />
       )}
       <h3 className="mt-5 text-lg font-bold text-ink">{product.name}</h3>
-      <p className="mt-1 text-sm font-semibold text-brand-600">{product.title}</p>
+      <p className="mt-1 text-sm font-semibold text-dev-600">{product.title}</p>
       <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{product.home.phrase}</p>
       <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-muted">
         {product.home.chipsLabel}
@@ -66,7 +65,7 @@ export function ProductCard({ product }) {
           </span>
         ))}
       </div>
-      <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand-600">
+      <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-dev-600">
         Explorar solução
         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
       </span>
@@ -79,7 +78,7 @@ export function ComplementaryCard({ item }) {
   return (
     <div className="card p-6">
       <div className="flex items-center gap-3">
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface text-brand-600">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface text-dev-600">
           <item.icon className="h-5 w-5" />
         </span>
         <h3 className="font-bold text-ink">{item.name}</h3>
@@ -93,10 +92,10 @@ export function BlogCard({ post }) {
   return (
     <Link
       to={`/blog/${post.slug}`}
-      className="card group flex h-full flex-col overflow-hidden transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-sm"
+      className="card group flex h-full flex-col overflow-hidden transition-all hover:-translate-y-0.5 hover:border-dev-300 hover:shadow-sm"
     >
       <div
-        className="relative flex h-32 items-center justify-center overflow-hidden bg-brand-50"
+        className="relative flex h-32 items-center justify-center overflow-hidden bg-dev-50"
         aria-hidden="true"
       >
         <div
@@ -107,12 +106,12 @@ export function BlogCard({ post }) {
             backgroundSize: "24px 24px",
           }}
         />
-        <span className="relative text-xs font-bold uppercase tracking-[0.2em] text-brand-600">
+        <span className="relative text-xs font-bold uppercase tracking-[0.2em] text-dev-600">
           {post.category}
         </span>
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-lg font-bold leading-snug text-ink transition-colors group-hover:text-brand-700">
+        <h3 className="text-lg font-bold leading-snug text-ink transition-colors group-hover:text-dev-700">
           {post.title}
         </h3>
         <div className="mt-4 flex items-center gap-2 border-t border-line-soft pt-4 text-xs text-muted">

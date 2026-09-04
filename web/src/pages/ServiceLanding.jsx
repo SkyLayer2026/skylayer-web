@@ -36,7 +36,7 @@ export default function ServiceLanding() {
               Falar sobre esta solução
             </a>
             <Link to="/diagnostico" className="btn-secondary">
-              <SearchCheck className="h-4 w-4 text-brand-600" />
+              <SearchCheck className="h-4 w-4 text-dev-600" />
               Começar com diagnóstico gratuito
             </Link>
           </div>
@@ -50,7 +50,7 @@ export default function ServiceLanding() {
             <ul className="mt-6 space-y-4">
               {product.pain.map((p) => (
                 <li key={p} className="flex gap-3">
-                  <XCircle className="mt-0.5 h-5 w-5 shrink-0 text-brand-300" />
+                  <XCircle className="mt-0.5 h-5 w-5 shrink-0 text-dev-300" />
                   <span className="text-[15px] leading-relaxed text-muted">{p}</span>
                 </li>
               ))}
@@ -69,18 +69,12 @@ export default function ServiceLanding() {
 
           <div>
             <div className="card sticky top-24 p-7">
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted">
-                Investimento
-              </p>
-              <p className="mt-2 text-3xl font-bold text-ink">{product.price}</p>
-              <p className="mt-2 text-sm text-muted">{product.priceNote}</p>
-
-              <div className="mt-7 border-t border-line-soft pt-7">
+              <div>
                 <h3 className="font-bold text-ink">Como funciona</h3>
                 <ol className="mt-5 space-y-5">
                   {product.steps.map(([title, text]) => (
                     <li key={title} className="flex gap-3">
-                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-dev-600" />
                       <div>
                         <p className="font-semibold text-ink">{title}</p>
                         <p className="mt-0.5 text-sm text-muted">{text}</p>
@@ -130,7 +124,7 @@ export default function ServiceLanding() {
             <div className="mt-6">
               <Link
                 to="/diagnostico"
-                className="inline-flex items-center gap-2 font-semibold text-brand-600 hover:underline"
+                className="inline-flex items-center gap-2 font-semibold text-dev-600 hover:underline"
               >
                 <SearchCheck className="h-4 w-4" />
                 Ou comece pelo diagnóstico gratuito

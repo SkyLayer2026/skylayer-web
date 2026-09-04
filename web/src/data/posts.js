@@ -51,55 +51,6 @@ const postsNovos = [
     ],
   },
   {
-    slug: "quanto-custa-um-site",
-    category: "Tecnologia",
-    title: "Quanto custa um site profissional em Moçambique?",
-    date: "2026-08-08",
-    readTime: "4 min",
-    excerpt:
-      "O preço de um site varia com o que ele precisa de fazer. Entenda o que influencia o valor antes de pedir orçamentos.",
-    content: [
-      {
-        type: "p",
-        text: "É a pergunta mais frequente que recebemos — e a resposta honesta é: depende. Não por falta de transparência, mas porque o valor de um site depende do que ele precisa de fazer pelo seu negócio.",
-      },
-      {
-        type: "h2",
-        text: "O que influencia o preço",
-      },
-      {
-        type: "ul",
-        items: [
-          "Número de páginas e complexidade do conteúdo",
-          "Design original vs. modelo ajustado",
-          "Funcionalidades: formulários, reservas, loja online, áreas reservadas",
-          "Gestão de conteúdo: quem vai atualizar e com que frequência",
-          "Manutenção e suporte após a entrega",
-        ],
-      },
-      {
-        type: "p",
-        text: "Um site institucional simples, com cinco páginas e formulário de contacto, é naturalmente mais acessível do que uma loja online com pagamentos integrados. Ambos são válidos — são necessidades diferentes.",
-      },
-      {
-        type: "h2",
-        text: "Um valor de referência",
-      },
-      {
-        type: "p",
-        text: "Na Skylayer, sites profissionais começam a partir de 7.000 MZN, com pagamento em duas prestações. Sistemas de gestão e soluções personalizadas são orçamentados após diagnóstico, porque dependem do processo de cada empresa.",
-      },
-      {
-        type: "h2",
-        text: "O que fica fora do orçamento",
-      },
-      {
-        type: "p",
-        text: "Um bom orçamento diz o que está incluído e o que não está: domínio, hospedagem, conteúdo e manutenção podem aparecer como itens separados. Confirme sempre o escopo antes de comparar preços — o site mais barato pode ser o que menos resolve.",
-      },
-    ],
-  },
-  {
     slug: "seguranca-basica-empresas",
     category: "Segurança",
     title: "Segurança digital básica para a sua empresa",

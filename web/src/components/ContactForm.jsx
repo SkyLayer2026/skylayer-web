@@ -47,7 +47,7 @@ export default function ContactForm({ service }) {
             value={form.nome}
             onChange={update}
             placeholder="O seu nome"
-            className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-600/15"
+            className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-dev-400 focus:outline-none focus:ring-2 focus:ring-dev-600/15"
           />
         </label>
         <label className="block">
@@ -57,7 +57,7 @@ export default function ContactForm({ service }) {
             value={form.empresa}
             onChange={update}
             placeholder="Nome da empresa"
-            className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-600/15"
+            className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-dev-400 focus:outline-none focus:ring-2 focus:ring-dev-600/15"
           />
         </label>
       </div>
@@ -70,7 +70,7 @@ export default function ContactForm({ service }) {
           value={form.contacto}
           onChange={update}
           placeholder="WhatsApp ou e-mail"
-          className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-600/15"
+          className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-dev-400 focus:outline-none focus:ring-2 focus:ring-dev-600/15"
         />
       </label>
 
@@ -80,7 +80,7 @@ export default function ContactForm({ service }) {
           name="servico"
           value={form.servico}
           onChange={update}
-          className="w-full rounded-lg border border-line bg-white px-3 py-2.5 text-sm focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-600/15"
+          className="w-full rounded-lg border border-line bg-white px-3 py-2.5 text-sm focus:border-dev-400 focus:outline-none focus:ring-2 focus:ring-dev-600/15"
         >
           <option value="">Escolha o serviço</option>
           {serviceOptions.map((s) => (
@@ -97,7 +97,7 @@ export default function ContactForm({ service }) {
           onChange={update}
           rows={4}
           placeholder="Conte-nos o que precisa e o que gostaria de alcançar..."
-          className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-600/15"
+          className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-dev-400 focus:outline-none focus:ring-2 focus:ring-dev-600/15"
         />
       </label>
 
@@ -108,7 +108,7 @@ export default function ContactForm({ service }) {
       <p className="text-center text-xs text-muted">
         Ao enviar, o WhatsApp abre com a sua mensagem pronta. Respondemos em menos de 2 horas em
         horário útil. Ou escreva para{" "}
-        <a href={`mailto:${site.email}`} className="font-medium text-brand-600 hover:underline">
+        <a href={`mailto:${site.email}`} className="font-medium text-dev-600 hover:underline">
           {site.email}
         </a>
         .

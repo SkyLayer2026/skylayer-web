@@ -10,6 +10,8 @@ import {
   Palette,
   GraduationCap,
   Sparkles,
+  Activity,
+  Network,
 } from "lucide-react"
 
 export const products = [
@@ -26,7 +28,6 @@ export const products = [
       audience: "empresas sem presença digital profissional.",
       chipsLabel: "Inclui:",
       chips: ["Website", "Landing Pages", "Portfólio", "Contacto"],
-      price: "A partir de 7.000 MZN",
     },
 
     title: "Presença digital profissional",
@@ -48,8 +49,6 @@ export const products = [
       "Documentação e orientação para gerir o site",
       "Período de suporte incluído após a entrega",
     ],
-    price: "a partir de 7.000 MZN",
-    priceNote: "Pagamento em duas prestações: 50% no início e 50% na entrega.",
     steps: [
       ["Entendemos", "Diagnóstico da necessidade, público e objetivo."],
       ["Propomos", "Escopo, prazo e valor por escrito em até 48 horas."],
@@ -105,8 +104,6 @@ export const products = [
       "Hospedagem, backups e monitorização incluídos",
       "Documentação e formação da equipa",
     ],
-    price: "sob proposta",
-    priceNote: "Valor definido após diagnóstico — projeto + manutenção mensal.",
     steps: [
       ["Entendemos", "Análise do processo atual e identificação das falhas."],
       ["Propomos", "Proposta e protótipo antes de construir."],
@@ -161,8 +158,6 @@ export const products = [
       "Redução de erros e de trabalho manual",
       "Documentação dos fluxos criados",
     ],
-    price: "sob proposta",
-    priceNote: "Valor definido após mapeamento dos processos.",
     steps: [
       ["Entendemos", "Identificamos as tarefas repetitivas e o tempo que consomem."],
       ["Propomos", "Plano de automação com impacto estimado."],
@@ -214,8 +209,6 @@ export const products = [
       "Monitorização de disponibilidade",
       "Apoio técnico por WhatsApp e e-mail",
     ],
-    price: "mensal, sob proposta",
-    priceNote: "Plano mensal simples, sem surpresas.",
     steps: [
       ["Entendemos", "Avaliação do estado atual da infraestrutura."],
       ["Propomos", "Plano de infraestrutura e suporte adequado."],
@@ -266,8 +259,6 @@ export const products = [
       "Testes e validação antes da entrega",
       "Documentação, formação e suporte",
     ],
-    price: "orçamento após diagnóstico",
-    priceNote: "Cada solução é única — o valor depende do escopo definido no diagnóstico.",
     steps: [
       ["Entendemos", "Conversa detalhada sobre a necessidade e o contexto."],
       ["Propomos", "Escopo, prazo e valor antes de qualquer trabalho."],
@@ -282,6 +273,106 @@ export const products = [
       {
         q: "Quanto tempo demora?",
         a: "Depende da complexidade. Definimos o prazo na proposta e acompanhamos por etapas.",
+      },
+    ],
+  },
+  {
+    slug: "monitor",
+    code: "06",
+    name: "SL Monitor",
+    stage: "Observar",
+    short: "Transforme sensores em informação útil.",
+    chips: ["Sensores", "Telemetria", "Dashboard", "Alertas"],
+    home: {
+      phrase:
+        "Monitorização de temperatura, humidade, energia e outros dados do mundo físico — com painéis e alertas em tempo real.",
+      audience: "empresas que precisam de acompanhar condições físicas e equipamentos.",
+      chipsLabel: "Inclui:",
+      chips: ["Sensores", "Telemetria", "Dashboard", "Alertas"],
+    },
+
+    title: "Monitorização e telemetria IoT",
+    icon: Activity,
+    tagline:
+      "Sensorização e monitorização de condições físicas com painéis em tempo real e alertas automáticos.",
+    audience: "Para empresas que querem ver, medir e acompanhar o que acontece nas suas instalações e equipamentos.",
+    pain: [
+      "Sem visibilidade sobre temperatura, humidade ou consumo de energia.",
+      "Problemas detetados tarde, depois de causarem perdas.",
+      "Dados espalhados em papel ou visitas manuais às instalações.",
+    ],
+    includes: [
+      "Sensorização de temperatura, humidade, energia e outros dados",
+      "Dashboard em tempo real acessível do telemóvel",
+      "Alertas automáticos por WhatsApp e e-mail",
+      "Histórico e relatórios para decisão",
+      "Instalação e configuração dos dispositivos",
+      "Suporte e manutenção do sistema",
+    ],
+    steps: [
+      ["Entendemos", "Identificação dos dados que importam para a sua operação."],
+      ["Propomos", "Escopo, dispositivos e valor por escrito."],
+      ["Construímos", "Instalação, configuração e painéis por etapas."],
+      ["Entregamos", "Formação e acesso ao sistema em produção."],
+    ],
+    faq: [
+      {
+        q: "Quais dados consigo monitorizar?",
+        a: "Temperatura, humidade, energia, presença e outros — depende dos sensores adequados à sua necessidade.",
+      },
+      {
+        q: "Recebo alertas quando algo está fora do normal?",
+        a: "Sim. Definimos limites e o sistema avisa automaticamente por WhatsApp ou e-mail antes do problema se agravar.",
+      },
+    ],
+  },
+  {
+    slug: "network",
+    code: "07",
+    name: "SL Network",
+    stage: "Conectar",
+    short: "Uma infraestrutura de rede organizada e confiável.",
+    chips: ["LAN", "Wi-Fi", "VLAN", "Configuração", "Diagnóstico"],
+    home: {
+      phrase:
+        "Redes locais e Wi-Fi profissionais — estrutura, configuração, diagnóstico e segurança da conectividade da sua operação.",
+      audience: "empresas com redes lentas, instáveis ou mal organizadas.",
+      chipsLabel: "Inclui:",
+      chips: ["LAN", "Wi-Fi", "VLAN", "Segurança", "Diagnóstico"],
+    },
+
+    title: "Redes e infraestrutura de conectividade",
+    icon: Network,
+    tagline:
+      "Planeamento, configuração e manutenção de redes locais com conectividade rápida, estável e segura.",
+    audience: "Para empresas cujo trabalho depende de uma rede de internet e Wi-Fi confiável.",
+    pain: [
+      "Internet lenta ou instável mesmo com boa ligação contratada.",
+      "Wi-Fi fraco em algumas áreas do espaço de trabalho.",
+      "Sem organização clara da rede — problemas difíceis de diagnosticar.",
+    ],
+    includes: [
+      "Diagnóstico da rede atual",
+      "Planeamento da estrutura (LAN, Wi-Fi, VLAN)",
+      "Configuração de routers, switches e pontos de acesso",
+      "Segurança básica da rede",
+      "Documentação da topologia e credenciais",
+      "Suporte e manutenção contínua",
+    ],
+    steps: [
+      ["Entendemos", "Diagnóstico da rede, equipamentos e pontos críticos."],
+      ["Propomos", "Plano de estrutura e melhorias com prioridades claras."],
+      ["Construímos", "Instalação e configuração dos equipamentos."],
+      ["Entregamos", "Documentação, testes e suporte contínuo."],
+    ],
+    faq: [
+      {
+        q: "Preciso de comprar equipamento novo?",
+        a: "Nem sempre. Diagnosticamos primeiro e só recomendamos investimentos quando são realmente necessários.",
+      },
+      {
+        q: "A rede fica mais rápida com a vossa intervenção?",
+        a: "Em muitos casos, sim. Uma boa configuração e organização evita congestionamentos e aproveita melhor a ligação que já tem.",
       },
     ],
   },
@@ -340,7 +431,7 @@ export const pillars = [
   },
   {
     title: "Acessível",
-    text: "Sites a partir de 7.000 MZN.",
+    text: "Tecnologia planeada para diferentes dimensões e realidades.",
   },
   {
     title: "Inclusiva",
@@ -348,44 +439,8 @@ export const pillars = [
   },
 ]
 
-export const pricing = [
-  {
-    name: "Sites profissionais",
-    detail: "SL Presence",
-    price: "7.000 MZN",
-    note: "a partir de",
-  },
-  {
-    name: "Sistemas de gestão",
-    detail: "SL Business Systems",
-    price: "Sob proposta",
-    note: "após diagnóstico",
-  },
-  {
-    name: "Automação de processos",
-    detail: "SL Automation",
-    price: "Sob proposta",
-    note: "após mapeamento",
-  },
-  {
-    name: "Infraestrutura e suporte",
-    detail: "SL Digital Infrastructure",
-    price: "Mensal",
-    note: "sob proposta",
-  },
-  {
-    name: "Soluções personalizadas",
-    detail: "SL Custom Solutions",
-    price: "Sob proposta",
-    note: "orçamento após diagnóstico",
-  },
-]
 
 export const faq = [
-  {
-    q: "Quanto custa um site?",
-    a: "Sites profissionais a partir de 7.000 MZN, com pagamento em duas prestações. O valor exato é definido após o diagnóstico, sem custos escondidos.",
-  },
   {
     q: "Quanto tempo demora um projeto?",
     a: "Sites entre 1 a 3 semanas e sistemas entre 3 a 8 semanas. O prazo fica escrito na proposta e acompanhamos por etapas.",
