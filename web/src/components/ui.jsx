@@ -10,7 +10,7 @@ export function Reveal({ children, delay = 0, className = "" }) {
   )
 }
 
-export function Logo({ dark = false, className = "h-9" }) {
+export function Logo({ dark = false, className = "h-10" }) {
   const src = dark ? "/logo-white.svg" : "/logo.svg"
   return (
     <img

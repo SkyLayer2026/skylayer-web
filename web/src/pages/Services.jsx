@@ -1,86 +1,27 @@
 import { Link } from "react-router-dom"
-import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { usePageTitle } from "../hooks.js"
 import { whatsappLink } from "../config.js"
-import { products, complementary } from "../data/services.js"
+import { getProduct, complementary } from "../data/services.js"
 import { SectionHeading } from "../components/ui.jsx"
-import { ComplementaryCard } from "../components/cards.jsx"
+import { ProductCard, ComplementaryCard } from "../components/cards.jsx"
 
-function ServiceBlock({ product, index }) {
-  const even = index % 2 === 0
+const NAV_CHIPS = [
+  { href: "#desenvolvimento", label: "Desenvolvimento" },
+  { href: "#internet-das-coisas", label: "Internet das Coisas" },
+  { href: "#infraestrutura", label: "Infraestrutura" },
+  { href: "#complementares", label: "Complementares" },
+]
+
+function AreaHeader({ code, color, title, text }) {
   return (
-    <section className={even ? "border-b border-line-soft bg-white" : "border-b border-line-soft bg-surface"}>
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-dev-50 text-dev-600">
-                <product.icon className="h-5 w-5" />
-              </span>
-              <p className="eyebrow">
-                {product.code} · {product.stage}
-              </p>
-            </div>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              {product.name}
-            </h2>
-            <p className="mt-2 text-lg font-semibold text-dev-600">{product.title}</p>
-            <p className="mt-5 text-lg leading-relaxed text-muted">{product.tagline}</p>
-
-            <p className="mt-8 text-sm font-semibold uppercase tracking-widest text-muted">
-              Para quem
-            </p>
-            <p className="mt-2 text-muted">{product.audience}</p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={whatsappLink(`Olá Skylayer! Gostaria de um orçamento para o ${product.name}.`)}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-primary"
-              >
-                <MessageCircle className="h-4 w-4 text-emerald-600" />
-                Solicitar orçamento
-              </a>
-              <Link to="/diagnostico" className="btn-secondary">
-                Diagnóstico gratuito
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="space-y-8">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-muted">
-                O que resolve
-              </p>
-              <ul className="mt-4 space-y-3">
-                {product.pain.map((p) => (
-                  <li key={p} className="flex items-start gap-3 rounded-xl border border-line bg-white p-4">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-dev-600" />
-                    <span className="text-sm leading-relaxed text-muted">{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-muted">
-                O que inclui
-              </p>
-              <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-                {product.includes.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 rounded-lg border border-line-soft bg-white p-3 text-sm text-muted">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-dev-600" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div className="max-w-3xl">
+      <p className={`font-mono text-[11px] font-medium uppercase tracking-[0.25em] ${color}`}>
+        {code}
+      </p>
+      <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-4xl">{title}</h2>
+      <p className="mt-5 text-lg leading-relaxed text-muted">{text}</p>
+    </div>
   )
 }
 
@@ -99,14 +40,69 @@ export default function Services() {
             Cada solução responde a um problema concreto — com processo transparente e
             suporte após a entrega.
           </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {NAV_CHIPS.map((chip) => (
+              <a
+                key={chip.href}
+                href={chip.href}
+                className="border border-line rounded-md px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-muted transition-colors hover:border-silver hover:text-ink"
+              >
+                {chip.label}
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
-      {products.map((p, i) => (
-        <ServiceBlock key={p.slug} product={p} index={i} />
-      ))}
+      <section id="desenvolvimento" className="border-b border-line-soft bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+          <AreaHeader
+            code="ÁREA 01 · DEV"
+            color="text-dev-600"
+            title="Desenvolvimento de software"
+            text="Software para operar, vender e crescer — websites, sistemas empresariais, aplicações, automação e integrações."
+          />
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {["presence", "business-systems", "automation", "custom-solutions"].map((slug) => (
+              <ProductCard key={slug} product={getProduct(slug)} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <section className="bg-white">
+      <section id="internet-das-coisas" className="border-b border-line-soft bg-surface">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+          <AreaHeader
+            code="ÁREA 02 · IOT"
+            color="text-iot-600"
+            title="Internet das Coisas"
+            text="Tecnologia que observa e interage com o mundo físico — sensores, telemetria, monitorização e dispositivos conectados."
+          />
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {["monitor", "custom-solutions"].map((slug) => (
+              <ProductCard key={slug} product={getProduct(slug)} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="infraestrutura" className="border-b border-line-soft bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+          <AreaHeader
+            code="ÁREA 03 · INFRA"
+            color="text-infra-600"
+            title="Infraestrutura e conectividade"
+            text="A infraestrutura por trás das operações digitais — redes, servidores, segurança, monitorização e virtualização."
+          />
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {["network", "infrastructure", "custom-solutions"].map((slug) => (
+              <ProductCard key={slug} product={getProduct(slug)} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="complementares" className="bg-ivory">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <SectionHeading
             eyebrow="Serviços complementares"
