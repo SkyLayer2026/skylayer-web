@@ -4,6 +4,7 @@ import Header from "./components/Header.jsx"
 import Footer from "./components/Footer.jsx"
 import Home from "./pages/Home.jsx"
 import Services from "./pages/Services.jsx"
+import Catalogo from "./pages/Catalogo.jsx"
 import ServiceLanding from "./pages/ServiceLanding.jsx"
 import Dev from "./pages/Dev.jsx"
 import IoT from "./pages/IoT.jsx"
@@ -25,6 +26,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/servicos" element={<Services />} />
+          <Route path="/catalogo" element={<Catalogo />} />
           <Route path="/servicos/:slug" element={<ServiceLanding />} />
           <Route path="/dev" element={<Dev />} />
       <Route path="/iot" element={<IoT />} />

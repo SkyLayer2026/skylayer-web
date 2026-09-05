@@ -11,6 +11,7 @@ const frontLinks = [
 
 const links = [
   { to: "/servicos", label: "Produtos" },
+  { to: "/catalogo", label: "Serviços" },
   { to: "/sobre", label: "Sobre" },
   { to: "/blog", label: "Blog" },
   { to: "/contacto", label: "Contacto" },
