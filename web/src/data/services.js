@@ -472,3 +472,402 @@ export const faq = [
 ]
 
 export const getProduct = (slug) => products.find((p) => p.slug === slug)
+
+// ---------------------------------------------------------------------------
+// Catálogo técnico em camadas (M7 — /servicos)
+// ---------------------------------------------------------------------------
+
+export const LAYERS = [
+  {
+    id: "dev",
+    numero: "01",
+    sigla: "BUILD.DIGITAL.SYSTEMS.",
+    kicker: "DESENVOLVIMENTO",
+    intro:
+      "Software para criar presença digital, automatizar operações e transformar processos em sistemas.",
+    services: [
+      {
+        id: "dev-websites",
+        nome: "Websites & Landing Pages",
+        desc: "Sites profissionais para apresentar a empresa, produtos ou serviços.",
+        inclui: [
+          "Estrutura e design",
+          "Desenvolvimento responsivo",
+          "Formulários",
+          "Integrações",
+          "Publicação",
+        ],
+        idealPara: "Empresas · Profissionais · Organizações",
+        tier: "produto",
+        productSlug: "presence",
+      },
+      {
+        id: "dev-aplicacoes",
+        nome: "Aplicações Web",
+        desc: "Aplicações acessíveis pelo navegador para processos específicos.",
+        inclui: [
+          "Interface e experiência",
+          "Lógica de negócio",
+          "Autenticação e acessos",
+          "Dados",
+          "Publicação",
+        ],
+        idealPara: "Empresas com processos repetitivos",
+        tier: "config",
+      },
+      {
+        id: "dev-business-systems",
+        nome: "Sistemas Empresariais",
+        desc: "Sistemas para centralizar e simplificar operações empresariais.",
+        inclui: ["Clientes", "Vendas", "Stock", "Projetos", "Dashboards"],
+        idealPara: "Pequenas empresas · Organizações",
+        tier: "config",
+        productSlug: "business-systems",
+      },
+      {
+        id: "dev-ecommerce",
+        nome: "E-commerce",
+        desc: "Lojas online com catálogo, pedidos e pagamentos.",
+        inclui: [
+          "Catálogo de produtos",
+          "Carrinho e checkout",
+          "Pagamentos",
+          "Gestão de encomendas",
+          "Integrações",
+        ],
+        idealPara: "Comerciantes e retalhistas",
+        tier: "custom",
+      },
+      {
+        id: "dev-apis",
+        nome: "APIs & Integrações",
+        desc: "APIs, integrações entre sistemas e comunicação entre plataformas.",
+        inclui: [
+          "Desenho de API",
+          "Integrações externas",
+          "Sincronização de dados",
+          "Documentação",
+          "Monitorização",
+        ],
+        idealPara: "Empresas com múltiplas ferramentas",
+        tier: "config",
+      },
+      {
+        id: "dev-automacao",
+        nome: "Automação de Processos",
+        desc: "Fluxos automáticos, notificações, tarefas e processamento de dados.",
+        inclui: [
+          "Mapeamento do processo",
+          "Fluxos automáticos",
+          "Notificações",
+          "Processamento de dados",
+          "Relatórios",
+        ],
+        idealPara: "Operações manuais repetitivas",
+        tier: "config",
+        productSlug: "automation",
+      },
+      {
+        id: "dev-dashboards",
+        nome: "Dashboards & Dados",
+        desc: "Dashboards operacionais, indicadores, relatórios e visualização de dados.",
+        inclui: [
+          "Indicadores e KPIs",
+          "Visualizações",
+          "Fontes de dados",
+          "Relatórios",
+          "Acessos por papel",
+        ],
+        idealPara: "Gestão com base em números",
+        tier: "config",
+      },
+      {
+        id: "dev-software",
+        nome: "Software Personalizado",
+        desc: "Sistemas desenvolvidos especificamente para um problema concreto.",
+        inclui: [
+          "Levantamento de requisitos",
+          "Desenvolvimento",
+          "Testes",
+          "Formação",
+          "Acompanhamento",
+        ],
+        idealPara: "Problemas sem solução pronta",
+        tier: "custom",
+        productSlug: "custom-solutions",
+      },
+      {
+        id: "dev-manutencao",
+        nome: "Manutenção & Evolução",
+        desc: "Correções, atualizações, melhorias e evolução de sistemas existentes.",
+        inclui: ["Correção de problemas", "Atualizações", "Melhorias", "Acompanhamento", "Documentação"],
+        idealPara: "Sistemas em produção",
+        tier: "config",
+      },
+    ],
+  },
+  {
+    id: "iot",
+    numero: "02",
+    sigla: "CONNECT.PHYSICAL.SYSTEMS.",
+    kicker: "INTERNET DAS COISAS",
+    intro: "Dispositivos, sensores e software a trabalhar como um único sistema.",
+    services: [
+      {
+        id: "iot-sensores",
+        nome: "Sensores & Aquisição de Dados",
+        desc: "Leitura de temperatura, energia, movimento, localização e estado de equipamentos.",
+        inclui: [
+          "Seleção de sensores",
+          "Aquisição de dados",
+          "Condicionamento de sinal",
+          "Transmissão",
+          "Visualização",
+        ],
+        idealPara: "Ambientes e equipamentos críticos",
+        tier: "custom",
+      },
+      {
+        id: "iot-monitorizacao",
+        nome: "Monitorização",
+        desc: "Acompanhamento remoto de equipamentos, ambientes e processos.",
+        inclui: ["Sensores", "Painel de monitorização", "Alertas", "Histórico", "Relatórios"],
+        idealPara: "Operações que precisam de vigilância contínua",
+        tier: "config",
+        productSlug: "monitor",
+      },
+      {
+        id: "iot-telemetria",
+        nome: "Telemetria",
+        desc: "Recolha e transmissão de dados de dispositivos para plataformas digitais.",
+        inclui: [
+          "Protocolos de comunicação",
+          "Transmissão de dados",
+          "Armazenamento",
+          "Processamento",
+          "Visualização",
+        ],
+        idealPara: "Dados operacionais à distância",
+        tier: "custom",
+      },
+      {
+        id: "iot-automacao",
+        nome: "Automação & Controlo",
+        desc: "Acionamento de equipamentos com base em condições, sensores ou comandos remotos.",
+        inclui: [
+          "Atuadores",
+          "Regras de controlo",
+          "Comandos remotos",
+          "Segurança de funcionamento",
+          "Registo de eventos",
+        ],
+        idealPara: "Processos que reagem a condições reais",
+        tier: "config",
+      },
+      {
+        id: "iot-dispositivos",
+        nome: "Dispositivos Conectados",
+        desc: "Desenvolvimento e integração de dispositivos conectados.",
+        inclui: [
+          "Firmware",
+          "Conectividade",
+          "Integração com plataformas",
+          "Testes no terreno",
+          "Documentação",
+        ],
+        idealPara: "Produtos ou operações com hardware",
+        tier: "custom",
+      },
+      {
+        id: "iot-web",
+        nome: "IoT + Web",
+        desc: "O caminho completo: dispositivo → rede → servidor → API → dashboard.",
+        inclui: ["Dispositivo", "Rede", "Servidor", "API", "Dashboard"],
+        idealPara: "Soluções integradas de ponta a ponta",
+        tier: "config",
+      },
+      {
+        id: "iot-prototipagem",
+        nome: "Prototipagem",
+        desc: "Provas de conceito e protótipos com microcontroladores e sensores.",
+        inclui: [
+          "Prova de conceito",
+          "Microcontroladores",
+          "Sensores",
+          "Testes",
+          "Avaliação de viabilidade",
+        ],
+        idealPara: "Ideias que precisam de validação",
+        tier: "custom",
+      },
+      {
+        id: "iot-personalizadas",
+        nome: "Soluções IoT Personalizadas",
+        desc: "Sistemas desenvolvidos para necessidades específicas.",
+        inclui: [
+          "Levantamento de requisitos",
+          "Desenvolvimento",
+          "Testes",
+          "Formação",
+          "Acompanhamento",
+        ],
+        idealPara: "Problemas físicos sem solução pronta",
+        tier: "custom",
+        productSlug: "custom-solutions",
+      },
+    ],
+  },
+  {
+    id: "infrastructure",
+    numero: "03",
+    sigla: "KEEP.SYSTEMS.RUNNING.",
+    kicker: "INFRAESTRUTURA",
+    intro: "A infraestrutura que mantém software, dispositivos e operações a funcionar.",
+    services: [
+      {
+        id: "infra-redes",
+        nome: "Redes",
+        desc: "LAN, VLAN, configuração e organização de redes.",
+        inclui: ["Projeto de rede", "Cabeamento", "Switches e routers", "VLANs", "Documentação"],
+        idealPara: "Escritórios e operações com vários postos",
+        tier: "config",
+        productSlug: "network",
+      },
+      {
+        id: "infra-wifi",
+        nome: "Wi-Fi",
+        desc: "Implementação, configuração e otimização de redes sem fio.",
+        inclui: ["Cobertura", "Access points", "Configuração", "Otimização", "Segurança"],
+        idealPara: "Espaços com mobilidade",
+        tier: "config",
+      },
+      {
+        id: "infra-servidores",
+        nome: "Servidores",
+        desc: "Implementação e configuração de servidores.",
+        inclui: ["Escolha de hardware", "Instalação", "Configuração", "Serviços", "Monitorização"],
+        idealPara: "Empresas a centralizar serviços",
+        tier: "config",
+      },
+      {
+        id: "infra-linux-windows",
+        nome: "Linux & Windows Server",
+        desc: "Configuração, administração e manutenção de ambientes servidor.",
+        inclui: ["Sistemas operativos", "Serviços", "Atualizações", "Segurança", "Backup"],
+        idealPara: "Ambientes servidor existentes",
+        tier: "config",
+      },
+      {
+        id: "infra-seguranca",
+        nome: "Segurança de Infraestrutura",
+        desc: "Firewall, controlo de acesso, segmentação e boas práticas de segurança.",
+        inclui: ["Firewall", "Controlo de acesso", "Segmentação", "Políticas", "Auditoria"],
+        idealPara: "Proteção de dados e sistemas",
+        tier: "config",
+      },
+      {
+        id: "infra-monitorizacao",
+        nome: "Monitorização",
+        desc: "Monitorização de servidores, redes, serviços e dispositivos.",
+        inclui: ["Agentes de monitorização", "Painel", "Alertas", "Histórico", "Relatórios"],
+        idealPara: "Disponibilidade e prevenção",
+        tier: "config",
+      },
+      {
+        id: "infra-virtualizacao",
+        nome: "Virtualização",
+        desc: "Configuração e gestão de ambientes virtualizados.",
+        inclui: ["Hipervisores", "Máquinas virtuais", "Recursos", "Snapshot", "Recuperação"],
+        idealPara: "Otimização de hardware",
+        tier: "config",
+        productSlug: "infrastructure",
+      },
+      {
+        id: "infra-backup",
+        nome: "Backup & Storage",
+        desc: "Estratégias de backup, armazenamento e recuperação.",
+        inclui: ["Política de backup", "Armazenamento", "Agendamento", "Testes de restauro", "Documentação"],
+        idealPara: "Proteção contra perda de dados",
+        tier: "config",
+      },
+      {
+        id: "infra-ad-dns-dhcp",
+        nome: "Active Directory / DNS / DHCP",
+        desc: "Implementação e administração de serviços de rede.",
+        inclui: ["Active Directory", "DNS", "DHCP", "Políticas", "Administração"],
+        idealPara: "Redes com gestão centralizada",
+        tier: "config",
+      },
+      {
+        id: "infra-manutencao",
+        nome: "Manutenção de Infraestrutura",
+        desc: "Diagnóstico, correção e manutenção preventiva.",
+        inclui: ["Diagnóstico", "Correção", "Manutenção preventiva", "Registo", "Plano de evolução"],
+        idealPara: "Infraestruturas em funcionamento",
+        tier: "config",
+      },
+    ],
+  },
+]
+
+export const APOIO = [
+  { nome: "Diagnóstico tecnológico", desc: "Análise do estado atual e recomendações." },
+  { nome: "Consultoria", desc: "Aconselhamento técnico e decisões de arquitetura." },
+  { nome: "Implementação", desc: "Colocação de sistemas e equipamentos a funcionar." },
+  { nome: "Manutenção", desc: "Acompanhamento contínuo de sistemas e infraestrutura." },
+  { nome: "Suporte", desc: "Apoio especializado quando algo falha." },
+  { nome: "Migração", desc: "Transição de dados e sistemas entre plataformas." },
+  { nome: "Formação", desc: "Capacitação de equipas no uso das soluções." },
+]
+
+export const NECESSIDADES = [
+  {
+    id: "criar",
+    rotulo: "Criar",
+    servicos: ["dev-websites", "dev-aplicacoes", "dev-ecommerce", "iot-prototipagem", "dev-software"],
+  },
+  {
+    id: "conectar",
+    rotulo: "Conectar",
+    servicos: ["dev-apis", "iot-dispositivos", "iot-web", "infra-redes", "infra-wifi"],
+  },
+  {
+    id: "automatizar",
+    rotulo: "Automatizar",
+    servicos: ["dev-automacao", "iot-automacao", "dev-apis"],
+  },
+  {
+    id: "monitorizar",
+    rotulo: "Monitorizar",
+    servicos: ["iot-monitorizacao", "iot-sensores", "iot-telemetria", "infra-monitorizacao", "dev-dashboards"],
+  },
+  {
+    id: "proteger",
+    rotulo: "Proteger",
+    servicos: ["infra-seguranca", "infra-backup", "infra-ad-dns-dhcp"],
+  },
+  {
+    id: "organizar",
+    rotulo: "Organizar",
+    servicos: ["dev-business-systems", "dev-dashboards", "infra-servidores", "infra-virtualizacao"],
+  },
+  {
+    id: "evoluir",
+    rotulo: "Evoluir",
+    servicos: ["dev-manutencao", "infra-manutencao", "dev-software"],
+  },
+]
+
+// ---------------------------------------------------------------------------
+// Helpers (M7 — /servicos)
+// ---------------------------------------------------------------------------
+
+export const getLayerById = (id) => LAYERS.find((l) => l.id === id)
+
+export const getServico = (id) => {
+  for (const layer of LAYERS) {
+    const found = layer.services.find((s) => s.id === id)
+    if (found) return found
+  }
+  return APOIO.find((s) => s.nome === id) || null
+}
