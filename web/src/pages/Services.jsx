@@ -42,7 +42,7 @@ function ExpandRow({ layerId, service, index, open, onToggle, filter }) {
     <div id={id} className="border-t border-line-soft">
       <button
         type="button"
-        onClick={() => onToggle(id)}
+        onClick={() => onToggle(layerId, id)}
         aria-expanded={isOpen}
         aria-controls={`panel-${id}`}
         className="group flex w-full items-baseline gap-4 py-5 text-left sm:gap-6"
@@ -147,7 +147,7 @@ function LayerSection({ layer, open, onToggle, filter }) {
               layerId={layer.id}
               service={service}
               index={index}
-              open={open}
+              open={open[layer.id] ?? null}
               onToggle={onToggle}
               filter={filter}
             />
@@ -162,7 +162,7 @@ function LayerSection({ layer, open, onToggle, filter }) {
 export default function Services() {
   usePageTitle("Serviços")
 
-  const [open, setOpen] = useState(null)
+  const [open, setOpen] = useState({})
   const [activeNeed, setActiveNeed] = useState(null)
   const [query, setQuery] = useState("")
 
@@ -170,7 +170,12 @@ export default function Services() {
     ? { need: activeNeed, text: query.trim().toLowerCase() }
     : null
 
-  const toggle = (id) => setOpen((prev) => (prev === id ? null : id))
+  // One open row per layer: open = { [layerId]: serviceId }
+  const toggle = (layerId, id) =>
+    setOpen((prev) => ({
+      ...prev,
+      [layerId]: prev[layerId] === id ? null : id,
+    }))
 
   const countByLayer = (layerId) => {
     if (!filter) return null
