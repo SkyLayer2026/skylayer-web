@@ -20,9 +20,9 @@ const LAYER_META = {
 }
 
 const TIER_LABEL = {
-  produto: "Produto · Projeto fixo",
-  config: "Configuração · Mensal",
-  custom: "À medida",
+  produto: "Preço público",
+  config: "Depende do escopo",
+  custom: "Orçamento",
 }
 
 function ExpandRow({ layerId, service, index, open, onToggle, filter }) {
