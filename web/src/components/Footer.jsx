@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import { MessageCircle, Mail, MapPin } from "lucide-react"
-import { site, whatsappLink } from "../config.js"
+import { MessageCircle, Mail, MapPin, Phone } from "lucide-react"
+import { site, whatsappLink, phoneLink } from "../config.js"
 import { Logo } from "./ui.jsx"
 
 const frontLinks = [
@@ -83,8 +83,23 @@ export default function Footer() {
                 rel="noreferrer"
                 className="flex items-center gap-2 text-muted transition-colors hover:text-charcoal"
               >
-                <MessageCircle className="h-4 w-4 text-emerald-600" />
-                {site.whatsappDisplay}
+                <MessageCircle className="h-4 w-4 shrink-0 text-emerald-600" />
+                <span>
+                  WhatsApp
+                  <span className="block text-xs text-silver">{site.whatsappDisplay}</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={phoneLink()}
+                className="flex items-center gap-2 text-muted transition-colors hover:text-charcoal"
+              >
+                <Phone className="h-4 w-4 shrink-0 text-sky-600" />
+                <span>
+                  Chamadas
+                  <span className="block text-xs text-silver">{site.phoneDisplay}</span>
+                </span>
               </a>
             </li>
             <li>

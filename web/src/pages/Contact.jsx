@@ -1,6 +1,6 @@
-import { MessageCircle, Mail, MapPin, Clock } from "lucide-react"
+import { MessageCircle, Mail, MapPin, Clock, Phone } from "lucide-react"
 import { usePageTitle } from "../hooks.js"
-import { site, whatsappLink } from "../config.js"
+import { site, whatsappLink, phoneLink } from "../config.js"
 import ContactForm from "../components/ContactForm.jsx"
 
 export default function Contact() {
@@ -35,7 +35,23 @@ export default function Contact() {
               </span>
               <div>
                 <p className="font-bold text-ink">WhatsApp</p>
-                <p className="text-sm text-muted">{site.whatsappDisplay}</p>
+                <p className="text-sm text-muted">
+                  Mensagens e áudio — {site.whatsappDisplay}
+                </p>
+              </div>
+            </a>
+            <a
+              href={phoneLink()}
+              className="card flex items-center gap-4 p-5 transition-colors hover:border-sky-300"
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-sky-50 text-sky-600">
+                <Phone className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="font-bold text-ink">Chamadas</p>
+                <p className="text-sm text-muted">
+                  Ligações de voz — {site.phoneDisplay}
+                </p>
               </div>
             </a>
             <a
