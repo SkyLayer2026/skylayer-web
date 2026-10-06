@@ -92,23 +92,23 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href={phoneLink()}
-                className="flex items-center gap-2 text-muted transition-colors hover:text-charcoal"
-              >
-                <Phone className="h-4 w-4 shrink-0 text-sky-600" />
-                <span>
-                  Chamadas
-                  <span className="block text-xs text-silver">{site.phoneDisplay}</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a
                 href={`mailto:${site.email}`}
                 className="flex items-center gap-2 text-muted transition-colors hover:text-charcoal"
               >
                 <Mail className="h-4 w-4 text-silver" />
                 {site.email}
+              </a>
+            </li>
+            <li>
+              <a
+                href={phoneLink()}
+                className="flex items-center gap-2 text-muted transition-colors hover:text-charcoal"
+              >
+                <Phone className="h-4 w-4 shrink-0 text-silver" />
+                <span>
+                  Chamadas
+                  <span className="block text-xs text-silver">{site.phoneDisplay}</span>
+                </span>
               </a>
             </li>
             <li className="flex items-center gap-2 text-muted">

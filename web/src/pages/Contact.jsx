@@ -42,9 +42,9 @@ export default function Contact() {
             </a>
             <a
               href={phoneLink()}
-              className="card flex items-center gap-4 p-5 transition-colors hover:border-sky-300"
+              className="card flex items-center gap-4 p-5 transition-colors hover:border-line"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-sky-50 text-sky-600">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-surface text-muted">
                 <Phone className="h-5 w-5" />
               </span>
               <div>
