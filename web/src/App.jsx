@@ -29,14 +29,15 @@ export default function App() {
           <Route path="/catalogo" element={<Catalogo />} />
           <Route path="/servicos/:slug" element={<ServiceLanding />} />
           <Route path="/dev" element={<Dev />} />
-      <Route path="/iot" element={<IoT />} />
-      <Route path="/infrastructure" element={<Infrastructure />} />
+          <Route path="/iot" element={<IoT />} />
+          <Route path="/infrastructure" element={<Infrastructure />} />
           <Route path="/sobre" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/contacto" element={<Contact />} />
-           <Route path="/projetos" element={<Navigate to="/dev" replace />} />
+          <Route path="/projetos" element={<Navigate to="/dev" replace />} />
+          <Route path="/diagnostico" element={<Diagnostico />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

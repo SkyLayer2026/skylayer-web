@@ -42,7 +42,7 @@ export default function Footer() {
             ))}
             <li>
               <Link
-                to="/dev"
+                to="/catalogo"
                 className="text-muted transition-colors hover:text-charcoal"
               >
                 Ver catálogo completo
