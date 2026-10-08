@@ -106,10 +106,10 @@ export default function Home() {
             </p>
             <p className="mt-6 max-w-md text-base leading-relaxed text-muted sm:text-lg">
               Criamos sistemas digitais, conectamos o mundo físico e construímos a infraestrutura
-              que mantém tudo funcionando.
+              que mantém tudo a funcionar.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Link to="/dev" className="btn-primary">
+              <Link to="/servicos" className="btn-primary">
                 Explorar soluções
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -248,7 +248,7 @@ export default function Home() {
                 </h2>
               </div>
               <div className="hidden md:block">
-                <ArrowLink to="/dev">Ver todas as soluções</ArrowLink>
+                <ArrowLink to="/servicos">Ver todas as soluções</ArrowLink>
               </div>
             </div>
           </Reveal>
@@ -287,7 +287,7 @@ export default function Home() {
           {/* mobile link */}
           <Reveal delay={300}>
             <div className="mt-10 md:hidden">
-              <ArrowLink to="/dev">Ver todas as soluções</ArrowLink>
+              <ArrowLink to="/servicos">Ver todas as soluções</ArrowLink>
             </div>
           </Reveal>
         </div>
