@@ -86,7 +86,7 @@ export default function Footer() {
                 <MessageCircle className="h-4 w-4 shrink-0 text-emerald-600" />
                 <span>
                   WhatsApp
-                  <span className="block text-xs text-silver">{site.whatsappDisplay}</span>
+                  <span className="block text-xs text-muted">{site.whatsappDisplay}</span>
                 </span>
               </a>
             </li>
@@ -107,7 +107,7 @@ export default function Footer() {
                 <Phone className="h-4 w-4 shrink-0 text-silver" />
                 <span>
                   Chamadas
-                  <span className="block text-xs text-silver">{site.phoneDisplay}</span>
+                  <span className="block text-xs text-muted">{site.phoneDisplay}</span>
                 </span>
               </a>
             </li>
