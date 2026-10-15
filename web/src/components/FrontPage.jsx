@@ -53,7 +53,10 @@ export default function FrontPage({ front }) {
   const f = FRONTS[front]
   usePageTitle(f.label)
 
-  const frontProducts = products.filter((p) => f.slugs.includes(p.slug))
+  const featuredSlugs = front === "DEV" ? ["presence", "business-systems"] : []
+  const frontProducts = products.filter(
+    (p) => f.slugs.includes(p.slug) && !featuredSlugs.includes(p.slug)
+  )
 
   return (
     <>
@@ -92,6 +95,86 @@ export default function FrontPage({ front }) {
           </Reveal>
         </div>
       </section>
+
+      {/* ═══ DEV · PRODUTOS EM DESTAQUE ═══ */}
+      {front === "DEV" && (
+        <section className="border-b border-line-soft bg-white">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+            <Reveal>
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <FrontNumber num="00" label="Em destaque" color={f.accentText} />
+                  <h2 className="mt-6 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+                    Produtos prontos, com página própria.
+                  </h2>
+                </div>
+              </div>
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
+                Produtos desenvolvidos pela Skylayer que pode começar a usar já — com apresentação
+                detalhada em página independente.
+              </p>
+            </Reveal>
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {[
+                {
+                  to: "/sn-ia",
+                  visual: "sn-ia",
+                  name: "Sn IA",
+                  tagline: "Atendimento inteligente por WhatsApp",
+                  desc: "Responde com base no conhecimento da sua empresa, organiza contactos e passa para humano quando é preciso.",
+                  tags: "WhatsApp · Base de conhecimento · CRM",
+                  badge: "Novo",
+                },
+                {
+                  to: "/servicos/presence",
+                  visual: "presence",
+                  name: "SL Presence",
+                  tagline: "Presença digital profissional",
+                  desc: "Website e páginas que apresentam a empresa com credibilidade e facilitam o contacto.",
+                  tags: "Website · Landing Page · SEO",
+                },
+                {
+                  to: "/servicos/business-systems",
+                  visual: "business-systems",
+                  name: "SL Business Systems",
+                  tagline: "Sistemas para a operação",
+                  desc: "Centralize clientes, vendas, stock e processos internos num só sistema com painéis.",
+                  tags: "CRM · Vendas · Stock · Dashboards",
+                },
+              ].map((p, i) => (
+                <Reveal key={p.name} delay={i * 80}>
+                  <Link
+                    to={p.to}
+                    className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition-all hover:-translate-y-1 hover:shadow-lg"
+                  >
+                    <ProductVisual slug={p.visual} className="rounded-none border-0 border-b border-line-soft" />
+                    <div className="flex flex-1 flex-col p-6">
+                      <div className="flex items-center justify-between">
+                        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-dev-600">
+                          SL / DEV
+                        </p>
+                        {p.badge && (
+                          <span className="rounded-full bg-dev-50 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-dev-600">
+                            {p.badge}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="mt-3 text-xl font-extrabold tracking-tight text-ink">{p.name}</h3>
+                      <p className="mt-1 text-sm font-semibold text-dev-600">{p.tagline}</p>
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{p.desc}</p>
+                      <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">{p.tags}</p>
+                      <span className="mt-5 inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-dev-600">
+                        Ver produto
+                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ═══ PRODUCTS ═══ */}
       <section className="bg-ivory">

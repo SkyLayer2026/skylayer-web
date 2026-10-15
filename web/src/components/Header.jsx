@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 import { Menu, X, ArrowRight } from "lucide-react"
 import { Logo } from "./ui.jsx"
@@ -25,6 +25,7 @@ const navLink = ({ isActive }) =>
 export default function Header() {
   const [open, setOpen] = useState(false)
   const [solutionsOpen, setSolutionsOpen] = useState(false)
+  const solutionsBtnRef = useRef(null)
 
   return (
     <header className="sticky top-0 z-50 border-b border-line-soft bg-ivory/95 backdrop-blur">
@@ -40,9 +41,23 @@ export default function Header() {
             className="relative"
             onMouseEnter={() => setSolutionsOpen(true)}
             onMouseLeave={() => setSolutionsOpen(false)}
+            onFocus={() => setSolutionsOpen(true)}
+            onBlur={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget)) setSolutionsOpen(false)
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") {
+                setSolutionsOpen(false)
+                solutionsBtnRef.current?.focus()
+              }
+            }}
           >
             <button
+              ref={solutionsBtnRef}
               type="button"
+              aria-haspopup="true"
+              aria-expanded={solutionsOpen}
+              onClick={() => setSolutionsOpen((v) => !v)}
               className={`flex items-center gap-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors hover:text-charcoal ${
                 solutionsOpen ? "text-charcoal" : "text-muted"
               }`}
@@ -74,6 +89,27 @@ export default function Header() {
                     <ArrowRight className="h-3 w-3" aria-hidden="true" />
                   </NavLink>
                 ))}
+                <div className="my-1 border-t border-line-soft" />
+                <p className="px-3 pb-2 pt-1 font-mono text-[9px] uppercase tracking-[0.25em] text-silver">
+                  Produto em destaque
+                </p>
+                <NavLink
+                  to="/sn-ia"
+                  className={({ isActive }) =>
+                    `flex items-center justify-between px-3 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-dev-600 transition-colors hover:bg-white ${
+                      isActive ? "bg-dev-50" : ""
+                    }`
+                  }
+                  onClick={() => {
+                    setOpen(false)
+                    setSolutionsOpen(false)
+                  }}
+                >
+                  Sn IA
+                  <span className="rounded-full bg-dev-50 px-2 py-0.5 font-mono text-[8px] tracking-widest text-dev-600">
+                    NOVO
+                  </span>
+                </NavLink>
               </div>
             )}
           </div>
@@ -122,6 +158,24 @@ export default function Header() {
                 {l.label}
               </NavLink>
             ))}
+
+            <p className="px-3 pb-1 pt-4 font-mono text-[9px] uppercase tracking-[0.25em] text-silver">
+              Produto em destaque
+            </p>
+            <NavLink
+              to="/sn-ia"
+              className={({ isActive }) =>
+                `flex items-center gap-2 rounded-none px-3 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-dev-600 transition-colors hover:bg-white ${
+                  isActive ? "bg-dev-50" : ""
+                }`
+              }
+              onClick={() => setOpen(false)}
+            >
+              Sn IA
+              <span className="rounded-full bg-dev-50 px-2 py-0.5 font-mono text-[8px] tracking-widest text-dev-600">
+                NOVO
+              </span>
+            </NavLink>
 
             <p className="px-3 pb-1 pt-4 font-mono text-[9px] uppercase tracking-[0.25em] text-silver">
               Navegação

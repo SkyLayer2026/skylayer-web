@@ -2,83 +2,149 @@ import { Link } from "react-router-dom"
 import { ArrowRight, MessageCircle } from "lucide-react"
 import { usePageTitle } from "../hooks.js"
 import { whatsappLink } from "../config.js"
-import { posts } from "../data/posts.js"
-import { Reveal, SignalDivider, FrontNumber, ArrowLink } from "../components/ui.jsx"
-import { BlogCard } from "../components/cards.jsx"
-import { HeroVisual, FrontVisual, ProductVisual } from "../components/visuals.jsx"
+import { process, pillars } from "../data/services.js"
+import { Reveal, SectionHeading, TechLabel, ArrowLink } from "../components/ui.jsx"
+import { EcosystemHero, ProductVisual, pillarIcons } from "../components/visuals.jsx"
 
 /* ═══════════════════════════════════════════════════
-   HOME — editorial system narrative
+   HOME — sistema narrativo (híbrido editorial + high-tech)
+   Hero (dark) → Quem somos → Áreas → One System →
+   Destaques → Processo → Contacto
    ═══════════════════════════════════════════════════ */
 
-const processSteps = [
-  { num: "01", title: "UNDERSTAND" },
-  { num: "02", title: "DESIGN" },
-  { num: "03", title: "BUILD" },
-  { num: "04", title: "DEPLOY" },
-  { num: "05", title: "EVOLVE" },
-]
-
-const pillars = [
-  { word: "STABLE", text: "Soluções pensadas para funcionar e evoluir." },
-  { word: "SECURE", text: "Segurança considerada desde a implementação." },
-  { word: "ACCESSIBLE", text: "Tecnologia adequada à realidade de cada cliente." },
-  { word: "INCLUSIVE", text: "Soluções para diferentes pessoas e organizações." },
-]
-
-const featuredProducts = [
+const AREAS = [
   {
+    id: "dev",
+    to: "/dev",
+    label: "DEV",
+    sub: "Desenvolvimento de software",
+    desc: "Websites, sistemas empresariais, aplicações, integrações e software à medida.",
+    code: "01",
+    hex: "#7c3aed",
+    soft: "#ede9fe",
+    text: "text-dev-600",
+  },
+  {
+    id: "iot",
+    to: "/iot",
+    label: "IoT",
+    sub: "Internet das Coisas",
+    desc: "Sensores, monitorização, telemetria, automação e dispositivos conectados.",
+    code: "02",
+    hex: "#f59e0b",
+    soft: "#fffbeb",
+    text: "text-iot-600",
+  },
+  {
+    id: "infra",
+    to: "/infrastructure",
+    label: "Infrastructure",
+    sub: "Infraestrutura e redes",
+    desc: "Redes, servidores, segurança, backups e monitorização contínua.",
+    code: "03",
+    hex: "#dc2626",
+    soft: "#fef2f2",
+    text: "text-infra-600",
+  },
+]
+
+/* Destaques: Sn IA primeiro, depois dois produtos prontos */
+const FEATURED = [
+  {
+    to: "/sn-ia",
     front: "DEV",
     code: "001",
-    name: "PRESENCE",
-    slug: "presence",
-    desc: "A presença digital essencial para uma empresa.",
-    tags: "Website · Landing Page · WhatsApp · SEO",
+    name: "Sn IA",
+    tagline: "Atendimento inteligente por WhatsApp",
+    desc: "Um assistente que responde aos seus clientes, consulta a sua base de conhecimento e organiza os contactos — passando para uma pessoa quando é preciso.",
+    tags: "WhatsApp · Base de conhecimento · CRM · Automação",
+    visual: "sn-ia",
+    hex: "#7c3aed",
+    highlight: true,
+  },
+  {
+    to: "/servicos/presence",
+    front: "DEV",
+    code: "002",
+    name: "SL Presence",
+    tagline: "Presença digital profissional",
+    desc: "Website e páginas que apresentam a sua empresa com credibilidade e transformam visitantes em clientes.",
+    tags: "Website · Landing Page · SEO · Contacto",
     visual: "presence",
+    hex: "#7c3aed",
   },
   {
-    front: "IoT",
-    code: "001",
-    name: "MONITOR",
-    slug: "monitor",
-    desc: "Transforme sensores em informação útil.",
-    tags: "Sensores · Telemetria · Dashboard · Alertas",
-    visual: "monitor",
-  },
-  {
-    front: "INFRA",
-    code: "001",
-    name: "NETWORK",
-    slug: "network",
-    desc: "Uma infraestrutura de rede organizada e confiável.",
-    tags: "LAN · Wi-Fi · VLAN · Configuração · Diagnóstico",
-    visual: "network",
+    to: "/servicos/business-systems",
+    front: "DEV",
+    code: "003",
+    name: "SL Business Systems",
+    tagline: "Sistemas para a operação",
+    desc: "Centralize clientes, vendas, stock e processos internos num só sistema, com acesso seguro e painéis de controlo.",
+    tags: "CRM · Vendas · Stock · Dashboards",
+    visual: "business-systems",
+    hex: "#7c3aed",
   },
 ]
 
-/* Editorial chapter block for the three fronts */
-function FrontChapter({ num, label, title, lead, tags, visual, to, accent }) {
+function AreaCard({ a }) {
   return (
-    <section className="border-b border-line-soft">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-2 lg:items-center">
-        <Reveal>
-          <FrontNumber num={num} label={label} color={accent} />
-          <h2 className="mt-8 text-4xl font-extrabold leading-[1.02] tracking-tight text-ink sm:text-6xl">
-            {title.split("\n").map((l) => (
-              <span key={l} className="block">{l}</span>
-            ))}
-          </h2>
-          <p className="mt-6 max-w-md text-base leading-relaxed text-muted sm:text-lg">{lead}</p>
-          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.25em] text-muted">{tags}</p>
-          <div className="mt-10">
-            <ArrowLink to={to}>Explorar {label}</ArrowLink>
+    <Reveal>
+      <Link
+        to={a.to}
+        className="group relative block overflow-hidden rounded-xl border border-line bg-white p-6 shadow-[0_1px_0_rgba(26,26,31,.04)] transition-all hover:-translate-y-1 hover:shadow-lg"
+      >
+        <span className="absolute inset-x-0 top-0 h-1" style={{ background: `linear-gradient(90deg, ${a.hex}, transparent)` }} />
+        <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full opacity-40 blur-2xl transition-opacity group-hover:opacity-70" style={{ background: a.soft }} />
+        <div className="flex items-center justify-between">
+          <span className="flex h-10 w-10 items-center justify-center rounded-lg" style={{ background: a.soft }}>
+            <span className="h-2.5 w-2.5 rounded-full metric-pulse" style={{ background: a.hex }} />
+          </span>
+          <span className="font-mono text-[10px] tracking-[0.3em] text-silver">{a.code}</span>
+        </div>
+        <p className={`mt-4 font-mono text-[10px] uppercase tracking-[0.3em] ${a.text}`}>{a.label}</p>
+        <h3 className="mt-1 text-lg font-extrabold tracking-tight text-ink">{a.sub}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-muted">{a.desc}</p>
+        <span className={`mt-5 inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.25em] ${a.text}`}>
+          Explorar
+          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+        </span>
+      </Link>
+    </Reveal>
+  )
+}
+
+function FeaturedCard({ p, highlight }) {
+  return (
+    <Reveal className="h-full">
+      <Link
+        to={p.to}
+        className={`group flex h-full flex-col overflow-hidden rounded-xl border bg-white transition-all hover:-translate-y-1 hover:shadow-lg ${
+          highlight ? "border-dev-200 shadow-[0_0_0_1px_rgba(124,58,237,.12)]" : "border-line"
+        }`}
+      >
+        <ProductVisual slug={p.visual} className="rounded-none border-0 border-b border-line-soft" />
+        <div className="flex flex-1 flex-col p-6">
+          <div className="flex items-center justify-between">
+            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-dev-600">
+              SL / {p.front} / {p.code}
+            </p>
+            {highlight && (
+              <span className="rounded-full bg-dev-50 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-dev-600">
+                Em destaque
+              </span>
+            )}
           </div>
-        </Reveal>
-        <Reveal delay={120}>
-          <FrontVisual front={visual} />
-        </Reveal>
-      </div>
-    </section>
+          <h3 className="mt-3 text-xl font-extrabold tracking-tight text-ink">{p.name}</h3>
+          <p className="mt-1 text-sm font-semibold text-dev-600">{p.tagline}</p>
+          <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{p.desc}</p>
+          <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">{p.tags}</p>
+          <span className="mt-5 inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-dev-600">
+            Ver solução
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+          </span>
+        </div>
+      </Link>
+    </Reveal>
   )
 }
 
@@ -87,29 +153,35 @@ export default function Home() {
 
   return (
     <>
-      {/* ═══ 01 · HERO ═══ */}
-      <section className="border-b border-line-soft bg-ivory">
-        <div className="mx-auto grid max-w-6xl items-center gap-16 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-2 lg:gap-8">
+      {/* ═══ 01 · HERO (dark, high-tech) ═══ */}
+      <section className="section-dark">
+        <div className="grid-bg absolute inset-0" aria-hidden="true" />
+        <div className="glow glow-dev -left-32 -top-24 h-96 w-96 opacity-[0.18]" aria-hidden="true" />
+        <div className="glow glow-infra -right-24 bottom-0 h-80 w-80 opacity-[0.15]" aria-hidden="true" />
+
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-2 lg:gap-8">
           <Reveal>
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.3em] text-silver">
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.3em] text-white/60">
               SKYLAYER / SYSTEMS
             </p>
-            <h1 className="mt-6 text-5xl font-extrabold leading-[1.0] tracking-tight text-ink sm:text-6xl">
-              TECHNOLOGY TO
+            <h1 className="mt-6 text-5xl font-extrabold leading-[1.02] tracking-tight text-white sm:text-6xl">
+              Tecnologia para
               <br />
-              BUILD, CONNECT
-              <br />
-              &amp; EVOLVE.
+              <span className="text-grad">construir, conectar</span>
+              <br />e evoluir.
             </h1>
-            <p className="mt-8 font-mono text-sm uppercase tracking-[0.3em] text-dev-600">
+            <p className="mt-7 max-w-md text-base leading-relaxed text-white/55 sm:text-lg">
+              Desenvolvemos software, ligamos o mundo físico à internet e construímos a
+              infraestrutura que mantém tudo a funcionar. Um só parceiro, do início ao fim.
+            </p>
+            <p className="mt-6 font-mono text-sm uppercase tracking-[0.3em] text-white/70">
               DEV · IoT · INFRASTRUCTURE
             </p>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-muted sm:text-lg">
-              Criamos sistemas digitais, conectamos o mundo físico e construímos a infraestrutura
-              que mantém tudo a funcionar.
-            </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Link to="/servicos" className="btn-primary">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Link
+                to="/servicos"
+                className="btn-glow inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white"
+              >
                 Explorar soluções
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -117,205 +189,55 @@ export default function Home() {
                 href={whatsappLink()}
                 target="_blank"
                 rel="noreferrer"
-                className="btn-secondary"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:border-white/50"
               >
-                <MessageCircle className="h-4 w-4 text-emerald-600" />
+                <MessageCircle className="h-4 w-4" />
                 Falar connosco
               </a>
             </div>
-            <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.25em] text-silver">
+            <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.25em] text-white/55">
               Diagnóstico gratuito · Proposta sem compromisso
             </p>
           </Reveal>
-          <Reveal delay={120}>
-            <HeroVisual className="lg:translate-x-4" />
+          <Reveal delay={140}>
+            <EcosystemHero theme="dark" className="lg:translate-x-4" />
           </Reveal>
         </div>
       </section>
 
-      {/* ═══ 02 · THE THREE FRONTS ═══ */}
-      <FrontChapter
-        num="01"
-        label="DEV"
-        title={"BUILD.\nDIGITAL.\nSYSTEMS."}
-        lead="Software para operar, vender e crescer. Websites, sistemas empresariais, aplicações, integrações e software personalizado."
-        tags="Websites · Sistemas · Aplicações · APIs · Integrações"
-        visual="DEV"
-        to="/dev"
-        accent="text-dev-600"
-      />
-
-      <FrontChapter
-        num="02"
-        label="IoT"
-        title={"CONNECT.\nTHE PHYSICAL.\nWORLD."}
-        lead="Tecnologia que observa e interage com o mundo físico — sensores, telemetria, automação, monitorização e dispositivos conectados."
-        tags="Sensores · Monitorização · Automação · Telemetria · Energia"
-        visual="IoT"
-        to="/iot"
-        accent="text-iot-600"
-      />
-
-      <FrontChapter
-        num="03"
-        label="INFRASTRUCTURE"
-        title={"BUILD.\nTHE.\nFOUNDATION."}
-        lead="A infraestrutura por trás das operações digitais — redes, servidores, segurança, monitorização e virtualização."
-        tags="Redes · Servidores · Segurança · Monitorização · Virtualização"
-        visual="INFRA"
-        to="/infrastructure"
-        accent="text-infra-600"
-      />
-
-      <SignalDivider color="bg-dev-500" />
-
-      {/* ═══ 03 · ONE SYSTEM. THREE LAYERS. ═══ */}
-      <section className="bg-ivory">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-          <Reveal>
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.3em] text-silver">
-              INTEGRATED / DIFFERENTIAL
-            </p>
-            <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
-              ONE SYSTEM.
-              <br />
-              THREE LAYERS.
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-              Não trabalhamos apenas com software. Não trabalhamos apenas com hardware. Não
-              trabalhamos apenas com redes. Construímos sistemas completos — de ponta a ponta.
-            </p>
-          </Reveal>
-
-          <Reveal delay={150}>
-            <div className="mt-16 grid gap-0 lg:grid-cols-3">
-              {/* DEV */}
-              <div className="border border-line-soft bg-white p-8">
-                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-dev-600">LAYER 01</p>
-                <h3 className="mt-3 text-2xl font-extrabold text-ink">DEV</h3>
-                <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-                  Apps · APIs · Websites · Systems
+      {/* ═══ 02 · QUEM SOMOS ═══ */}
+      <section className="border-b border-line-soft bg-ivory">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <Reveal>
+              <TechLabel color="text-silver">Quem somos</TechLabel>
+              <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
+                Uma empresa de tecnologia feita para resolver problemas reais.
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="space-y-4 text-base leading-relaxed text-muted">
+                <p>
+                  A Skylayer ajuda empresas e organizações em Moçambique a usar tecnologia de
+                  forma estável, segura e acessível. Não vendemos apenas ferramentas — percebemos
+                  o problema e construímos a solução adequada.
+                </p>
+                <p>
+                  Trabalhamos em três frentes que se completam: criamos <strong className="font-semibold text-ink">software</strong>,
+                  ligamos <strong className="font-semibold text-ink">dispositivos e sensores</strong> e
+                  construímos a <strong className="font-semibold text-ink">infraestrutura</strong> que
+                  sustenta tudo. Do diagnóstico ao acompanhamento, com linguagem simples.
                 </p>
               </div>
-              {/* Connector */}
-              <div className="hidden items-center justify-center lg:flex" aria-hidden="true">
-                <span className="text-2xl text-silver">▼</span>
-              </div>
-              {/* IoT */}
-              <div className="border border-line-soft bg-white p-8">
-                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-iot-600">LAYER 02</p>
-                <h3 className="mt-3 text-2xl font-extrabold text-ink">IoT</h3>
-                <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-                  Sensors · Devices · Telemetry
-                </p>
-              </div>
-              {/* Connector */}
-              <div className="hidden items-center justify-center lg:flex" aria-hidden="true">
-                <span className="text-2xl text-silver">▼</span>
-              </div>
-              {/* Infrastructure */}
-              <div className="border border-line-soft bg-white p-8">
-                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-infra-600">LAYER 03</p>
-                <h3 className="mt-3 text-2xl font-extrabold text-ink">Infrastructure</h3>
-                <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-                  Network · Servers · Security
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={250}>
-            <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.3em] text-silver">
-              DEV ↔ IoT ↔ INFRASTRUCTURE — ONE SOLUTION
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      <SignalDivider color="bg-iot-500" />
-
-      {/* ═══ 04 · SOLUTIONS ═══ */}
-      <section className="bg-ivory">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-          <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="font-mono text-[11px] font-medium uppercase tracking-[0.3em] text-silver">
-                  SOLUTIONS / CATALOG
-                </p>
-                <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
-                  SOLUÇÕES CONCRETAS.
-                </h2>
-              </div>
-              <div className="hidden md:block">
-                <ArrowLink to="/servicos">Ver todas as soluções</ArrowLink>
-              </div>
-            </div>
-          </Reveal>
-
-          <div className="mt-16 grid gap-8 md:grid-cols-3">
-            {featuredProducts.map((p, i) => {
-              const accent =
-                p.front === "DEV" ? "text-dev-600" : p.front === "IoT" ? "text-iot-600" : "text-infra-600"
-              return (
-                <Reveal key={p.name} delay={i * 90}>
-                  <Link
-                    to={`/servicos/${p.slug}`}
-                    className="group block border border-line bg-white transition-all hover:-translate-y-1 hover:border-silver hover:shadow-sm"
-                  >
-                    <ProductVisual slug={p.visual} className="border-0 border-b border-line-soft" />
-                    <div className="p-6">
-                      <p className={`font-mono text-[10px] uppercase tracking-[0.3em] ${accent}`}>
-                        SL / {p.front} / {p.code}
-                      </p>
-                      <h3 className="mt-3 text-xl font-extrabold tracking-tight text-ink">{p.name}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted">{p.desc}</p>
-                      <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-                        {p.tags}
-                      </p>
-                      <span className={`mt-6 inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.25em] ${accent}`}>
-                        Explore
-                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  </Link>
-                </Reveal>
-              )
-            })}
+            </Reveal>
           </div>
 
-          {/* mobile link */}
-          <Reveal delay={300}>
-            <div className="mt-10 md:hidden">
-              <ArrowLink to="/servicos">Ver todas as soluções</ArrowLink>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <SignalDivider color="bg-infra-500" />
-
-      {/* ═══ 05 · PHILOSOPHY ═══ */}
-      <section className="bg-ivory">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-          <Reveal>
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.3em] text-silver">
-              PHILOSOPHY
-            </p>
-            <h2 className="mt-4 max-w-3xl text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
-              TECHNOLOGY SHOULD BE ACCESSIBLE.
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-              Tecnologia não deve ser um privilégio. Construímos soluções estáveis, seguras e
-              acessíveis, pensadas para funcionar no mundo real.
-            </p>
-          </Reveal>
-
-          <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {pillars.map((p, i) => (
-              <Reveal key={p.word} delay={i * 80}>
+              <Reveal key={p.title} delay={i * 70}>
                 <div className="border-t-2 border-line pt-5">
-                  <p className="text-sm font-extrabold tracking-[0.2em] text-ink">{p.word}</p>
+                  <div className="text-charcoal">{pillarIcons[p.title]}</div>
+                  <h3 className="mt-4 text-sm font-bold uppercase tracking-[0.15em] text-ink">{p.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{p.text}</p>
                 </div>
               </Reveal>
@@ -324,111 +246,140 @@ export default function Home() {
         </div>
       </section>
 
-      <SignalDivider color="bg-silver" />
-
-      {/* ═══ 06 · PROCESS ═══ */}
-      <section className="bg-ivory">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+      {/* ═══ 03 · O QUE FAZEMOS (áreas) ═══ */}
+      <section className="border-b border-line-soft bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
           <Reveal>
             <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="font-mono text-[11px] font-medium uppercase tracking-[0.3em] text-silver">
-                  PROCESS / ENGINEERING
-                </p>
-                <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
-                  COMO TRABALHAMOS.
-                </h2>
+              <SectionHeading
+                eyebrow="O que fazemos"
+                title="Três frentes, um só sistema."
+              />
+              <div className="hidden md:block">
+                <ArrowLink to="/catalogo">Ver todos os serviços</ArrowLink>
               </div>
             </div>
           </Reveal>
-
-          <Reveal delay={120}>
-            <div className="mt-16 grid gap-0 sm:grid-cols-5">
-              {processSteps.map((s, i) => (
-                <div key={s.num} className="relative">
-                  <span className="font-mono text-lg font-light text-silver">{s.num}</span>
-                  <p className="mt-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-charcoal">
-                    {s.title}
-                  </p>
-                  {i < processSteps.length - 1 && (
-                    <span
-                      className="absolute right-0 top-1/2 hidden h-px w-full bg-line-soft sm:block"
-                      aria-hidden="true"
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <p className="mt-10 max-w-2xl text-base leading-relaxed text-muted">
-              Processo claro e transparente: da identificação da necessidade à implementação e
-              evolução contínua da solução.
-            </p>
-          </Reveal>
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {AREAS.map((a) => <AreaCard key={a.id} a={a} />)}
+          </div>
         </div>
       </section>
 
-      <SignalDivider color="bg-dev-500" />
-
-      {/* ═══ 07 · FROM THE LAB (BLOG) ═══ */}
-      <section className="bg-ivory">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+      {/* ═══ 04 · ONE SYSTEM (dark band) ═══ */}
+      <section className="section-dark border-b border-line-soft">
+        <div className="grid-bg absolute inset-0" aria-hidden="true" />
+        <div className="glow glow-dev left-1/2 top-0 h-64 w-[600px] -translate-x-1/2 opacity-[0.12]" aria-hidden="true" />
+        <div className="relative mx-auto max-w-6xl px-4 py-20 text-center sm:px-6 sm:py-24">
           <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="font-mono text-[11px] font-medium uppercase tracking-[0.3em] text-silver">
-                  FROM THE LAB
-                </p>
-                <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
-                  TECNOLOGIA, ENGENHARIA E SISTEMAS.
-                </h2>
-              </div>
-              <ArrowLink to="/blog">Explorar o laboratório</ArrowLink>
-            </div>
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.3em] text-white/60">
+              ONE SYSTEM / THREE LAYERS
+            </p>
+            <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Não entregamos peças soltas. Construímos sistemas completos.
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/60">
+              Software, dispositivos e infraestrutura a trabalhar como um único sistema — de ponta a ponta.
+            </p>
           </Reveal>
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {posts.slice(0, 3).map((post, i) => (
-              <Reveal key={post.slug} delay={i * 80}>
-                <BlogCard post={post} />
+          <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-3">
+            {AREAS.map((a, i) => (
+              <Reveal key={a.id} delay={i * 90}>
+                <div className="glass h-full rounded-2xl p-6 text-left">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.3em]" style={{ color: a.hex }}>
+                    {a.label}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-white/60">{a.desc}</p>
+                </div>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <SignalDivider color="bg-silver" />
-
-      {/* ═══ 08 · CTA ═══ */}
-      <section className="bg-charcoal bg-layers">
-        <div className="mx-auto max-w-6xl px-4 py-24 text-center sm:px-6 sm:py-32">
+      {/* ═══ 05 · SOLUÇÕES EM DESTAQUE ═══ */}
+      <section className="border-b border-line-soft bg-ivory">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
           <Reveal>
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.3em] text-silver">
-              READY TO BUILD?
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <SectionHeading
+                eyebrow="Produtos em destaque"
+                title="Soluções prontas para começar."
+                text="Produtos desenvolvidos pela Skylayer, com página própria. O Sn IA é o mais recente — para atendimento por WhatsApp."
+              />
+              <div className="hidden md:block">
+                <ArrowLink to="/servicos">Ver todos os produtos</ArrowLink>
+              </div>
+            </div>
+          </Reveal>
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {FEATURED.map((p) => (
+              <FeaturedCard key={p.name} p={p} highlight={p.highlight} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ 06 · COMO TRABALHAMOS ═══ */}
+      <section className="border-b border-line-soft bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Como trabalhamos"
+              title="Um processo claro, sem surpresas."
+              text="Da primeira conversa ao acompanhamento, sabe sempre em que passo está."
+            />
+          </Reveal>
+          <div className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            {process.map(([title, text], i) => (
+              <Reveal key={title} delay={i * 70}>
+                <div className="flex gap-4">
+                  <span className="font-mono text-2xl font-light text-silver">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-ink">{title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ 07 · CONTACTO / CTA (dark) ═══ */}
+      <section className="section-dark">
+        <div className="grid-bg absolute inset-0" aria-hidden="true" />
+        <div className="glow glow-dev -left-20 top-0 h-72 w-72 opacity-[0.16]" aria-hidden="true" />
+        <div className="glow glow-infra -right-20 bottom-0 h-72 w-72 opacity-[0.14]" aria-hidden="true" />
+        <div className="relative mx-auto max-w-6xl px-4 py-24 text-center sm:px-6 sm:py-28">
+          <Reveal>
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.3em] text-white/60">
+              PRONTO PARA COMEÇAR?
             </p>
-            <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-extrabold tracking-tight text-ivory sm:text-6xl">
-              HAVE A SYSTEM TO BUILD? LET'S TALK.
+            <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+              Tem um sistema para construir? Vamos falar.
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-ivory/70 sm:text-lg">
-              Fale connosco sobre o que pretende construir, melhorar ou automatizar. Começamos com
-              um diagnóstico gratuito.
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/55">
+              Conte-nos o que pretende construir, melhorar ou automatizar. Começamos sempre com um
+              diagnóstico gratuito e uma proposta sem compromisso.
             </p>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <Link
                 to="/contacto"
-                className="inline-flex items-center justify-center gap-2 border border-ivory bg-ivory px-8 py-4 text-xs font-semibold uppercase tracking-widest text-charcoal transition-colors hover:bg-transparent hover:text-ivory"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 text-xs font-semibold uppercase tracking-widest text-charcoal transition-transform hover:-translate-y-0.5"
               >
-                Solicitar orçamento
+                Pedir orçamento
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a
                 href={whatsappLink()}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 border border-ivory/40 px-8 py-4 text-xs font-semibold uppercase tracking-widest text-ivory transition-colors hover:border-ivory"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/25 px-8 py-4 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:border-white/60"
               >
-                <MessageCircle className="h-4 w-4 text-emerald-400" />
+                <MessageCircle className="h-4 w-4" />
                 Falar connosco
               </a>
             </div>

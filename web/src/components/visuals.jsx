@@ -276,6 +276,15 @@ export function ProductVisual({ slug, className = "" }) {
         { l: "endpoint.protect", strong: false },
       ],
     },
+    "sn-ia": {
+      accent: "text-dev-600",
+      dot: "bg-dev-500",
+      lines: [
+        { l: "whatsapp.lead", strong: true },
+        { l: "crm.update", strong: false },
+        { l: "handoff.human", strong: false },
+      ],
+    },
   }
 
   const item = map[slug] || map.presence
@@ -337,4 +346,57 @@ export const pillarIcons = {
       <circle cx="24" cy="34" r="4" stroke="#c8c6c1" strokeWidth="2" />
     </svg>
   ),
+}
+
+/* ── ECOSYSTEM HERO: three fronts connect to one system ── */
+export function EcosystemHero({ theme = "dark", className = "" }) {
+  const dark = theme === "dark"
+  const mod = (x, y, color, code, sub, delayClass = "") => (
+    <g className={`float-y ${delayClass}`}>
+      <rect
+        x={x} y={y} width="140" height="46" rx="12"
+        fill={dark ? "rgba(255,255,255,0.04)" : "#ffffff"}
+        stroke={dark ? "rgba(255,255,255,0.12)" : "#e8e6e1"}
+      />
+      <rect x={x} y={y} width="4" height="46" rx="2" fill={color} />
+      <circle cx={x + 24} cy={y + 23} r="4" fill={color} className="metric-pulse" />
+      <text x={x + 40} y={y + 20} fontFamily="ui-monospace, monospace" fontSize="11" fill={dark ? "#fff" : "#1a1a1f"} fontWeight="700">
+        {code}
+      </text>
+      <text x={x + 40} y={y + 33} fontFamily="ui-monospace, monospace" fontSize="8" fill={dark ? "rgba(255,255,255,0.45)" : "#6b6b73"}>
+        {sub}
+      </text>
+    </g>
+  )
+  const c1 = dark ? "#a78bfa" : "#7c3aed"
+  const c2 = dark ? "#fbbf24" : "#f59e0b"
+  const c3 = dark ? "#f87171" : "#dc2626"
+
+  return (
+    <div className={`relative h-[320px] w-full select-none ${className}`} aria-hidden="true">
+      <svg viewBox="0 0 560 320" className="h-full w-full" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="ecoLine" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor={c1} />
+            <stop offset="50%" stopColor={c2} />
+            <stop offset="100%" stopColor={c3} />
+          </linearGradient>
+        </defs>
+        <path d="M170 75 C 280 75, 300 160, 400 160" fill="none" stroke="url(#ecoLine)" strokeWidth="1.5" className="eco-flow" />
+        <path d="M170 160 C 280 160, 300 160, 400 160" fill="none" stroke="url(#ecoLine)" strokeWidth="1.5" className="eco-flow" />
+        <path d="M170 245 C 280 245, 300 160, 400 160" fill="none" stroke="url(#ecoLine)" strokeWidth="1.5" className="eco-flow" />
+
+        {mod(30, 52, c1, "DEV", "software & sistemas")}
+        {mod(30, 137, c2, "IoT", "sensores & automação", "float-y-1")}
+        {mod(30, 222, c3, "INFRA", "redes & servidores", "float-y-2")}
+
+        <g>
+          <circle cx="400" cy="160" r="46" fill={dark ? "rgba(124,58,237,0.10)" : "#f5f3ef"} stroke={dark ? "rgba(255,255,255,0.15)" : "#c8c6c1"} />
+          <circle cx="400" cy="160" r="31" fill={dark ? "rgba(255,255,255,0.04)" : "#ffffff"} stroke={dark ? "rgba(255,255,255,0.12)" : "#eceae5"} />
+          <text x="400" y="157" textAnchor="middle" fontFamily="ui-monospace, monospace" fontSize="9" fontWeight="700" fill={dark ? "#fff" : "#1a1a1f"}>ONE</text>
+          <text x="400" y="169" textAnchor="middle" fontFamily="ui-monospace, monospace" fontSize="9" fontWeight="700" fill={dark ? "#fff" : "#1a1a1f"}>SYSTEM</text>
+        </g>
+      </svg>
+    </div>
+  )
 }

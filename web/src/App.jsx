@@ -9,6 +9,7 @@ import ServiceLanding from "./pages/ServiceLanding.jsx"
 import Dev from "./pages/Dev.jsx"
 import IoT from "./pages/IoT.jsx"
 import Infrastructure from "./pages/Infrastructure.jsx"
+import SnAia from "./pages/SnAia.jsx"
 import About from "./pages/About.jsx"
 import Blog from "./pages/Blog.jsx"
 import BlogPost from "./pages/BlogPost.jsx"
@@ -31,6 +32,7 @@ export default function App() {
           <Route path="/dev" element={<Dev />} />
           <Route path="/iot" element={<IoT />} />
           <Route path="/infrastructure" element={<Infrastructure />} />
+          <Route path="/sn-ia" element={<SnAia />} />
           <Route path="/sobre" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />

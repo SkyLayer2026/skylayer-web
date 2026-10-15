@@ -4,8 +4,8 @@ export const site = {
   description:
     "Soluções digitais estáveis, seguras, acessíveis e inclusivas para empresas e profissionais em Moçambique. Sites profissionais, sistemas de gestão, automação e infraestrutura.",
   email: "skylayer.mz@gmail.com",
-  whatsappNumber: "258857577744",
-  whatsappDisplay: "+258 85 757 7744",
+  whatsappNumber: "258834304122",
+  whatsappDisplay: "+258 83 430 4122",
   phoneNumber: "258844556905",
   phoneDisplay: "+258 84 455 6905",
   location: "Maputo, Moçambique",

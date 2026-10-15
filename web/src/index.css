@@ -59,6 +59,11 @@
   /* ── Accent: Indigo (connector) ───────────────── */
   --color-indigo: #4f46e5;
 
+  /* ── Dark surface (high-tech moments) ─────────── */
+  --color-dark: #0b0b12;
+  --color-dark-soft: #14141c;
+  --color-dark-line: rgba(255, 255, 255, 0.1);
+
   /* ── Semantic ─────────────────────────────────── */
   --color-ink: var(--color-charcoal);
 }
@@ -294,4 +299,98 @@ body {
   .link-inline {
     @apply inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-charcoal transition-colors hover:text-dev-600;
   }
+}
+
+/* ═══════════════════════════════════════════════════
+   HYBRID LAYER — dark high-tech + editorial light
+   ═══════════════════════════════════════════════════ */
+
+/* ── Dark section utilities ─────────────────────── */
+.section-dark {
+  background-color: var(--color-dark);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-dark .grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* ── Soft accent glows ──────────────────────────── */
+.glow {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(100px);
+}
+.glow-dev { background: var(--color-dev-600); }
+.glow-iot { background: var(--color-iot-500); }
+.glow-infra { background: var(--color-infra-600); }
+
+/* ── Glass card ─────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+/* ── Gradient headline ──────────────────────────── */
+.text-grad {
+  background: linear-gradient(90deg, var(--color-dev-400), var(--color-iot-400), var(--color-infra-400));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: grad-pan 9s ease-in-out infinite;
+}
+@keyframes grad-pan {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+/* ── Glowing button ─────────────────────────────── */
+.btn-glow {
+  background: var(--color-dev-600);
+  box-shadow: 0 0 34px rgba(124, 58, 237, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 46px rgba(124, 58, 237, 0.6);
+}
+
+/* ── Ecosystem flow lines ───────────────────────── */
+.eco-flow {
+  stroke-dasharray: 4 8;
+  animation: eco-dash 1.4s linear infinite;
+}
+@keyframes eco-dash { to { stroke-dashoffset: -24; } }
+
+/* ── Gentle float ───────────────────────────────── */
+.float-y { animation: float-y 5s ease-in-out infinite; }
+.float-y-1 { animation-delay: 0.8s; }
+.float-y-2 { animation-delay: 1.6s; }
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ── Counting / metric pulse ────────────────────── */
+.metric-pulse { animation: metric-pulse 2.2s ease-in-out infinite; }
+@keyframes metric-pulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+/* ── Reduced motion (add new) ───────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .text-grad { animation: none; }
+  .eco-flow { animation: none; stroke-dasharray: 6 6; }
+  .float-y, .metric-pulse { animation: none; }
+  .btn-glow:hover { transform: none; }
 }
