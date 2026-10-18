@@ -61,10 +61,6 @@ export default function About() {
             Um processo profissional em seis passos — o mesmo rigor em cada projeto, do primeiro ao
             mais complexo.
           </p>
-          <Link to="/engenharia" className="link-inline mt-5">
-            Ver o método completo
-            <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
             {process.map(([title, text], i) => (
               <div key={title} className="card p-5">

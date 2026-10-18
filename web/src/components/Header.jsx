@@ -9,11 +9,10 @@ const frontLinks = [
   { to: "/infrastructure", label: "Infrastructure" },
 ]
 
-/* Nav principal: Soluções (dropdown) · SN IA (direto) · Serviços · Catálogo · Engenharia · Sobre · Blog · Contacto */
+/* Nav principal: Soluções (dropdown) · SN IA (direto) · Serviços · Catálogo · Sobre · Blog · Contacto */
 const links = [
   { to: "/servicos", label: "Serviços" },
   { to: "/catalogo", label: "Catálogo" },
-  { to: "/engenharia", label: "Engenharia" },
   { to: "/sobre", label: "Sobre" },
   { to: "/blog", label: "Blog" },
   { to: "/contacto", label: "Contacto" },

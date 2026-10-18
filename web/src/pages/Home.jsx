@@ -324,16 +324,11 @@ export default function Home() {
       <section className="border-b border-line-soft bg-white">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
           <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <SectionHeading
-                eyebrow="Como trabalhamos"
-                title="Um processo claro, sem surpresas."
-                text="Da primeira conversa ao acompanhamento, sabe sempre em que passo está — e o que recebe em cada um."
-              />
-              <div className="hidden md:block">
-                <ArrowLink to="/engenharia">Ver o método completo</ArrowLink>
-              </div>
-            </div>
+            <SectionHeading
+              eyebrow="Como trabalhamos"
+              title="Um processo claro, sem surpresas."
+              text="Da primeira conversa ao acompanhamento, sabe sempre em que passo está."
+            />
           </Reveal>
           <div className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {process.map(([title, text, gets], i) => (

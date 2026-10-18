@@ -421,43 +421,6 @@ export const process = [
   ["Evoluímos", "Suporte, manutenção e melhorias quando necessário.", "Um ponto de contacto para suporte e registo do que foi alterado."],
 ]
 
-/* Princípios de engenharia — compromissos verificáveis (detalhe em /engenharia) */
-export const principles = [
-  {
-    title: "Versionado",
-    text: "Cada alteração fica registada em Git. O histórico do seu projeto é auditável.",
-  },
-  {
-    title: "Testado",
-    text: "Nada é publicado sem testes e sem a sua validação.",
-  },
-  {
-    title: "Documentado",
-    text: "A entrega inclui documentação de instalação e operação — não só o produto.",
-  },
-  {
-    title: "Seguro por defeito",
-    text: "HTTPS, backups e credenciais fora do código, com acessos mínimos.",
-  },
-  {
-    title: "Seu, não nosso",
-    text: "Código, dados e contas ficam em seu nome. Não fica dependente de nós.",
-  },
-  {
-    title: "Combinado por escrito",
-    text: "Âmbito, prazo e entregável de cada fase são definidos antes de começar.",
-  },
-]
-
-/* Limites que assumimos — transparência (detalhe em /engenharia) */
-export const nonGoals = [
-  "Não vendemos tecnologia que não resolve o problema.",
-  "Não criamos dependência: o que construímos fica em seu nome.",
-  "Não avançamos sem âmbito e valor por escrito.",
-  "Não prometemos prazos que não conseguimos cumprir.",
-  "Não escondemos limitações — dizemos o que a solução não faz.",
-]
-
 export const pillars = [
   {
     title: "Estável",

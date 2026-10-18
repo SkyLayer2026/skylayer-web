@@ -60,9 +60,6 @@ export default function Footer() {
               <Link to="/sobre" className="text-muted transition-colors hover:text-charcoal">Sobre</Link>
             </li>
             <li>
-              <Link to="/engenharia" className="text-muted transition-colors hover:text-charcoal">Engenharia</Link>
-            </li>
-            <li>
               <Link to="/blog" className="text-muted transition-colors hover:text-charcoal">Blog</Link>
             </li>
             <li>
