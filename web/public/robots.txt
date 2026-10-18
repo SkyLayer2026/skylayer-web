@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://skylayer2026.github.io/skylayer-web/sitemap.xml
+Sitemap: https://skylayer2026.github.io/sitemap.xml

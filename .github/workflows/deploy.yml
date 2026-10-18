@@ -32,9 +32,9 @@ jobs:
         working-directory: web
         run: npm ci
 
-      - name: Build (subpath /skylayer-web/)
+      - name: Build (raiz do domínio)
         working-directory: web
-        run: npm run build -- --base=/skylayer-web/
+        run: npm run build -- --base=/
 
       - name: 404.html = shell atual (fallback SPA)
         working-directory: web
