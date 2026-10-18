@@ -32,9 +32,9 @@ jobs:
         working-directory: web
         run: npm ci
 
-      - name: Build (raiz do domínio)
+      - name: Build + pré-render das rotas
         working-directory: web
-        run: npm run build -- --base=/
+        run: npm run build
 
       - name: 404.html = shell atual (fallback SPA)
         working-directory: web
