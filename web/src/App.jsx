@@ -11,6 +11,7 @@ import IoT from "./pages/IoT.jsx"
 import Infrastructure from "./pages/Infrastructure.jsx"
 import SnAia from "./pages/SnAia.jsx"
 import About from "./pages/About.jsx"
+import Engenharia from "./pages/Engenharia.jsx"
 import Blog from "./pages/Blog.jsx"
 import BlogPost from "./pages/BlogPost.jsx"
 import FaqPage from "./pages/Faq.jsx"
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="/infrastructure" element={<Infrastructure />} />
           <Route path="/sn-ia" element={<SnAia />} />
           <Route path="/sobre" element={<About />} />
+          <Route path="/engenharia" element={<Engenharia />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/faq" element={<FaqPage />} />

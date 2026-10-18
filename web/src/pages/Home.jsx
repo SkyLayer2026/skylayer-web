@@ -324,14 +324,19 @@ export default function Home() {
       <section className="border-b border-line-soft bg-white">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
           <Reveal>
-            <SectionHeading
-              eyebrow="Como trabalhamos"
-              title="Um processo claro, sem surpresas."
-              text="Da primeira conversa ao acompanhamento, sabe sempre em que passo está."
-            />
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <SectionHeading
+                eyebrow="Como trabalhamos"
+                title="Um processo claro, sem surpresas."
+                text="Da primeira conversa ao acompanhamento, sabe sempre em que passo está — e o que recebe em cada um."
+              />
+              <div className="hidden md:block">
+                <ArrowLink to="/engenharia">Ver o método completo</ArrowLink>
+              </div>
+            </div>
           </Reveal>
           <div className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-            {process.map(([title, text], i) => (
+            {process.map(([title, text, gets], i) => (
               <Reveal key={title} delay={i * 70}>
                 <div className="flex gap-4">
                   <span className="font-mono text-2xl font-light text-silver">
@@ -340,6 +345,14 @@ export default function Home() {
                   <div>
                     <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-ink">{title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
+                    {gets && (
+                      <p className="mt-3 border-l-2 border-dev-600/30 pl-3 text-xs leading-relaxed text-muted">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-dev-600">
+                          Recebe:{" "}
+                        </span>
+                        {gets}
+                      </p>
+                    )}
                   </div>
                 </div>
               </Reveal>

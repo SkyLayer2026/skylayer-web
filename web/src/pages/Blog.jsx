@@ -19,7 +19,8 @@ export default function Blog() {
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-muted">
             Guias práticos sobre tecnologia, negócios, engenharia e segurança — escritos para quem
-            decide, não apenas para quem programa.
+            decide, não apenas para quem programa. As notas de engenharia explicam as nossas
+            decisões técnicas: o que fazemos e porquê.
           </p>
         </div>
       </section>

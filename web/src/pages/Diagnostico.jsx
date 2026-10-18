@@ -1,25 +1,37 @@
 import { useState } from "react"
-import { SearchCheck, ArrowRight, FileText, Lightbulb, Send } from "lucide-react"
+import {
+  ArrowRight,
+  FileText,
+  Lightbulb,
+  Send,
+  Gauge,
+  ShieldCheck,
+  HardDrive,
+  Network,
+  Search,
+} from "lucide-react"
 import { usePageTitle } from "../hooks.js"
 import { whatsappLink } from "../config.js"
 
-const benefits = [
-  "Análise do seu site, redes sociais e presença no Google",
-  "O que está a funcionar bem e o que está a afastar clientes",
-  "3 primeiras ações recomendadas, ordenadas por impacto",
-  "Sugestões realistas ajustadas ao seu orçamento",
-  "Sem compromisso — o relatório é seu, mesmo que não continue connosco",
+/* O que analisamos — auditoria técnica inicial */
+const checks = [
+  { icon: Gauge, text: "Desempenho — velocidade de carregamento e comportamento em ligações móveis" },
+  { icon: ShieldCheck, text: "Segurança — HTTPS, acessos, permissões e credenciais expostas" },
+  { icon: HardDrive, text: "Backups — existem, são testados e permitem recuperar?" },
+  { icon: Network, text: "Alojamento e domínio — quem controla e se está adequado ao uso" },
+  { icon: Search, text: "SEO técnico — indexação, metadados, sitemap e erros de rastreio" },
+  { icon: FileText, text: "Estado geral — o que está bem, o que é urgente e o que pode esperar" },
 ]
 
 const steps = [
-  "Preencha o formulário com os seus contactos e site/redes atuais",
-  "Analisamos a sua presença digital (3–5 dias úteis)",
+  "Envia o pedido com o que tem hoje (site, sistema, rede ou infraestrutura)",
+  "Analisamos tecnicamente o estado atual (3–5 dias úteis)",
   "Recebe o relatório por WhatsApp ou e-mail",
   "Só continua se quiser — a decisão é sua",
 ]
 
 export default function Diagnostico() {
-  usePageTitle("Diagnóstico gratuito")
+  usePageTitle("Diagnóstico técnico")
 
   const [form, setForm] = useState({
     nome: "",
@@ -34,11 +46,11 @@ export default function Diagnostico() {
   const submit = (e) => {
     e.preventDefault()
     const text = [
-      "Olá Skylayer! Quero pedir o diagnóstico gratuito da minha presença digital.",
+      "Olá Skylayer! Quero pedir o diagnóstico técnico inicial.",
       `Nome: ${form.nome}`,
       `Empresa: ${form.empresa || "-"}`,
       `Contacto: ${form.contacto}`,
-      form.site && `Site/redes atuais: ${form.site}`,
+      form.site && `Site/sistema/infraestrutura atual: ${form.site}`,
       form.objetivo && `Objetivo: ${form.objetivo}`,
     ]
       .filter(Boolean)
@@ -52,11 +64,12 @@ export default function Diagnostico() {
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
           <p className="eyebrow">Gratuito · Sem compromisso</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
-            Descubra gratuitamente como a sua empresa pode melhorar a presença digital
+            Diagnóstico técnico inicial
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-            Receba um relatório simples e prático com o que está a funcionar, o que está a afastar
-            clientes e as primeiras ações recomendadas.
+            Antes de propor seja o que for, olhamos para o que já existe — desempenho, segurança,
+            backups, alojamento e SEO técnico. Recebe um relatório com as prioridades por ordem de
+            impacto. E o relatório é seu, mesmo que não continue connosco.
           </p>
         </div>
       </section>
@@ -64,12 +77,12 @@ export default function Diagnostico() {
       <section className="bg-white">
         <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-2">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-ink">O que recebe no relatório</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-ink">O que analisamos</h2>
             <ul className="mt-6 space-y-4">
-              {benefits.map((b) => (
-                <li key={b} className="flex gap-3">
-                  <SearchCheck className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
-                  <span className="text-[15px] leading-relaxed text-muted">{b}</span>
+              {checks.map(({ icon: Icon, text }) => (
+                <li key={text} className="flex gap-3">
+                  <Icon className="mt-0.5 h-5 w-5 shrink-0 text-dev-600" aria-hidden="true" />
+                  <span className="text-[15px] leading-relaxed text-muted">{text}</span>
                 </li>
               ))}
             </ul>
@@ -96,14 +109,15 @@ export default function Diagnostico() {
               <div className="flex items-center gap-3">
                 <Lightbulb className="h-5 w-5 text-dev-600" />
                 <p className="text-sm text-muted">
-                  O relatório é seu — pode usá-lo mesmo que não continue connosco.
+                  O relatório é seu — pode usá-lo mesmo que não continue connosco, ou entregá-lo a
+                  outro fornecedor.
                 </p>
               </div>
               <div className="flex items-center gap-3">
                 <ArrowRight className="h-5 w-5 text-dev-600" />
                 <p className="text-sm text-muted">
-                  Se o diagnóstico for útil, a conversa sobre um projeto acontece naturalmente —
-                  sem pressão.
+                  Se o diagnóstico for útil, a conversa sobre um projeto acontece naturalmente — sem
+                  pressão.
                 </p>
               </div>
             </div>
@@ -152,33 +166,30 @@ export default function Diagnostico() {
               </label>
               <label className="block">
                 <span className="mb-1 block text-sm font-medium text-ink">
-                  Site ou redes sociais atuais
+                  Site, sistema ou infraestrutura atual
                 </span>
                 <input
                   name="site"
                   value={form.site}
                   onChange={update}
-                  placeholder="https://... ou links das redes"
+                  placeholder="https://... ou descreva o que tem"
                   className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-dev-400 focus:outline-none focus:ring-2 focus:ring-dev-600/15"
                 />
               </label>
               <label className="block">
                 <span className="mb-1 block text-sm font-medium text-ink">
-                  O que gostaria de alcançar?
+                  O que gostaria de resolver ou melhorar?
                 </span>
                 <textarea
                   name="objetivo"
                   value={form.objetivo}
                   onChange={update}
                   rows={3}
-                  placeholder="Ex: atrair mais clientes, vender online, organizar a gestão..."
+                  placeholder="Ex: site lento, sem backups, rede instável, sistema desorganizado..."
                   className="w-full rounded-lg border border-line px-3 py-2.5 text-sm placeholder:text-muted focus:border-dev-400 focus:outline-none focus:ring-2 focus:ring-dev-600/15"
                 />
               </label>
-              <button
-                type="submit"
-                className="btn-primary w-full"
-              >
+              <button type="submit" className="btn-primary w-full">
                 <Send className="h-4 w-4" />
                 Pedir diagnóstico gratuito
               </button>
