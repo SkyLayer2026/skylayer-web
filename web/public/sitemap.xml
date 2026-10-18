@@ -2,11 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://skylayer2026.github.io/skylayer-web/</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/servicos</loc></url>
+<url><loc>https://skylayer2026.github.io/skylayer-web/catalogo</loc></url>
+<url><loc>https://skylayer2026.github.io/skylayer-web/dev</loc></url>
+<url><loc>https://skylayer2026.github.io/skylayer-web/iot</loc></url>
+<url><loc>https://skylayer2026.github.io/skylayer-web/infrastructure</loc></url>
+<url><loc>https://skylayer2026.github.io/skylayer-web/sn-ia</loc></url>
+<url><loc>https://skylayer2026.github.io/skylayer-web/engenharia</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/sobre</loc></url>
+<url><loc>https://skylayer2026.github.io/skylayer-web/diagnostico</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/blog</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/faq</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/contacto</loc></url>
-<url><loc>https://skylayer2026.github.io/skylayer-web/diagnostico</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/blog/aumentar-produtividade-tecnologia/</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/blog/automacao-reduz-custos/</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/blog/comecar-a-digitalizar/</loc></url>
@@ -20,9 +26,11 @@
 <url><loc>https://skylayer2026.github.io/skylayer-web/blog/gerir-clientes-forma-eficiente/</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/blog/guia-modernizar-negocio/</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/blog/impacto-ia-pequenas-empresas/</loc></url>
+<url><loc>https://skylayer2026.github.io/skylayer-web/blog/o-que-avaliamos-antes-de-tocar-num-sistema/</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/blog/o-que-e-erp/</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/blog/o-que-e-transformacao-digital/</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/blog/porque-empresa-precisa-site-profissional/</loc></url>
+<url><loc>https://skylayer2026.github.io/skylayer-web/blog/porque-versionamos-tudo-em-git/</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/blog/proteger-dados-empresariais/</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/blog/seguranca-basica-empresas/</loc></url>
 <url><loc>https://skylayer2026.github.io/skylayer-web/blog/tendencias-tecnologicas-mocambique/</loc></url>
