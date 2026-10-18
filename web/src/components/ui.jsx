@@ -11,14 +11,14 @@ export function Reveal({ children, delay = 0, className = "" }) {
 }
 
 export function Logo({ dark = false, className = "h-10" }) {
-  const src = dark ? "/logo-white.svg" : "/logo.svg"
+  const src = dark ? "/logo-white.png" : "/logo-blue.png"
   return (
     <img
       src={src}
       alt="Skylayer"
       className={`${className} w-auto`}
-      width="375"
-      height="90"
+      width="40"
+      height="40"
       loading="eager"
     />
   )

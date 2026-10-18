@@ -296,7 +296,7 @@ export default function Catalogo() {
 
       {/* 3. STICKY NAV */}
       <nav
-        className="sticky top-16 z-40 border-b border-line-soft bg-white/95 backdrop-blur"
+        className="sticky top-20 z-40 border-b border-line-soft bg-white/95 backdrop-blur"
         aria-label="Navegação por camadas"
       >
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-8 gap-y-2 px-4 py-3 sm:px-6">
